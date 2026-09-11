@@ -1,0 +1,6 @@
+{
+  "name": "DigiSynq",
+  "description": "The Asset-Light Operating Network for Cinema. Connecting fragmented people, projects, assets, content, audiences and opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

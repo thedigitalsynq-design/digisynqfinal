@@ -1,0 +1,326 @@
+import React, { useState, useMemo } from 'react';
+import { PRODUCTS_CATALOG } from '../data/platformsData';
+import { ProductItem, ProductCategory, BusinessModel, TargetUser } from '../types';
+import { Search, Filter, X, ArrowUpRight, Check, Layers } from 'lucide-react';
+import { ProductDetailModal } from './ProductDetailModal';
+
+const CATEGORIES: ProductCategory[] = [
+  'Intelligence',
+  'Audience',
+  'Reputation',
+  'Talent',
+  'Production',
+  'Distribution',
+  'Marketing',
+  'Content & Rights',
+  'Capital',
+  'Assets',
+  'Operations',
+  'Network',
+];
+
+const BUSINESS_MODELS: BusinessModel[] = [
+  'SaaS',
+  'Marketplace',
+  'Enterprise',
+  'Intelligence',
+  'API',
+];
+
+const TARGET_USERS: TargetUser[] = [
+  'Producers',
+  'Production Teams',
+  'Talent & Crew',
+  'Distributors',
+  'Exhibitors',
+  'Brands & Sponsors',
+  'Creators',
+  'Investors',
+  'Audiences',
+];
+
+interface ProductDirectoryProps {
+  initialCategory?: string;
+  onOpenJoinModal: (role?: string) => void;
+}
+
+export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
+  initialCategory,
+  onOpenJoinModal,
+}) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'All');
+  const [selectedModel, setSelectedModel] = useState<string>('All');
+  const [selectedUser, setSelectedUser] = useState<string>('All');
+  const [activeModalProduct, setActiveModalProduct] = useState<ProductItem | null>(null);
+
+  // Filter logic
+  const filteredProducts = useMemo(() => {
+    return PRODUCTS_CATALOG.filter((item) => {
+      // Search text match
+      const matchesSearch =
+        searchQuery.trim() === '' ||
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.capabilities.some((c) => c.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      // Category match
+      const matchesCategory =
+        selectedCategory === 'All' || item.category === selectedCategory;
+
+      // Model match
+      const matchesModel =
+        selectedModel === 'All' || item.businessModel === selectedModel;
+
+      // User match
+      const matchesUser =
+        selectedUser === 'All' || item.targetUsers.includes(selectedUser as TargetUser);
+
+      return matchesSearch && matchesCategory && matchesModel && matchesUser;
+    });
+  }, [searchQuery, selectedCategory, selectedModel, selectedUser]);
+
+  const resetFilters = () => {
+    setSearchQuery('');
+    setSelectedCategory('All');
+    setSelectedModel('All');
+    setSelectedUser('All');
+  };
+
+  const hasActiveFilters =
+    searchQuery !== '' ||
+    selectedCategory !== 'All' ||
+    selectedModel !== 'All' ||
+    selectedUser !== 'All';
+
+  return (
+    <section
+      id="product-directory"
+      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Searchable Capability Index</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            Explore DigiSynq
+          </h2>
+
+          <p className="mt-4 text-base sm:text-lg text-neutral-300">
+            Browse through specialized platforms, capabilities, and workflows powering the asset-light cinema operating network.
+          </p>
+        </div>
+
+        {/* Search & Filter Controls */}
+        <div className="bg-[#0E1119] border border-white/10 rounded-2xl p-4 sm:p-6 mb-10 shadow-xl space-y-4">
+          {/* Top Row: Search Input */}
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by product name, workflow need, or capability (e.g. 'call sheets', 'camera', 'distribution', 'sentiment')..."
+              className="w-full bg-[#08090C] border border-white/10 rounded-xl pl-11 pr-10 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#E5A919]/60 focus:ring-1 focus:ring-[#E5A919]/60 transition-all font-sans"
+              id="directory-search-input"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-neutral-400 hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          {/* Category Filter Pills */}
+          <div>
+            <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+              <span>Platform Domain:</span>
+              {hasActiveFilters && (
+                <button
+                  onClick={resetFilters}
+                  className="text-[#E5A919] hover:underline"
+                >
+                  Reset all filters
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <button
+                onClick={() => setSelectedCategory('All')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  selectedCategory === 'All'
+                    ? 'bg-[#E5A919] text-black font-semibold'
+                    : 'bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/5'
+                }`}
+              >
+                All Domains ({PRODUCTS_CATALOG.length})
+              </button>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    selectedCategory === cat
+                      ? 'bg-[#E5A919] text-black font-semibold'
+                      : 'bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/5'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Secondary Filters: User Type & Business Model */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-white/5">
+            {/* Target User */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono text-neutral-400 whitespace-nowrap">
+                Stakeholder:
+              </span>
+              <select
+                value={selectedUser}
+                onChange={(e) => setSelectedUser(e.target.value)}
+                className="w-full bg-[#08090C] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E5A919]/60"
+                id="select-target-user"
+              >
+                <option value="All">All Cinema Stakeholders</option>
+                {TARGET_USERS.map((user) => (
+                  <option key={user} value={user}>
+                    {user}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Business Model */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono text-neutral-400 whitespace-nowrap">
+                Model:
+              </span>
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="w-full bg-[#08090C] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E5A919]/60"
+                id="select-business-model"
+              >
+                <option value="All">All Business Models</option>
+                {BUSINESS_MODELS.map((model) => (
+                  <option key={model} value={model}>
+                    {model}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Results Counter */}
+        <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-6">
+          <span>
+            Showing <strong className="text-white">{filteredProducts.length}</strong> matching capabilities
+          </span>
+          {selectedCategory !== 'All' && (
+            <span className="text-[#E5A919]">Category: {selectedCategory}</span>
+          )}
+        </div>
+
+        {/* Product Cards Grid */}
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-xl bg-[#0E1119] border border-white/10 hover:border-[#E5A919]/50 transition-all p-5 sm:p-6 flex flex-col justify-between group shadow-lg hover:shadow-[#E5A919]/5"
+                id={`product-card-${item.id}`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded bg-white/5 text-[#E5A919] border border-white/5">
+                      {item.category}
+                    </span>
+                    <span className="text-[11px] font-mono text-neutral-400">
+                      {item.businessModel}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#E5A919] transition-colors mb-1">
+                    {item.name}
+                  </h3>
+
+                  <p className="text-xs text-neutral-300 font-medium mb-3">
+                    {item.tagline}
+                  </p>
+
+                  <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3 mb-4">
+                    {item.description}
+                  </p>
+
+                  <div className="mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1.5">
+                      Key Capabilities:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {item.capabilities.slice(0, 3).map((cap) => (
+                        <span
+                          key={cap}
+                          className="text-[10px] bg-white/[0.03] text-neutral-300 px-2 py-0.5 rounded border border-white/5"
+                        >
+                          {cap}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-mono truncate max-w-[170px]">
+                    <span>For:</span>
+                    <span className="text-white truncate">
+                      {item.targetUsers[0]}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => setActiveModalProduct(item)}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#E5A919] hover:text-white transition-colors"
+                  >
+                    <span>View Architecture</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 bg-[#0E1119] rounded-2xl border border-white/10">
+            <p className="text-base text-neutral-300 mb-3">
+              No products found matching your current filter criteria.
+            </p>
+            <button
+              onClick={resetFilters}
+              className="text-xs font-semibold uppercase tracking-wider text-black bg-[#E5A919] px-4 py-2 rounded-lg"
+            >
+              Reset Filters
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Deep Architecture Modal */}
+      <ProductDetailModal
+        product={activeModalProduct}
+        onClose={() => setActiveModalProduct(null)}
+        onOpenJoinModal={onOpenJoinModal}
+      />
+    </section>
+  );
+};
