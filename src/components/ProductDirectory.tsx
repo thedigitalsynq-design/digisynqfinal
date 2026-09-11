@@ -97,42 +97,42 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
   return (
     <section
       id="product-directory"
-      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <Layers className="w-3.5 h-3.5" />
             <span>Searchable Capability Index</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
             Explore DigiSynq
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-neutral-300">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             Browse through specialized platforms, capabilities, and workflows powering the asset-light cinema operating network.
           </p>
         </div>
 
-        {/* Search & Filter Controls */}
-        <div className="bg-[#0E1119] border border-white/10 rounded-2xl p-4 sm:p-6 mb-10 shadow-xl space-y-4">
+        {/* Search & Filter Controls - Apple Spotlight Style */}
+        <div className="apple-card rounded-3xl p-5 sm:p-7 mb-10 shadow-lg space-y-5">
           {/* Top Row: Search Input */}
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by product name, workflow need, or capability (e.g. 'call sheets', 'camera', 'distribution', 'sentiment')..."
-              className="w-full bg-[#08090C] border border-white/10 rounded-xl pl-11 pr-10 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#E5A919]/60 focus:ring-1 focus:ring-[#E5A919]/60 transition-all font-sans"
+              className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-2xl pl-11 pr-10 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[#E5A919]/80 focus:ring-2 focus:ring-[#E5A919]/20 transition-all font-sans"
               id="directory-search-input"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-neutral-400 hover:text-white"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -141,12 +141,12 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
 
           {/* Category Filter Pills */}
           <div>
-            <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+            <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-2.5 font-semibold">
               <span>Platform Domain:</span>
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
-                  className="text-[#E5A919] hover:underline"
+                  className="text-[#E5A919] hover:underline normal-case text-xs font-medium"
                 >
                   Reset all filters
                 </button>
@@ -155,10 +155,10 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               <button
                 onClick={() => setSelectedCategory('All')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                   selectedCategory === 'All'
-                    ? 'bg-[#E5A919] text-black font-semibold'
-                    : 'bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/5'
+                    ? 'bg-[#E5A919] text-black font-semibold shadow-sm'
+                    : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 All Domains ({PRODUCTS_CATALOG.length})
@@ -167,10 +167,10 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     selectedCategory === cat
-                      ? 'bg-[#E5A919] text-black font-semibold'
-                      : 'bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/5'
+                      ? 'bg-[#E5A919] text-black font-semibold shadow-sm'
+                      : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {cat}
@@ -180,21 +180,21 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
           </div>
 
           {/* Secondary Filters: User Type & Business Model */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-black/[0.04] dark:border-white/[0.06]">
             {/* Target User */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-neutral-400 whitespace-nowrap">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono text-[var(--text-tertiary)] whitespace-nowrap font-medium">
                 Stakeholder:
               </span>
               <select
                 value={selectedUser}
                 onChange={(e) => setSelectedUser(e.target.value)}
-                className="w-full bg-[#08090C] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E5A919]/60"
+                className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
                 id="select-target-user"
               >
-                <option value="All">All Cinema Stakeholders</option>
+                <option value="All" className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">All Cinema Stakeholders</option>
                 {TARGET_USERS.map((user) => (
-                  <option key={user} value={user}>
+                  <option key={user} value={user} className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">
                     {user}
                   </option>
                 ))}
@@ -202,19 +202,19 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
             </div>
 
             {/* Business Model */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-neutral-400 whitespace-nowrap">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xs font-mono text-[var(--text-tertiary)] whitespace-nowrap font-medium">
                 Model:
               </span>
               <select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}
-                className="w-full bg-[#08090C] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E5A919]/60"
+                className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
                 id="select-business-model"
               >
-                <option value="All">All Business Models</option>
+                <option value="All" className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">All Business Models</option>
                 {BUSINESS_MODELS.map((model) => (
-                  <option key={model} value={model}>
+                  <option key={model} value={model} className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">
                     {model}
                   </option>
                 ))}
@@ -224,55 +224,55 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
         </div>
 
         {/* Results Counter */}
-        <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-6">
+        <div className="flex items-center justify-between text-xs font-mono text-[var(--text-tertiary)] mb-6">
           <span>
-            Showing <strong className="text-white">{filteredProducts.length}</strong> matching capabilities
+            Showing <strong className="text-[var(--text-primary)] font-semibold">{filteredProducts.length}</strong> matching capabilities
           </span>
           {selectedCategory !== 'All' && (
-            <span className="text-[#E5A919]">Category: {selectedCategory}</span>
+            <span className="text-[#E5A919] font-medium">Category: {selectedCategory}</span>
           )}
         </div>
 
         {/* Product Cards Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {filteredProducts.map((item) => (
               <div
                 key={item.id}
-                className="rounded-xl bg-[#0E1119] border border-white/10 hover:border-[#E5A919]/50 transition-all p-5 sm:p-6 flex flex-col justify-between group shadow-lg hover:shadow-[#E5A919]/5"
+                className="rounded-2xl apple-card p-6 flex flex-col justify-between group shadow-sm hover:shadow-md"
                 id={`product-card-${item.id}`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded bg-white/5 text-[#E5A919] border border-white/5">
+                    <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full apple-glass text-[#E5A919]">
                       {item.category}
                     </span>
-                    <span className="text-[11px] font-mono text-neutral-400">
+                    <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
                       {item.businessModel}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#E5A919] transition-colors mb-1">
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[#E5A919] transition-colors mb-1 tracking-tight">
                     {item.name}
                   </h3>
 
-                  <p className="text-xs text-neutral-300 font-medium mb-3">
+                  <p className="text-xs text-[var(--text-secondary)] font-medium mb-3">
                     {item.tagline}
                   </p>
 
-                  <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3 mb-4">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-4">
                     {item.description}
                   </p>
 
                   <div className="mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1.5">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
                       Key Capabilities:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {item.capabilities.slice(0, 3).map((cap) => (
                         <span
                           key={cap}
-                          className="text-[10px] bg-white/[0.03] text-neutral-300 px-2 py-0.5 rounded border border-white/5"
+                          className="text-[10px] bg-black/[0.02] dark:bg-white/[0.04] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full border border-black/[0.04] dark:border-white/[0.06]"
                         >
                           {cap}
                         </span>
@@ -281,17 +281,17 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-mono truncate max-w-[170px]">
+                <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-[11px] text-[var(--text-tertiary)] font-mono truncate max-w-[170px]">
                     <span>For:</span>
-                    <span className="text-white truncate">
+                    <span className="text-[var(--text-primary)] font-medium truncate">
                       {item.targetUsers[0]}
                     </span>
                   </div>
 
                   <button
                     onClick={() => setActiveModalProduct(item)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#E5A919] hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#E5A919] hover:underline transition-colors"
                   >
                     <span>View Architecture</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -301,13 +301,13 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 bg-[#0E1119] rounded-2xl border border-white/10">
-            <p className="text-base text-neutral-300 mb-3">
+          <div className="text-center py-16 apple-card rounded-3xl">
+            <p className="text-base text-[var(--text-secondary)] mb-4">
               No products found matching your current filter criteria.
             </p>
             <button
               onClick={resetFilters}
-              className="text-xs font-semibold uppercase tracking-wider text-black bg-[#E5A919] px-4 py-2 rounded-lg"
+              className="apple-btn-primary px-5 py-2.5 text-xs uppercase tracking-wider font-semibold"
             >
               Reset Filters
             </button>

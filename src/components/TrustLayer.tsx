@@ -58,57 +58,57 @@ export const TrustLayer: React.FC = () => {
   return (
     <section
       id="trust-layer"
-      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>The Trust Protocol</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
             SynqTrust
           </h2>
 
-          <p className="mt-2 text-xl font-semibold text-[#E5A919]">
+          <p className="mt-2 text-lg sm:text-xl font-semibold text-[#E5A919]">
             A connected ecosystem needs trust.
           </p>
 
-          <p className="mt-4 text-base sm:text-lg text-neutral-300">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             Cinema has traditionally operated on word-of-mouth rolodexes and opaque reputations. SynqTrust establishes objective, verifiable credibility for every person, asset, and counterparty.
           </p>
         </div>
 
-        {/* 10 Trust Capabilities Grid */}
+        {/* 10 Trust Capabilities Grid - Apple Privacy & Security Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {trustPillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={pillar.title}
-                className="p-5 rounded-xl bg-[#0E1119] border border-white/10 hover:border-[#E5A919]/40 transition-all flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-2xl apple-card flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-[#E5A919]">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-9 h-9 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] flex items-center justify-center text-[#E5A919]">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="text-[10px] font-mono text-neutral-500">
+                    <span className="text-[10px] font-mono text-[var(--text-tertiary)] font-semibold">
                       0{idx + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-2">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] mb-2 tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[10px] font-mono text-[#E5A919]">
+                <div className="mt-5 pt-3.5 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center gap-1.5 text-[10px] font-mono text-[#E5A919] font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
                   <span>Verified Standard</span>
                 </div>
@@ -118,7 +118,7 @@ export const TrustLayer: React.FC = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-xs font-mono text-neutral-500 max-w-xl mx-auto">
+          <p className="text-xs font-mono text-[var(--text-tertiary)] max-w-xl mx-auto leading-relaxed">
             * SynqTrust provides structured identity attestation and guild record cross-verification. Digital badges are issued based on verified credentials, guild registrations, and completed escrow settlements.
           </p>
         </div>

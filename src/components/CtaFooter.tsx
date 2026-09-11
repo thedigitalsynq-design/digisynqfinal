@@ -7,33 +7,33 @@ interface CtaFooterProps {
 
 export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
   return (
-    <div className="bg-[#08090C] text-neutral-300">
+    <div className="bg-[var(--bg-canvas)] text-[var(--text-secondary)] transition-colors duration-300">
       {/* SECTION 42: PRIMARY CTA CONVERSION SECTION */}
       <section
         id="cta-section"
-        className="py-24 border-t border-white/5 relative overflow-hidden bg-gradient-to-b from-[#08090C] via-[#0E1119] to-[#08090C]"
+        className="py-24 sm:py-32 border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden bg-gradient-to-b from-[var(--bg-canvas)] via-[var(--bg-canvas-subtle)] to-[var(--bg-canvas)]"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#E5A919]/5 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#E5A919]/5 dark:bg-[#E5A919]/8 blur-[160px] rounded-full pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-6 font-semibold">
             <Network className="w-3.5 h-3.5" />
             <span>Join the Connected Ecosystem</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
             Find your place in <br />
             <span className="text-[#E5A919]">the network.</span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-xl text-neutral-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-6 text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">
             Whether you create, produce, distribute, exhibit, promote, invest in or simply love cinema, DigiSynq is designed to connect you with the people, resources and opportunities around you.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3.5">
             <button
               onClick={() => onOpenJoinModal('Join Network')}
-              className="inline-flex items-center gap-2 bg-[#E5A919] hover:bg-[#f5b82e] text-black font-semibold text-sm px-7 py-3.5 rounded-lg transition-all shadow-xl shadow-[#E5A919]/20 hover:shadow-[#E5A919]/35 active:scale-[0.98]"
+              className="apple-btn-primary inline-flex items-center gap-2 text-sm px-8 py-3.5 font-semibold"
               id="footer-btn-join-network"
             >
               <span>Join the Network</span>
@@ -42,7 +42,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             <a
               href="#product-directory"
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 font-medium text-sm px-6 py-3.5 rounded-lg transition-colors"
+              className="apple-btn-secondary inline-flex items-center gap-2 text-sm px-7 py-3.5 font-medium"
               id="footer-btn-explore-products"
             >
               <span>Explore Products</span>
@@ -50,7 +50,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             <button
               onClick={() => onOpenJoinModal('Partner')}
-              className="inline-flex items-center gap-2 text-neutral-400 hover:text-white font-mono text-xs uppercase tracking-wider px-5 py-3.5 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-mono text-xs uppercase tracking-wider px-5 py-3.5 rounded-full transition-colors"
               id="footer-btn-partner"
             >
               <span>Partner with DigiSynq</span>
@@ -60,41 +60,36 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
         </div>
       </section>
 
-      {/* SECTION 55: FINAL BRAND MANIFESTO */}
-      <section className="py-20 border-t border-b border-white/10 bg-[#050608] text-center">
+      {/* SECTION 55: FINAL BRAND MANIFESTO - Apple Minimalist Statement */}
+      <section className="py-20 border-t border-b border-black/[0.06] dark:border-white/[0.08] bg-[var(--bg-canvas-subtle)] text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <p className="text-xl sm:text-2xl text-neutral-400 font-light mb-6">
+          <p className="text-xl sm:text-2xl text-[var(--text-secondary)] font-normal mb-6 tracking-tight">
             Cinema is full of dots.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-sm sm:text-base font-medium text-neutral-200 mb-8">
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">People</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Projects</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Assets</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Content</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Audiences</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Ideas</span>
-            <span>•</span>
-            <span className="px-3 py-1 rounded bg-white/5 border border-white/10">Opportunities</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-[var(--text-primary)] mb-8">
+            {['People', 'Projects', 'Assets', 'Content', 'Audiences', 'Ideas', 'Opportunities'].map((tag, i, arr) => (
+              <React.Fragment key={tag}>
+                <span className="px-3 py-1 rounded-full apple-glass text-xs font-mono">
+                  {tag}
+                </span>
+                {i < arr.length - 1 && <span className="text-[var(--text-tertiary)] select-none">•</span>}
+              </React.Fragment>
+            ))}
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-6">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] mb-6 tracking-tight">
             DigiSynq connects them.
           </h3>
 
-          <div className="pt-6 border-t border-white/10">
-            <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-1">
+          <div className="pt-6 border-t border-black/[0.06] dark:border-white/[0.08]">
+            <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-1">
               DIGI<span className="text-[#E5A919]">SYNQ</span>
             </div>
-            <div className="text-sm font-semibold tracking-wider uppercase text-neutral-300 mb-1">
+            <div className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[var(--text-secondary)] mb-1">
               The Network Between the Dots.
             </div>
-            <div className="text-xs font-mono text-neutral-400 mb-4">
+            <div className="text-xs font-mono text-[var(--text-tertiary)] mb-4">
               The Asset-Light Operating Network for Cinema.
             </div>
             <div className="inline-flex items-center gap-3 text-xs font-bold font-mono tracking-widest text-[#E5A919] uppercase">
@@ -108,19 +103,19 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
         </div>
       </section>
 
-      {/* SECTION 43: COMPREHENSIVE FOOTER */}
-      <footer className="py-16 bg-[#08090C]">
+      {/* SECTION 43: COMPREHENSIVE FOOTER - Apple Standard Multi-Column */}
+      <footer className="py-16 bg-[var(--bg-canvas)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
             {/* Column 1: Platform */}
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-white block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-primary)] block mb-4 font-semibold">
                 Platform
               </span>
-              <ul className="space-y-2.5 text-xs text-neutral-400">
+              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                 {['Platform Overview', 'Products Directory', 'Intelligence Layer', 'Capacity Marketplace', 'Network Graph'].map((item) => (
                   <li key={item}>
-                    <a href="#product-ecosystem" className="hover:text-white transition-colors">
+                    <a href="#product-ecosystem" className="hover:text-[var(--text-primary)] transition-colors">
                       {item}
                     </a>
                   </li>
@@ -130,13 +125,13 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             {/* Column 2: Solutions */}
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-white block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-primary)] block mb-4 font-semibold">
                 Solutions
               </span>
-              <ul className="space-y-2.5 text-xs text-neutral-400">
+              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                 {['Producers', 'Talent & Crew', 'Distributors', 'Exhibitors', 'Brands & Sponsors', 'Creators'].map((item) => (
                   <li key={item}>
-                    <a href="#audience-solutions" className="hover:text-white transition-colors">
+                    <a href="#audience-solutions" className="hover:text-[var(--text-primary)] transition-colors">
                       {item}
                     </a>
                   </li>
@@ -146,13 +141,13 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             {/* Column 3: Company */}
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-white block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-primary)] block mb-4 font-semibold">
                 Company
               </span>
-              <ul className="space-y-2.5 text-xs text-neutral-400">
+              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                 {['About DigiSynq', 'Long-term Vision', 'Operating Principles', 'Contact Leadership', 'Ecosystem Careers'].map((item) => (
                   <li key={item}>
-                    <a href="#about-vision" className="hover:text-white transition-colors">
+                    <a href="#about-vision" className="hover:text-[var(--text-primary)] transition-colors">
                       {item}
                     </a>
                   </li>
@@ -162,13 +157,13 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             {/* Column 4: Resources */}
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-white block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-primary)] block mb-4 font-semibold">
                 Resources
               </span>
-              <ul className="space-y-2.5 text-xs text-neutral-400">
+              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                 {['Cinema Insights', 'Industry Research', 'API Documentation', 'Product Changelog', 'Trust Guidelines'].map((item) => (
                   <li key={item}>
-                    <a href="#platform-model" className="hover:text-white transition-colors">
+                    <a href="#platform-model" className="hover:text-[var(--text-primary)] transition-colors">
                       {item}
                     </a>
                   </li>
@@ -178,13 +173,13 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
 
             {/* Column 5: Legal */}
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-white block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-primary)] block mb-4 font-semibold">
                 Legal & Trust
               </span>
-              <ul className="space-y-2.5 text-xs text-neutral-400">
+              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                 {['Privacy Policy', 'Terms of Network', 'Cookie Preferences', 'Data Governance', 'SynqTrust Standards'].map((item) => (
                   <li key={item}>
-                    <a href="#trust-layer" className="hover:text-white transition-colors">
+                    <a href="#trust-layer" className="hover:text-[var(--text-primary)] transition-colors">
                       {item}
                     </a>
                   </li>
@@ -193,12 +188,12 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-mono gap-4">
+          <div className="pt-8 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--text-tertiary)] font-mono gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-white font-bold">DigiSynq</span>
+              <span className="text-[var(--text-primary)] font-semibold">DigiSynq</span>
               <span>© {new Date().getFullYear()} DigiSynq Technologies Inc. All rights reserved.</span>
             </div>
-            <div className="text-neutral-400">
+            <div className="text-[var(--text-secondary)]">
               The Asset-Light Operating Network for Cinema.
             </div>
           </div>

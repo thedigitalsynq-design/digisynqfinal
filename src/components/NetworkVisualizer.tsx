@@ -153,7 +153,7 @@ export const NetworkVisualizer: React.FC = () => {
 
             ctx.strokeStyle = isHighlighted
               ? 'rgba(229, 169, 25, 0.45)'
-              : 'rgba(255, 255, 255, 0.08)';
+              : 'rgba(150, 150, 160, 0.15)';
             ctx.lineWidth = isHighlighted ? 1.5 : 1;
             ctx.stroke();
 
@@ -177,7 +177,7 @@ export const NetworkVisualizer: React.FC = () => {
           } else {
             // Fragmented state: dim, broken, dashed lines with friction
             ctx.setLineDash([4, 6]);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+            ctx.strokeStyle = 'rgba(150, 150, 160, 0.08)';
             ctx.lineWidth = 0.8;
             ctx.stroke();
             ctx.setLineDash([]);
@@ -191,7 +191,7 @@ export const NetworkVisualizer: React.FC = () => {
         const centerNode = positions.find((n) => n.id === 'capital');
         if (centerNode) {
           ctx.arc(centerNode.px, centerNode.py, 42 + Math.sin(time) * 4, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(229, 169, 25, 0.12)';
+          ctx.strokeStyle = 'rgba(229, 169, 25, 0.15)';
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -211,29 +211,29 @@ export const NetworkVisualizer: React.FC = () => {
   return (
     <div
       id="hero-network-visualizer"
-      className="relative w-full rounded-2xl bg-[#0B0D13]/80 border border-white/10 p-4 sm:p-6 lg:p-8 backdrop-blur-xl overflow-hidden shadow-2xl shadow-black/80"
+      className="relative w-full rounded-3xl apple-card p-5 sm:p-7 lg:p-8 overflow-hidden"
     >
       {/* Top Controls Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10 relative z-10">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] relative z-10">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#E5A919] animate-pulse" />
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919]">
+          <span className="w-2 h-2 rounded-full bg-[#E5A919] animate-pulse" />
+          <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919] font-semibold">
             Cinema Graph Topology
           </span>
-          <span className="text-xs text-neutral-500 font-mono">|</span>
-          <span className="text-xs text-neutral-400 font-mono">
+          <span className="text-xs text-[var(--text-tertiary)] font-mono">|</span>
+          <span className="text-xs text-[var(--text-secondary)] font-mono">
             8 Ecosystem Nodes
           </span>
         </div>
 
-        {/* State Toggle: Synchronized vs Fragmented */}
-        <div className="flex items-center gap-1 bg-black/60 p-1 rounded-lg border border-white/10 text-xs">
+        {/* State Toggle: Synchronized vs Fragmented (Apple Segmented Control) */}
+        <div className="flex items-center p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08] text-xs">
           <button
             onClick={() => setIsSynchronized(true)}
-            className={`px-3 py-1 rounded-md font-medium transition-all ${
+            className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               isSynchronized
                 ? 'bg-[#E5A919] text-black shadow-sm font-semibold'
-                : 'text-neutral-400 hover:text-white'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
             id="btn-state-synchronized"
           >
@@ -241,10 +241,10 @@ export const NetworkVisualizer: React.FC = () => {
           </button>
           <button
             onClick={() => setIsSynchronized(false)}
-            className={`px-3 py-1 rounded-md font-medium transition-all ${
+            className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               !isSynchronized
-                ? 'bg-red-500/20 text-red-300 border border-red-500/30'
-                : 'text-neutral-400 hover:text-white'
+                ? 'bg-red-500/20 text-red-500 dark:text-red-300 border border-red-500/30 font-semibold'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
             id="btn-state-fragmented"
           >
@@ -254,7 +254,7 @@ export const NetworkVisualizer: React.FC = () => {
       </div>
 
       {/* Main Canvas Area */}
-      <div className="relative h-[380px] sm:h-[440px] md:h-[480px] w-full my-3">
+      <div className="relative h-[380px] sm:h-[440px] md:h-[480px] w-full my-4">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -273,23 +273,23 @@ export const NetworkVisualizer: React.FC = () => {
                 transform: 'translate(-50%, -50%)',
               }}
               className={`absolute group z-20 focus:outline-none transition-transform duration-200 ${
-                isSelected ? 'scale-110' : 'hover:scale-105'
+                isSelected ? 'scale-105' : 'hover:scale-102'
               }`}
               id={`node-btn-${node.id}`}
             >
               <div
-                className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-full border transition-all ${
+                className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-full border transition-all duration-200 shadow-sm ${
                   isSelected
-                    ? 'bg-[#E5A919] border-[#E5A919] text-black shadow-lg shadow-[#E5A919]/30 font-semibold'
-                    : 'bg-[#11141C]/90 border-white/15 text-neutral-200 hover:border-[#E5A919]/60 hover:bg-[#161B26]'
+                    ? 'bg-[#E5A919] border-[#E5A919] text-black shadow-md shadow-[#E5A919]/25 font-semibold'
+                    : 'bg-white/80 dark:bg-[#15171E]/90 border-black/[0.08] dark:border-white/10 text-[var(--text-primary)] hover:border-[#E5A919]/60 backdrop-blur-md'
                 }`}
               >
                 <span
                   className={`w-2 h-2 rounded-full ${
-                    isSelected ? 'bg-black' : isSynchronized ? 'bg-[#E5A919]' : 'bg-neutral-600'
+                    isSelected ? 'bg-black' : isSynchronized ? 'bg-[#E5A919]' : 'bg-neutral-400'
                   }`}
                 />
-                <span className="text-xs sm:text-sm font-medium tracking-wide">
+                <span className="text-xs sm:text-sm font-medium tracking-tight">
                   {node.label}
                 </span>
 
@@ -305,11 +305,11 @@ export const NetworkVisualizer: React.FC = () => {
         {/* Fragmented State Overlay Banner */}
         {!isSynchronized && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="bg-red-950/80 border border-red-800/60 rounded-xl px-5 py-3 text-center backdrop-blur-md max-w-sm">
-              <p className="text-xs font-mono text-red-400 uppercase tracking-widest mb-1">
+            <div className="bg-red-500/10 dark:bg-red-950/80 border border-red-500/20 dark:border-red-800/60 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
+              <p className="text-[11px] font-mono text-red-500 dark:text-red-400 uppercase tracking-widest mb-1.5 font-semibold">
                 Legacy Industry Friction
               </p>
-              <p className="text-sm text-red-200 font-medium">
+              <p className="text-xs sm:text-sm text-red-600 dark:text-red-200 font-medium leading-relaxed">
                 Disconnected phone calls, idle equipment, and opaque packaging leave 65% of potential cinema value stranded.
               </p>
             </div>
@@ -318,27 +318,27 @@ export const NetworkVisualizer: React.FC = () => {
       </div>
 
       {/* Interactive Detail Inspector for Selected Node */}
-      <div className="pt-4 border-t border-white/10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+      <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.08] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
         <div className="md:col-span-4">
-          <div className="flex items-center gap-2 text-[#E5A919] text-xs font-mono uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-1.5 text-[#E5A919] text-xs font-mono uppercase tracking-wider mb-1 font-semibold">
             <Zap className="w-3.5 h-3.5" />
             <span>Active Node Inspection</span>
           </div>
-          <h4 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+          <h4 className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
             {activeNode.label}
-            <span className="text-xs font-normal text-neutral-400 font-mono">
+            <span className="text-xs font-normal text-[var(--text-tertiary)] font-mono">
               ({activeNode.role})
             </span>
           </h4>
         </div>
 
-        <div className="md:col-span-5 text-sm text-neutral-300 leading-relaxed">
+        <div className="md:col-span-5 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
           {activeNode.description}
         </div>
 
         <div className="md:col-span-3 flex md:justify-end">
-          <div className="bg-white/5 border border-white/10 rounded-xl px-3.5 py-2 w-full md:w-auto text-left md:text-right">
-            <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-400 block">
+          <div className="apple-glass rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
+            <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-tertiary)] block">
               Network Telemetry
             </span>
             <span className="text-xs font-semibold text-[#E5A919] font-mono">

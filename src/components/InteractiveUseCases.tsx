@@ -36,26 +36,26 @@ export const InteractiveUseCases: React.FC = () => {
   return (
     <section
       id="use-cases"
-      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <Terminal className="w-3.5 h-3.5" />
             <span>Choreographed Workflows</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
             How DigiSynq works in practice.
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-neutral-300">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             Real cinema scenarios showing how fragmented needs are resolved through digital matching and coordination rather than manual friction.
           </p>
         </div>
 
-        {/* 5 Scenario Selector Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-thin scrollbar-thumb-white/10">
+        {/* 5 Scenario Selector Pills - Apple Segmented Pill Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-thin">
           {USE_CASES.map((uc) => {
             const isSelected = selectedCaseId === uc.id;
             return (
@@ -65,10 +65,10 @@ export const InteractiveUseCases: React.FC = () => {
                   setSelectedCaseId(uc.id);
                   setCustomResult({ status: 'idle', flow: [], summary: '' });
                 }}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border ${
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 border ${
                   isSelected
-                    ? 'bg-[#E5A919] text-black border-[#E5A919] shadow-lg shadow-[#E5A919]/20'
-                    : 'bg-[#0E1119] text-neutral-400 hover:text-white border-white/10 hover:border-white/20'
+                    ? 'bg-[#E5A919] text-black border-[#E5A919] shadow-sm font-bold'
+                    : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
                 id={`btn-use-case-${uc.id}`}
               >
@@ -79,23 +79,23 @@ export const InteractiveUseCases: React.FC = () => {
         </div>
 
         {/* Active Scenario Detailed Execution Panel */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#121520] to-[#0A0C11] border border-white/10 p-6 sm:p-10 shadow-2xl mb-12">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg mb-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
             <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
                 Trigger Requirement • Initiated by {activeCase.persona}
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-sans">
+              <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] font-sans tracking-tight">
                 "{activeCase.title}"
               </h3>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-neutral-400">Interlinked Nodes:</span>
-              <div className="flex flex-wrap gap-1">
+              <span className="text-xs font-mono text-[var(--text-tertiary)]">Interlinked Nodes:</span>
+              <div className="flex flex-wrap gap-1.5">
                 {activeCase.connectedNodes.map((node) => (
                   <span
                     key={node}
-                    className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs font-mono text-white"
+                    className="px-2.5 py-1 rounded-full apple-glass text-xs font-mono text-[var(--text-primary)]"
                   >
                     {node}
                   </span>
@@ -104,11 +104,11 @@ export const InteractiveUseCases: React.FC = () => {
             </div>
           </div>
 
-          <div className="my-6 p-4 rounded-xl bg-black/50 border border-white/10">
-            <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">
+          <div className="my-6 p-4 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08]">
+            <span className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase tracking-widest block mb-1 font-semibold">
               Natural Language Prompt Ingested
             </span>
-            <p className="text-sm sm:text-base text-neutral-200 font-mono italic">
+            <p className="text-sm sm:text-base text-[var(--text-primary)] font-mono italic">
               "{activeCase.query}"
             </p>
           </div>
@@ -118,7 +118,7 @@ export const InteractiveUseCases: React.FC = () => {
             {activeCase.stages.map((stage, idx) => (
               <div
                 key={stage.stage}
-                className="p-4 rounded-xl bg-[#0E1119] border border-white/5 hover:border-[#E5A919]/40 transition-colors"
+                className="p-5 rounded-2xl apple-glass hover:border-[#E5A919]/50 transition-all duration-200"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-mono font-bold text-[#E5A919]">
@@ -126,10 +126,10 @@ export const InteractiveUseCases: React.FC = () => {
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
                 </div>
-                <div className="text-xs font-bold text-white mb-1.5">
+                <div className="text-xs font-bold text-[var(--text-primary)] mb-1.5">
                   {stage.action}
                 </div>
-                <p className="text-xs text-neutral-400 leading-relaxed">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   {stage.detail}
                 </p>
               </div>
@@ -137,25 +137,25 @@ export const InteractiveUseCases: React.FC = () => {
           </div>
 
           {/* Outcome Card */}
-          <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex items-start sm:items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
-            <div className="text-xs sm:text-sm text-emerald-200">
-              <span className="font-semibold text-white">Outcome Achieved: </span>
+          <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/30 flex items-start sm:items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+            <div className="text-xs sm:text-sm text-emerald-700 dark:text-emerald-200">
+              <span className="font-semibold text-[var(--text-primary)]">Outcome Achieved: </span>
               {activeCase.outcome}
             </div>
           </div>
         </div>
 
         {/* Live Simulation Sandbox for Custom Query */}
-        <div className="rounded-2xl bg-[#0E1119] border border-white/10 p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] mb-2">
+        <div className="rounded-3xl apple-card p-6 sm:p-9 shadow-sm">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] mb-2 font-semibold">
             <Sparkles className="w-4 h-4" />
             <span>Interactive Choreography Sandbox</span>
           </div>
-          <h4 className="text-lg font-bold text-white mb-2">
+          <h4 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
             Test how DigiSynq coordinates your cinema requirement.
           </h4>
-          <p className="text-xs sm:text-sm text-neutral-400 mb-5">
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)] mb-6 leading-relaxed">
             Type any real-world production, equipment, screening, or distribution requirement to see the network choreography simulation.
           </p>
 
@@ -165,12 +165,12 @@ export const InteractiveUseCases: React.FC = () => {
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
               placeholder="e.g. 'I need a 40-foot techno-crane with operator in Atlanta next Tuesday'"
-              className="flex-1 bg-[#08090C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#E5A919]/60 font-sans"
+              className="flex-1 bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[#E5A919]/80 focus:ring-2 focus:ring-[#E5A919]/20 font-sans"
               id="sandbox-custom-query-input"
             />
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 bg-[#E5A919] hover:bg-[#f5b82e] text-black font-semibold text-xs uppercase tracking-wider px-6 py-3 rounded-xl transition-all shadow-md shadow-[#E5A919]/20"
+              className="apple-btn-primary inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-6 py-3 font-semibold"
               id="btn-sandbox-simulate"
             >
               <span>Simulate Choreography</span>
@@ -180,17 +180,17 @@ export const InteractiveUseCases: React.FC = () => {
 
           {/* Sandbox Response Output */}
           {customResult.status === 'simulating' && (
-            <div className="mt-4 p-4 rounded-xl bg-black/40 border border-white/10 text-xs font-mono text-[#E5A919] animate-pulse">
+            <div className="mt-4 p-4 rounded-2xl apple-glass text-xs font-mono text-[#E5A919] animate-pulse">
               Simulating multi-node graph traversal across talent, equipment, and trust layers...
             </div>
           )}
 
           {customResult.status === 'resolved' && (
-            <div className="mt-4 p-5 rounded-xl bg-black/50 border border-[#E5A919]/30 space-y-3">
+            <div className="mt-4 p-5 rounded-2xl apple-glass border-[#E5A919]/40 space-y-3">
               <div className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-bold">
                 Automated Network Coordination Pipeline:
               </div>
-              <ul className="space-y-2 text-xs text-neutral-300 font-mono">
+              <ul className="space-y-2 text-xs text-[var(--text-secondary)] font-mono">
                 {customResult.flow.map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="text-[#E5A919]">→</span>
@@ -198,7 +198,7 @@ export const InteractiveUseCases: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <div className="pt-2 border-t border-white/10 text-xs text-emerald-300 font-medium">
+              <div className="pt-2 border-t border-black/[0.04] dark:border-white/[0.06] text-xs text-emerald-600 dark:text-emerald-300 font-medium">
                 {customResult.summary}
               </div>
             </div>

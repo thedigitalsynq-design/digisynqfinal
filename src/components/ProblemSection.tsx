@@ -50,32 +50,32 @@ export const ProblemSection: React.FC = () => {
   return (
     <section
       id="problem"
-      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 dark:text-red-400 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <AlertCircle className="w-3.5 h-3.5" />
             <span>The Core Disconnect</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
             Cinema is connected by relationships, <br />
-            <span className="text-neutral-400">but fragmented by systems.</span>
+            <span className="text-[var(--text-secondary)]">but fragmented by systems.</span>
           </h2>
 
-          <p className="mt-5 text-base sm:text-lg text-neutral-300 leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             Cinema doesn't lack talent, resources, content, audiences or opportunities. It loses value when they remain fragmented, disconnected, underutilized and difficult to coordinate.
           </p>
 
-          {/* Interactive Contrast Switcher */}
-          <div className="mt-8 inline-flex items-center p-1.5 rounded-xl bg-white/5 border border-white/10">
+          {/* Interactive Contrast Switcher - Apple Segmented Control */}
+          <div className="mt-9 inline-flex items-center p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08]">
             <button
               onClick={() => setActiveTab('fragmented')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'fragmented'
-                  ? 'bg-red-500/20 text-red-300 border border-red-500/40 shadow-sm'
-                  : 'text-neutral-400 hover:text-white'
+                  ? 'bg-red-500/15 text-red-600 dark:text-red-300 border border-red-500/30 shadow-sm'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
               id="tab-fragmented-industry"
             >
@@ -84,10 +84,10 @@ export const ProblemSection: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveTab('connected')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'connected'
-                  ? 'bg-[#E5A919] text-black shadow-lg shadow-[#E5A919]/25 font-bold'
-                  : 'text-neutral-400 hover:text-white'
+                  ? 'bg-[#E5A919] text-black shadow-sm font-bold'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
               id="tab-digisynq-connected"
             >
@@ -102,37 +102,37 @@ export const ProblemSection: React.FC = () => {
           {problemPoints.map((item, index) => (
             <div
               key={item.title}
-              className={`relative rounded-xl p-5 sm:p-6 transition-all border ${
+              className={`relative rounded-2xl p-6 transition-all duration-300 border apple-card ${
                 activeTab === 'fragmented'
-                  ? 'bg-[#0E1017] border-white/10 hover:border-red-500/40'
-                  : 'bg-[#0E131C] border-[#E5A919]/25 hover:border-[#E5A919]/60 shadow-lg shadow-black/40'
+                  ? 'hover:border-red-500/40'
+                  : 'hover:border-[#E5A919]/60'
               }`}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
+              <div className="flex items-center justify-between mb-3.5">
+                <span className="text-xs font-mono text-[var(--text-tertiary)] uppercase tracking-wider font-semibold">
                   0{index + 1}
                 </span>
                 {activeTab === 'fragmented' ? (
-                  <span className="w-2 h-2 rounded-full bg-red-400/80" />
+                  <span className="w-2 h-2 rounded-full bg-red-500" />
                 ) : (
                   <span className="w-2 h-2 rounded-full bg-[#E5A919] shadow-sm shadow-[#E5A919]" />
                 )}
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-2">
+              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2.5 tracking-tight">
                 {item.title}
               </h3>
 
-              <p className="text-sm leading-relaxed min-h-[72px]">
+              <p className="text-xs sm:text-sm leading-relaxed min-h-[72px]">
                 {activeTab === 'fragmented' ? (
-                  <span className="text-neutral-400">{item.symptom}</span>
+                  <span className="text-[var(--text-secondary)]">{item.symptom}</span>
                 ) : (
-                  <span className="text-neutral-200 font-medium">{item.connected}</span>
+                  <span className="text-[var(--text-primary)] font-medium">{item.connected}</span>
                 )}
               </p>
 
-              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                <span className={activeTab === 'fragmented' ? 'text-red-400' : 'text-[#E5A919]'}>
+              <div className="mt-4 pt-3.5 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono font-medium">
+                <span className={activeTab === 'fragmented' ? 'text-red-500 dark:text-red-400' : 'text-[#E5A919]'}>
                   {activeTab === 'fragmented' ? 'Friction & Waste' : 'Synchronized & Liquid'}
                 </span>
               </div>
@@ -142,12 +142,12 @@ export const ProblemSection: React.FC = () => {
 
         {/* Transition callout */}
         <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-white/[0.03] via-[#E5A919]/10 to-white/[0.03] border border-[#E5A919]/20 rounded-2xl px-8 py-5 max-w-2xl mx-auto">
-            <span className="text-lg font-bold text-white">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3.5 apple-glass rounded-2xl px-8 py-5 max-w-2xl mx-auto shadow-sm">
+            <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight">
               DigiSynq connects the dots.
             </span>
-            <span className="text-neutral-400 hidden sm:inline">|</span>
-            <span className="text-sm text-neutral-300">
+            <span className="text-[var(--text-tertiary)] hidden sm:inline">|</span>
+            <span className="text-xs sm:text-sm text-[var(--text-secondary)]">
               Transforming isolated physical assets into an agile, intelligent operating network.
             </span>
           </div>

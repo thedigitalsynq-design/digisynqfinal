@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ProductItem } from '../types';
 import { X, Check, ArrowRight, Layers, ShieldCheck, Network, Cpu, ArrowUpRight } from 'lucide-react';
 
@@ -13,19 +13,34 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onClose,
   onOpenJoinModal,
 }) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    if (product) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [product, onClose]);
+
   if (!product) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 dark:bg-black/80 backdrop-blur-2xl overflow-y-auto animate-fadeIn"
       id="product-detail-modal"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
-      <div className="relative w-full max-w-4xl rounded-2xl bg-[#0E1119] border border-white/15 shadow-2xl shadow-black overflow-hidden my-auto max-h-[90vh] flex flex-col">
+      <div className="relative w-full max-w-4xl rounded-3xl apple-card shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]">
         {/* Modal Header / Hero */}
-        <div className="p-6 sm:p-8 bg-gradient-to-r from-[#141824] via-[#0E1119] to-[#141824] border-b border-white/10 relative">
+        <div className="p-6 sm:p-9 bg-gradient-to-r from-[var(--bg-canvas-subtle)] via-[var(--bg-canvas)] to-[var(--bg-canvas-subtle)] border-b border-black/[0.06] dark:border-white/[0.08] relative">
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+            className="absolute top-6 right-6 p-2 rounded-full apple-glass text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
             aria-label="Close product view"
             id="btn-close-product-modal"
           >
@@ -36,15 +51,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#E5A919]/10 text-[#E5A919] border border-[#E5A919]/30">
               {product.category}
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-neutral-300 border border-white/10">
+            <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider apple-glass text-[var(--text-secondary)]">
               Model: {product.businessModel}
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
             {product.name}
           </h2>
-          <p className="mt-2 text-base sm:text-lg text-neutral-300">
+          <p className="mt-2 text-base sm:text-lg text-[var(--text-secondary)]">
             {product.tagline}
           </p>
 
@@ -54,7 +69,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 onClose();
                 onOpenJoinModal(product.name);
               }}
-              className="inline-flex items-center gap-2 bg-[#E5A919] hover:bg-[#f5b82e] text-black font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-all shadow-lg shadow-[#E5A919]/20"
+              className="apple-btn-primary inline-flex items-center gap-2 text-xs sm:text-sm px-6 py-2.5 font-semibold"
               id="modal-cta-get-started"
             >
               <span>Access {product.name}</span>
@@ -65,7 +80,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 onClose();
                 onOpenJoinModal('Partner');
               }}
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-medium text-xs sm:text-sm px-5 py-2.5 rounded-lg border border-white/10 transition-colors"
+              className="apple-btn-secondary inline-flex items-center gap-2 text-xs sm:text-sm px-5 py-2.5 font-medium"
             >
               Partner Integration
             </button>
@@ -73,23 +88,23 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-6 sm:p-8 space-y-8 overflow-y-auto">
+        <div className="p-6 sm:p-9 space-y-8 overflow-y-auto">
           {/* Problem & Solution */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 rounded-xl bg-red-950/20 border border-red-500/20">
-              <span className="text-xs font-mono uppercase tracking-wider text-red-400 block mb-2">
+            <div className="p-5 sm:p-6 rounded-2xl bg-red-500/10 dark:bg-red-950/20 border border-red-500/20">
+              <span className="text-xs font-mono uppercase tracking-wider text-red-500 dark:text-red-400 block mb-2 font-semibold">
                 The Friction Solved
               </span>
-              <p className="text-sm text-neutral-200 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 {product.problemSolved}
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2">
+            <div className="p-5 sm:p-6 rounded-2xl apple-glass">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2 font-semibold">
                 Operational Overview
               </span>
-              <p className="text-sm text-neutral-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 {product.description}
               </p>
             </div>
@@ -97,14 +112,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Who It's For */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Target Cinema Ecosystem Stakeholders
             </span>
             <div className="flex flex-wrap gap-2">
               {product.targetUsers.map((user) => (
                 <span
                   key={user}
-                  className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white"
+                  className="px-3.5 py-1.5 rounded-full apple-glass text-xs font-medium text-[var(--text-primary)]"
                 >
                   {user}
                 </span>
@@ -114,17 +129,17 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Capabilities Grid */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Core Technical Capabilities
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {product.capabilities.map((cap) => (
                 <div
                   key={cap}
-                  className="flex items-start gap-3 p-3.5 rounded-lg bg-white/[0.02] border border-white/5"
+                  className="flex items-start gap-3 p-4 rounded-2xl apple-glass"
                 >
                   <Check className="w-4 h-4 text-[#E5A919] shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-sm text-neutral-200 font-medium">
+                  <span className="text-xs sm:text-sm text-[var(--text-primary)] font-medium leading-normal">
                     {cap}
                   </span>
                 </div>
@@ -132,21 +147,21 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Visual Workflow Steps (Discover -> Match -> Coordinate -> Measure) */}
+          {/* Visual Workflow Steps */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Automated Lifecycle Workflow
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {product.workflowSteps.map((step, idx) => (
                 <div
                   key={step}
-                  className="p-3.5 rounded-lg bg-[#11141E] border border-white/5 text-left"
+                  className="p-4 rounded-2xl apple-glass text-left"
                 >
-                  <span className="text-[10px] font-mono text-[#E5A919] block mb-1">
+                  <span className="text-[10px] font-mono text-[#E5A919] block mb-1 font-semibold">
                     Step 0{idx + 1}
                   </span>
-                  <p className="text-xs text-neutral-300 leading-snug">
+                  <p className="text-xs text-[var(--text-secondary)] leading-snug">
                     {step}
                   </p>
                 </div>
@@ -156,17 +171,17 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Network Connections */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Interconnected Graph Modules
             </span>
-            <p className="text-xs text-neutral-400 mb-2">
+            <p className="text-xs text-[var(--text-secondary)] mb-2.5 leading-relaxed">
               This product is not an isolated point solution; it seamlessly feeds data into and receives signals from:
             </p>
             <div className="flex flex-wrap gap-2">
               {product.networkConnections.map((conn) => (
                 <span
                   key={conn}
-                  className="px-3 py-1 rounded-md text-xs font-mono bg-[#E5A919]/5 border border-[#E5A919]/25 text-[#E5A919]"
+                  className="px-3.5 py-1 rounded-full text-xs font-mono bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919]"
                 >
                   ⇄ {conn}
                 </span>
@@ -175,12 +190,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Business Model Summary */}
-          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-neutral-400 font-mono">
+          <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
             <div>
               Commercial Framework:{' '}
-              <span className="text-white font-bold">{product.businessModel}</span>
+              <span className="text-[var(--text-primary)] font-bold">{product.businessModel}</span>
             </div>
-            <div className="text-neutral-500">
+            <div className="text-[var(--text-tertiary)]">
               DigiSynq Asset-Light Operating Network
             </div>
           </div>

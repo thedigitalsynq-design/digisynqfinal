@@ -54,47 +54,47 @@ export const IntelligenceSection: React.FC = () => {
   return (
     <section
       id="intelligence"
-      className="py-24 bg-[#08090C] border-t border-white/5 relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header: Section 32 Intelligence Layer */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <Activity className="w-3.5 h-3.5" />
             <span>Telemetry & Predictive Engine</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
             From fragmented signals to <br />
             <span className="text-[#E5A919]">intelligent decisions.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-neutral-300">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             DigiSynq transforms disparate box office receipts, equipment telemetry, social sentiment, and crew availability into predictive foresight.
           </p>
         </div>
 
-        {/* 6-Stage Journey Visual: Data -> Signals -> Intelligence -> Decision -> Action -> Outcome */}
+        {/* 6-Stage Journey Visual - Apple Step Cards */}
         <div className="mb-20">
-          <div className="text-xs font-mono uppercase tracking-wider text-neutral-400 text-center mb-6">
+          <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] text-center mb-6 font-semibold">
             The DigiSynq Intelligence Trajectory
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
             {signalJourney.map((item, idx) => (
               <div
                 key={item.label}
-                className="p-4 rounded-xl bg-[#0E1119] border border-white/5 text-left relative group hover:border-[#E5A919]/40 transition-colors"
+                className="p-5 rounded-2xl apple-card text-left relative group"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-[#E5A919]">
+                  <span className="text-xs font-mono text-[#E5A919] font-bold">
                     0{idx + 1}
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
                 </div>
-                <h4 className="text-sm font-bold text-white mb-1">
+                <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">
                   {item.label}
                 </h4>
-                <p className="text-xs text-neutral-400 leading-snug">
+                <p className="text-xs text-[var(--text-secondary)] leading-snug">
                   {item.desc}
                 </p>
               </div>
@@ -102,19 +102,19 @@ export const IntelligenceSection: React.FC = () => {
           </div>
         </div>
 
-        {/* SECTION 33: DIGISYNQ AI */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#121520] to-[#0A0C11] border border-white/10 p-6 sm:p-10 shadow-2xl">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
+        {/* SECTION 33: DIGISYNQ AI (Apple Intelligence Aesthetic) */}
+        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] mb-1">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] mb-1 font-semibold">
                 <Brain className="w-4 h-4" />
                 <span>DigiSynq AI Console</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                 Intelligence that understands the cinema ecosystem.
               </h3>
             </div>
-            <div className="text-xs font-mono text-neutral-400 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+            <div className="text-xs font-mono text-[var(--text-tertiary)] apple-glass px-3.5 py-1.5 rounded-full font-medium">
               Conceptual Product Experience
             </div>
           </div>
@@ -134,7 +134,7 @@ export const IntelligenceSection: React.FC = () => {
             ].map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-md text-xs font-mono bg-white/[0.03] text-neutral-300 border border-white/5"
+                className="px-3 py-1 rounded-full text-xs font-mono apple-glass text-[var(--text-secondary)]"
               >
                 {tag}
               </span>
@@ -143,7 +143,7 @@ export const IntelligenceSection: React.FC = () => {
 
           {/* Interactive Query Switcher */}
           <div className="space-y-4">
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
               Sample Cinema Natural Language Inquiries:
             </span>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -151,10 +151,10 @@ export const IntelligenceSection: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setSelectedPromptIndex(idx)}
-                  className={`p-3.5 rounded-xl text-left border text-xs transition-all ${
+                  className={`p-4 rounded-2xl text-left border text-xs transition-all duration-200 ${
                     selectedPromptIndex === idx
-                      ? 'bg-[#E5A919] text-black border-[#E5A919] font-semibold shadow-md shadow-[#E5A919]/20'
-                      : 'bg-[#0B0D13] text-neutral-300 border-white/10 hover:border-white/20'
+                      ? 'bg-[#E5A919] text-black border-[#E5A919] font-bold shadow-sm'
+                      : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   "{p.query}"
@@ -162,11 +162,18 @@ export const IntelligenceSection: React.FC = () => {
               ))}
             </div>
 
-            {/* AI Console Terminal View */}
-            <div className="mt-6 rounded-xl bg-black/80 border border-white/10 p-5 sm:p-6 font-mono text-xs">
-              <div className="flex items-center gap-2 pb-3 mb-4 border-b border-white/10 text-neutral-400">
-                <Terminal className="w-4 h-4 text-[#E5A919]" />
-                <span>digisynq-ai-agent --context cinema-graph</span>
+            {/* AI Console Terminal View - macOS Terminal / Studio Aesthetic */}
+            <div className="mt-6 rounded-2xl bg-[#08090C] dark:bg-black/90 border border-black/[0.1] dark:border-white/10 p-5 sm:p-7 font-mono text-xs shadow-2xl text-[#EDEDED]">
+              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 mr-2">
+                    <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+                    <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <Terminal className="w-3.5 h-3.5 text-[#E5A919]" />
+                  <span className="text-neutral-400 text-[11px]">digisynq-ai-agent --context cinema-graph</span>
+                </div>
               </div>
 
               <div className="space-y-4">
@@ -181,24 +188,24 @@ export const IntelligenceSection: React.FC = () => {
                     <span>DIGISYNQ AI SYNTHESIS:</span>
                   </div>
 
-                  <div className="p-3.5 rounded-lg bg-white/[0.02] border border-white/5 text-neutral-200">
+                  <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5 text-neutral-200 leading-relaxed">
                     {activePrompt.response.summary}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-neutral-300">
-                    <div className="p-3 rounded bg-white/[0.02] border border-white/5">
+                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
                       <span className="text-[#E5A919] font-bold block mb-1">▶ PEOPLE & CREW:</span>
                       {activePrompt.response.people}
                     </div>
-                    <div className="p-3 rounded bg-white/[0.02] border border-white/5">
+                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
                       <span className="text-[#E5A919] font-bold block mb-1">▶ EQUIPMENT & ASSETS:</span>
                       {activePrompt.response.equipment}
                     </div>
-                    <div className="p-3 rounded bg-white/[0.02] border border-white/5">
+                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
                       <span className="text-[#E5A919] font-bold block mb-1">▶ LOCATIONS & VENUES:</span>
                       {activePrompt.response.locations}
                     </div>
-                    <div className="p-3 rounded bg-white/[0.02] border border-white/5">
+                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
                       <span className="text-[#E5A919] font-bold block mb-1">▶ OPPORTUNITIES & CAPITAL:</span>
                       {activePrompt.response.opportunities}
                     </div>

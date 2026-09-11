@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ProblemSection } from './components/ProblemSection';
@@ -25,9 +25,31 @@ import { JoinModal } from './components/JoinModal';
 import { PlatformItem } from './types';
 
 export default function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('digisynq-theme');
+      if (stored === 'light' || stored === 'dark') return stored;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    return 'dark';
+  });
+
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [modalRole, setModalRole] = useState('Producer');
   const [selectedDirectoryCategory, setSelectedDirectoryCategory] = useState<string>('All');
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('digisynq-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   const handleOpenJoinModal = (role?: string) => {
     if (role) {
@@ -45,9 +67,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08090C] text-[#EDEDED] font-sans selection:bg-[#E5A919] selection:text-black antialiased">
+    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans selection:bg-[#E5A919] selection:text-black antialiased transition-colors duration-300">
       {/* 1. Global Navigation */}
-      <Navbar onOpenJoinModal={handleOpenJoinModal} />
+      <Navbar
+        onOpenJoinModal={handleOpenJoinModal}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main>
         {/* 2 & 3. Hero & Hero Value Statement */}
