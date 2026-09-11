@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, ShieldCheck, GitFork, SlidersHorizontal, CreditCard, BarChart3, Brain, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Glass3DIcon, GlassIconColor } from './Glass3DIcon';
 
 export const ModelPipeline: React.FC = () => {
   const [activeStepIndex, setActiveStepIndex] = useState(2); // default on MATCH
@@ -10,6 +11,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'DISCOVER',
       headline: 'Find relevant people, assets, content and opportunities.',
       icon: Search,
+      color: 'cyan' as GlassIconColor,
       input: 'Requirement query: "4K anamorphic camera package and certified DP in Berlin for 3-week shoot in November"',
       action: 'Semantic graph search indexes availability across verified crew databases and idle rental inventories.',
       output: 'Ranked candidate list with verified dates, rate benchmarks, and insurance standings.',
@@ -19,6 +21,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'VERIFY',
       headline: 'Establish identity, credibility and availability.',
       icon: ShieldCheck,
+      color: 'emerald' as GlassIconColor,
       input: 'Candidate identities, guild affiliations, equipment serials, and COI certificates.',
       action: 'SynqTrust verifies guild credits, reviews insurance underwriters, and checks counterparty credit reliability.',
       output: 'Cryptographically verified trust badge and confirmed schedule lock with zero conflict.',
@@ -28,6 +31,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'MATCH',
       headline: 'Connect supply with demand intelligently.',
       icon: GitFork,
+      color: 'blue' as GlassIconColor,
       input: 'Multi-variable constraints: budget envelope, artistic tone, insurance requirements, and calendar.',
       action: 'Bipartite graph optimization calculates bilateral affinity score and suggests optimal package pricing.',
       output: 'Direct pairing with 96% mutual fit rating and automated mutual introduction.',
@@ -37,6 +41,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'COORDINATE',
       headline: 'Move projects and workflows forward.',
       icon: SlidersHorizontal,
+      color: 'gold' as GlassIconColor,
       input: 'Digital scripts, call sheets, vendor purchase orders, and multi-department timelines.',
       action: 'Automated workflow triggers dispatch GPS call sheets, track equipment custody, and sync catering.',
       output: 'Synchronized cross-entity operational dashboard with real-time milestone confirmations.',
@@ -46,6 +51,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'TRANSACT',
       headline: 'Enable commercial exchange.',
       icon: CreditCard,
+      color: 'amber' as GlassIconColor,
       input: 'Agreed day rates, sub-rental fees, minimum guarantees, and territorial delivery milestones.',
       action: 'Protected escrow holds funds, validates delivery material sign-offs, and executes automated payouts.',
       output: 'Instant, dispute-free financial settlement with digital receipts and tax credit audit trails.',
@@ -55,6 +61,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'MEASURE',
       headline: 'Understand results.',
       icon: BarChart3,
+      color: 'purple' as GlassIconColor,
       input: 'Ticket sales, auditorium occupancy, social chatter, exit poll feedback, and budget burn rate.',
       action: 'Real-time telemetry algorithms harmonize multi-market performance into unified analytics.',
       output: 'Live attribution dashboards, audience sentiment polarity index, and box office decay curves.',
@@ -64,6 +71,7 @@ export const ModelPipeline: React.FC = () => {
       name: 'LEARN',
       headline: 'Use intelligence to improve the next decision.',
       icon: Brain,
+      color: 'rose' as GlassIconColor,
       input: 'Historical project outcomes, vendor performance scores, and audience reception vectors.',
       action: 'Machine learning models update graph weights, refining future casting, budgeting, and release timing.',
       output: 'High-conviction predictive intelligence feeding directly into the next slate or screening.',
@@ -123,7 +131,7 @@ export const ModelPipeline: React.FC = () => {
                   <span className={`text-[11px] font-mono font-semibold ${isActive ? 'text-[#E5A919]' : 'text-[var(--text-tertiary)]'}`}>
                     0{index + 1}
                   </span>
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#E5A919]' : 'text-[var(--text-tertiary)]'}`} />
+                  <Glass3DIcon icon={Icon} color={step.color} size="sm" />
                 </div>
                 <div className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[var(--text-primary)]">
                   {step.name}
@@ -153,12 +161,17 @@ export const ModelPipeline: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Left: Stage Definition & Value Proposition */}
               <div className="lg:col-span-5 space-y-4">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] font-semibold">
-                  <span>Phase 0{activeStepIndex + 1} of 07</span>
+                <div className="flex items-center gap-4 mb-2">
+                  <Glass3DIcon icon={currentStep.icon} color={currentStep.color} size="lg" />
+                  <div>
+                    <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] font-semibold">
+                      <span>Phase 0{activeStepIndex + 1} of 07</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+                      {currentStep.name}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
-                  {currentStep.name}
-                </h3>
                 <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-snug">
                   {currentStep.headline}
                 </p>
