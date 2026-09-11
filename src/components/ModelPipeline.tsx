@@ -78,6 +78,10 @@ export const ModelPipeline: React.FC = () => {
       id="platform-model"
       className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
+      {/* Volumetric ambient backlighting */}
+      <div className="glow-orb glow-orb-gold w-[420px] h-[420px] -top-20 -left-20 pointer-events-none" />
+      <div className="glow-orb glow-orb-blue w-[460px] h-[460px] bottom-10 -right-20 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

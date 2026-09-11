@@ -65,6 +65,10 @@ export const DigiSynqOS: React.FC = () => {
       id="digisynq-os"
       className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
+      {/* Volumetric ambient backlighting */}
+      <div className="glow-orb glow-orb-purple w-[520px] h-[520px] -top-28 -right-28 pointer-events-none" />
+      <div className="glow-orb glow-orb-gold w-[400px] h-[400px] bottom-10 -left-16 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 text-[var(--text-secondary)] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">

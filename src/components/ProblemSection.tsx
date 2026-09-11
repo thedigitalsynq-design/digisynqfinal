@@ -53,6 +53,10 @@ export const ProblemSection: React.FC = () => {
       id="problem"
       className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
+      {/* Volumetric ambient backlighting */}
+      <div className="glow-orb glow-orb-purple w-[480px] h-[480px] -top-24 -right-24 pointer-events-none" />
+      <div className="glow-orb glow-orb-blue w-[420px] h-[420px] bottom-12 -left-20 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

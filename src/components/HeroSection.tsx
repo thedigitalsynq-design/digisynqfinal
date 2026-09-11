@@ -22,9 +22,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
       id="hero"
       className="relative pt-32 sm:pt-40 pb-20 overflow-hidden bg-gradient-to-b from-[var(--bg-canvas)] via-[var(--bg-canvas-subtle)] to-[var(--bg-canvas)]"
     >
-      {/* Background ambient lighting accents */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[350px] bg-[#E5A919]/5 dark:bg-[#E5A919]/8 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute top-16 left-1/4 w-80 h-80 bg-blue-500/[0.02] dark:bg-blue-500/[0.04] blur-[140px] rounded-full pointer-events-none" />
+      {/* Volumetric ambient lighting orbs (Glassmorphism refraction as in reference designs) */}
+      <div className="glow-orb glow-orb-blue w-[420px] sm:w-[600px] h-[420px] sm:h-[600px] -top-24 -left-20 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] top-1/4 -right-24 pointer-events-none" />
+      <div className="glow-orb glow-orb-gold w-[380px] sm:w-[550px] h-[380px] sm:h-[550px] bottom-10 left-1/3 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Category Definition Eyebrow Badge - Apple Pill */}

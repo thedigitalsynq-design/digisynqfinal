@@ -356,8 +356,13 @@ export const NetworkVisualizer: React.FC = () => {
   return (
     <div
       id="hero-network-visualizer"
-      className="relative w-full rounded-3xl apple-card p-5 sm:p-7 lg:p-8 overflow-hidden shadow-xl"
+      className="relative w-full rounded-3xl apple-card p-5 sm:p-7 lg:p-8 overflow-hidden shadow-2xl"
     >
+      {/* Volumetric ambient backlighting (3D glass refraction from reference images) */}
+      <div className="glow-orb glow-orb-blue w-96 h-96 -top-20 -left-20 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[420px] h-[420px] top-1/3 -right-24 pointer-events-none" />
+      <div className="glow-orb glow-orb-gold w-80 h-80 -bottom-20 left-1/4 pointer-events-none" />
+
       {/* Top Controls Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] relative z-10">
         <div className="flex flex-wrap items-center gap-2.5">
