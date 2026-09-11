@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PRODUCTS_CATALOG } from '../data/platformsData';
 import { ProductItem, ProductCategory, BusinessModel, TargetUser } from '../types';
 import { Search, Filter, X, ArrowUpRight, Check, Layers } from 'lucide-react';
@@ -235,73 +236,88 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
 
         {/* Product Cards Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {filteredProducts.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-2xl apple-card p-6 flex flex-col justify-between group shadow-sm hover:shadow-md"
-                id={`product-card-${item.id}`}
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full apple-glass text-[#E5A919]">
-                      {item.category}
-                    </span>
-                    <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
-                      {item.businessModel}
-                    </span>
-                  </div>
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProducts.map((item) => (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -3, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+                  key={item.id}
+                  className="rounded-2xl apple-card p-6 flex flex-col justify-between group shadow-sm hover:shadow-md"
+                  id={`product-card-${item.id}`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full apple-glass text-[#E5A919]">
+                        {item.category}
+                      </span>
+                      <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
+                        {item.businessModel}
+                      </span>
+                    </div>
 
-                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[#E5A919] transition-colors mb-1 tracking-tight">
-                    {item.name}
-                  </h3>
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[#E5A919] transition-colors mb-1 tracking-tight">
+                      {item.name}
+                    </h3>
 
-                  <p className="text-xs text-[var(--text-secondary)] font-medium mb-3">
-                    {item.tagline}
-                  </p>
+                    <p className="text-xs text-[var(--text-secondary)] font-medium mb-3">
+                      {item.tagline}
+                    </p>
 
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-4">
-                    {item.description}
-                  </p>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-4">
+                      {item.description}
+                    </p>
 
-                  <div className="mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
-                      Key Capabilities:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.capabilities.slice(0, 3).map((cap) => (
-                        <span
-                          key={cap}
-                          className="text-[10px] bg-black/[0.02] dark:bg-white/[0.04] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full border border-black/[0.04] dark:border-white/[0.06]"
-                        >
-                          {cap}
-                        </span>
-                      ))}
+                    <div className="mb-4">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
+                        Key Capabilities:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.capabilities.slice(0, 3).map((cap) => (
+                          <span
+                            key={cap}
+                            className="text-[10px] bg-black/[0.02] dark:bg-white/[0.04] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full border border-black/[0.04] dark:border-white/[0.06]"
+                          >
+                            {cap}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-[11px] text-[var(--text-tertiary)] font-mono truncate max-w-[170px]">
-                    <span>For:</span>
-                    <span className="text-[var(--text-primary)] font-medium truncate">
-                      {item.targetUsers[0]}
-                    </span>
+                  <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-[11px] text-[var(--text-tertiary)] font-mono truncate max-w-[170px]">
+                      <span>For:</span>
+                      <span className="text-[var(--text-primary)] font-medium truncate">
+                        {item.targetUsers[0]}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => setActiveModalProduct(item)}
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#E5A919] hover:underline transition-colors"
+                    >
+                      <span>View Architecture</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
-
-                  <button
-                    onClick={() => setActiveModalProduct(item)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#E5A919] hover:underline transition-colors"
-                  >
-                    <span>View Architecture</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         ) : (
-          <div className="text-center py-16 apple-card rounded-3xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-16 apple-card rounded-3xl"
+          >
             <p className="text-base text-[var(--text-secondary)] mb-4">
               No products found matching your current filter criteria.
             </p>
@@ -311,16 +327,20 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
             >
               Reset Filters
             </button>
-          </div>
+          </motion.div>
         )}
       </div>
 
       {/* Deep Architecture Modal */}
-      <ProductDetailModal
-        product={activeModalProduct}
-        onClose={() => setActiveModalProduct(null)}
-        onOpenJoinModal={onOpenJoinModal}
-      />
+      <AnimatePresence>
+        {activeModalProduct && (
+          <ProductDetailModal
+            product={activeModalProduct}
+            onClose={() => setActiveModalProduct(null)}
+            onOpenJoinModal={onOpenJoinModal}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

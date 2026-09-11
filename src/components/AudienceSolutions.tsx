@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { AUDIENCE_SEGMENTS } from '../data/platformsData';
 import { AudienceSegment } from '../types';
 import { Users, CheckCircle2, ArrowRight, ShieldCheck, ArrowUpRight } from 'lucide-react';
@@ -56,83 +57,92 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
           })}
         </div>
 
-        {/* Active Segment Feature Panel - Apple Squircle Showcase */}
-        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
-                <span>Stakeholder Profile: {activeSegment.title}</span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
-                {activeSegment.subtitle}
-              </h3>
-
-              <p className="text-base text-[var(--text-secondary)] leading-relaxed">
-                {activeSegment.description}
-              </p>
-
-              <div className="space-y-3 pt-2">
-                <div className="p-4 rounded-2xl bg-red-500/10 dark:bg-red-950/20 border border-red-500/20 text-xs sm:text-sm text-[var(--text-secondary)]">
-                  <span className="font-mono uppercase tracking-wider text-red-500 dark:text-red-400 block mb-1 font-semibold">
-                    The Friction Today:
-                  </span>
-                  {activeSegment.painPoint}
+        {/* Active Segment Feature Panel - Apple Squircle Showcase with Smooth Crossfade */}
+        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSegment.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+            >
+              {/* Left Description */}
+              <div className="lg:col-span-7 space-y-5">
+                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
+                  <span>Stakeholder Profile: {activeSegment.title}</span>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/25 text-xs sm:text-sm text-[var(--text-primary)]">
-                  <span className="font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
-                    The DigiSynq Network Solution:
-                  </span>
-                  {activeSegment.digiSynqSolution}
-                </div>
-              </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+                  {activeSegment.subtitle}
+                </h3>
 
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => onOpenJoinModal(activeSegment.title)}
-                  className="apple-btn-primary inline-flex items-center gap-2 px-6 py-2.5 text-xs sm:text-sm font-semibold"
-                >
-                  <span>Connect as {activeSegment.title}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-                <span className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
-                  {activeSegment.businessModelNote}
-                </span>
-              </div>
-            </div>
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed">
+                  {activeSegment.description}
+                </p>
 
-            {/* Right Product Pairing Matrix */}
-            <div className="lg:col-span-5 apple-glass rounded-2xl p-6 sm:p-7 space-y-4">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
-                Primary Network Hubs for {activeSegment.title}
-              </span>
-
-              <div className="space-y-2.5">
-                {activeSegment.keyProducts.map((prod) => (
-                  <div
-                    key={prod}
-                    className="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between"
-                  >
-                    <div>
-                      <div className="text-sm font-bold text-[var(--text-primary)] font-mono">
-                        {prod}
-                      </div>
-                      <div className="text-[11px] text-[var(--text-tertiary)]">
-                        Synchronized Module
-                      </div>
-                    </div>
-                    <span className="w-2 h-2 rounded-full bg-[#E5A919]" />
+                <div className="space-y-3 pt-2">
+                  <div className="p-4 rounded-2xl bg-red-500/10 dark:bg-red-950/20 border border-red-500/20 text-xs sm:text-sm text-[var(--text-secondary)]">
+                    <span className="font-mono uppercase tracking-wider text-red-500 dark:text-red-400 block mb-1 font-semibold">
+                      The Friction Today:
+                    </span>
+                    {activeSegment.painPoint}
                   </div>
-                ))}
+
+                  <div className="p-4 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/25 text-xs sm:text-sm text-[var(--text-primary)]">
+                    <span className="font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
+                      The DigiSynq Network Solution:
+                    </span>
+                    {activeSegment.digiSynqSolution}
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <button
+                    onClick={() => onOpenJoinModal(activeSegment.title)}
+                    className="apple-btn-primary inline-flex items-center gap-2 px-6 py-2.5 text-xs sm:text-sm font-semibold"
+                  >
+                    <span>Connect as {activeSegment.title}</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
+                    {activeSegment.businessModelNote}
+                  </span>
+                </div>
               </div>
 
-              <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] text-[var(--text-tertiary)] font-mono leading-relaxed">
-                All participant actions are secured by SynqTrust cryptographic badges and automated escrow milestones.
+              {/* Right Product Pairing Matrix */}
+              <div className="lg:col-span-5 apple-glass rounded-2xl p-6 sm:p-7 space-y-4">
+                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
+                  Primary Network Hubs for {activeSegment.title}
+                </span>
+
+                <div className="space-y-2.5">
+                  {activeSegment.keyProducts.map((prod) => (
+                    <div
+                      key={prod}
+                      className="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between"
+                    >
+                      <div>
+                        <div className="text-sm font-bold text-[var(--text-primary)] font-mono">
+                          {prod}
+                        </div>
+                        <div className="text-[11px] text-[var(--text-tertiary)]">
+                          Synchronized Module
+                        </div>
+                      </div>
+                      <span className="w-2 h-2 rounded-full bg-[#E5A919]" />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] text-[var(--text-tertiary)] font-mono leading-relaxed">
+                  All participant actions are secured by SynqTrust cryptographic badges and automated escrow milestones.
+                </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

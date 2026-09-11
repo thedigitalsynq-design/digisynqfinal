@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ProblemSection } from './components/ProblemSection';
@@ -132,11 +133,15 @@ export default function App() {
       <CtaFooter onOpenJoinModal={handleOpenJoinModal} />
 
       {/* Interactive Modal for Joining Network or Partner Inquiries */}
-      <JoinModal
-        isOpen={joinModalOpen}
-        onClose={() => setJoinModalOpen(false)}
-        defaultRole={modalRole}
-      />
+      <AnimatePresence>
+        {joinModalOpen && (
+          <JoinModal
+            isOpen={joinModalOpen}
+            onClose={() => setJoinModalOpen(false)}
+            defaultRole={modalRole}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

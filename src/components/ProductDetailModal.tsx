@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ProductItem } from '../types';
 import { X, Check, ArrowRight, Layers, ShieldCheck, Network, Cpu, ArrowUpRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface ProductDetailModalProps {
   product: ProductItem | null;
@@ -28,14 +29,24 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   if (!product) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 dark:bg-black/80 backdrop-blur-2xl overflow-y-auto animate-fadeIn"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 dark:bg-black/80 backdrop-blur-2xl overflow-y-auto"
       id="product-detail-modal"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-4xl rounded-3xl apple-card shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-4xl rounded-3xl apple-card shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]"
+      >
         {/* Modal Header / Hero */}
         <div className="p-6 sm:p-9 bg-gradient-to-r from-[var(--bg-canvas-subtle)] via-[var(--bg-canvas)] to-[var(--bg-canvas-subtle)] border-b border-black/[0.06] dark:border-white/[0.08] relative">
           <button
@@ -200,7 +211,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

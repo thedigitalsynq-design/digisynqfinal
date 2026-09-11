@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Layers, ArrowRight, CheckCircle2, Shield, RefreshCw, KeyRound, Building, Camera, Film, Users, Wrench } from 'lucide-react';
 
 export const MarketplaceSection: React.FC = () => {
@@ -156,49 +157,59 @@ export const MarketplaceSection: React.FC = () => {
         </div>
 
         {/* Selected Capacity Detail Inspection */}
-        <div className="rounded-3xl apple-card p-6 sm:p-9 shadow-sm">
-          <div className="flex items-center gap-3.5 mb-5">
-            <div className="w-10 h-10 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 flex items-center justify-center text-[#E5A919]">
-              <Icon className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
-                Marketplace Domain
-              </span>
-              <h4 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
-                Underutilized {currentCategory.title}
-              </h4>
-            </div>
-          </div>
+        <div className="rounded-3xl apple-card p-6 sm:p-9 shadow-sm overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentCategory.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex items-center gap-3.5 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 flex items-center justify-center text-[#E5A919]">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
+                    Marketplace Domain
+                  </span>
+                  <h4 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
+                    Underutilized {currentCategory.title}
+                  </h4>
+                </div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-black/[0.06] dark:border-white/[0.08]">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
-                Typical Idle Capacity:
-              </span>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                {currentCategory.idleExample}
-              </p>
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-black/[0.06] dark:border-white/[0.08]">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
+                    Typical Idle Capacity:
+                  </span>
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {currentCategory.idleExample}
+                  </p>
+                </div>
 
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1.5 font-semibold">
-                Value to Asset Owner:
-              </span>
-              <p className="text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed">
-                {currentCategory.ownerAdvantage}
-              </p>
-            </div>
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1.5 font-semibold">
+                    Value to Asset Owner:
+                  </span>
+                  <p className="text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed">
+                    {currentCategory.ownerAdvantage}
+                  </p>
+                </div>
 
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-emerald-500 dark:text-emerald-400 block mb-1.5 font-semibold">
-                Value to Production:
-              </span>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                {currentCategory.demandAdvantage}
-              </p>
-            </div>
-          </div>
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-500 dark:text-emerald-400 block mb-1.5 font-semibold">
+                    Value to Production:
+                  </span>
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {currentCategory.demandAdvantage}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

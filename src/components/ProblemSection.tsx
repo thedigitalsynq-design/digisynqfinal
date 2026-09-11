@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle, Split, Network, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export const ProblemSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'fragmented' | 'connected'>('fragmented');
@@ -53,7 +54,13 @@ export const ProblemSection: React.FC = () => {
       className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 dark:text-red-400 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <AlertCircle className="w-3.5 h-3.5" />
             <span>The Core Disconnect</span>
@@ -95,14 +102,19 @@ export const ProblemSection: React.FC = () => {
               <span>DigiSynq Connects the Dots</span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Dynamic 8 Problem / Solution Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {problemPoints.map((item, index) => (
-            <div
+            <motion.div
               key={item.title}
-              className={`relative rounded-2xl p-6 transition-all duration-300 border apple-card ${
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -3, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+              className={`relative rounded-2xl p-6 transition-colors duration-300 border apple-card ${
                 activeTab === 'fragmented'
                   ? 'hover:border-red-500/40'
                   : 'hover:border-[#E5A919]/60'
@@ -123,25 +135,51 @@ export const ProblemSection: React.FC = () => {
                 {item.title}
               </h3>
 
-              <p className="text-xs sm:text-sm leading-relaxed min-h-[72px]">
-                {activeTab === 'fragmented' ? (
-                  <span className="text-[var(--text-secondary)]">{item.symptom}</span>
-                ) : (
-                  <span className="text-[var(--text-primary)] font-medium">{item.connected}</span>
-                )}
-              </p>
+              <div className="text-xs sm:text-sm leading-relaxed min-h-[72px]">
+                <AnimatePresence mode="wait">
+                  {activeTab === 'fragmented' ? (
+                    <motion.p
+                      key="symptom"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-[var(--text-secondary)]"
+                    >
+                      {item.symptom}
+                    </motion.p>
+                  ) : (
+                    <motion.p
+                      key="connected"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-[var(--text-primary)] font-medium"
+                    >
+                      {item.connected}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <div className="mt-4 pt-3.5 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono font-medium">
                 <span className={activeTab === 'fragmented' ? 'text-red-500 dark:text-red-400' : 'text-[#E5A919]'}>
                   {activeTab === 'fragmented' ? 'Friction & Waste' : 'Synchronized & Liquid'}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Transition callout */}
-        <div className="mt-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 text-center"
+        >
           <div className="inline-flex flex-col sm:flex-row items-center gap-3.5 apple-glass rounded-2xl px-8 py-5 max-w-2xl mx-auto shadow-sm">
             <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight">
               DigiSynq connects the dots.
@@ -151,7 +189,7 @@ export const ProblemSection: React.FC = () => {
               Transforming isolated physical assets into an agile, intelligent operating network.
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

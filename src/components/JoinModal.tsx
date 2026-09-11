@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, ShieldCheck, ArrowRight, Network } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface JoinModalProps {
   isOpen: boolean;
@@ -47,14 +48,24 @@ export const JoinModal: React.FC<JoinModalProps> = ({
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 dark:bg-black/80 backdrop-blur-2xl animate-fadeIn"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 dark:bg-black/80 backdrop-blur-2xl"
       id="join-network-modal"
       onClick={(e) => {
         if (e.target === e.currentTarget) handleResetAndClose();
       }}
     >
-      <div className="relative w-full max-w-lg rounded-3xl apple-card shadow-2xl p-6 sm:p-9 text-[var(--text-primary)]">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 16 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-lg rounded-3xl apple-card shadow-2xl p-6 sm:p-9 text-[var(--text-primary)]"
+      >
         <button
           onClick={handleResetAndClose}
           className="absolute top-5 right-5 p-2 rounded-full apple-glass text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
@@ -203,7 +214,7 @@ export const JoinModal: React.FC<JoinModalProps> = ({
             </button>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

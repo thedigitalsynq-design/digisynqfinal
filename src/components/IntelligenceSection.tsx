@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Brain, Sparkles, Activity, CheckCircle, ArrowRight, MessageSquare, Shield, Terminal } from 'lucide-react';
 
 export const IntelligenceSection: React.FC = () => {
@@ -176,42 +177,51 @@ export const IntelligenceSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <span className="text-neutral-500">USER: </span>
-                  <span className="text-white italic">"{activePrompt.query}"</span>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  <div className="text-[#E5A919] font-bold flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>DIGISYNQ AI SYNTHESIS:</span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedPromptIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-4"
+                >
+                  <div>
+                    <span className="text-neutral-500">USER: </span>
+                    <span className="text-white italic">"{activePrompt.query}"</span>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5 text-neutral-200 leading-relaxed">
-                    {activePrompt.response.summary}
-                  </div>
+                  <div className="space-y-3 pt-2">
+                    <div className="text-[#E5A919] font-bold flex items-center gap-2">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>DIGISYNQ AI SYNTHESIS:</span>
+                    </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-neutral-300">
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="text-[#E5A919] font-bold block mb-1">▶ PEOPLE & CREW:</span>
-                      {activePrompt.response.people}
+                    <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5 text-neutral-200 leading-relaxed">
+                      {activePrompt.response.summary}
                     </div>
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="text-[#E5A919] font-bold block mb-1">▶ EQUIPMENT & ASSETS:</span>
-                      {activePrompt.response.equipment}
-                    </div>
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="text-[#E5A919] font-bold block mb-1">▶ LOCATIONS & VENUES:</span>
-                      {activePrompt.response.locations}
-                    </div>
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="text-[#E5A919] font-bold block mb-1">▶ OPPORTUNITIES & CAPITAL:</span>
-                      {activePrompt.response.opportunities}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-neutral-300">
+                      <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
+                        <span className="text-[#E5A919] font-bold block mb-1">▶ PEOPLE & CREW:</span>
+                        {activePrompt.response.people}
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
+                        <span className="text-[#E5A919] font-bold block mb-1">▶ EQUIPMENT & ASSETS:</span>
+                        {activePrompt.response.equipment}
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
+                        <span className="text-[#E5A919] font-bold block mb-1">▶ LOCATIONS & VENUES:</span>
+                        {activePrompt.response.locations}
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
+                        <span className="text-[#E5A919] font-bold block mb-1">▶ OPPORTUNITIES & CAPITAL:</span>
+                        {activePrompt.response.opportunities}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

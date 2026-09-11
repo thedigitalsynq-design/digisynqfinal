@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight, Network, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
@@ -141,43 +142,49 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-nav-drawer"
-          className="md:hidden bg-white/95 dark:bg-[#0B0C0E]/95 border-b border-black/[0.06] dark:border-white/10 px-6 py-6 mt-3 space-y-4 backdrop-blur-2xl shadow-xl"
-        >
-          <div className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-nav-drawer"
+            initial={{ opacity: 0, y: -8, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -8, height: 0 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden bg-white/95 dark:bg-[#0B0C0E]/95 border-b border-black/[0.06] dark:border-white/10 px-6 py-6 mt-3 space-y-4 backdrop-blur-2xl shadow-xl overflow-hidden"
+          >
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-medium text-[var(--text-primary)] hover:text-[#E5A919] py-2.5 border-b border-black/[0.04] dark:border-white/5 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <div className="pt-2 flex flex-col gap-2.5">
               <a
-                key={link.label}
-                href={link.href}
+                href="#product-directory"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-[var(--text-primary)] hover:text-[#E5A919] py-2.5 border-b border-black/[0.04] dark:border-white/5 transition-colors"
+                className="w-full text-center text-xs font-semibold text-[var(--text-primary)] py-2.5 rounded-full border border-black/[0.08] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.04]"
               >
-                {link.label}
+                Explore DigiSynq Directory
               </a>
-            ))}
-          </div>
-          <div className="pt-2 flex flex-col gap-2.5">
-            <a
-              href="#product-directory"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center text-xs font-semibold text-[var(--text-primary)] py-2.5 rounded-full border border-black/[0.08] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.04]"
-            >
-              Explore DigiSynq Directory
-            </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenJoinModal();
-              }}
-              className="w-full text-center text-xs font-semibold text-black bg-[#E5A919] hover:bg-[#f5b82e] py-2.5 rounded-full transition-colors"
-            >
-              Join the Network
-            </button>
-          </div>
-        </div>
-      )}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenJoinModal();
+                }}
+                className="w-full text-center text-xs font-semibold text-black bg-[#E5A919] hover:bg-[#f5b82e] py-2.5 rounded-full transition-colors"
+              >
+                Join the Network
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

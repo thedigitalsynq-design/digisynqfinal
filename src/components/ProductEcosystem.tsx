@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PLATFORMS } from '../data/platformsData';
 import { PlatformItem } from '../types';
 import {
@@ -73,68 +74,78 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
         </div>
 
         {/* Central Interconnected Hub Visual - Apple Feature Banner */}
-        <div className="mb-14 p-6 sm:p-9 rounded-3xl apple-card shadow-lg">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center">
-                <ActiveIcon className="w-5 h-5 text-[#E5A919]" />
-              </div>
-              <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
-                  Platform Focus
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
-                  {activePlatform.name}
-                </h3>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3.5">
-              <span className="text-xs font-mono text-[var(--text-tertiary)] hidden sm:inline font-medium">
-                {activePlatform.highlightMetric} {activePlatform.metricsLabel}
-              </span>
-              <button
-                onClick={() => onFilterCategoryInDirectory(activePlatform.category)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#E5A919] hover:bg-[#f5b82e] text-black px-4 py-2 rounded-full transition-all duration-200 shadow-sm"
-                id="btn-explore-category-directory"
-              >
-                <span>{activePlatform.ctaText}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-
-          <div className="my-6 grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="md:col-span-4 space-y-2">
-              <div className="text-sm font-semibold text-[var(--text-primary)]">
-                {activePlatform.tagline}
-              </div>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                {activePlatform.description}
-              </p>
-            </div>
-
-            <div className="md:col-span-8">
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-3 font-semibold">
-                Included Products & Capabilities ({activePlatform.products.length})
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {activePlatform.products.map((prodName) => (
-                  <div
-                    key={prodName}
-                    className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/40 transition-colors"
-                  >
-                    <span className="text-xs font-bold text-[var(--text-primary)] font-mono block">
-                      {prodName}
-                    </span>
-                    <span className="text-[10px] text-[var(--text-tertiary)]">
-                      Synchronized Module
-                    </span>
+        <div className="mb-14 p-6 sm:p-9 rounded-3xl apple-card shadow-lg overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePlatform.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center">
+                    <ActiveIcon className="w-5 h-5 text-[#E5A919]" />
                   </div>
-                ))}
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
+                      Platform Focus
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
+                      {activePlatform.name}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5">
+                  <span className="text-xs font-mono text-[var(--text-tertiary)] hidden sm:inline font-medium">
+                    {activePlatform.highlightMetric} {activePlatform.metricsLabel}
+                  </span>
+                  <button
+                    onClick={() => onFilterCategoryInDirectory(activePlatform.category)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#E5A919] hover:bg-[#f5b82e] text-black px-4 py-2 rounded-full transition-all duration-200 shadow-sm"
+                    id="btn-explore-category-directory"
+                  >
+                    <span>{activePlatform.ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
+
+              <div className="my-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div className="md:col-span-4 space-y-2">
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">
+                    {activePlatform.tagline}
+                  </div>
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {activePlatform.description}
+                  </p>
+                </div>
+
+                <div className="md:col-span-8">
+                  <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-3 font-semibold">
+                    Included Products & Capabilities ({activePlatform.products.length})
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {activePlatform.products.map((prodName) => (
+                      <div
+                        key={prodName}
+                        className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/40 transition-colors"
+                      >
+                        <span className="text-xs font-bold text-[var(--text-primary)] font-mono block">
+                          {prodName}
+                        </span>
+                        <span className="text-[10px] text-[var(--text-tertiary)]">
+                          Synchronized Module
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* 12 Platforms Grid - Apple Bento Grid */}
@@ -144,8 +155,9 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
             const isSelected = activePlatformId === platform.id;
 
             return (
-              <div
+              <motion.div
                 key={platform.id}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 onClick={() => setActivePlatformId(platform.id)}
                 className={`group cursor-pointer rounded-2xl p-6 transition-all duration-200 border text-left apple-card ${
                   isSelected
@@ -189,7 +201,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                     Inspect <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { USE_CASES } from '../data/platformsData';
 import { UseCaseItem } from '../types';
 import { Play, Sparkles, CheckCircle2, ArrowRight, CornerDownRight, Terminal } from 'lucide-react';
@@ -79,71 +80,81 @@ export const InteractiveUseCases: React.FC = () => {
         </div>
 
         {/* Active Scenario Detailed Execution Panel */}
-        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg mb-12">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
-                Trigger Requirement • Initiated by {activeCase.persona}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] font-sans tracking-tight">
-                "{activeCase.title}"
-              </h3>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-[var(--text-tertiary)]">Interlinked Nodes:</span>
-              <div className="flex flex-wrap gap-1.5">
-                {activeCase.connectedNodes.map((node) => (
-                  <span
-                    key={node}
-                    className="px-2.5 py-1 rounded-full apple-glass text-xs font-mono text-[var(--text-primary)]"
-                  >
-                    {node}
+        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg mb-12 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCase.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
+                    Trigger Requirement • Initiated by {activeCase.persona}
                   </span>
-                ))}
+                  <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] font-sans tracking-tight">
+                    "{activeCase.title}"
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-[var(--text-tertiary)]">Interlinked Nodes:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {activeCase.connectedNodes.map((node) => (
+                      <span
+                        key={node}
+                        className="px-2.5 py-1 rounded-full apple-glass text-xs font-mono text-[var(--text-primary)]"
+                      >
+                        {node}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div className="my-6 p-4 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08]">
-            <span className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase tracking-widest block mb-1 font-semibold">
-              Natural Language Prompt Ingested
-            </span>
-            <p className="text-sm sm:text-base text-[var(--text-primary)] font-mono italic">
-              "{activeCase.query}"
-            </p>
-          </div>
-
-          {/* 4-Step Resolution Sequence */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
-            {activeCase.stages.map((stage, idx) => (
-              <div
-                key={stage.stage}
-                className="p-5 rounded-2xl apple-glass hover:border-[#E5A919]/50 transition-all duration-200"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono font-bold text-[#E5A919]">
-                    0{idx + 1}. {stage.stage}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
-                </div>
-                <div className="text-xs font-bold text-[var(--text-primary)] mb-1.5">
-                  {stage.action}
-                </div>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  {stage.detail}
+              <div className="my-6 p-4 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08]">
+                <span className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase tracking-widest block mb-1 font-semibold">
+                  Natural Language Prompt Ingested
+                </span>
+                <p className="text-sm sm:text-base text-[var(--text-primary)] font-mono italic">
+                  "{activeCase.query}"
                 </p>
               </div>
-            ))}
-          </div>
 
-          {/* Outcome Card */}
-          <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/30 flex items-start sm:items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
-            <div className="text-xs sm:text-sm text-emerald-700 dark:text-emerald-200">
-              <span className="font-semibold text-[var(--text-primary)]">Outcome Achieved: </span>
-              {activeCase.outcome}
-            </div>
-          </div>
+              {/* 4-Step Resolution Sequence */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
+                {activeCase.stages.map((stage, idx) => (
+                  <div
+                    key={stage.stage}
+                    className="p-5 rounded-2xl apple-glass hover:border-[#E5A919]/50 transition-all duration-200"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-mono font-bold text-[#E5A919]">
+                        0{idx + 1}. {stage.stage}
+                      </span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
+                    </div>
+                    <div className="text-xs font-bold text-[var(--text-primary)] mb-1.5">
+                      {stage.action}
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      {stage.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Outcome Card */}
+              <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/30 flex items-start sm:items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+                <div className="text-xs sm:text-sm text-emerald-700 dark:text-emerald-200">
+                  <span className="font-semibold text-[var(--text-primary)]">Outcome Achieved: </span>
+                  {activeCase.outcome}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Live Simulation Sandbox for Custom Query */}
@@ -178,31 +189,47 @@ export const InteractiveUseCases: React.FC = () => {
             </button>
           </form>
 
-          {/* Sandbox Response Output */}
-          {customResult.status === 'simulating' && (
-            <div className="mt-4 p-4 rounded-2xl apple-glass text-xs font-mono text-[#E5A919] animate-pulse">
-              Simulating multi-node graph traversal across talent, equipment, and trust layers...
-            </div>
-          )}
+          {/* Sandbox Response Output with AnimatePresence */}
+          <AnimatePresence mode="wait">
+            {customResult.status === 'simulating' && (
+              <motion.div
+                key="simulating"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="mt-4 p-4 rounded-2xl apple-glass text-xs font-mono text-[#E5A919] animate-pulse"
+              >
+                Simulating multi-node graph traversal across talent, equipment, and trust layers...
+              </motion.div>
+            )}
 
-          {customResult.status === 'resolved' && (
-            <div className="mt-4 p-5 rounded-2xl apple-glass border-[#E5A919]/40 space-y-3">
-              <div className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-bold">
-                Automated Network Coordination Pipeline:
-              </div>
-              <ul className="space-y-2 text-xs text-[var(--text-secondary)] font-mono">
-                {customResult.flow.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-[#E5A919]">→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-2 border-t border-black/[0.04] dark:border-white/[0.06] text-xs text-emerald-600 dark:text-emerald-300 font-medium">
-                {customResult.summary}
-              </div>
-            </div>
-          )}
+            {customResult.status === 'resolved' && (
+              <motion.div
+                key="resolved"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-4 p-5 rounded-2xl apple-glass border-[#E5A919]/40 space-y-3"
+              >
+                <div className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-bold">
+                  Automated Network Coordination Pipeline:
+                </div>
+                <ul className="space-y-2 text-xs text-[var(--text-secondary)] font-mono">
+                  {customResult.flow.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-[#E5A919]">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-2 border-t border-black/[0.04] dark:border-white/[0.06] text-xs text-emerald-600 dark:text-emerald-300 font-medium">
+                  {customResult.summary}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>

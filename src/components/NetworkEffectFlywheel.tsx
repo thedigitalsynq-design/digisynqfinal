@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { FLYWHEEL_STEPS } from '../data/platformsData';
 import { Network, RefreshCw, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 
@@ -51,16 +52,27 @@ export const NetworkEffectFlywheel: React.FC = () => {
         {/* Circular / Step Progression Visualizer - Apple Showcase Card */}
         <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg">
           {/* Active Highlight Card */}
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] mb-2 font-semibold">
-              <span>Flywheel Stage {activeStep.step} of 10</span>
-            </div>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight mb-2">
-              {activeStep.name}
-            </h3>
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-              {activeStep.description}
-            </p>
+          <div className="text-center max-w-xl mx-auto mb-10 min-h-[140px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStep.step}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full"
+              >
+                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] mb-2 font-semibold">
+                  <span>Flywheel Stage {activeStep.step} of 10</span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight mb-2">
+                  {activeStep.name}
+                </h3>
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+                  {activeStep.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* 10-Step Interactive Horizontal Loop Track */}
