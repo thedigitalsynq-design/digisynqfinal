@@ -23,6 +23,7 @@ import { DigiSynqOS } from './components/DigiSynqOS';
 import { AboutAndPrinciples } from './components/AboutAndPrinciples';
 import { CtaFooter } from './components/CtaFooter';
 import { JoinModal } from './components/JoinModal';
+import { GooeyActionMenu } from './components/GooeyActionMenu';
 import { PlatformItem } from './types';
 
 export default function App() {
@@ -142,6 +143,13 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {/* Floating Liquid Gooey Quick Actions Menu */}
+      <GooeyActionMenu
+        onOpenJoinModal={handleOpenJoinModal}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
     </div>
   );
 }
