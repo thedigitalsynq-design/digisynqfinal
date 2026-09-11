@@ -64,6 +64,10 @@ export const MarketplaceSection: React.FC = () => {
       id="marketplace"
       className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
     >
+      {/* Volumetric ambient backlighting */}
+      <div className="glow-orb glow-orb-blue w-[500px] h-[500px] -top-24 -left-24 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[480px] h-[480px] bottom-10 -right-20 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
@@ -156,8 +160,28 @@ export const MarketplaceSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Selected Capacity Detail Inspection */}
-        <div className="rounded-3xl apple-card p-6 sm:p-9 shadow-sm overflow-hidden">
+        {/* Selected Capacity Detail Inspection - Illuminated Frost Rim Card with Skyline Depth */}
+        <div className="rounded-[36px] frost-rim-card p-6 sm:p-10 shadow-2xl overflow-hidden relative">
+          {/* Diffused Architectural Studio / City Skyline Silhouette (User Image Reference) */}
+          <div className="frost-skyline-silhouette">
+            <svg
+              viewBox="0 0 1000 240"
+              preserveAspectRatio="none"
+              className="w-full h-full fill-current text-sky-900/35 dark:text-sky-300/20"
+            >
+              <rect x="20" y="130" width="65" height="110" rx="4" />
+              <rect x="95" y="80" width="85" height="160" rx="4" />
+              <rect x="190" y="140" width="60" height="100" rx="4" />
+              <rect x="260" y="55" width="100" height="185" rx="4" />
+              <rect x="370" y="105" width="75" height="135" rx="4" />
+              <rect x="455" y="35" width="125" height="205" rx="4" />
+              <rect x="590" y="120" width="85" height="120" rx="4" />
+              <rect x="685" y="65" width="110" height="175" rx="4" />
+              <rect x="805" y="135" width="70" height="105" rx="4" />
+              <rect x="885" y="45" width="120" height="195" rx="4" />
+            </svg>
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={currentCategory.title}
@@ -165,9 +189,10 @@ export const MarketplaceSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10"
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 flex items-center justify-center text-[#E5A919]">
+                <div className="w-11 h-11 rounded-2xl glass-bubble flex items-center justify-center text-[#E5A919]">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>

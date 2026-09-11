@@ -112,16 +112,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
           <NetworkVisualizer />
         </motion.div>
 
-        {/* SECTION 10: HERO VALUE STATEMENT */}
+        {/* SECTION 10: HERO VALUE STATEMENT (Illuminated Rim Glass with Skyline Depth) */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           id="hero-value-statement"
-          className="relative rounded-3xl apple-card p-8 sm:p-12 text-center"
+          className="relative rounded-[36px] frost-rim-card p-8 sm:p-14 text-center overflow-hidden"
         >
-          <div className="max-w-3xl mx-auto">
+          {/* Diffused Architectural Studio / City Skyline Silhouette (User Image Reference) */}
+          <div className="frost-skyline-silhouette">
+            <svg
+              viewBox="0 0 1000 240"
+              preserveAspectRatio="none"
+              className="w-full h-full fill-current text-sky-900/40 dark:text-sky-400/25"
+            >
+              <rect x="25" y="140" width="60" height="100" rx="4" />
+              <rect x="95" y="90" width="75" height="150" rx="4" />
+              <rect x="180" y="150" width="55" height="90" rx="4" />
+              <rect x="245" y="60" width="95" height="180" rx="4" />
+              <rect x="350" y="110" width="70" height="130" rx="4" />
+              <rect x="430" y="40" width="120" height="200" rx="4" />
+              <rect x="560" y="125" width="80" height="115" rx="4" />
+              <rect x="650" y="70" width="105" height="170" rx="4" />
+              <rect x="765" y="140" width="65" height="100" rx="4" />
+              <rect x="840" y="50" width="115" height="190" rx="4" />
+              <rect x="965" y="105" width="40" height="135" rx="4" />
+            </svg>
+          </div>
+
+          <div className="max-w-3xl mx-auto relative z-10">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] mb-3 font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Core Thesis</span>
@@ -135,7 +156,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             <div className="my-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               {flowSteps.map((step, idx) => (
                 <React.Fragment key={step.label}>
-                  <div className="flex flex-col items-center px-4 py-2.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] hover:border-[#E5A919]/50 transition-all duration-200">
+                  <div className="flex flex-col items-center px-4 py-2.5 rounded-xl apple-glass border border-white/20 dark:border-white/10 hover:border-[#E5A919]/60 transition-all duration-200">
                     <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)]">
                       {step.label}
                     </span>
