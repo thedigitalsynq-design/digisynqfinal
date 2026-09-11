@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Layers, ArrowRight, CheckCircle2, Shield, RefreshCw, KeyRound, Building, Camera, Film, Users, Wrench } from 'lucide-react';
-import { Glass3DIcon, GlassIconColor } from './Glass3DIcon';
 
 export const MarketplaceSection: React.FC = () => {
   const [activeMarketType, setActiveMarketType] = useState<number>(0);
@@ -10,7 +9,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Equipment',
       icon: Camera,
-      color: 'blue' as GlassIconColor,
       idleExample: 'Anamorphic lenses, ARRI 35 packages & lighting trucks sitting in vault during 2-week downtime.',
       ownerAdvantage: 'Retain 100% equipment title; earn $8,000–$25,000/mo in insured sub-rental income.',
       demandAdvantage: 'Indie productions access tier-1 optics locally without paying exorbitant cross-border shipping fees.',
@@ -19,7 +17,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Studios & Stages',
       icon: Building,
-      color: 'gold' as GlassIconColor,
       idleExample: 'LED virtual production volumes & soundstages booked only 18 days out of the month.',
       ownerAdvantage: 'Turn vacant stage dark days into high-margin commercial and test-shoot revenue blocks.',
       demandAdvantage: 'Producers book certified soundstages for 3-day pickup shoots without signing 6-month master leases.',
@@ -28,7 +25,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Screens',
       icon: Film,
-      color: 'cyan' as GlassIconColor,
       idleExample: '180-seat auditoriums running at 12% occupancy on Monday–Wednesday afternoons and evenings.',
       ownerAdvantage: 'Theatres monetize empty screens with zero risk; ticket thresholds must be met before show locks.',
       demandAdvantage: 'Film clubs, anime fandoms, and documentary makers host theatrical premieres in real cinemas.',
@@ -37,7 +33,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Locations',
       icon: KeyRound,
-      color: 'amber' as GlassIconColor,
       idleExample: 'Architectural estates, vintage diners, and industrial warehouses with sporadic filming permits.',
       ownerAdvantage: 'Property owners earn premium filming location fees protected by $5M escrow damage coverage.',
       demandAdvantage: 'Location managers scout 360° virtual interiors and download municipal permit checklists.',
@@ -46,7 +41,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Services & Post',
       icon: RefreshCw,
-      color: 'purple' as GlassIconColor,
       idleExample: 'Boutique color grading suites and Dolby Atmos mix rooms between major studio turnovers.',
       ownerAdvantage: 'Post facilities fill vacant suite hours with indie feature sound mixes and festival finishings.',
       demandAdvantage: 'Filmmakers get world-class audio mixing and color timing at off-peak rates.',
@@ -55,7 +49,6 @@ export const MarketplaceSection: React.FC = () => {
     {
       title: 'Specialized Vendors',
       icon: Wrench,
-      color: 'emerald' as GlassIconColor,
       idleExample: 'Local catering fleets, honeywagons, mobile generator trucks, and craft security teams.',
       ownerAdvantage: 'Consistent pipeline of incoming film shoots without expensive sales reps.',
       demandAdvantage: 'Line producers contract vetted, certified local suppliers across any filming territory.',
@@ -100,12 +93,9 @@ export const MarketplaceSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {/* Step 1: Asset Owner */}
             <div className="p-6 rounded-2xl apple-glass relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
-                  Supply Side
-                </span>
-                <Glass3DIcon icon={Camera} color="blue" size="sm" />
-              </div>
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2 font-semibold">
+                Supply Side
+              </span>
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
                 Asset Owner
               </h3>
@@ -119,12 +109,9 @@ export const MarketplaceSection: React.FC = () => {
 
             {/* Step 2: DigiSynq Protocol */}
             <div className="p-6 rounded-2xl apple-glass border-[#E5A919]/40 relative shadow-md">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block font-semibold">
-                  The Network Layer
-                </span>
-                <Glass3DIcon icon={Layers} color="gold" size="sm" />
-              </div>
+              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2 font-semibold">
+                The Network Layer
+              </span>
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
                 DigiSynq
               </h3>
@@ -138,12 +125,9 @@ export const MarketplaceSection: React.FC = () => {
 
             {/* Step 3: Demand */}
             <div className="p-6 rounded-2xl apple-glass relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
-                  Demand Side
-                </span>
-                <Glass3DIcon icon={Film} color="emerald" size="sm" />
-              </div>
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2 font-semibold">
+                Demand Side
+              </span>
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
                 Productions & Events
               </h3>
@@ -157,23 +141,18 @@ export const MarketplaceSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Interactive Capacity Categories - Apple Pills with 3D Glass Icons */}
+        {/* Interactive Capacity Categories - Apple Pills */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-8">
           {capacityCategories.map((cat, idx) => (
             <button
               key={cat.title}
               onClick={() => setActiveMarketType(idx)}
-              className={`p-3.5 rounded-2xl border text-left transition-all duration-200 flex items-center gap-3 ${
+              className={`p-3.5 rounded-2xl border text-left transition-all duration-200 ${
                 activeMarketType === idx
                   ? 'bg-[#E5A919] text-black border-[#E5A919] font-bold shadow-sm'
                   : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
-              <Glass3DIcon
-                icon={cat.icon}
-                color={activeMarketType === idx ? 'gold' : cat.color}
-                size="sm"
-              />
               <span className="text-xs font-semibold block">
                 {cat.title}
               </span>
@@ -212,8 +191,10 @@ export const MarketplaceSection: React.FC = () => {
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10"
             >
-              <div className="flex items-center gap-4 mb-5">
-                <Glass3DIcon icon={Icon} color={currentCategory.color} size="lg" />
+              <div className="flex items-center gap-3.5 mb-5">
+                <div className="w-11 h-11 rounded-2xl glass-bubble flex items-center justify-center text-[#E5A919]">
+                  <Icon className="w-5 h-5" />
+                </div>
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
                     Marketplace Domain

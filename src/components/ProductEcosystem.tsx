@@ -19,27 +19,11 @@ import {
   ExternalLink,
   ChevronRight
 } from 'lucide-react';
-import { Glass3DIcon, GlassIconColor } from './Glass3DIcon';
 
 interface ProductEcosystemProps {
   onSelectPlatform: (platform: PlatformItem) => void;
   onFilterCategoryInDirectory: (categoryName: string) => void;
 }
-
-const PLATFORM_COLORS: Record<string, GlassIconColor> = {
-  find: 'cyan',
-  talent: 'blue',
-  produce: 'gold',
-  content: 'purple',
-  market: 'amber',
-  screen: 'blue',
-  trust: 'emerald',
-  analytics: 'purple',
-  voice: 'rose',
-  finance: 'emerald',
-  os: 'gold',
-  network: 'cyan',
-};
 
 const ICON_MAP: Record<string, React.ElementType> = {
   LineChart,
@@ -100,12 +84,10 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
-                <div className="flex items-center gap-4">
-                  <Glass3DIcon
-                    icon={ActiveIcon}
-                    color={PLATFORM_COLORS[activePlatform.id] || 'gold'}
-                    size="lg"
-                  />
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center">
+                    <ActiveIcon className="w-5 h-5 text-[#E5A919]" />
+                  </div>
                   <div>
                     <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
                       Platform Focus
@@ -166,12 +148,11 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
           </AnimatePresence>
         </div>
 
-        {/* 12 Platforms Grid - Apple Bento Grid with 3D Frosted Glass Icons */}
+        {/* 12 Platforms Grid - Apple Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {PLATFORMS.map((platform, idx) => {
             const Icon = ICON_MAP[platform.iconName] || Network;
             const isSelected = activePlatformId === platform.id;
-            const platformColor = PLATFORM_COLORS[platform.id] || 'blue';
 
             return (
               <motion.div
@@ -186,11 +167,15 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                 id={`platform-card-${platform.id}`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Glass3DIcon
-                    icon={Icon}
-                    color={platformColor}
-                    size="md"
-                  />
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                      isSelected
+                        ? 'bg-[#E5A919] text-black shadow-sm'
+                        : 'bg-black/[0.04] dark:bg-white/[0.06] text-[#E5A919] group-hover:bg-[#E5A919]/20'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </div>
                   <span className="text-xs font-mono text-[var(--text-tertiary)] font-semibold">
                     0{idx + 1}
                   </span>
