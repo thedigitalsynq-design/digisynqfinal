@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { PRINCIPLES } from '../data/platformsData';
 import { Sparkles, Compass, Shield, CheckCircle } from 'lucide-react';
 
@@ -49,8 +50,9 @@ export const AboutAndPrinciples: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {PRINCIPLES.map((principle, idx) => (
-              <div
+              <motion.div
                 key={principle.name}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 className="p-5 sm:p-6 rounded-2xl apple-glass hover:border-[#E5A919]/50 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
@@ -73,7 +75,7 @@ export const AboutAndPrinciples: React.FC = () => {
                     {principle.detail}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,19 +1,64 @@
-import React from 'react';
-import { Cpu, Terminal, Layers, ArrowRight, ShieldCheck, Sparkles, Network } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Cpu, Terminal, Layers, ArrowRight, ShieldCheck, Sparkles, Network, CheckCircle2 } from 'lucide-react';
 
 export const DigiSynqOS: React.FC = () => {
+  const [selectedLayerIndex, setSelectedLayerIndex] = useState<number>(0);
+
   const osLayers = [
-    { label: 'Identity', desc: 'Sovereign verified credentials for creatives, technicians, and entities.' },
-    { label: 'Network', desc: 'Unified cinema graph mapping relationships, credits, and availabilities.' },
-    { label: 'Assets', desc: 'Digital twins of cameras, lenses, stages, and mobile facilities.' },
-    { label: 'Projects', desc: 'Collaborative development slates, script breakdowns, and live stripboards.' },
-    { label: 'Intelligence', desc: 'Predictive audience forecasting and cross-territory box office modeling.' },
-    { label: 'Matching', desc: 'Algorithmic bipartite pairing connecting supply with dynamic demand.' },
-    { label: 'Workflows', desc: 'Automated milestone execution, call sheet dispatch, and deliverable sign-offs.' },
-    { label: 'Transactions', desc: 'Protected escrow, smart deal memos, and automated CAM waterfall splits.' },
-    { label: 'Trust', desc: 'Objective rating protocols, guild validation, and dispute mediation.' },
-    { label: 'AI Core', desc: 'Domain-trained cinematic agents orchestrating resources autonomously.' }
+    {
+      label: 'Identity',
+      desc: 'Sovereign verified credentials for creatives, technicians, and entities.',
+      detail: 'Cryptographic proof-of-identity linked with verified guild registries, elimination of fraudulent casting calls, and decentralized reputation persistence.'
+    },
+    {
+      label: 'Network',
+      desc: 'Unified cinema graph mapping relationships, credits, and availabilities.',
+      detail: 'High-density relational graph connecting 8 ecosystem nodes: cast, crew, production slates, cameras, soundstages, screens, brands, and co-financiers.'
+    },
+    {
+      label: 'Assets',
+      desc: 'Digital twins of cameras, lenses, stages, and mobile facilities.',
+      detail: 'Live telemetric registers for physical gear, optical bench testing certificates, insurance endorsements, and real-time vault availability.'
+    },
+    {
+      label: 'Projects',
+      desc: 'Collaborative development slates, script breakdowns, and live stripboards.',
+      detail: 'Multi-party production scheduling, automated scene breakdowns, call sheet distribution, and live milestone deliverables tracking.'
+    },
+    {
+      label: 'Intelligence',
+      desc: 'Predictive audience forecasting and cross-territory box office modeling.',
+      detail: 'Machine learning synthesis analyzing trailer velocity, sentiment shifts, competitive release corridors, and audience demand vectors.'
+    },
+    {
+      label: 'Matching',
+      desc: 'Algorithmic bipartite pairing connecting supply with dynamic demand.',
+      detail: 'Optimal resource choreography solving multi-constraint cinema needs in seconds without balance-sheet asset ownership.'
+    },
+    {
+      label: 'Workflows',
+      desc: 'Automated milestone execution, call sheet dispatch, and deliverable sign-offs.',
+      detail: 'Standardized digital operational pipelines synchronizing department heads, rental vaults, post suites, and laboratory turnarounds.'
+    },
+    {
+      label: 'Transactions',
+      desc: 'Protected escrow, smart deal memos, and automated CAM waterfall splits.',
+      detail: 'Bilateral digital contracts with milestone-triggered payment disbursements, insurance deposit releases, and transparent accounting.'
+    },
+    {
+      label: 'Trust',
+      desc: 'Objective rating protocols, guild validation, and dispute mediation.',
+      detail: 'Cross-verified reliability indexes, prompt payment scoring, on-set safety compliance, and dispute resolution mechanisms.'
+    },
+    {
+      label: 'AI Core',
+      desc: 'Domain-trained cinematic agents orchestrating resources autonomously.',
+      detail: 'Autonomous multimodal agents assisting producers, location managers, and sales agents across natural language inquiries.'
+    }
   ];
+
+  const activeLayer = osLayers[selectedLayerIndex];
 
   return (
     <section
@@ -58,26 +103,75 @@ export const DigiSynqOS: React.FC = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {osLayers.map((layer, idx) => (
-              <div
-                key={layer.label}
-                className="p-5 rounded-2xl apple-glass hover:border-[#E5A919]/50 transition-all duration-200"
+          {/* Active Layer Dynamic Inspection with Smooth Crossfade */}
+          <div className="mb-6 rounded-2xl p-5 sm:p-6 bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeLayer.label}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono font-bold text-[#E5A919]">
-                    L{idx + 1}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-mono text-[#E5A919] font-bold">
+                      LAYER 0{selectedLayerIndex + 1}
+                    </span>
+                    <span className="text-xs text-[var(--text-tertiary)]">•</span>
+                    <h4 className="text-base font-bold text-[var(--text-primary)]">
+                      {activeLayer.label} Layer Protocol
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+                    {activeLayer.detail}
+                  </p>
                 </div>
-                <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">
-                  {layer.label}
-                </h4>
-                <p className="text-xs text-[var(--text-secondary)] leading-snug">
-                  {layer.desc}
-                </p>
-              </div>
-            ))}
+                <div className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-xl apple-glass text-[#E5A919]">
+                  Active Stack Node
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* 10 Layer Tiles with Hover & Selection Transitions */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {osLayers.map((layer, idx) => {
+              const isSelected = selectedLayerIndex === idx;
+              return (
+                <button
+                  key={layer.label}
+                  onClick={() => setSelectedLayerIndex(idx)}
+                  className={`p-5 rounded-2xl text-left transition-all duration-200 border ${
+                    isSelected
+                      ? 'border-[#E5A919] bg-[#E5A919]/10 shadow-sm ring-1 ring-[#E5A919]/40'
+                      : 'apple-glass hover:border-[#E5A919]/40'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span
+                      className={`text-xs font-mono font-bold ${
+                        isSelected ? 'text-[#E5A919]' : 'text-[var(--text-tertiary)]'
+                      }`}
+                    >
+                      L{idx + 1}
+                    </span>
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        isSelected ? 'bg-[#E5A919]' : 'bg-transparent'
+                      }`}
+                    />
+                  </div>
+                  <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">
+                    {layer.label}
+                  </h4>
+                  <p className="text-xs text-[var(--text-secondary)] leading-snug">
+                    {layer.desc}
+                  </p>
+                </button>
+              );
+            })}
           </div>
 
           <div className="mt-8 pt-6 border-t border-black/[0.06] dark:border-white/[0.08] text-center text-xs font-mono text-[var(--text-tertiary)] max-w-2xl mx-auto leading-relaxed">

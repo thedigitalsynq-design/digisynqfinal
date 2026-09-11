@@ -56,6 +56,10 @@
   --shadow-apple-float: 0 28px 70px -12px rgba(0, 0, 0, 0.85);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
@@ -64,6 +68,7 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
+    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   code, pre, .font-mono {
@@ -78,6 +83,7 @@
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--border-hairline);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-glass-subtle {
@@ -85,6 +91,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-hairline);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Apple Card System */
@@ -94,7 +101,7 @@
   -webkit-backdrop-filter: blur(20px) saturate(170%);
   border: 1px solid var(--border-hairline);
   box-shadow: var(--shadow-apple-card);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-card:hover {

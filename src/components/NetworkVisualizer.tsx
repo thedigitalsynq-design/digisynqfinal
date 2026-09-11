@@ -466,106 +466,125 @@ export const NetworkVisualizer: React.FC = () => {
         })}
 
         {/* Fragmented State Overlay Banner */}
-        {!isSynchronized && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="bg-red-500/10 dark:bg-red-950/80 border border-red-500/20 dark:border-red-800/60 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
-              <p className="text-[11px] font-mono text-red-500 dark:text-red-400 uppercase tracking-widest mb-1.5 font-semibold">
-                Legacy Industry Friction
-              </p>
-              <p className="text-xs sm:text-sm text-red-600 dark:text-red-200 font-medium leading-relaxed">
-                Disconnected phone calls, idle equipment, and opaque packaging leave 65% of potential cinema value stranded without cross-node linking.
-              </p>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {!isSynchronized && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            >
+              <div className="bg-red-500/10 dark:bg-red-950/80 border border-red-500/20 dark:border-red-800/60 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
+                <p className="text-[11px] font-mono text-red-500 dark:text-red-400 uppercase tracking-widest mb-1.5 font-semibold">
+                  Legacy Industry Friction
+                </p>
+                <p className="text-xs sm:text-sm text-red-600 dark:text-red-200 font-medium leading-relaxed">
+                  Disconnected phone calls, idle equipment, and opaque packaging leave 65% of potential cinema value stranded without cross-node linking.
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Interactive Detail Inspector for Selected Node with All 7 Interconnected Links */}
-      <div className="pt-5 border-t border-black/[0.06] dark:border-white/[0.08] space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-          <div className="md:col-span-4">
-            <div className="flex items-center gap-1.5 text-[#E5A919] text-xs font-mono uppercase tracking-wider mb-1 font-semibold">
-              <Zap className="w-3.5 h-3.5" />
-              <span>Active Node Inspection</span>
-            </div>
-            <h4 className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
-              {activeNode.label}
-              <span className="text-xs font-normal text-[var(--text-tertiary)] font-mono">
-                ({activeNode.role})
-              </span>
-            </h4>
-          </div>
-
-          <div className="md:col-span-5 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-            {activeNode.description}
-          </div>
-
-          <div className="md:col-span-3 flex md:justify-end">
-            <div className="apple-glass rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
-              <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-tertiary)] block">
-                Network Telemetry
-              </span>
-              <span className="text-xs font-semibold text-[#E5A919] font-mono">
-                {activeNode.signalMetric}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* All 7 Direct Node-to-Node Interconnected Links (Click to Traverse, Hover to Highlight) */}
-        <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06]">
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-2">
-              <Network className="w-3.5 h-3.5 text-[#E5A919]" />
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
-                Direct Interconnected Links for {activeNode.label} (7 of 7 Nodes Connected):
-              </span>
-            </div>
-            <span className="text-[11px] font-mono text-[var(--text-tertiary)] hidden sm:inline">
-              Hover link to isolate edge • Click to inspect node
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-            {activeNode.connections.map((targetId) => {
-              const targetNode = ECOSYSTEM_NODES.find((n) => n.id === targetId);
-              if (!targetNode) return null;
-
-              const edgeKey = [activeNode.id, targetId].sort().join('--');
-              const linkPurpose =
-                NODE_LINKS_MAP[activeNode.id]?.[targetId] || 'Synchronized coordination edge';
-              const isLinkActive = highlightedEdgeKey === edgeKey;
-
-              return (
-                <button
-                  key={targetId}
-                  onClick={() => {
-                    setActiveNode(targetNode);
-                    setHighlightedEdgeKey(null);
-                  }}
-                  onMouseEnter={() => setHighlightedEdgeKey(edgeKey)}
-                  onMouseLeave={() => setHighlightedEdgeKey(null)}
-                  className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between ${
-                    isLinkActive
-                      ? 'border-[#E5A919] bg-[#E5A919]/15 shadow-sm'
-                      : 'bg-black/[0.02] dark:bg-white/[0.03] border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/50'
-                  }`}
-                  title={`Inspect ${targetNode.label} node`}
-                >
-                  <div className="flex items-center justify-between w-full mb-1">
-                    <span className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1">
-                      <span>↔</span> {targetNode.label}
-                    </span>
-                    <ArrowUpRight className="w-3 h-3 text-[#E5A919]" />
-                  </div>
-                  <span className="text-[11px] text-[var(--text-secondary)] leading-snug line-clamp-1">
-                    {linkPurpose}
+      <div className="pt-5 border-t border-black/[0.06] dark:border-white/[0.08] overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeNode.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+              <div className="md:col-span-4">
+                <div className="flex items-center gap-1.5 text-[#E5A919] text-xs font-mono uppercase tracking-wider mb-1 font-semibold">
+                  <Zap className="w-3.5 h-3.5" />
+                  <span>Active Node Inspection</span>
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+                  {activeNode.label}
+                  <span className="text-xs font-normal text-[var(--text-tertiary)] font-mono">
+                    ({activeNode.role})
                   </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+                </h4>
+              </div>
+
+              <div className="md:col-span-5 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                {activeNode.description}
+              </div>
+
+              <div className="md:col-span-3 flex md:justify-end">
+                <div className="apple-glass rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-tertiary)] block">
+                    Network Telemetry
+                  </span>
+                  <span className="text-xs font-semibold text-[#E5A919] font-mono">
+                    {activeNode.signalMetric}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* All 7 Direct Node-to-Node Interconnected Links (Click to Traverse, Hover to Highlight) */}
+            <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06]">
+              <div className="flex items-center justify-between mb-2.5">
+                <div className="flex items-center gap-2">
+                  <Network className="w-3.5 h-3.5 text-[#E5A919]" />
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
+                    Direct Interconnected Links for {activeNode.label} (7 of 7 Nodes Connected):
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono text-[var(--text-tertiary)] hidden sm:inline">
+                  Hover link to isolate edge • Click to inspect node
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                {activeNode.connections.map((targetId) => {
+                  const targetNode = ECOSYSTEM_NODES.find((n) => n.id === targetId);
+                  if (!targetNode) return null;
+
+                  const edgeKey = [activeNode.id, targetId].sort().join('--');
+                  const linkPurpose =
+                    NODE_LINKS_MAP[activeNode.id]?.[targetId] || 'Synchronized coordination edge';
+                  const isLinkActive = highlightedEdgeKey === edgeKey;
+
+                  return (
+                    <button
+                      key={targetId}
+                      onClick={() => {
+                        setActiveNode(targetNode);
+                        setHighlightedEdgeKey(null);
+                      }}
+                      onMouseEnter={() => setHighlightedEdgeKey(edgeKey)}
+                      onMouseLeave={() => setHighlightedEdgeKey(null)}
+                      className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between ${
+                        isLinkActive
+                          ? 'border-[#E5A919] bg-[#E5A919]/15 shadow-sm'
+                          : 'bg-black/[0.02] dark:bg-white/[0.03] border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/50'
+                      }`}
+                      title={`Inspect ${targetNode.label} node`}
+                    >
+                      <div className="flex items-center justify-between w-full mb-1">
+                        <span className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1">
+                          <span>↔</span> {targetNode.label}
+                        </span>
+                        <ArrowUpRight className="w-3 h-3 text-[#E5A919]" />
+                      </div>
+                      <span className="text-[11px] text-[var(--text-secondary)] leading-snug line-clamp-1">
+                        {linkPurpose}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

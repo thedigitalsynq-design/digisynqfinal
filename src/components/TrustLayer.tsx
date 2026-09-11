@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ShieldCheck, UserCheck, Award, FileText, Star, ThumbsUp, Clock, History, CalendarCheck, Sparkles } from 'lucide-react';
 
 export const TrustLayer: React.FC = () => {
@@ -85,8 +86,9 @@ export const TrustLayer: React.FC = () => {
           {trustPillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
-              <div
+              <motion.div
                 key={pillar.title}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 className="p-5 sm:p-6 rounded-2xl apple-card flex flex-col justify-between"
               >
                 <div>
@@ -112,7 +114,7 @@ export const TrustLayer: React.FC = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
                   <span>Verified Standard</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
