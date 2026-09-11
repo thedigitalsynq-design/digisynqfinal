@@ -1306,7 +1306,7 @@ export const USE_CASES: UseCaseItem[] = [
       { stage: 'CONNECT', action: 'Encrypted Deal Room', detail: 'Initiates direct contact, shares the watermarked script, and locks the deal memo with escrow.' }
     ],
     outcome: 'DP contracted within 48 hours without paying costly agency placement surcharges.',
-    connectedNodes: ['Talent', 'Projects', 'Trust', 'Transactions']
+    connectedNodes: ['Talent', 'Projects', 'Assets', 'Capital', 'Trust', 'Transactions']
   },
   {
     id: 'equipment',
@@ -1320,7 +1320,7 @@ export const USE_CASES: UseCaseItem[] = [
       { stage: 'TRANSACT', action: 'Protected Settlement', detail: 'Secures deposit in escrow, tracks GPS custody, and releases rental payment upon return inspection.' }
     ],
     outcome: '$14,200 in incremental revenue earned from idle hardware without risk of asset damage or loss.',
-    connectedNodes: ['Assets', 'Demand', 'Marketplace', 'Operations']
+    connectedNodes: ['Assets', 'Demand', 'Projects', 'Operations', 'Marketplace', 'Trust']
   },
   {
     id: 'sentiment',
@@ -1334,7 +1334,7 @@ export const USE_CASES: UseCaseItem[] = [
       { stage: 'MEASURE', action: 'Attribution Tracking', detail: 'Tracks weekend holdover recovery and ticket buyer sentiment stabilization in real-time.' }
     ],
     outcome: 'Prevented a projected 62% second-weekend collapse, recovering an estimated $1.8M in theatrical box office.',
-    connectedNodes: ['Intelligence', 'Audience', 'Reputation', 'Marketing']
+    connectedNodes: ['Intelligence', 'Audiences', 'Content', 'Reputation', 'Screens', 'Marketing']
   },
   {
     id: 'distribution',
@@ -1348,7 +1348,7 @@ export const USE_CASES: UseCaseItem[] = [
       { stage: 'MEASURE', action: 'Deal Execution & Waterfall', detail: 'Executes standard IFTA distribution contracts across 5 territories with automated revenue waterfall tracking.' }
     ],
     outcome: 'Secured 3 theatrical territory releases and a global streaming acquisition window without waiting for physical markets.',
-    connectedNodes: ['Content', 'Rights', 'Distribution', 'Transactions']
+    connectedNodes: ['Content', 'Rights', 'Distribution', 'Screens', 'Capital', 'Transactions']
   },
   {
     id: 'screen-capacity',
@@ -1362,7 +1362,7 @@ export const USE_CASES: UseCaseItem[] = [
       { stage: 'MONETIZE', action: 'Full Concession & Box Office Uplift', detail: 'Generates incremental ticket splits and 4.2x higher Tuesday concession sales per patron.' }
     ],
     outcome: 'Average Tuesday screen occupancy surged from 14% to 78%, generating high-margin ancillary revenue.',
-    connectedNodes: ['Screens', 'Audiences', 'Content', 'Marketplace']
+    connectedNodes: ['Screens', 'Audiences', 'Content', 'Assets', 'Brands', 'Marketplace']
   }
 ];
 
