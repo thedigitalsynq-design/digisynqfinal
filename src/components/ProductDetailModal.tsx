@@ -34,7 +34,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 dark:bg-black/80 backdrop-blur-2xl overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/40 backdrop-blur-xl overflow-y-auto"
       id="product-detail-modal"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -45,10 +45,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-4xl rounded-3xl apple-card shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]"
+        className="relative w-full max-w-4xl rounded-3xl bg-white border border-black/[0.08] shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]"
       >
         {/* Modal Header / Hero */}
-        <div className="p-6 sm:p-9 bg-gradient-to-r from-[var(--bg-canvas-subtle)] via-[var(--bg-canvas)] to-[var(--bg-canvas-subtle)] border-b border-black/[0.06] dark:border-white/[0.08] relative">
+        <div className="p-6 sm:p-9 bg-white border-b border-black/[0.06] relative">
           <button
             onClick={onClose}
             className="absolute top-6 right-6 p-2 rounded-full apple-glass text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
@@ -102,8 +102,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="p-6 sm:p-9 space-y-8 overflow-y-auto">
           {/* Problem & Solution */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 sm:p-6 rounded-2xl bg-red-500/10 dark:bg-red-950/20 border border-red-500/20">
-              <span className="text-xs font-mono uppercase tracking-wider text-red-500 dark:text-red-400 block mb-2 font-semibold">
+            <div className="p-5 sm:p-6 rounded-2xl bg-red-50 border border-red-200">
+              <span className="text-xs font-mono uppercase tracking-wider text-red-600 block mb-2 font-semibold">
                 The Friction Solved
               </span>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -201,7 +201,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Business Model Summary */}
-          <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
+          <div className="pt-4 border-t border-black/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
             <div>
               Commercial Framework:{' '}
               <span className="text-[var(--text-primary)] font-bold">{product.businessModel}</span>

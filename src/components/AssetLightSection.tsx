@@ -6,13 +6,13 @@ export const AssetLightSection: React.FC = () => {
   return (
     <section
       id="asset-light"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="ds-section-label mb-5">
             <Scale className="w-3.5 h-3.5" />
-            <span>Architectural Philosophy</span>
+            Architectural Philosophy
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -32,8 +32,8 @@ export const AssetLightSection: React.FC = () => {
         {/* Two-Sided Visual Comparison Cards - Apple Compare Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16">
           {/* Traditional Heavy Model */}
-          <div className="rounded-3xl apple-card p-6 sm:p-9 relative">
-            <div className="flex items-center justify-between pb-5 border-b border-black/[0.06] dark:border-white/[0.08]">
+          <div className="rounded-3xl ds-card p-6 sm:p-9">
+            <div className="flex items-center justify-between pb-5 border-b border-black/[0.06]">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
                   Legacy Paradigm
@@ -42,7 +42,7 @@ export const AssetLightSection: React.FC = () => {
                   Traditional Asset-Heavy Model
                 </h3>
               </div>
-              <div className="w-8 h-8 rounded-full bg-black/[0.05] dark:bg-white/[0.08] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-black/[0.05] flex items-center justify-center">
                 <X className="w-4 h-4 text-[var(--text-tertiary)]" />
               </div>
             </div>
@@ -61,13 +61,13 @@ export const AssetLightSection: React.FC = () => {
               </ul>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-black/[0.04] dark:border-white/[0.06] text-xs text-[var(--text-tertiary)] leading-relaxed font-mono">
+            <div className="mt-8 pt-4 border-t border-black/[0.04] text-xs text-[var(--text-tertiary)] leading-relaxed font-mono">
               Result: Crushing depreciation, massive fixed overhead, low agility during market downturns.
             </div>
           </div>
 
           {/* DigiSynq Asset-Light Model */}
-          <div className="rounded-3xl apple-card border-[#E5A919]/40 p-6 sm:p-9 relative shadow-lg">
+          <div className="rounded-3xl ds-card border-[var(--accent-gold)]/30 p-6 sm:p-9 shadow-md">
             <div className="flex items-center justify-between pb-5 border-b border-[#E5A919]/25">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
@@ -103,8 +103,8 @@ export const AssetLightSection: React.FC = () => {
         </div>
 
         {/* Detailed Comparison Table - Apple Tech Specs Aesthetic */}
-        <div className="rounded-3xl apple-glass overflow-hidden shadow-sm">
-          <div className="px-6 py-4 bg-black/[0.02] dark:bg-white/[0.03] border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+        <div className="rounded-3xl ds-card overflow-hidden">
+          <div className="px-6 py-4 bg-black/[0.02] border-b border-black/[0.06] flex items-center justify-between">
             <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
               Strategic Vector Comparison
             </span>
@@ -113,11 +113,11 @@ export const AssetLightSection: React.FC = () => {
             </span>
           </div>
 
-          <div className="divide-y divide-black/[0.04] dark:divide-white/[0.05]">
+          <div className="divide-y divide-black/[0.04]">
             {TRADITIONAL_VS_DIGISYNQ.map((row) => (
               <div
                 key={row.attribute}
-                className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-black/[0.01] dark:hover:bg-white/[0.02] transition-colors"
+                className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-black/[0.01] transition-colors"
               >
                 <div className="md:col-span-3 text-sm font-bold text-[var(--text-primary)]">
                   {row.attribute}

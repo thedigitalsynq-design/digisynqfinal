@@ -62,17 +62,14 @@ export const MarketplaceSection: React.FC = () => {
   return (
     <section
       id="marketplace"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
     >
-      {/* Volumetric ambient backlighting */}
-      <div className="glow-orb glow-orb-blue w-[500px] h-[500px] -top-24 -left-24 pointer-events-none" />
-      <div className="glow-orb glow-orb-purple w-[480px] h-[480px] bottom-10 -right-20 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="ds-section-label mb-5">
             <Layers className="w-3.5 h-3.5" />
-            <span>Underutilized Capacity Engine</span>
+            Underutilized Capacity Engine
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -102,13 +99,13 @@ export const MarketplaceSection: React.FC = () => {
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 Retains 100% legal ownership, physical custody, and operational maintenance of equipment, stages, and screens.
               </p>
-              <div className="mt-4 pt-3 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] font-mono text-[#E5A919] font-medium">
+              <div className="mt-4 pt-3 border-t border-black/[0.04] text-[11px] font-mono text-[#E5A919] font-medium">
                 Zero Loss of Custody
               </div>
             </div>
 
             {/* Step 2: DigiSynq Protocol */}
-            <div className="p-6 rounded-2xl apple-glass border-[#E5A919]/40 relative shadow-md">
+            <div className="p-6 rounded-2xl bg-white border border-[#E5A919]/40 relative shadow-md">
               <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2 font-semibold">
                 The Network Layer
               </span>
@@ -124,7 +121,7 @@ export const MarketplaceSection: React.FC = () => {
             </div>
 
             {/* Step 3: Demand */}
-            <div className="p-6 rounded-2xl apple-glass relative">
+            <div className="p-6 rounded-2xl bg-white border border-black/[0.06] relative shadow-xs">
               <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2 font-semibold">
                 Demand Side
               </span>
@@ -134,7 +131,7 @@ export const MarketplaceSection: React.FC = () => {
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 Accesses world-class physical resources at competitive rates with instant booking, insured custody, and verified specs.
               </p>
-              <div className="mt-4 pt-3 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] font-mono text-emerald-500 dark:text-emerald-400 font-medium">
+              <div className="mt-4 pt-3 border-t border-black/[0.04] text-[11px] font-mono text-emerald-600 font-medium">
                 Frictionless Utilization
               </div>
             </div>
@@ -149,50 +146,35 @@ export const MarketplaceSection: React.FC = () => {
               onClick={() => setActiveMarketType(idx)}
               className={`p-3.5 rounded-2xl border text-left transition-all duration-200 ${
                 activeMarketType === idx
-                  ? 'bg-[#E5A919] text-black border-[#E5A919] font-bold shadow-sm'
-                  : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  ? 'bg-[#111111] text-white border-[#111111] font-bold shadow-sm'
+                  : 'bg-white border-black/[0.06] text-[var(--text-secondary)] hover:text-[var(--text-primary)] shadow-xs'
               }`}
             >
-              <span className="text-xs font-semibold block">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[10px] font-mono uppercase tracking-wider opacity-60">
+                  0{idx + 1}
+                </span>
+                <span className={`w-1.5 h-1.5 rounded-full ${activeMarketType === idx ? 'bg-[#E5A919]' : 'bg-transparent'}`} />
+              </div>
+              <span className="text-xs font-semibold block tracking-tight">
                 {cat.title}
               </span>
             </button>
           ))}
         </div>
 
-        {/* Selected Capacity Detail Inspection - Illuminated Frost Rim Card with Skyline Depth */}
-        <div className="rounded-[36px] frost-rim-card p-6 sm:p-10 shadow-2xl overflow-hidden relative">
-          {/* Diffused Architectural Studio / City Skyline Silhouette (User Image Reference) */}
-          <div className="frost-skyline-silhouette">
-            <svg
-              viewBox="0 0 1000 240"
-              preserveAspectRatio="none"
-              className="w-full h-full fill-current text-sky-900/35 dark:text-sky-300/20"
-            >
-              <rect x="20" y="130" width="65" height="110" rx="4" />
-              <rect x="95" y="80" width="85" height="160" rx="4" />
-              <rect x="190" y="140" width="60" height="100" rx="4" />
-              <rect x="260" y="55" width="100" height="185" rx="4" />
-              <rect x="370" y="105" width="75" height="135" rx="4" />
-              <rect x="455" y="35" width="125" height="205" rx="4" />
-              <rect x="590" y="120" width="85" height="120" rx="4" />
-              <rect x="685" y="65" width="110" height="175" rx="4" />
-              <rect x="805" y="135" width="70" height="105" rx="4" />
-              <rect x="885" y="45" width="120" height="195" rx="4" />
-            </svg>
-          </div>
-
+        {/* Interactive Showcase Panel */}
+        <div className="rounded-3xl ds-card p-6 sm:p-10 shadow-lg">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentCategory.title}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-11 h-11 rounded-2xl glass-bubble flex items-center justify-center text-[#E5A919]">
+                <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/25 flex items-center justify-center text-[#E5A919]">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
@@ -205,7 +187,7 @@ export const MarketplaceSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-black/[0.06] dark:border-white/[0.08]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-black/[0.06]">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
                     Typical Idle Capacity:
@@ -225,7 +207,7 @@ export const MarketplaceSection: React.FC = () => {
                 </div>
 
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-500 dark:text-emerald-400 block mb-1.5 font-semibold">
+                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-600 block mb-1.5 font-semibold">
                     Value to Production:
                   </span>
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">

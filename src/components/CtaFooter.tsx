@@ -11,14 +11,14 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
       {/* SECTION 42: PRIMARY CTA CONVERSION SECTION */}
       <section
         id="cta-section"
-        className="py-24 sm:py-32 border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden bg-gradient-to-b from-[var(--bg-canvas)] via-[var(--bg-canvas-subtle)] to-[var(--bg-canvas)]"
+        className="py-24 sm:py-32 border-t border-[var(--border-hairline)] relative overflow-hidden bg-[var(--bg-canvas)]"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#E5A919]/5 dark:bg-[#E5A919]/8 blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[var(--accent-gold)]/5 blur-[160px] rounded-full pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-6 font-semibold">
+          <div className="ds-section-label mb-6">
             <Network className="w-3.5 h-3.5" />
-            <span>Join the Connected Ecosystem</span>
+            Join the Connected Ecosystem
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
@@ -33,7 +33,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3.5">
             <button
               onClick={() => onOpenJoinModal('Join Network')}
-              className="apple-btn-primary inline-flex items-center gap-2 text-sm px-8 py-3.5 font-semibold"
+              className="ds-btn-primary inline-flex items-center gap-2 text-sm px-8 py-3.5 font-semibold"
               id="footer-btn-join-network"
             >
               <span>Join the Network</span>
@@ -61,7 +61,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
       </section>
 
       {/* SECTION 55: FINAL BRAND MANIFESTO - Apple Minimalist Statement */}
-      <section className="py-20 border-t border-b border-black/[0.06] dark:border-white/[0.08] bg-[var(--bg-canvas-subtle)] text-center">
+      <section className="py-20 border-t border-b border-black/[0.06] bg-[var(--bg-canvas-subtle)] text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <p className="text-xl sm:text-2xl text-[var(--text-secondary)] font-normal mb-6 tracking-tight">
             Cinema is full of dots.
@@ -82,7 +82,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
             DigiSynq connects them.
           </h3>
 
-          <div className="pt-6 border-t border-black/[0.06] dark:border-white/[0.08]">
+          <div className="pt-6 border-t border-black/[0.06]">
             <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-1">
               DIGI<span className="text-[#E5A919]">SYNQ</span>
             </div>
@@ -188,7 +188,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--text-tertiary)] font-mono gap-4">
+          <div className="pt-8 border-t border-black/[0.06] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--text-tertiary)] font-mono gap-4">
             <div className="flex items-center gap-2">
               <span className="text-[var(--text-primary)] font-semibold">DigiSynq</span>
               <span>© {new Date().getFullYear()} DigiSynq Technologies Inc. All rights reserved.</span>

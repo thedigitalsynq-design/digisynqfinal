@@ -63,17 +63,14 @@ export const DigiSynqOS: React.FC = () => {
   return (
     <section
       id="digisynq-os"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
     >
-      {/* Volumetric ambient backlighting */}
-      <div className="glow-orb glow-orb-purple w-[520px] h-[520px] -top-28 -right-28 pointer-events-none" />
-      <div className="glow-orb glow-orb-gold w-[400px] h-[400px] bottom-10 -left-16 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 text-[var(--text-secondary)] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
-            <Cpu className="w-3.5 h-3.5 text-[#E5A919]" />
-            <span>Our Long-Term Vision</span>
+          <div className="ds-section-label mb-5">
+            <Cpu className="w-3.5 h-3.5" />
+            Our Long-Term Vision
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -87,8 +84,8 @@ export const DigiSynqOS: React.FC = () => {
         </div>
 
         {/* Unified 10-Layer Stack Diagram - Apple System Framework */}
-        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg">
-          <div className="flex items-center justify-between pb-6 mb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
+        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12 shadow-lg">
+          <div className="flex items-center justify-between pb-6 mb-8 border-b border-black/[0.06]">
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center text-[#E5A919]">
                 <Layers className="w-5 h-5" />
@@ -102,13 +99,13 @@ export const DigiSynqOS: React.FC = () => {
                 </span>
               </div>
             </div>
-            <span className="px-3.5 py-1 rounded-full text-xs font-mono apple-glass text-[var(--text-secondary)] hidden sm:inline font-medium">
+            <span className="px-3.5 py-1 rounded-full text-xs font-mono bg-black/[0.04] text-[var(--text-secondary)] hidden sm:inline font-medium">
               10 Integrated Layers
             </span>
           </div>
 
           {/* Active Layer Dynamic Inspection with Smooth Crossfade */}
-          <div className="mb-6 rounded-2xl p-5 sm:p-6 bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08] overflow-hidden">
+          <div className="mb-6 rounded-2xl p-5 sm:p-6 bg-black/[0.02] border border-black/[0.06] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayer.label}
@@ -132,7 +129,7 @@ export const DigiSynqOS: React.FC = () => {
                     {activeLayer.detail}
                   </p>
                 </div>
-                <div className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-xl apple-glass text-[#E5A919]">
+                <div className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-xl bg-[#E5A919]/10 text-[#E5A919] font-semibold border border-[#E5A919]/25">
                   Active Stack Node
                 </div>
               </motion.div>
@@ -147,10 +144,10 @@ export const DigiSynqOS: React.FC = () => {
                 <button
                   key={layer.label}
                   onClick={() => setSelectedLayerIndex(idx)}
-                  className={`p-5 rounded-2xl text-left transition-all duration-200 border ${
+                  className={`p-5 rounded-2xl text-left transition-all duration-200 border cursor-pointer ${
                     isSelected
-                      ? 'border-[#E5A919] bg-[#E5A919]/10 shadow-sm ring-1 ring-[#E5A919]/40'
-                      : 'apple-glass hover:border-[#E5A919]/40'
+                      ? 'bg-white border-2 border-[#E5A919] shadow-lg ring-2 ring-[#E5A919]/15'
+                      : 'ds-card hover:border-[var(--accent-gold)]/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -178,7 +175,7 @@ export const DigiSynqOS: React.FC = () => {
             })}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-black/[0.06] dark:border-white/[0.08] text-center text-xs font-mono text-[var(--text-tertiary)] max-w-2xl mx-auto leading-relaxed">
+          <div className="mt-8 pt-6 border-t border-black/[0.06] text-center text-xs font-mono text-[var(--text-tertiary)] max-w-2xl mx-auto leading-relaxed">
             DigiSynq OS bridges legacy film infrastructure with next-generation autonomous workflows, creating a unified digital layer across the global motion picture supply chain.
           </div>
         </div>

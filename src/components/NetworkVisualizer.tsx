@@ -265,7 +265,7 @@ export const NetworkVisualizer: React.FC = () => {
             ctx.shadowBlur = 0;
           } else {
             // Ambient mesh background lines linking all remaining nodes
-            ctx.strokeStyle = 'rgba(229, 169, 25, 0.16)';
+            ctx.strokeStyle = 'rgba(200, 200, 210, 0.35)';
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -356,18 +356,14 @@ export const NetworkVisualizer: React.FC = () => {
   return (
     <div
       id="hero-network-visualizer"
-      className="relative w-full rounded-3xl apple-card p-5 sm:p-7 lg:p-8 overflow-hidden shadow-2xl"
+      className="relative w-full rounded-3xl bg-white border border-[var(--border-hairline)] p-5 sm:p-7 lg:p-8 overflow-hidden"
     >
-      {/* Volumetric ambient backlighting (3D glass refraction from reference images) */}
-      <div className="glow-orb glow-orb-blue w-96 h-96 -top-20 -left-20 pointer-events-none" />
-      <div className="glow-orb glow-orb-purple w-[420px] h-[420px] top-1/3 -right-24 pointer-events-none" />
-      <div className="glow-orb glow-orb-gold w-80 h-80 -bottom-20 left-1/4 pointer-events-none" />
 
       {/* Top Controls Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] relative z-10">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-hairline)] relative z-10">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#E5A919] animate-pulse" />
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919] font-semibold">
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-gold)] animate-pulse" />
+          <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
             Cinema Graph Topology
           </span>
           <span className="text-xs text-[var(--text-tertiary)] font-mono hidden sm:inline">|</span>
@@ -380,12 +376,12 @@ export const NetworkVisualizer: React.FC = () => {
         </div>
 
         {/* State Toggle: Synchronized vs Fragmented (Apple Segmented Control) */}
-        <div className="flex items-center p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08] text-xs">
+        <div className="flex items-center p-1 rounded-full bg-black/[0.04] border border-black/[0.06] text-xs">
           <button
             onClick={() => setIsSynchronized(true)}
             className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               isSynchronized
-                ? 'bg-[#E5A919] text-black shadow-sm font-bold'
+                ? 'bg-[#111111] text-white shadow-sm font-bold'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
             id="btn-state-synchronized"
@@ -396,7 +392,7 @@ export const NetworkVisualizer: React.FC = () => {
             onClick={() => setIsSynchronized(false)}
             className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               !isSynchronized
-                ? 'bg-red-500/20 text-red-500 dark:text-red-300 border border-red-500/30 font-semibold'
+                ? 'bg-red-500/15 text-red-600 border border-red-500/30 font-semibold'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
             id="btn-state-fragmented"
@@ -413,14 +409,18 @@ export const NetworkVisualizer: React.FC = () => {
           className="absolute inset-0 w-full h-full pointer-events-none"
         />
 
-        {/* Interactive Node Buttons Placed Exactly over Canvas Coordinates */}
+        {/* Render 8 Interactive Node Anchors (Apple Precision Pills) */}
         {ECOSYSTEM_NODES.map((node) => {
           const isSelected = activeNode.id === node.id;
           const isHovered = hoveredNodeId === node.id;
+
           return (
             <button
               key={node.id}
-              onClick={() => setActiveNode(node)}
+              onClick={() => {
+                setActiveNode(node);
+                setHighlightedEdgeKey(null);
+              }}
               onMouseEnter={() => setHoveredNodeId(node.id)}
               onMouseLeave={() => setHoveredNodeId(null)}
               style={{
@@ -428,23 +428,21 @@ export const NetworkVisualizer: React.FC = () => {
                 top: `${node.y * 100}%`,
                 transform: 'translate(-50%, -50%)',
               }}
-              className={`absolute group z-20 focus:outline-none transition-transform duration-200 ${
-                isSelected ? 'scale-105' : 'hover:scale-105'
-              }`}
+              className="absolute z-20 focus:outline-none transition-transform hover:scale-105"
               id={`node-btn-${node.id}`}
             >
               <div
                 className={`relative flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border transition-all duration-200 shadow-sm ${
                   isSelected
-                    ? 'bg-[#E5A919] border-[#E5A919] text-black shadow-md shadow-[#E5A919]/25 font-bold'
+                    ? 'bg-[#111111] border-[#111111] text-white shadow-md font-bold'
                     : isHovered
-                    ? 'bg-white dark:bg-[#1C1F28] border-[#E5A919] text-[var(--text-primary)] shadow-sm backdrop-blur-md'
-                    : 'bg-white/85 dark:bg-[#15171E]/90 border-black/[0.08] dark:border-white/10 text-[var(--text-primary)] hover:border-[#E5A919]/60 backdrop-blur-md'
+                    ? 'bg-white border-[#E5A919] text-[var(--text-primary)] shadow-sm'
+                    : 'bg-white border-black/[0.08] text-[var(--text-primary)] hover:border-[#E5A919]/60'
                 }`}
               >
                 <span
                   className={`w-2 h-2 rounded-full ${
-                    isSelected ? 'bg-black' : isSynchronized ? 'bg-[#E5A919]' : 'bg-neutral-400'
+                    isSelected ? 'bg-[var(--accent-gold)]' : isSynchronized ? 'bg-[#E5A919]' : 'bg-neutral-400'
                   }`}
                 />
                 <span className="text-xs sm:text-sm font-semibold tracking-tight">
@@ -454,8 +452,8 @@ export const NetworkVisualizer: React.FC = () => {
                 <span
                   className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     isSelected
-                      ? 'bg-black/15 text-black font-bold'
-                      : 'bg-black/[0.04] dark:bg-white/[0.06] text-[var(--text-tertiary)]'
+                      ? 'bg-white/20 text-white font-bold'
+                      : 'bg-black/[0.04] text-[var(--text-tertiary)]'
                   }`}
                 >
                   7 links
@@ -480,11 +478,11 @@ export const NetworkVisualizer: React.FC = () => {
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
-              <div className="bg-red-500/10 dark:bg-red-950/80 border border-red-500/20 dark:border-red-800/60 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
-                <p className="text-[11px] font-mono text-red-500 dark:text-red-400 uppercase tracking-widest mb-1.5 font-semibold">
+              <div className="bg-red-50 border border-red-200 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
+                <p className="text-[11px] font-mono text-red-600 uppercase tracking-widest mb-1.5 font-semibold">
                   Legacy Industry Friction
                 </p>
-                <p className="text-xs sm:text-sm text-red-600 dark:text-red-200 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-red-700 font-medium leading-relaxed">
                   Disconnected phone calls, idle equipment, and opaque packaging leave 65% of potential cinema value stranded without cross-node linking.
                 </p>
               </div>
@@ -494,7 +492,7 @@ export const NetworkVisualizer: React.FC = () => {
       </div>
 
       {/* Interactive Detail Inspector for Selected Node with All 7 Interconnected Links */}
-      <div className="pt-5 border-t border-black/[0.06] dark:border-white/[0.08] overflow-hidden">
+      <div className="pt-5 border-t border-black/[0.06] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeNode.id}
@@ -523,7 +521,7 @@ export const NetworkVisualizer: React.FC = () => {
               </div>
 
               <div className="md:col-span-3 flex md:justify-end">
-                <div className="apple-glass rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
+                <div className="ds-card rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
                   <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-tertiary)] block">
                     Network Telemetry
                   </span>
@@ -534,8 +532,8 @@ export const NetworkVisualizer: React.FC = () => {
               </div>
             </div>
 
-            {/* All 7 Direct Node-to-Node Interconnected Links (Click to Traverse, Hover to Highlight) */}
-            <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06]">
+            {/* All 7 Direct Node-to-Node Interconnected Links */}
+            <div className="pt-3 border-t border-black/[0.04]">
               <div className="flex items-center justify-between mb-2.5">
                 <div className="flex items-center gap-2">
                   <Network className="w-3.5 h-3.5 text-[#E5A919]" />
@@ -570,7 +568,7 @@ export const NetworkVisualizer: React.FC = () => {
                       className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between ${
                         isLinkActive
                           ? 'border-[#E5A919] bg-[#E5A919]/15 shadow-sm'
-                          : 'bg-black/[0.02] dark:bg-white/[0.03] border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/50'
+                          : 'bg-black/[0.02] border-black/[0.06] hover:border-[#E5A919]/50'
                       }`}
                       title={`Inspect ${targetNode.label} node`}
                     >

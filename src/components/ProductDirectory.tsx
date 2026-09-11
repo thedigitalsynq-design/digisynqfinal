@@ -98,7 +98,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
   return (
     <section
       id="product-directory"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -118,7 +118,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
         </div>
 
         {/* Search & Filter Controls - Apple Spotlight Style */}
-        <div className="apple-card rounded-3xl p-5 sm:p-7 mb-10 shadow-lg space-y-5">
+        <div className="ds-card rounded-3xl p-5 sm:p-7 mb-10 shadow-lg space-y-5">
           {/* Top Row: Search Input */}
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" />
@@ -127,7 +127,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by product name, workflow need, or capability (e.g. 'call sheets', 'camera', 'distribution', 'sentiment')..."
-              className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-2xl pl-11 pr-10 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[#E5A919]/80 focus:ring-2 focus:ring-[#E5A919]/20 transition-all font-sans"
+              className="w-full bg-black/[0.03] border border-black/[0.08] rounded-2xl pl-11 pr-10 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[#E5A919]/80 focus:ring-2 focus:ring-[#E5A919]/20 transition-all font-sans"
               id="directory-search-input"
             />
             {searchQuery && (
@@ -140,48 +140,45 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
             )}
           </div>
 
-          {/* Category Filter Pills */}
+          {/* Category Tabs */}
           <div>
-            <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-2.5 font-semibold">
-              <span>Platform Domain:</span>
+            <div className="flex items-center justify-between mb-2.5">
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
+                Filter by Category:
+              </span>
               {hasActiveFilters && (
                 <button
-                  onClick={resetFilters}
-                  className="text-[#E5A919] hover:underline normal-case text-xs font-medium"
+                  onClick={handleClearFilters}
+                  className="text-xs text-[var(--accent-gold)] hover:underline flex items-center gap-1 font-medium"
                 >
-                  Reset all filters
+                  <X className="w-3 h-3" />
+                  <span>Reset All Filters</span>
                 </button>
               )}
             </div>
-            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-              <button
-                onClick={() => setSelectedCategory('All')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                  selectedCategory === 'All'
-                    ? 'bg-[#E5A919] text-black font-semibold shadow-sm'
-                    : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                }`}
-              >
-                All Domains ({PRODUCTS_CATALOG.length})
-              </button>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                    selectedCategory === cat
-                      ? 'bg-[#E5A919] text-black font-semibold shadow-sm'
-                      : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-thin">
+              {CATEGORIES.map((cat) => {
+                const isSelected = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 border ${
+                      isSelected
+                        ? 'bg-[#111111] text-white border-transparent shadow-sm'
+                        : 'bg-black/[0.02] border-black/[0.05] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Secondary Filters: User Type & Business Model */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-black/[0.04] dark:border-white/[0.06]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-black/[0.04]">
             {/* Target User */}
             <div className="flex items-center gap-2.5">
               <span className="text-xs font-mono text-[var(--text-tertiary)] whitespace-nowrap font-medium">
@@ -190,7 +187,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
               <select
                 value={selectedUser}
                 onChange={(e) => setSelectedUser(e.target.value)}
-                className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
+                className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
                 id="select-target-user"
               >
                 <option value="All" className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">All Cinema Stakeholders</option>
@@ -210,7 +207,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
               <select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}
-                className="w-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
+                className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[#E5A919]"
                 id="select-business-model"
               >
                 <option value="All" className="bg-[var(--bg-canvas)] text-[var(--text-primary)]">All Business Models</option>
@@ -283,7 +280,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
                         {item.capabilities.slice(0, 3).map((cap) => (
                           <span
                             key={cap}
-                            className="text-[10px] bg-black/[0.02] dark:bg-white/[0.04] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full border border-black/[0.04] dark:border-white/[0.06]"
+                            className="text-[10px] bg-black/[0.03] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full border border-black/[0.05]"
                           >
                             {cap}
                           </span>
@@ -292,7 +289,7 @@ export const ProductDirectory: React.FC<ProductDirectoryProps> = ({
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between">
+                  <div className="pt-4 border-t border-black/[0.04] flex items-center justify-between">
                     <div className="flex items-center gap-1.5 text-[11px] text-[var(--text-tertiary)] font-mono truncate max-w-[170px]">
                       <span>For:</span>
                       <span className="text-[var(--text-primary)] font-medium truncate">

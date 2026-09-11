@@ -59,13 +59,13 @@ export const TrustLayer: React.FC = () => {
   return (
     <section
       id="trust-layer"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="ds-section-label mb-5">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>The Trust Protocol</span>
+            The Trust Protocol
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -89,11 +89,11 @@ export const TrustLayer: React.FC = () => {
               <motion.div
                 key={pillar.title}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="p-5 sm:p-6 rounded-2xl apple-card flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-2xl ds-card flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-9 h-9 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] flex items-center justify-center text-[#E5A919]">
+                    <div className="w-9 h-9 rounded-xl bg-black/[0.03] flex items-center justify-center text-[#E5A919]">
                       <Icon className="w-4 h-4" />
                     </div>
                     <span className="text-[10px] font-mono text-[var(--text-tertiary)] font-semibold">
@@ -110,7 +110,7 @@ export const TrustLayer: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-5 pt-3.5 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center gap-1.5 text-[10px] font-mono text-[#E5A919] font-medium">
+                <div className="mt-5 pt-3.5 border-t border-black/[0.04] flex items-center gap-1.5 text-[10px] font-mono text-[#E5A919] font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
                   <span>Verified Standard</span>
                 </div>

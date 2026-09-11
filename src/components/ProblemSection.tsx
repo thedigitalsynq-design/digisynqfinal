@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertCircle, CheckCircle, Split, Network, ArrowRight } from 'lucide-react';
+import { AlertCircle, CheckCircle, Split, Network } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const ProblemSection: React.FC = () => {
@@ -9,83 +9,83 @@ export const ProblemSection: React.FC = () => {
     {
       title: 'Enormous Talent',
       symptom: 'Siloed behind agency gatekeepers, unverified credits, and regional rolodexes.',
-      connected: 'Verified global talent graph with instant credit verification and direct casting dispatch.'
+      connected: 'Verified global talent graph with instant credit verification and direct casting dispatch.',
     },
     {
       title: 'Underutilized Resources',
       symptom: 'Millions in cameras, lenses, soundstages, and mobile trailers sit dormant between shoots.',
-      connected: 'Peer-to-peer liquidity marketplace unlocking idle hardware without owners losing custody.'
+      connected: 'Peer-to-peer liquidity marketplace unlocking idle hardware without owners losing custody.',
     },
     {
       title: 'Fragmented Audiences',
       symptom: 'Filmmakers lose direct touch with ticket-buyers once theatrical windows close.',
-      connected: 'First-party fan CRM, direct community circles, and closed-loop ticketing attribution.'
+      connected: 'First-party fan CRM, direct community circles, and closed-loop ticketing attribution.',
     },
     {
       title: 'Disconnected Businesses',
       symptom: 'Studios, exhibitors, rental houses, and vendors operate on mismatched systems.',
-      connected: 'Cross-entity workflow pipeline synchronizing purchase orders, releases, and milestones.'
+      connected: 'Cross-entity workflow pipeline synchronizing purchase orders, releases, and milestones.',
     },
     {
       title: 'Scattered Information',
       symptom: 'Decisions rely on lagging trade gossip, slow box office calls, and anecdotal guesses.',
-      connected: 'Real-time telemetry capturing 14.2M+ box office, social sentiment, and screening signals.'
+      connected: 'Real-time telemetry capturing 14.2M+ box office, social sentiment, and screening signals.',
     },
     {
       title: 'Inefficient Workflows',
       symptom: 'Weeks spent chasing call sheets, paper deal memos, and disputed distribution settlements.',
-      connected: 'Automated script breakdowns, digital call sheets with GPS receipts, and CAM escrow waterfalls.'
+      connected: 'Automated script breakdowns, digital call sheets with GPS receipts, and CAM escrow waterfalls.',
     },
     {
       title: 'Difficult Discovery',
       symptom: 'Independent films, specialized crew, and vacant screens struggle to find reciprocal demand.',
-      connected: 'Bipartite semantic matching engine pairing buyers, spaces, and talent in seconds.'
+      connected: 'Bipartite semantic matching engine pairing buyers, spaces, and talent in seconds.',
     },
     {
       title: 'Inconsistent Trust',
       symptom: 'Unverified resumes, damaged rented gear, and counterparty payment defaults plague sets.',
-      connected: 'SynqTrust verifiable credentials, union verification, and secure milestone escrow.'
-    }
+      connected: 'SynqTrust verifiable credentials, union verification, and secure milestone escrow.',
+    },
   ];
 
   return (
     <section
       id="problem"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
     >
-      {/* Volumetric ambient backlighting */}
-      <div className="glow-orb glow-orb-purple w-[480px] h-[480px] -top-24 -right-24 pointer-events-none" />
-      <div className="glow-orb glow-orb-blue w-[420px] h-[420px] bottom-12 -left-20 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 dark:text-red-400 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
-            <AlertCircle className="w-3.5 h-3.5" />
-            <span>The Core Disconnect</span>
+          <div className="ds-section-label mb-5">
+            <AlertCircle className="w-3.5 h-3.5 text-red-500" />
+            The Core Disconnect
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            Cinema is connected by relationships, <br />
-            <span className="text-[var(--text-secondary)]">but fragmented by systems.</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
+            Cinema is connected by relationships,{' '}
+            <span className="text-[var(--text-tertiary)]">but fragmented by systems.</span>
           </h2>
 
           <p className="mt-5 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Cinema doesn't lack talent, resources, content, audiences or opportunities. It loses value when they remain fragmented, disconnected, underutilized and difficult to coordinate.
+            Cinema doesn't lack talent, resources, content, audiences or opportunities.
+            It loses value when they remain fragmented, disconnected, underutilized and
+            difficult to coordinate.
           </p>
 
-          {/* Interactive Contrast Switcher - Apple Segmented Control */}
-          <div className="mt-9 inline-flex items-center p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08]">
+          {/* Segmented Control */}
+          <div className="mt-9 inline-flex items-center p-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-hairline)]">
             <button
               onClick={() => setActiveTab('fragmented')}
               className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'fragmented'
-                  ? 'bg-red-500/15 text-red-600 dark:text-red-300 border border-red-500/30 shadow-sm'
+                  ? 'bg-white text-red-600 border border-red-500/25 shadow-sm'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
               id="tab-fragmented-industry"
@@ -97,7 +97,7 @@ export const ProblemSection: React.FC = () => {
               onClick={() => setActiveTab('connected')}
               className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'connected'
-                  ? 'bg-[#E5A919] text-black shadow-sm font-bold'
+                  ? 'bg-[#111111] text-white shadow-sm'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
               id="tab-digisynq-connected"
@@ -108,8 +108,8 @@ export const ProblemSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Dynamic 8 Problem / Solution Matrix */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Bento Grid of 8 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {problemPoints.map((item, index) => (
             <motion.div
               key={item.title}
@@ -117,25 +117,26 @@ export const ProblemSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -3, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] } }}
-              className={`relative rounded-2xl p-6 transition-colors duration-300 border apple-card ${
-                activeTab === 'fragmented'
-                  ? 'hover:border-red-500/40'
-                  : 'hover:border-[#E5A919]/60'
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className={`relative rounded-2xl p-6 border transition-all duration-300 ${
+                activeTab === 'connected'
+                  ? 'ds-card hover:border-[var(--accent-gold)]/40'
+                  : 'ds-card hover:border-red-400/30'
               }`}
             >
-              <div className="flex items-center justify-between mb-3.5">
-                <span className="text-xs font-mono text-[var(--text-tertiary)] uppercase tracking-wider font-semibold">
+              {/* Index + Status dot */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase tracking-wider font-semibold">
                   0{index + 1}
                 </span>
                 {activeTab === 'fragmented' ? (
-                  <span className="w-2 h-2 rounded-full bg-red-500" />
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
                 ) : (
-                  <span className="w-2 h-2 rounded-full bg-[#E5A919] shadow-sm shadow-[#E5A919]" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)]" />
                 )}
               </div>
 
-              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2.5 tracking-tight">
+              <h3 className="text-base font-bold text-[var(--text-primary)] mb-2.5 tracking-tight">
                 {item.title}
               </h3>
 
@@ -147,7 +148,7 @@ export const ProblemSection: React.FC = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.18 }}
                       className="text-[var(--text-secondary)]"
                     >
                       {item.symptom}
@@ -158,7 +159,7 @@ export const ProblemSection: React.FC = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.18 }}
                       className="text-[var(--text-primary)] font-medium"
                     >
                       {item.connected}
@@ -167,24 +168,32 @@ export const ProblemSection: React.FC = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="mt-4 pt-3.5 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono font-medium">
-                <span className={activeTab === 'fragmented' ? 'text-red-500 dark:text-red-400' : 'text-[#E5A919]'}>
-                  {activeTab === 'fragmented' ? 'Friction & Waste' : 'Synchronized & Liquid'}
-                </span>
+              <div className="mt-4 pt-3.5 border-t border-[var(--border-hairline)] flex items-center gap-1.5 text-[10px] font-mono font-semibold">
+                {activeTab === 'fragmented' ? (
+                  <>
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                    <span className="text-red-600">Friction & Waste</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]" />
+                    <span className="text-[var(--accent-gold)]">Synchronized & Liquid</span>
+                  </>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Transition callout */}
+        {/* Bottom callout */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 text-center"
+          className="mt-14 text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3.5 apple-glass rounded-2xl px-8 py-5 max-w-2xl mx-auto shadow-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 ds-card rounded-2xl px-8 py-5 max-w-2xl mx-auto">
             <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight">
               DigiSynq connects the dots.
             </span>

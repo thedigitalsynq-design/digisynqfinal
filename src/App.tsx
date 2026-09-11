@@ -27,30 +27,21 @@ import { GooeyActionMenu } from './components/GooeyActionMenu';
 import { PlatformItem } from './types';
 
 export default function App() {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('digisynq-theme');
-      if (stored === 'light' || stored === 'dark') return stored;
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    return 'dark';
-  });
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [modalRole, setModalRole] = useState('Producer');
   const [selectedDirectoryCategory, setSelectedDirectoryCategory] = useState<string>('All');
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('digisynq-theme', theme);
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('digisynq-theme', 'light');
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    // Keep light theme active as requested by user
+    setTheme('light');
+    document.documentElement.classList.remove('dark');
   };
 
   const handleOpenJoinModal = (role?: string) => {

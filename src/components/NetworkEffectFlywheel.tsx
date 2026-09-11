@@ -21,13 +21,13 @@ export const NetworkEffectFlywheel: React.FC = () => {
   return (
     <section
       id="network-flow"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="ds-section-label mb-5">
             <RefreshCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '8s' }} />
-            <span>Compounding Value Loop</span>
+            Compounding Value Loop
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -50,7 +50,7 @@ export const NetworkEffectFlywheel: React.FC = () => {
         </div>
 
         {/* Circular / Step Progression Visualizer - Apple Showcase Card */}
-        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg">
+        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12">
           {/* Active Highlight Card */}
           <div className="text-center max-w-xl mx-auto mb-10 min-h-[140px] flex items-center justify-center">
             <AnimatePresence mode="wait">
@@ -88,12 +88,12 @@ export const NetworkEffectFlywheel: React.FC = () => {
                   }}
                   className={`p-3 rounded-2xl border text-center transition-all duration-200 ${
                     isCurrent
-                      ? 'bg-[#E5A919] border-[#E5A919] text-black font-bold shadow-md scale-105 z-10'
-                      : 'apple-glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      ? 'bg-white border-2 border-[#E5A919] text-[var(--text-primary)] font-bold shadow-md scale-105 z-10 ring-2 ring-[#E5A919]/15'
+                      : 'ds-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                   id={`flywheel-step-${index}`}
                 >
-                  <span className={`text-[10px] font-mono block mb-1 font-semibold ${isCurrent ? 'text-black' : 'text-[var(--text-tertiary)]'}`}>
+                  <span className={`text-[10px] font-mono block mb-1 font-semibold ${isCurrent ? 'text-[#E5A919]' : 'text-[var(--text-tertiary)]'}`}>
                     0{item.step}
                   </span>
                   <span className="text-xs tracking-tight block font-medium">
@@ -105,7 +105,7 @@ export const NetworkEffectFlywheel: React.FC = () => {
           </div>
 
           {/* Bottom Loop Statement */}
-          <div className="mt-10 pt-6 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[var(--text-tertiary)] gap-4">
+          <div className="mt-10 pt-6 border-t border-black/[0.06] flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[var(--text-tertiary)] gap-4">
             <div className="flex items-center gap-2 text-[#E5A919] font-medium">
               <Zap className="w-4 h-4" />
               <span>Zero Marginal Asset Cost Per Connection</span>

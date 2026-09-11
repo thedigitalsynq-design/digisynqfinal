@@ -52,13 +52,13 @@ export const BusinessModelSection: React.FC = () => {
   return (
     <section
       id="business-model"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="ds-section-label mb-5">
             <DollarSign className="w-3.5 h-3.5" />
-            <span>Economic Architecture</span>
+            Economic Architecture
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -75,7 +75,7 @@ export const BusinessModelSection: React.FC = () => {
           {revenueEngines.map((engine, idx) => (
             <div
               key={engine.name}
-              className="rounded-3xl apple-card p-6 sm:p-7 flex flex-col justify-between shadow-sm"
+              className="rounded-3xl ds-card p-6 sm:p-7 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3.5">
@@ -96,20 +96,20 @@ export const BusinessModelSection: React.FC = () => {
                   {engine.description}
                 </p>
 
-                <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.04] dark:border-white/[0.06] mb-4 text-xs font-mono text-[var(--text-tertiary)]">
+                <div className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.04] mb-4 text-xs font-mono text-[var(--text-tertiary)]">
                   <span className="text-[var(--text-tertiary)] block text-[10px] uppercase font-semibold">Associated Platforms:</span>
                   <span className="text-[var(--text-primary)]">{engine.examples}</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] font-mono text-[#E5A919] font-medium">
+              <div className="pt-3 border-t border-black/[0.04] text-[11px] font-mono text-[#E5A919] font-medium">
                 Model: {engine.pricing}
               </div>
             </div>
           ))}
 
           {/* 6th Card: Additional Expansion Streams */}
-          <div className="rounded-3xl apple-card border-[#E5A919]/40 p-6 sm:p-7 flex flex-col justify-between shadow-md">
+          <div className="rounded-3xl ds-card border-[var(--accent-gold)]/30 p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <span className="text-xs font-mono text-[#E5A919] uppercase tracking-wider block mb-3 font-semibold">
                 Synergistic Expansion Streams
@@ -127,14 +127,14 @@ export const BusinessModelSection: React.FC = () => {
               </ul>
             </div>
 
-            <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] text-[11px] font-mono text-[var(--text-tertiary)] font-medium">
+            <div className="pt-4 border-t border-black/[0.04] text-[11px] font-mono text-[var(--text-tertiary)] font-medium">
               Compounding Network Economics
             </div>
           </div>
         </div>
 
         {/* SECTION 36: WHY DIGISYNQ COMPARISON - Apple Compare Table */}
-        <div className="rounded-3xl apple-glass p-6 sm:p-10 shadow-lg">
+        <div className="rounded-3xl ds-card p-6 sm:p-10 shadow-sm">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919] block mb-1 font-semibold">
               Category Redefinition
@@ -147,7 +147,7 @@ export const BusinessModelSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="divide-y divide-black/[0.04] dark:divide-white/[0.06]">
+          <div className="divide-y divide-black/[0.04]">
             {comparisonPoints.map((item) => (
               <div
                 key={item.label}

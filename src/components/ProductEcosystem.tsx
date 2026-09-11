@@ -52,12 +52,12 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
   return (
     <section
       id="product-ecosystem"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-black/[0.06] dark:border-white/[0.06] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
-            <span>Portfolio Architecture</span>
+          <div className="ds-section-label mb-5">
+            Portfolio Architecture
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
@@ -74,7 +74,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
         </div>
 
         {/* Central Interconnected Hub Visual - Apple Feature Banner */}
-        <div className="mb-14 p-6 sm:p-9 rounded-3xl apple-card shadow-lg overflow-hidden">
+        <div className="mb-14 p-6 sm:p-9 rounded-3xl ds-card overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activePlatform.id}
@@ -83,7 +83,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06]">
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center">
                     <ActiveIcon className="w-5 h-5 text-[#E5A919]" />
@@ -131,7 +131,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                     {activePlatform.products.map((prodName) => (
                       <div
                         key={prodName}
-                        className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.06] hover:border-[#E5A919]/40 transition-colors"
+                        className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.05] hover:border-[#E5A919]/40 transition-colors"
                       >
                         <span className="text-xs font-bold text-[var(--text-primary)] font-mono block">
                           {prodName}
@@ -159,19 +159,19 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                 key={platform.id}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 onClick={() => setActivePlatformId(platform.id)}
-                className={`group cursor-pointer rounded-2xl p-6 transition-all duration-200 border text-left apple-card ${
+                className={`group cursor-pointer rounded-2xl p-6 transition-all duration-200 border text-left ${
                   isSelected
-                    ? 'border-[#E5A919] shadow-md ring-1 ring-[#E5A919]/50'
-                    : 'hover:border-black/[0.12] dark:hover:border-white/[0.15]'
+                    ? 'bg-white border-2 border-[#E5A919] shadow-xl ring-2 ring-[#E5A919]/15'
+                    : 'ds-card hover:border-[var(--border-subtle)]'
                 }`}
                 id={`platform-card-${platform.id}`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
                       isSelected
-                        ? 'bg-[#E5A919] text-black shadow-sm'
-                        : 'bg-black/[0.04] dark:bg-white/[0.06] text-[#E5A919] group-hover:bg-[#E5A919]/20'
+                        ? 'bg-[var(--accent-gold)]/20 text-[var(--accent-gold)]'
+                        : 'bg-[var(--bg-secondary)] text-[var(--accent-gold)] group-hover:bg-[var(--accent-gold)]/10'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -181,7 +181,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                   </span>
                 </div>
 
-                <h4 className="text-base sm:text-lg font-bold text-[var(--text-primary)] group-hover:text-[#E5A919] transition-colors mb-1 tracking-tight">
+                <h4 className={`text-base sm:text-lg font-bold tracking-tight mb-1 ${isSelected ? 'text-[var(--text-primary)]' : 'text-[var(--text-primary)] group-hover:text-[var(--accent-gold)]'} transition-colors`}>
                   {platform.name}
                 </h4>
 
@@ -193,7 +193,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                   {platform.description}
                 </p>
 
-                <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-xs">
+                <div className="pt-3 border-t border-black/[0.05] flex items-center justify-between text-xs">
                   <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
                     {platform.products.length} Products
                   </span>
