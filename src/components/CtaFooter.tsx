@@ -1,12 +1,13 @@
 import React from 'react';
-import { Network, ArrowRight, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Network, ArrowRight, ArrowUpRight, ShieldCheck, BookOpen } from 'lucide-react';
 import digisynqLogo from '../assets/digisynq-logo.png';
 
 interface CtaFooterProps {
   onOpenJoinModal: (role?: string) => void;
+  onOpenRunbook?: () => void;
 }
 
-export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
+export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRunbook }) => {
   return (
     <div className="bg-[#070A12] text-white/70 transition-colors duration-300">
       {/* SECTION 42: PRIMARY CTA CONVERSION SECTION */}
@@ -118,6 +119,19 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
               <span className="text-white/70">•</span>
               <span>Scale</span>
             </div>
+
+            {onOpenRunbook && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  onClick={onOpenRunbook}
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#5CE1E6]/10 border border-[#5CE1E6]/40 text-[#5CE1E6] hover:bg-[#5CE1E6]/20 hover:text-white text-xs font-mono font-bold tracking-[2px] transition-all duration-200 shadow-[0_0_25px_rgba(92,225,230,0.15)] group"
+                >
+                  <BookOpen className="w-4 h-4 text-[#5CE1E6] group-hover:scale-110 transition-transform" />
+                  <span>READ EXECUTIVE BUSINESS RUNBOOK</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="cred-hairline absolute bottom-0 left-0" />
@@ -165,10 +179,16 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
                 Company
               </span>
               <ul className="space-y-2.5 text-xs text-white/60">
-                {['About DigiSynq', 'Long-term Vision', 'Operating Principles', 'Contact Leadership', 'Ecosystem Careers'].map((item) => (
-                  <li key={item}>
-                    <a href="#about-vision" className="hover:text-white transition-colors">
-                      {item}
+                {[
+                  { label: 'About DigiSynq', href: '#about-vision' },
+                  { label: 'Founding Partners (Co-Founders)', href: '#about-vision' },
+                  { label: 'Long-term Vision', href: '#about-vision' },
+                  { label: 'Operating Principles', href: '#about-vision' },
+                  { label: 'Contact Leadership', href: '#about-vision' },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <a href={item.href} className="hover:text-white transition-colors">
+                      {item.label}
                     </a>
                   </li>
                 ))}
@@ -181,6 +201,17 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
                 Resources
               </span>
               <ul className="space-y-2.5 text-xs text-white/60">
+                {onOpenRunbook && (
+                  <li>
+                    <button
+                      onClick={onOpenRunbook}
+                      className="text-[#5CE1E6] hover:underline flex items-center gap-1.5 font-medium transition-colors"
+                    >
+                      <span>Executive Runbook</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </button>
+                  </li>
+                )}
                 {['Cinema Insights', 'Industry Research', 'API Documentation', 'Product Changelog', 'Trust Guidelines'].map((item) => (
                   <li key={item}>
                     <a href="#platform-model" className="hover:text-white transition-colors">

@@ -39,6 +39,98 @@ export const AboutAndPrinciples: React.FC = () => {
           </div>
         </div>
 
+        {/* ── Co-Founders ─────────────────────────────────────────── */}
+        <div className="mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/90 border border-white/20 text-white font-mono text-[10px] font-bold tracking-[2.5px] mb-4 backdrop-blur-xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+              Founding leadership.
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-denton-extrabold">
+              Architects of the network.
+            </h3>
+            <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed font-mono tracking-wide">
+              The founding partners building the asset-light operating system for cinema.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                name: 'Yathish',
+                role: 'Co-Founder',
+                focus: 'Network Architecture & Strategy',
+                tag: '01',
+                accent: '#5CE1E6',
+                border: 'border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60',
+              },
+              {
+                name: 'Varun',
+                role: 'Co-Founder',
+                focus: 'Platform Engineering & Infrastructure',
+                tag: '02',
+                accent: '#8B7CFF',
+                border: 'border-[#8B7CFF]/30 hover:border-[#8B7CFF]/60',
+              },
+              {
+                name: 'Rakshith',
+                role: 'Co-Founder',
+                focus: 'Cinema Ecosystem & Industry Partnerships',
+                tag: '03',
+                accent: '#4D8DFF',
+                border: 'border-[#4D8DFF]/30 hover:border-[#4D8DFF]/60',
+              },
+              {
+                name: 'Rubesh',
+                role: 'Co-Founder',
+                focus: 'Operations & Market Expansion',
+                tag: '04',
+                accent: '#5EF2B0',
+                border: 'border-[#5EF2B0]/30 hover:border-[#5EF2B0]/60',
+              },
+            ].map((founder) => (
+              <motion.div
+                key={founder.name}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className={`p-6 rounded-[22px] cred-card border ${founder.border} transition-all duration-300 relative overflow-hidden group`}
+              >
+                {/* Ambient specular corner glow */}
+                <div
+                  className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none transition-opacity group-hover:opacity-40"
+                  style={{ background: founder.accent }}
+                />
+
+                <div className="flex items-center justify-between mb-6">
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center font-denton-extrabold text-lg text-white border border-white/20 bg-gradient-to-b from-white/15 to-white/5 shadow-inner"
+                    style={{ borderTopColor: founder.accent }}
+                  >
+                    {founder.name.charAt(0)}
+                  </div>
+                  <span className="text-[10px] font-mono tracking-[2px] font-bold text-white/40">
+                    {founder.tag}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-white tracking-tight font-denton-bold mb-1">
+                    {founder.name}
+                  </h4>
+                  <div
+                    className="text-[11px] font-mono font-bold tracking-[2px] mb-2 uppercase"
+                    style={{ color: founder.accent }}
+                  >
+                    {founder.role}
+                  </div>
+                  <p className="text-xs text-white/70 leading-relaxed font-sans">
+                    {founder.focus}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         {/* 8 Company principles */}
         <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 lg:p-12 shadow-2xl relative backdrop-blur-2xl">
           <div className="text-center max-w-2xl mx-auto mb-10">

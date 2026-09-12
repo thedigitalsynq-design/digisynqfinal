@@ -23,6 +23,7 @@ import { DigiSynqOS } from './components/DigiSynqOS';
 import { AboutAndPrinciples } from './components/AboutAndPrinciples';
 import { CtaFooter } from './components/CtaFooter';
 import { JoinModal } from './components/JoinModal';
+import { RunbookModal } from './components/RunbookModal';
 import { GooeyActionMenu } from './components/GooeyActionMenu';
 import { PlatformItem } from './types';
 
@@ -30,6 +31,7 @@ export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const [joinModalOpen, setJoinModalOpen] = useState(false);
+  const [runbookOpen, setRunbookOpen] = useState(false);
   const [modalRole, setModalRole] = useState('Producer');
   const [selectedDirectoryCategory, setSelectedDirectoryCategory] = useState<string>('All');
 
@@ -64,6 +66,7 @@ export default function App() {
       {/* 1. Global Navigation */}
       <Navbar
         onOpenJoinModal={handleOpenJoinModal}
+        onOpenRunbook={() => setRunbookOpen(true)}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
@@ -122,7 +125,10 @@ export default function App() {
       </main>
 
       {/* 19 & 20. CTA, Final Brand Statement & Footer */}
-      <CtaFooter onOpenJoinModal={handleOpenJoinModal} />
+      <CtaFooter
+        onOpenJoinModal={handleOpenJoinModal}
+        onOpenRunbook={() => setRunbookOpen(true)}
+      />
 
       {/* Interactive Modal for Joining Network or Partner Inquiries */}
       <AnimatePresence>
@@ -131,6 +137,16 @@ export default function App() {
             isOpen={joinModalOpen}
             onClose={() => setJoinModalOpen(false)}
             defaultRole={modalRole}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Executive Business Runbook Reader Modal */}
+      <AnimatePresence>
+        {runbookOpen && (
+          <RunbookModal
+            isOpen={runbookOpen}
+            onClose={() => setRunbookOpen(false)}
           />
         )}
       </AnimatePresence>

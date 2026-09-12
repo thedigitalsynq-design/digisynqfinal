@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, BookOpen } from 'lucide-react';
 import digisynqLogo from '../assets/digisynq-logo.png';
 
 interface NavbarProps {
   onOpenJoinModal: (role?: string) => void;
+  onOpenRunbook?: () => void;
   onSelectProductCategory?: (category: string) => void;
   theme?: 'dark' | 'light';
   onToggleTheme?: () => void;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenJoinModal,
+  onOpenRunbook,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -60,7 +62,18 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2.5">
+          {onOpenRunbook && (
+            <button
+              onClick={onOpenRunbook}
+              className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold tracking-[0.16em] text-[#5CE1E6] hover:text-white px-3 py-1.5 rounded-full bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60 transition-all duration-200"
+              id="cta-open-runbook-nav"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>RUNBOOK</span>
+            </button>
+          )}
+
           <a
             href="#product-directory"
             className="text-[11px] font-mono font-bold tracking-[0.18em] text-white/80 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-all duration-200"
@@ -82,6 +95,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile Controls */}
         <div className="flex md:hidden items-center gap-2">
+          {onOpenRunbook && (
+            <button
+              onClick={onOpenRunbook}
+              className="text-[10px] font-mono font-bold tracking-[1.5px] text-[#5CE1E6] bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 px-2.5 py-1.5 rounded-full"
+            >
+              DOCS
+            </button>
+          )}
           <button
             onClick={() => onOpenJoinModal()}
             className="text-[11px] font-bold tracking-[2px] bg-white text-[#070A12] px-3.5 py-1.5 rounded-full active:scale-95 transition-transform"
@@ -129,6 +150,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               </a>
             ))}
             <div className="pt-4 flex flex-col gap-2.5">
+              {onOpenRunbook && (
+                <button
+                  onClick={() => { setMobileMenuOpen(false); onOpenRunbook(); }}
+                  className="w-full flex items-center justify-center gap-2 text-center text-xs font-mono font-bold tracking-[0.18em] text-[#5CE1E6] bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 py-2.5 rounded-full transition-colors"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Executive runbook</span>
+                </button>
+              )}
               <a
                 href="#product-directory"
                 onClick={() => setMobileMenuOpen(false)}
