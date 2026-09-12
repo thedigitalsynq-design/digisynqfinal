@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import digisynqLogo from '../assets/digisynq-logo.png';
 
 interface NavbarProps {
   onOpenJoinModal: (role?: string) => void;
@@ -31,14 +32,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="max-w-6xl mx-auto rounded-full bg-[#07080B]/85 backdrop-blur-2xl border border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 sm:px-6 py-2.5 flex items-center justify-between pointer-events-auto">
 
-        {/* Brand Logo — mix-blend-mode:screen makes black bg transparent */}
+        {/* Brand Logo */}
         <a
           href="#"
           className="flex items-center group focus:outline-none"
           id="brand-logo-link"
         >
           <img
-            src="/digisynq-logo.png"
+            src={digisynqLogo}
             alt="DigiSynq"
             className="h-8 sm:h-9 w-auto object-contain transition-all duration-200"
           />
@@ -112,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Logo in mobile drawer */}
             <div className="pb-4 mb-2 border-b border-white/[0.08]">
               <img
-                src="/digisynq-logo.png"
+                src={digisynqLogo}
                 alt="DigiSynq"
                 className="h-8 w-auto object-contain"
               />

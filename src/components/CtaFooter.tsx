@@ -1,5 +1,6 @@
 import React from 'react';
 import { Network, ArrowRight, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import digisynqLogo from '../assets/digisynq-logo.png';
 
 interface CtaFooterProps {
   onOpenJoinModal: (role?: string) => void;
@@ -99,7 +100,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
           <div className="pt-8 border-t border-white/[0.08]">
             <div className="flex justify-center mb-6">
               <img
-                src="/digisynq-logo.png"
+                src={digisynqLogo}
                 alt="DigiSynq"
                 className="h-16 sm:h-20 w-auto object-contain mx-auto"
               />
@@ -210,7 +211,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal }) => {
           <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 font-mono gap-4">
             <div className="flex items-center gap-3">
               <img
-                src="/digisynq-logo.png"
+                src={digisynqLogo}
                 alt="DigiSynq"
                 className="h-5 sm:h-6 w-auto object-contain opacity-80"
               />

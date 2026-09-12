@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NetworkVisualizer } from './NetworkVisualizer';
+import cinemaLensPrism from '../assets/cinema-lens-prism.jpg';
 
 interface HeroSectionProps {
   onOpenJoinModal: () => void;
@@ -236,7 +237,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
           {/* Cinematic Anamorphic Lens Background Overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden mix-blend-screen">
             <img
-              src="/cinema-lens-prism.jpg"
+              src={cinemaLensPrism}
               alt="Anamorphic Cinema Optics"
               className="w-full h-full object-cover object-center filter grayscale contrast-125"
             />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Brain, Sparkles, Activity, CheckCircle, ArrowRight, MessageSquare, Shield, Terminal, ChevronDown } from 'lucide-react';
+import cinemaTelemetrySlate from '../assets/cinema-telemetry-slate.jpg';
 
 export const IntelligenceSection: React.FC = () => {
   const [selectedPromptIndex, setSelectedPromptIndex] = useState(0);
@@ -300,7 +301,7 @@ export const IntelligenceSection: React.FC = () => {
           {/* Telemetry Slate Key Visual Backdrop */}
           <div className="absolute inset-0 pointer-events-none opacity-15 overflow-hidden mix-blend-screen">
             <img
-              src="/cinema-telemetry-slate.jpg"
+              src={cinemaTelemetrySlate}
               alt="Cinema Telemetry Slate"
               className="w-full h-full object-cover object-right-bottom filter grayscale contrast-125"
             />

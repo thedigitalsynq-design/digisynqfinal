@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PLATFORMS } from '../data/platformsData';
 import { PlatformItem } from '../types';
+import cinemaStageVolume from '../assets/cinema-stage-volume.jpg';
 import {
   LineChart,
   Users,
@@ -92,7 +93,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
           {/* Virtual Stage Volume Ambient Cinema Visual */}
           <div className="absolute inset-0 pointer-events-none opacity-15 overflow-hidden mix-blend-screen">
             <img
-              src="/cinema-stage-volume.jpg"
+              src={cinemaStageVolume}
               alt="Cinema Production Stage Volume"
               className="w-full h-full object-cover object-center filter grayscale contrast-125"
             />
