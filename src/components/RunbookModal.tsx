@@ -47,8 +47,8 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
       badge: 'Chapter 01',
       icon: TrendingUp,
       content: {
-        headline: 'The Asset-Light Operating Network for Global Cinema',
-        summary: 'A comprehensive institutional analysis of the $240B+ global entertainment production supply chain, the structural market failure of asset-heavy ownership, and DigiSynq’s protocol-level solution.',
+        headline: 'Asset-Light Coordination Mechanism for Entertainment',
+        summary: 'DigiSynq operates in the space between the ecosystem’s nodes — connecting producers, talent, investors, brands, distributors, exhibitors, platforms and audiences. Rather than owning the assets that power entertainment, DigiSynq synchronizes them. The principle is simple: own less, connect more, and make the ecosystem work better together.',
         sections: [
           {
             title: '1.1 The Macroeconomic Crisis in Cinema Production',
@@ -56,7 +56,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
           },
           {
             title: '1.2 The Asset-Light Network Thesis',
-            text: 'DigiSynq does not purchase cameras, lease sound stages, or build real estate. Instead, DigiSynq establishes the digital connective orchestration protocol that indexes, verifies, books, and settles transactions across existing idle cinema assets worldwide. By converting idle physical assets into liquid, software-accessible network capacity, DigiSynq unlocks exponential operating leverage, high gross margins (75%+), and compounding data network effects.',
+            text: 'Rather than owning the assets that power entertainment, DigiSynq synchronizes them. It connects fragmented information, resources, opportunities and participants; coordinates activity across the value chain; and monitors outcomes to reduce friction, leakage and risk while improving the utilization of existing ecosystem capacity. By converting idle physical assets into liquid, software-accessible network capacity, DigiSynq unlocks exponential operating leverage, high gross margins (75%+), and compounding data network effects.',
           },
           {
             title: '1.3 Market Sizing & Total Addressable Market (TAM / SAM / SOM)',

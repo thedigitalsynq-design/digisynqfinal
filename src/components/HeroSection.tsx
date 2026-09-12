@@ -89,16 +89,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             transition={{ duration: 0.7, delay: 0.20, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 text-lg sm:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto"
           >
-            DigiSynq is the asset-light operating mechanism of the entire entertainment ecosystem. Every stakeholder is a node — we are the connecting space between them: we sync, we coordinate, we collaborate.
+            DigiSynq is an asset-light coordination mechanism for the entertainment ecosystem. It operates in the space between the ecosystem's nodes — connecting producers, talent, investors, brands, distributors, exhibitors, platforms and audiences.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-white/60 max-w-2xl mx-auto"
+            className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] max-w-2xl mx-auto font-semibold"
           >
-            All stakeholders in one network. Connecting every node with zero balance-sheet friction.
+            Own less. Connect more. Make the ecosystem work better together.
           </motion.p>
 
           {/* Action Buttons */}
@@ -250,8 +250,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight font-denton-extrabold mb-6">
-              Cinema already has the assets.<br />
-              <span className="text-white/75 italic font-denton-extrabold-italic">DigiSynq connects them.</span>
+              Rather than owning the assets,<br />
+              <span className="text-white/75 italic font-denton-extrabold-italic">DigiSynq synchronizes them.</span>
             </h2>
 
             {/* Progressive Flow Chain */}
@@ -273,9 +273,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
               ))}
             </div>
 
-            <p className="text-base sm:text-xl text-white/90 font-normal leading-relaxed max-w-2xl mx-auto">
-              DigiSynq doesn't need to own the underlying assets. It creates the digital
-              infrastructure that makes them discoverable, usable, measurable and monetizable.
+            <p className="text-base sm:text-xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto">
+              It connects fragmented information, resources, opportunities and participants; coordinates activity across the value chain; and monitors outcomes to reduce friction, leakage and risk while improving the utilization of existing ecosystem capacity.
+            </p>
+
+            <p className="mt-5 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] font-semibold">
+              The principle is simple: own less, connect more, and make the ecosystem work better together.
             </p>
           </div>
         </motion.div>

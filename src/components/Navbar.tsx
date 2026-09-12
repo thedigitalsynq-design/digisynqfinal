@@ -32,28 +32,28 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navigation"
       className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-300"
     >
-      <div className="max-w-6xl mx-auto rounded-full bg-[#07080B]/85 backdrop-blur-2xl border border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 sm:px-6 py-2.5 flex items-center justify-between pointer-events-auto">
+      <div className="max-w-6xl mx-auto rounded-full bg-[#070A12]/85 backdrop-blur-2xl border border-white/[0.16] shadow-[0_16px_45px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.18)] px-3.5 sm:px-5 py-2 flex items-center justify-between pointer-events-auto">
 
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center group focus:outline-none"
+          className="flex items-center group focus:outline-none flex-shrink-0 mr-1 sm:mr-3"
           id="brand-logo-link"
         >
           <img
             src={digisynqLogo}
             alt="DigiSynq"
-            className="h-8 sm:h-9 w-auto object-contain transition-all duration-200"
+            className="h-7 sm:h-8 w-auto object-contain transition-opacity group-hover:opacity-90"
           />
         </a>
 
-        {/* Desktop Nav Links — CRED-style tracked  */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Nav Links — Refined, Sleek, Cinematic */}
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[11px] font-mono font-bold tracking-[0.18em] text-white/80 hover:text-[#5CE1E6] px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-all duration-200"
+              className="text-[12.5px] font-sans font-medium text-white/75 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.08] transition-all duration-200 tracking-normal whitespace-nowrap"
               id={`nav-link-${link.label.toLowerCase()}`}
             >
               {link.label}
@@ -62,31 +62,30 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-2.5">
+        <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
           {onOpenRunbook && (
             <button
               onClick={onOpenRunbook}
-              className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold tracking-[0.16em] text-[#5CE1E6] hover:text-white px-3 py-1.5 rounded-full bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60 transition-all duration-200"
+              className="inline-flex items-center gap-1.5 text-[11.5px] font-sans font-semibold tracking-wide text-[#5CE1E6] hover:text-white px-3 py-1.5 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60 transition-all duration-200 whitespace-nowrap"
               id="cta-open-runbook-nav"
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>RUNBOOK</span>
+              <span>Runbook</span>
             </button>
           )}
 
           <a
             href="#product-directory"
-            className="text-[11px] font-mono font-bold tracking-[0.18em] text-white/80 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-all duration-200"
+            className="text-[12.5px] font-sans font-medium text-white/75 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.08] transition-all duration-200 whitespace-nowrap"
             id="cta-explore-directory"
           >
-            EXPLORE
+            Explore
           </a>
 
           <button
             onClick={() => onOpenJoinModal()}
-            className="group inline-flex items-center gap-2 text-[11px] font-bold tracking-[2.5px] bg-white hover:bg-white/90 text-[#070A12] px-5 py-2 rounded-full transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_30px_rgba(92,225,230,0.3)] active:scale-[0.98]"
+            className="group inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#070A12] bg-white hover:bg-white/90 px-4 py-1.5 rounded-full transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_rgba(92,225,230,0.35)] active:scale-95 whitespace-nowrap flex-shrink-0"
             id="cta-join-network-nav"
-            style={{ fontFamily: "'Denton', sans-serif" }}
           >
             <span>Join club</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -94,20 +93,20 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex sm:hidden items-center gap-2">
           {onOpenRunbook && (
             <button
               onClick={onOpenRunbook}
-              className="text-[10px] font-mono font-bold tracking-[1.5px] text-[#5CE1E6] bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 px-2.5 py-1.5 rounded-full"
+              className="text-[11px] font-sans font-semibold text-[#5CE1E6] bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 px-2.5 py-1.5 rounded-full whitespace-nowrap"
             >
-              DOCS
+              Docs
             </button>
           )}
           <button
             onClick={() => onOpenJoinModal()}
-            className="text-[11px] font-bold tracking-[2px] bg-white text-[#070A12] px-3.5 py-1.5 rounded-full active:scale-95 transition-transform"
+            className="text-[11px] font-semibold bg-white text-[#070A12] px-3 py-1.5 rounded-full active:scale-95 transition-transform whitespace-nowrap"
           >
-            JOIN
+            Join
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

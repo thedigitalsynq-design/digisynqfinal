@@ -22,12 +22,12 @@ export const AssetLightSection: React.FC = () => {
             <span className="text-white/75">We synq them.</span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
-            DigiSynq is intentionally asset-light. The value is created by connecting existing resources rather than accumulating physical depreciation.
+          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+            Rather than owning the assets that power entertainment, DigiSynq synchronizes them — reducing friction, leakage and risk while improving the utilization of existing ecosystem capacity.
           </p>
 
-          <p className="mt-3 text-xs sm:text-sm font-mono tracking-[3px] text-white/75">
-            Scale the network. Not the balance sheet.
+          <p className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] font-semibold">
+            Own less. Connect more. Make the ecosystem work better together.
           </p>
         </div>
 

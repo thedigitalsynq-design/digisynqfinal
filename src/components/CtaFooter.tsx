@@ -83,8 +83,12 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRun
             <span className="text-white/75 italic font-denton-extrabold-italic">But the visionary do.</span>
           </h3>
 
-          <p className="text-lg sm:text-xl text-white/85 font-normal mb-8 tracking-wide max-w-2xl mx-auto">
-            Cinema is full of dots. DigiSynq is the network between them.
+          <p className="text-lg sm:text-2xl text-white/90 font-normal mb-4 tracking-wide max-w-3xl mx-auto leading-relaxed font-sans">
+            DigiSynq is an asset-light coordination mechanism for the entertainment ecosystem. It operates in the space between the ecosystem's nodes — connecting producers, talent, investors, brands, distributors, exhibitors, platforms and audiences.
+          </p>
+
+          <p className="text-sm sm:text-base text-white/75 mb-8 max-w-2xl mx-auto font-sans leading-relaxed">
+            Rather than owning the assets that power entertainment, DigiSynq synchronizes them. The principle is simple: <strong className="text-white">own less, connect more, and make the ecosystem work better together.</strong>
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono font-bold tracking-[2px] text-white/80 mb-12">
