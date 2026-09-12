@@ -90,9 +90,9 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenRunbook })
             The core disconnect.
           </div>
 
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
-            Relationships connect cinema.<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">Systems break it.</span>
+          <h2 className="text-[clamp(1.4rem,6.9vw,4.4rem)] font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            <span className="block whitespace-nowrap">Relationships connect cinema.</span>
+            <span className="block whitespace-nowrap text-white/75 italic font-denton-extrabold-italic">Systems break it.</span>
           </h2>
 
           <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
