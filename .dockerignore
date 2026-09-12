@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output (built fresh inside Docker)
+dist/
+
+# Version control
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# Docker files (no need to copy these in)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# CI
+.github/
