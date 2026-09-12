@@ -66,7 +66,7 @@ export const TrustLayer: React.FC<TrustLayerProps> = ({ onOpenRunbook }) => {
 
         {/* 4 Crisp Master Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-          {masterTrustPillars.map((pillar, idx) => {
+          {masterTrustPillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
               <motion.div
@@ -81,16 +81,13 @@ export const TrustLayer: React.FC<TrustLayerProps> = ({ onOpenRunbook }) => {
                 />
 
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-start mb-4">
                     <div
                       className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/20 bg-white/[0.05]"
                       style={{ color: pillar.accent }}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono text-white/50 tracking-[1.5px] font-extrabold">
-                      0{idx + 1}
-                    </span>
                   </div>
 
                   <span

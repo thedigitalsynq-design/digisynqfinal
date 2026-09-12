@@ -196,10 +196,7 @@ export const AboutAndPrinciples: React.FC<AboutAndPrinciplesProps> = ({
                   style={{ boxShadow: 'inset 0 1px 1px 0 rgba(255,255,255,0.12), 0 8px 32px rgba(0,0,0,0.6)' }}
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-3.5">
-                      <span className={`text-xs font-mono font-extrabold ${tint.tag}`}>
-                        0{idx + 1}
-                      </span>
+                    <div className="flex items-center justify-end mb-3.5">
                       <span className={`w-2 h-2 rounded-full ${tint.dot} shadow-[0_0_8px_currentColor]`} />
                     </div>
 

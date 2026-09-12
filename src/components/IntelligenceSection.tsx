@@ -122,15 +122,12 @@ export const IntelligenceSection: React.FC = () => {
             The DigiSynq Intelligence Trajectory
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
-            {signalJourney.map((item, idx) => (
+            {signalJourney.map((item) => (
               <div
                 key={item.label}
                 className="p-5 rounded-xl cred-card text-left relative group"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-[#8B7CFF] font-bold">
-                    0{idx + 1}
-                  </span>
+                <div className="flex items-center justify-end mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#8B7CFF]" />
                 </div>
                 <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">

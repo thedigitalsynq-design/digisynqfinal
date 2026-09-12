@@ -186,7 +186,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
 
         {/* 12 Platforms Grid - CRED Tall Card Showcase */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {PLATFORMS.map((platform, idx) => {
+          {PLATFORMS.map((platform) => {
             const Icon = ICON_MAP[platform.iconName] || Network;
             const isSelected = activePlatformId === platform.id;
 
@@ -202,7 +202,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                 }`}
                 id={`platform-card-${platform.id}`}
               >
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-start mb-5">
                   <div
                     className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
                       isSelected
@@ -212,9 +212,6 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                   >
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-xs font-mono text-white/40 font-bold tracking-[2px]">
-                    0{idx + 1}.
-                  </span>
                 </div>
 
                 <h4 className="text-lg font-bold tracking-tight text-white mb-1.5 font-display">

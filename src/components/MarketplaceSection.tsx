@@ -197,10 +197,7 @@ export const MarketplaceSection: React.FC<MarketplaceSectionProps> = ({
                   : 'bg-[#0D1220]/60 border-white/[0.08] text-white/70 hover:text-white hover:border-white/20'
               }`}
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[10px] font-mono tracking-wider opacity-60">
-                  0{idx + 1}
-                </span>
+              <div className="flex items-center justify-end mb-1.5">
                 <span className={`w-1.5 h-1.5 rounded-full ${activeMarketType === idx ? 'bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]' : 'bg-transparent'}`} />
               </div>
               <span className="text-xs font-semibold block tracking-tight">

@@ -144,14 +144,14 @@ export const InteractiveUseCases: FC = () => {
 
               {/* 4-Step Resolution Sequence */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
-                {activeCase.stages.map((stage, idx) => (
+                {activeCase.stages.map((stage) => (
                   <div
                     key={stage.stage}
                     className="p-5 rounded-2xl bg-[#070A12]/70 border border-white/[0.08] hover:border-[#5CE1E6]/40 transition-all duration-200 shadow-sm text-white backdrop-blur-xl group"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-mono font-bold text-[#5CE1E6]">
-                        0{idx + 1}. {stage.stage}
+                        {stage.stage}
                       </span>
                       <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
                     </div>

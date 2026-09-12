@@ -121,7 +121,7 @@ export const ModelPipeline: React.FC<ModelPipelineProps> = ({ onOpenRunbook }) =
                     : 'bg-[#0D1220]/60 text-white/50 border-white/10 hover:border-white/30 hover:text-white'
                 }`}
               >
-                0{idx + 1}. {step.name}
+                {step.name}
               </button>
             );
           })}
@@ -140,7 +140,7 @@ export const ModelPipeline: React.FC<ModelPipelineProps> = ({ onOpenRunbook }) =
             <div className="mb-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/90 border border-[#8B7CFF]/30 text-[#8B7CFF] font-mono text-[11px] font-bold tracking-[2px] backdrop-blur-xl shadow-[0_0_15px_rgba(139,124,255,0.12)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#8B7CFF] shadow-[0_0_8px_#8B7CFF]" />
-                Phase 0{activeStepIndex + 1} — {currentStep.name}
+                {currentStep.name}
               </div>
             </div>
 

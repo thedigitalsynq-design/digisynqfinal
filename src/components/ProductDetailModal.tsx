@@ -188,14 +188,11 @@ export const ProductDetailModal: FC<ProductDetailModalProps> = ({
               Automated Lifecycle Workflow
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {product.workflowSteps.map((step, idx) => (
+              {product.workflowSteps.map((step) => (
                 <div
                   key={step}
                   className="p-4 rounded-2xl apple-glass text-left"
                 >
-                  <span className="text-[10px] font-mono text-[#5CE1E6] block mb-1 font-semibold">
-                    Step 0{idx + 1}
-                  </span>
                   <p className="text-xs text-[var(--text-secondary)] leading-snug">
                     {step}
                   </p>

@@ -720,9 +720,7 @@ export const RunbookModal: FC<RunbookModalProps> = ({
                     key={si}
                     className="p-3.5 rounded-lg bg-[#0D1220]/75 border border-white/10 flex items-start gap-3 text-xs text-white/85 shadow-sm"
                   >
-                    <span className="w-6 h-6 rounded-full bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 flex items-center justify-center font-mono text-[10px] text-[#5CE1E6] font-bold flex-shrink-0 mt-0.5">
-                      {(si + 1).toString().padStart(2, '0')}
-                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] flex-shrink-0 mt-1.5" />
                     <span className="leading-relaxed font-sans">{step}</span>
                   </div>
                 ))}
