@@ -89,17 +89,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             transition={{ duration: 0.7, delay: 0.20, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 text-lg sm:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto"
           >
-            DigiSynq connects the fragmented people, projects, assets, content, audiences
-            and opportunities that power the global cinema ecosystem.
+            DigiSynq is the asset-light operating mechanism of the entire entertainment ecosystem. Every stakeholder is a node — we are the connecting space between them: we sync, we coordinate, we collaborate.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-3 text-xs sm:text-sm font-mono tracking-[3px] text-white/40 max-w-xl mx-auto"
+            className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-white/60 max-w-2xl mx-auto"
           >
-            An asset-light operating system for visionaries.
+            All stakeholders in one network. Connecting every node with zero balance-sheet friction.
           </motion.p>
 
           {/* Action Buttons */}

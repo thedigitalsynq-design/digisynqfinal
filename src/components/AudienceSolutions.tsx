@@ -27,16 +27,16 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
-            Ecosystem participants.
+            Every stakeholder is a node.
           </div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
-            Crafted for visionaries.<br />
-            <span className="text-white/75">Across every stakeholder.</span>
+            All stakeholders in our bucket.<br />
+            <span className="text-white/75">We sync the space between them.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
-            DigiSynq coordinates the fragmented commercial, technical, and artistic nodes of cinema into a unified high-velocity operating network.
+          <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto">
+            Producers, talent, crew, rental houses, facilities, distributors, exhibitors, and sponsors. DigiSynq is the asset-light operating mechanism: we sync, we coordinate, we collaborate.
           </p>
         </div>
 

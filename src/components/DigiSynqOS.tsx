@@ -77,12 +77,12 @@ export const DigiSynqOS: React.FC = () => {
           </div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
-            The operating system.<br />
-            <span className="text-white/75">For connected cinema.</span>
+            The operating mechanism.<br />
+            <span className="text-white/75">Connecting every node in cinema.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
-            Introducing <strong className="text-white">DigiSynq OS</strong>: our architectural blueprint for unifying the entire lifecycle of cinema into one seamless, interoperable digital protocol.
+          <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto">
+            Introducing <strong className="text-white">DigiSynq OS</strong>: the asset-light operating mechanism of the whole entertainment ecosystem. All stakeholders are nodes — we connect the space between them: we sync, we coordinate, we collaborate.
           </p>
         </div>
 
