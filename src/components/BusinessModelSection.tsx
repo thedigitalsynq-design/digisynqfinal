@@ -52,20 +52,25 @@ export const BusinessModelSection: React.FC = () => {
   return (
     <section
       id="business-model"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            <DollarSign className="w-3.5 h-3.5" />
-            Economic Architecture
+      {/* Ambient background glow */}
+      <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+            Economic architecture.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            Value without asset ownership.
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            Value without ownership.<br />
+            <span className="text-white/75">Five diversified revenue engines.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
             Five diversified revenue engines monetize transactions, software velocity, and intelligence across the entire cinema value chain.
           </p>
         </div>
@@ -75,93 +80,93 @@ export const BusinessModelSection: React.FC = () => {
           {revenueEngines.map((engine, idx) => (
             <div
               key={engine.name}
-              className="rounded-3xl ds-card p-6 sm:p-7 flex flex-col justify-between"
+              className="rounded-3xl bg-[#0D1220]/70 border border-white/[0.08] hover:border-[#5CE1E6]/40 p-6 sm:p-7 flex flex-col justify-between backdrop-blur-xl shadow-lg transition-all"
             >
               <div>
                 <div className="flex items-center justify-between mb-3.5">
-                  <span className="text-xs font-mono text-[#E5A919] uppercase tracking-wider font-semibold">
+                  <span className="text-xs font-mono text-[#5CE1E6] tracking-wider font-semibold">
                     Engine 0{idx + 1}
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-[#E5A919]" />
+                  <span className="w-2 h-2 rounded-full bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]" />
                 </div>
 
-                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1 tracking-tight">
+                <h3 className="text-lg font-bold text-white mb-1 tracking-tight">
                   {engine.name}
                 </h3>
-                <div className="text-xs text-[#E5A919] font-mono mb-3 font-medium">
+                <div className="text-xs text-[#5CE1E6] font-mono mb-3 font-medium">
                   {engine.summary}
                 </div>
 
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4">
                   {engine.description}
                 </p>
 
-                <div className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.04] mb-4 text-xs font-mono text-[var(--text-tertiary)]">
-                  <span className="text-[var(--text-tertiary)] block text-[10px] uppercase font-semibold">Associated Platforms:</span>
-                  <span className="text-[var(--text-primary)]">{engine.examples}</span>
+                <div className="p-3 rounded-xl bg-[#070A12]/80 border border-white/[0.08] mb-4 text-xs font-mono text-white/50">
+                  <span className="text-white/40 block text-[10px] font-semibold">Associated Platforms:</span>
+                  <span className="text-white/80">{engine.examples}</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-black/[0.04] text-[11px] font-mono text-[#E5A919] font-medium">
+              <div className="pt-3 border-t border-white/[0.08] text-[11px] font-mono text-[#5CE1E6] font-medium">
                 Model: {engine.pricing}
               </div>
             </div>
           ))}
 
           {/* 6th Card: Additional Expansion Streams */}
-          <div className="rounded-3xl ds-card border-[var(--accent-gold)]/30 p-6 sm:p-7 flex flex-col justify-between">
+          <div className="rounded-3xl bg-[#0D1220]/70 border border-[#8B7CFF]/30 hover:border-[#8B7CFF]/60 p-6 sm:p-7 flex flex-col justify-between backdrop-blur-xl shadow-lg transition-all">
             <div>
-              <span className="text-xs font-mono text-[#E5A919] uppercase tracking-wider block mb-3 font-semibold">
+              <span className="text-xs font-mono text-[#8B7CFF] tracking-wider block mb-3 font-semibold">
                 Synergistic Expansion Streams
               </span>
-              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3 tracking-tight">
+              <h3 className="text-lg font-bold text-white mb-3 tracking-tight">
                 Ecosystem Monetization
               </h3>
-              <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
+              <ul className="space-y-2.5 text-xs text-white/70">
                 {['High-intent qualified lead generation for vendors', 'Secured escrow transaction fees & currency clearing', 'Premium visibility algorithms for qualified releases', 'Standardized legal deal memo & contract automation', 'Certified partner financial advisory workflows'].map((s) => (
                   <li key={s} className="flex items-center gap-2.5">
-                    <span className="text-[#E5A919] font-bold">✓</span>
+                    <span className="text-[#8B7CFF] font-bold">✓</span>
                     <span>{s}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-4 border-t border-black/[0.04] text-[11px] font-mono text-[var(--text-tertiary)] font-medium">
+            <div className="pt-4 border-t border-white/[0.08] text-[11px] font-mono text-white/40 font-medium">
               Compounding Network Economics
             </div>
           </div>
         </div>
 
-        {/* SECTION 36: WHY DIGISYNQ COMPARISON - Apple Compare Table */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 shadow-sm">
+        {/* Category Redefinition comparison table */}
+        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919] block mb-1 font-semibold">
+            <span className="text-xs font-mono tracking-widest text-[#5CE1E6] block mb-1 font-semibold">
               Category Redefinition
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-denton-extrabold">
               Why DigiSynq?
             </h3>
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">
+            <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed">
               DigiSynq is not a marketplace, not a social network, and not another standalone film database. It is the operating network that unites them.
             </p>
           </div>
 
-          <div className="divide-y divide-black/[0.04]">
+          <div className="divide-y divide-white/[0.06]">
             {comparisonPoints.map((item) => (
               <div
                 key={item.label}
                 className="py-4.5 grid grid-cols-1 md:grid-cols-12 gap-3 items-center"
               >
-                <div className="md:col-span-4 text-xs sm:text-sm font-bold text-[var(--text-primary)]">
+                <div className="md:col-span-4 text-xs sm:text-sm font-bold text-white">
                   {item.label}
                 </div>
-                <div className="md:col-span-4 flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
-                  <X className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                <div className="md:col-span-4 flex items-center gap-2 text-xs text-white/60">
+                  <X className="w-3.5 h-3.5 text-[#FFC857] shrink-0" />
                   <span>{item.legacy}</span>
                 </div>
-                <div className="md:col-span-4 flex items-center gap-2 text-xs text-[#E5A919] font-semibold">
-                  <Check className="w-3.5 h-3.5 text-[#E5A919] shrink-0 font-bold" />
+                <div className="md:col-span-4 flex items-center gap-2 text-xs text-[#5EF2B0] font-semibold">
+                  <Check className="w-3.5 h-3.5 text-[#5EF2B0] shrink-0 font-bold" />
                   <span>{item.digisynq}</span>
                 </div>
               </div>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight, Network } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
   onOpenJoinModal: (role?: string) => void;
@@ -29,30 +29,28 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navigation"
       className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-300"
     >
-      <div className="max-w-6xl mx-auto rounded-full bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-sm px-4 sm:px-6 py-2.5 flex items-center justify-between pointer-events-auto">
+      <div className="max-w-6xl mx-auto rounded-full bg-[#07080B]/85 backdrop-blur-2xl border border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 sm:px-6 py-2.5 flex items-center justify-between pointer-events-auto">
 
-        {/* Brand Logo */}
+        {/* Brand Logo — mix-blend-mode:screen makes black bg transparent */}
         <a
           href="#"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex items-center group focus:outline-none"
           id="brand-logo-link"
         >
-          <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#111111] group-hover:opacity-90 transition-all duration-200">
-            <Network className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--accent-gold)]" />
-          </div>
-          <span className="text-base sm:text-lg font-bold tracking-tight text-[var(--text-primary)] font-sans">
-            Digi<span className="text-[var(--accent-gold)]">Synq</span>
-          </span>
+          <img
+            src="/digisynq-logo.png"
+            alt="DigiSynq"
+            className="h-8 sm:h-9 w-auto object-contain transition-all duration-200"
+          />
         </a>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-0.5">
+        {/* Desktop Nav Links — CRED-style tracked  */}
+        <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-3.5 py-1.5 rounded-full hover:bg-black/[0.04] transition-all duration-150"
+              className="text-[11px] font-mono font-bold tracking-[0.18em] text-white/80 hover:text-[#5CE1E6] px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-all duration-200"
               id={`nav-link-${link.label.toLowerCase()}`}
             >
               {link.label}
@@ -61,21 +59,22 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-3">
           <a
             href="#product-directory"
-            className="text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-3.5 py-1.5 rounded-full hover:bg-black/[0.04] transition-all duration-150"
+            className="text-[11px] font-mono font-bold tracking-[0.18em] text-white/80 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-all duration-200"
             id="cta-explore-directory"
           >
-            Explore
+            EXPLORE
           </a>
 
           <button
             onClick={() => onOpenJoinModal()}
-            className="group inline-flex items-center gap-1.5 text-[13px] font-semibold bg-[#111111] hover:bg-black text-white px-5 py-2 rounded-full transition-all duration-200 shadow-xs"
+            className="group inline-flex items-center gap-2 text-[11px] font-bold tracking-[2.5px] bg-white hover:bg-white/90 text-[#070A12] px-5 py-2 rounded-full transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_30px_rgba(92,225,230,0.3)] active:scale-[0.98]"
             id="cta-join-network-nav"
+            style={{ fontFamily: "'Denton', sans-serif" }}
           >
-            <span>Get Started</span>
+            <span>Join club</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
@@ -84,13 +83,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => onOpenJoinModal()}
-            className="text-[12px] font-semibold bg-[#111111] text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-transform"
+            className="text-[11px] font-bold tracking-[2px] bg-white text-[#070A12] px-3.5 py-1.5 rounded-full active:scale-95 transition-transform"
           >
-            Join
+            JOIN
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none rounded-xl bg-black/[0.04] border border-black/[0.07] transition-colors"
+            className="p-1.5 text-white/85 hover:text-white focus:outline-none rounded-xl bg-white/[0.06] border border-white/[0.10] transition-colors"
             aria-label="Toggle navigation menu"
             id="mobile-menu-toggle-btn"
           >
@@ -108,14 +107,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -8, height: 0 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden max-w-6xl mx-auto mt-2 bg-white/98 border border-black/[0.08] rounded-3xl px-6 py-6 space-y-1 backdrop-blur-2xl shadow-xl overflow-hidden pointer-events-auto"
+            className="md:hidden max-w-6xl mx-auto mt-2 bg-[#070A12]/95 border border-white/[0.14] rounded-3xl px-6 pt-5 pb-6 space-y-1 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9),inset_0_1px_1px_0_rgba(255,255,255,0.2)] overflow-hidden pointer-events-auto"
           >
+            {/* Logo in mobile drawer */}
+            <div className="pb-4 mb-2 border-b border-white/[0.08]">
+              <img
+                src="/digisynq-logo.png"
+                alt="DigiSynq"
+                className="h-8 w-auto object-contain"
+              />
+            </div>
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent-gold)] py-2.5 border-b border-black/[0.04] transition-colors last:border-0"
+                className="block text-xs font-mono font-bold tracking-[0.2em] text-white/80 hover:text-[#5CE1E6] py-2.5 border-b border-white/[0.06] transition-colors last:border-0"
               >
                 {link.label}
               </a>
@@ -124,15 +131,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 href="#product-directory"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center text-sm font-medium text-[var(--text-primary)] py-2.5 rounded-full border border-black/[0.10] hover:bg-black/[0.03] transition-colors"
+                className="w-full text-center text-xs font-mono font-bold tracking-[0.2em] text-white/70 py-2.5 rounded-full border border-white/[0.16] hover:bg-white/[0.06] transition-colors"
               >
-                Explore DigiSynq Directory
+                Explore directory
               </a>
               <button
                 onClick={() => { setMobileMenuOpen(false); onOpenJoinModal(); }}
-                className="w-full text-center text-sm font-semibold text-white bg-[#111111] hover:bg-black py-2.5 rounded-full transition-colors active:scale-[0.98]"
+                className="w-full text-center text-xs font-bold tracking-[2.5px] text-[#070A12] bg-white hover:bg-white/90 py-3 rounded-full transition-colors active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.25)]"
               >
-                Join the Network
+                Join the network
               </button>
             </div>
           </motion.div>

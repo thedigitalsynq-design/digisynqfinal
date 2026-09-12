@@ -17,26 +17,30 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
   return (
     <section
       id="audience-solutions"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            <Users className="w-3.5 h-3.5" />
-            Ecosystem Participants
+      {/* Ambient background glow */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+            Ecosystem participants.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            Built around everyone who <br />
-            <span className="text-[#E5A919]">moves cinema forward.</span>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            Crafted for visionaries.<br />
+            <span className="text-white/75">Across every stakeholder.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
             DigiSynq coordinates the fragmented commercial, technical, and artistic nodes of cinema into a unified high-velocity operating network.
           </p>
         </div>
 
-        {/* Stakeholder Category Tabs - Apple Segmented Pill Track */}
+        {/* Stakeholder Category Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-thin">
           {AUDIENCE_SEGMENTS.map((segment) => {
             const isSelected = activeSegmentId === segment.id;
@@ -44,10 +48,10 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
               <button
                 key={segment.id}
                 onClick={() => setActiveSegmentId(segment.id)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 border ${
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 border backdrop-blur-xl ${
                   isSelected
-                    ? 'bg-[#111111] text-white border-transparent shadow-sm'
-                    : 'ds-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    ? 'bg-white text-[#070A12] border-white shadow-[0_0_20px_rgba(255,255,255,0.25)] font-bold'
+                    : 'bg-[#0D1220]/70 text-white/60 border-white/[0.08] hover:border-white/20 hover:text-white'
                 }`}
                 id={`btn-audience-${segment.id}`}
               >
@@ -57,8 +61,8 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
           })}
         </div>
 
-        {/* Active Segment Feature Panel - Apple Squircle Showcase with Smooth Crossfade */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12 overflow-hidden shadow-lg">
+        {/* Active Segment Feature Panel */}
+        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl relative backdrop-blur-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSegment.id}
@@ -70,28 +74,28 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
             >
               {/* Left Description */}
               <div className="lg:col-span-7 space-y-5">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
+                <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#5CE1E6] font-semibold">
                   <span>Stakeholder Profile: {activeSegment.title}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                   Tailored solutions for {activeSegment.title.toLowerCase()}.
                 </h3>
 
-                <p className="text-base text-[var(--text-secondary)] leading-relaxed">
+                <p className="text-base text-white/70 leading-relaxed">
                   {activeSegment.description}
                 </p>
 
                 <div className="space-y-3 pt-2">
-                  <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-xs sm:text-sm text-[var(--text-secondary)]">
-                    <span className="font-mono uppercase tracking-wider text-red-600 block mb-1 font-semibold">
+                  <div className="p-4 rounded-2xl bg-[#FFC857]/10 border border-[#FFC857]/25 text-xs sm:text-sm text-white/90 backdrop-blur-xl">
+                    <span className="font-mono tracking-wider text-[#FFC857] block mb-1 font-semibold">
                       The Friction Today:
                     </span>
                     {activeSegment.painPoint}
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/25 text-xs sm:text-sm text-[var(--text-primary)]">
-                    <span className="font-mono uppercase tracking-wider text-[#E5A919] block mb-1 font-semibold">
+                  <div className="p-4 rounded-2xl bg-[#5CE1E6]/10 border border-[#5CE1E6]/25 text-xs sm:text-sm text-white/90 backdrop-blur-xl">
+                    <span className="font-mono tracking-wider text-[#5CE1E6] block mb-1 font-semibold">
                       The DigiSynq Network Solution:
                     </span>
                     {activeSegment.digiSynqSolution}
@@ -101,20 +105,20 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
                 <div className="pt-2 flex flex-wrap items-center gap-4">
                   <button
                     onClick={() => onOpenJoinModal(activeSegment.title)}
-                    className="ds-btn-primary inline-flex items-center gap-2 px-6 py-2.5 text-xs sm:text-sm font-semibold"
+                    className="px-6 py-2.5 rounded-2xl bg-white text-[#070A12] hover:bg-white/90 font-bold text-xs sm:text-sm inline-flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
                   >
                     <span>Connect as {activeSegment.title}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </button>
-                  <span className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
+                  <span className="text-xs font-mono text-white/50 font-medium">
                     {activeSegment.businessModelNote}
                   </span>
                 </div>
               </div>
 
               {/* Right Product Pairing Matrix */}
-              <div className="lg:col-span-5 bg-black/[0.02] border border-black/[0.06] rounded-2xl p-6 sm:p-7 space-y-4">
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
+              <div className="lg:col-span-5 bg-[#070A12]/80 border border-white/[0.08] rounded-2xl p-6 sm:p-7 space-y-4">
+                <span className="text-xs font-mono tracking-wider text-white/50 block font-semibold">
                   Primary Network Hubs for {activeSegment.title}
                 </span>
 
@@ -122,22 +126,22 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
                   {activeSegment.keyProducts.map((prod) => (
                     <div
                       key={prod}
-                      className="p-3.5 rounded-xl bg-white border border-black/[0.06] flex items-center justify-between shadow-xs"
+                      className="p-3.5 rounded-xl bg-[#0D1220]/70 border border-white/[0.08] flex items-center justify-between shadow-xs text-white"
                     >
                       <div>
-                        <div className="text-sm font-bold text-[var(--text-primary)] font-mono">
+                        <div className="text-sm font-bold text-white font-mono">
                           {prod}
                         </div>
-                        <div className="text-[11px] text-[var(--text-tertiary)]">
+                        <div className="text-[11px] text-white/50">
                           Synchronized Module
                         </div>
                       </div>
-                      <span className="w-2 h-2 rounded-full bg-[#E5A919]" />
+                      <span className="w-2 h-2 rounded-full bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]" />
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-4 border-t border-black/[0.04] text-[11px] text-[var(--text-tertiary)] font-mono leading-relaxed">
+                <div className="pt-4 border-t border-white/[0.08] text-[11px] text-white/50 font-mono leading-relaxed">
                   All participant actions are secured by SynqTrust cryptographic badges and automated escrow milestones.
                 </div>
               </div>

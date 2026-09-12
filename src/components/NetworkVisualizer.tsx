@@ -248,24 +248,24 @@ export const NetworkVisualizer: React.FC = () => {
           ctx.lineTo(target.px, target.py);
 
           if (isExplicitlyHighlighted) {
-            // Highly highlighted single link
-            ctx.strokeStyle = '#FFE270';
+            // Highly highlighted single link in Electric Cyan
+            ctx.strokeStyle = '#5CE1E6';
             ctx.lineWidth = 3;
-            ctx.shadowColor = '#E5A919';
+            ctx.shadowColor = '#5CE1E6';
             ctx.shadowBlur = 14;
             ctx.stroke();
             ctx.shadowBlur = 0;
           } else if (isConnectedToFocused) {
             // Edges connected directly to active or hovered node
-            ctx.strokeStyle = 'rgba(229, 169, 25, 0.72)';
+            ctx.strokeStyle = 'rgba(92, 225, 230, 0.75)';
             ctx.lineWidth = 2;
-            ctx.shadowColor = '#E5A919';
+            ctx.shadowColor = '#5CE1E6';
             ctx.shadowBlur = 8;
             ctx.stroke();
             ctx.shadowBlur = 0;
           } else {
-            // Ambient mesh background lines linking all remaining nodes
-            ctx.strokeStyle = 'rgba(200, 200, 210, 0.35)';
+            // Ambient mesh background lines linking all remaining nodes with subtle Aurora Blue tint
+            ctx.strokeStyle = 'rgba(77, 141, 255, 0.25)';
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -281,26 +281,26 @@ export const NetworkVisualizer: React.FC = () => {
 
               ctx.beginPath();
               ctx.arc(curX, curY, isExplicitlyHighlighted ? 3.6 : 2.6, 0, Math.PI * 2);
-              ctx.fillStyle = isExplicitlyHighlighted ? '#FFFFFF' : '#FFE270';
-              ctx.shadowColor = '#E5A919';
+              ctx.fillStyle = isExplicitlyHighlighted ? '#FFFFFF' : '#5CE1E6';
+              ctx.shadowColor = '#5CE1E6';
               ctx.shadowBlur = 10;
               ctx.fill();
               ctx.shadowBlur = 0;
             }
           } else {
-            // 1 Subtle ambient pulse for secondary mesh edges
+            // 1 Subtle ambient pulse for secondary mesh edges with Digital Violet tint
             const speedOffset = (time * 0.22 + (idx * 0.17)) % 1;
             const curX = source.px + (target.px - source.px) * speedOffset;
             const curY = source.py + (target.py - source.py) * speedOffset;
 
             ctx.beginPath();
             ctx.arc(curX, curY, 1.6, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(229, 169, 25, 0.45)';
+            ctx.fillStyle = 'rgba(139, 124, 255, 0.45)';
             ctx.fill();
           }
         });
 
-        // Expanding beacon ripples around active node
+        // Expanding beacon ripples around active node in Electric Cyan
         const activePos = positions.find((n) => n.id === activeTargetId);
         if (activePos) {
           for (let r = 0; r < 2; r++) {
@@ -308,7 +308,7 @@ export const NetworkVisualizer: React.FC = () => {
             const ringAlpha = Math.max(0, 1 - ringRadius / 56) * 0.4;
             ctx.beginPath();
             ctx.arc(activePos.px, activePos.py, ringRadius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(229, 169, 25, ${ringAlpha})`;
+            ctx.strokeStyle = `rgba(92, 225, 230, ${ringAlpha})`;
             ctx.lineWidth = 1.2;
             ctx.stroke();
           }
@@ -319,7 +319,7 @@ export const NetworkVisualizer: React.FC = () => {
         if (centerPos) {
           ctx.beginPath();
           ctx.arc(centerPos.px, centerPos.py, 38 + Math.sin(time * 1.5) * 3, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(229, 169, 25, 0.25)';
+          ctx.strokeStyle = 'rgba(92, 225, 230, 0.25)';
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -356,33 +356,33 @@ export const NetworkVisualizer: React.FC = () => {
   return (
     <div
       id="hero-network-visualizer"
-      className="relative w-full rounded-3xl bg-white border border-[var(--border-hairline)] p-5 sm:p-7 lg:p-8 overflow-hidden"
+      className="relative w-full rounded-3xl bg-[#070A12]/95 border border-white/[0.12] p-5 sm:p-7 lg:p-8 overflow-hidden backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.15)]"
     >
 
       {/* Top Controls Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-hairline)] relative z-10">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-gold)] animate-pulse" />
-          <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#5CE1E6] animate-pulse shadow-[0_0_8px_#5CE1E6]" />
+          <span className="text-xs font-mono tracking-widest text-[#5CE1E6] font-semibold">
             Cinema Graph Topology
           </span>
           <span className="text-xs text-[var(--text-tertiary)] font-mono hidden sm:inline">|</span>
           <span className="text-xs text-[var(--text-secondary)] font-mono">
             8 Ecosystem Nodes
           </span>
-          <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#E5A919]/10 text-[#E5A919] border border-[#E5A919]/25 font-bold">
+          <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#5CE1E6]/10 text-[#5CE1E6] border border-[#5CE1E6]/25 font-bold">
             28 Full-Mesh Links
           </span>
         </div>
 
         {/* State Toggle: Synchronized vs Fragmented (Apple Segmented Control) */}
-        <div className="flex items-center p-1 rounded-full bg-black/[0.04] border border-black/[0.06] text-xs">
+        <div className="flex items-center p-1 rounded-full bg-white/[0.06] border border-white/[0.10] text-xs">
           <button
             onClick={() => setIsSynchronized(true)}
             className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               isSynchronized
-                ? 'bg-[#111111] text-white shadow-sm font-bold'
-                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                ? 'bg-white text-[#070A12] shadow-sm font-bold'
+                : 'text-white/60 hover:text-white'
             }`}
             id="btn-state-synchronized"
           >
@@ -392,7 +392,7 @@ export const NetworkVisualizer: React.FC = () => {
             onClick={() => setIsSynchronized(false)}
             className={`px-3.5 py-1 rounded-full font-medium transition-all duration-200 ${
               !isSynchronized
-                ? 'bg-red-500/15 text-red-600 border border-red-500/30 font-semibold'
+                ? 'bg-[#FFC857]/15 text-[#FFC857] border border-[#FFC857]/40 font-semibold shadow-[0_0_12px_rgba(255,200,87,0.15)]'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
             id="btn-state-fragmented"
@@ -434,15 +434,15 @@ export const NetworkVisualizer: React.FC = () => {
               <div
                 className={`relative flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border transition-all duration-200 shadow-sm ${
                   isSelected
-                    ? 'bg-[#111111] border-[#111111] text-white shadow-md font-bold'
+                    ? 'bg-white border-white text-[#070A12] shadow-lg font-extrabold'
                     : isHovered
-                    ? 'bg-white border-[#E5A919] text-[var(--text-primary)] shadow-sm'
-                    : 'bg-white border-black/[0.08] text-[var(--text-primary)] hover:border-[#E5A919]/60'
+                    ? 'bg-[#0D1220] border-[#5CE1E6] text-white shadow-sm'
+                    : 'bg-[#070A12]/90 border-white/[0.12] text-white hover:border-[#5CE1E6]/60'
                 }`}
               >
                 <span
                   className={`w-2 h-2 rounded-full ${
-                    isSelected ? 'bg-[var(--accent-gold)]' : isSynchronized ? 'bg-[#E5A919]' : 'bg-neutral-400'
+                    isSelected ? 'bg-[#5CE1E6]' : isSynchronized ? 'bg-[#5EF2B0]' : 'bg-[#FFC857]'
                   }`}
                 />
                 <span className="text-xs sm:text-sm font-semibold tracking-tight">
@@ -452,8 +452,8 @@ export const NetworkVisualizer: React.FC = () => {
                 <span
                   className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     isSelected
-                      ? 'bg-white/20 text-white font-bold'
-                      : 'bg-black/[0.04] text-[var(--text-tertiary)]'
+                      ? 'bg-black/20 text-[#070A12] font-bold'
+                      : 'bg-white/[0.08] text-white/60'
                   }`}
                 >
                   7 links
@@ -461,14 +461,14 @@ export const NetworkVisualizer: React.FC = () => {
 
                 {/* Outer halo when selected */}
                 {isSelected && (
-                  <span className="absolute -inset-1 rounded-full border border-[#E5A919]/50 animate-ping pointer-events-none" />
+                  <span className="absolute -inset-1 rounded-full border border-[#5CE1E6]/60 animate-ping pointer-events-none" />
                 )}
               </div>
             </button>
           );
         })}
 
-        {/* Fragmented State Overlay Banner */}
+        {/* Fragmented State Overlay Banner (Amber Attention State) */}
         <AnimatePresence>
           {!isSynchronized && (
             <motion.div
@@ -478,11 +478,11 @@ export const NetworkVisualizer: React.FC = () => {
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
-              <div className="bg-red-50 border border-red-200 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
-                <p className="text-[11px] font-mono text-red-600 uppercase tracking-widest mb-1.5 font-semibold">
+              <div className="bg-[#0D1220]/90 border border-[#FFC857]/40 rounded-2xl px-6 py-4 text-center backdrop-blur-xl max-w-sm shadow-xl">
+                <p className="text-[11px] font-mono text-[#FFC857] tracking-widest mb-1.5 font-semibold">
                   Legacy Industry Friction
                 </p>
-                <p className="text-xs sm:text-sm text-red-700 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-white/80 font-medium leading-relaxed">
                   Disconnected phone calls, idle equipment, and opaque packaging leave 65% of potential cinema value stranded without cross-node linking.
                 </p>
               </div>
@@ -492,7 +492,7 @@ export const NetworkVisualizer: React.FC = () => {
       </div>
 
       {/* Interactive Detail Inspector for Selected Node with All 7 Interconnected Links */}
-      <div className="pt-5 border-t border-black/[0.06] overflow-hidden">
+      <div className="pt-5 border-t border-white/[0.08] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeNode.id}
@@ -504,7 +504,7 @@ export const NetworkVisualizer: React.FC = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
               <div className="md:col-span-4">
-                <div className="flex items-center gap-1.5 text-[#E5A919] text-xs font-mono uppercase tracking-wider mb-1 font-semibold">
+                <div className="flex items-center gap-1.5 text-[#5CE1E6] text-xs font-mono tracking-wider mb-1 font-semibold">
                   <Zap className="w-3.5 h-3.5" />
                   <span>Active Node Inspection</span>
                 </div>
@@ -522,10 +522,10 @@ export const NetworkVisualizer: React.FC = () => {
 
               <div className="md:col-span-3 flex md:justify-end">
                 <div className="ds-card rounded-xl px-4 py-2 w-full md:w-auto text-left md:text-right">
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-tertiary)] block">
+                  <span className="text-[10px] font-mono tracking-widest text-[var(--text-tertiary)] block">
                     Network Telemetry
                   </span>
-                  <span className="text-xs font-semibold text-[#E5A919] font-mono">
+                  <span className="text-xs font-semibold text-[#5EF2B0] font-mono">
                     {activeNode.signalMetric}
                   </span>
                 </div>
@@ -533,11 +533,11 @@ export const NetworkVisualizer: React.FC = () => {
             </div>
 
             {/* All 7 Direct Node-to-Node Interconnected Links */}
-            <div className="pt-3 border-t border-black/[0.04]">
+            <div className="pt-3 border-t border-white/[0.06]">
               <div className="flex items-center justify-between mb-2.5">
                 <div className="flex items-center gap-2">
-                  <Network className="w-3.5 h-3.5 text-[#E5A919]" />
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
+                  <Network className="w-3.5 h-3.5 text-[#5CE1E6]" />
+                  <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] font-semibold">
                     Direct Interconnected Links for {activeNode.label} (7 of 7 Nodes Connected):
                   </span>
                 </div>
@@ -567,8 +567,8 @@ export const NetworkVisualizer: React.FC = () => {
                       onMouseLeave={() => setHighlightedEdgeKey(null)}
                       className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between ${
                         isLinkActive
-                          ? 'border-[#E5A919] bg-[#E5A919]/15 shadow-sm'
-                          : 'bg-black/[0.02] border-black/[0.06] hover:border-[#E5A919]/50'
+                          ? 'border-[#5CE1E6] bg-[#5CE1E6]/15 shadow-sm'
+                          : 'bg-white/[0.03] border-white/[0.08] hover:border-[#5CE1E6]/50'
                       }`}
                       title={`Inspect ${targetNode.label} node`}
                     >
@@ -576,7 +576,7 @@ export const NetworkVisualizer: React.FC = () => {
                         <span className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1">
                           <span>↔</span> {targetNode.label}
                         </span>
-                        <ArrowUpRight className="w-3 h-3 text-[#E5A919]" />
+                        <ArrowUpRight className="w-3 h-3 text-[#5CE1E6]" />
                       </div>
                       <span className="text-[11px] text-[var(--text-secondary)] leading-snug line-clamp-1">
                         {linkPurpose}

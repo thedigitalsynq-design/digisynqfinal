@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertCircle, CheckCircle, Split, Network } from 'lucide-react';
+import { AlertCircle, Split, Network } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const ProblemSection: React.FC = () => {
@@ -51,65 +51,72 @@ export const ProblemSection: React.FC = () => {
   return (
     <section
       id="problem"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
+      className="py-28 sm:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="cred-hairline absolute top-0 left-0" />
 
-        {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Header (CRED Style) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-16"
         >
-          <div className="ds-section-label mb-5">
-            <AlertCircle className="w-3.5 h-3.5 text-red-500" />
-            The Core Disconnect
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-sm bg-[#070A12] border border-white/25 text-white/90 font-mono text-[11px] font-bold tracking-[3px] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFC857] shadow-[0_0_8px_#FFC857]" />
+            The core disconnect.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
-            Cinema is connected by relationships,{' '}
-            <span className="text-[var(--text-tertiary)]">but fragmented by systems.</span>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            Relationships connect cinema.<br />
+            <span className="text-white/75 italic font-denton-extrabold-italic">Systems break it.</span>
           </h2>
 
-          <p className="mt-5 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
             Cinema doesn't lack talent, resources, content, audiences or opportunities.
-            It loses value when they remain fragmented, disconnected, underutilized and
-            difficult to coordinate.
+            It loses value when they remain fragmented, disconnected, and locked in silos.
           </p>
 
-          {/* Segmented Control */}
-          <div className="mt-9 inline-flex items-center p-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-hairline)]">
+          {/* Segmented Control (CRED Style) */}
+          <div className="mt-10 inline-flex items-center p-1 rounded-full bg-white/[0.05] border border-white/15 backdrop-blur-xl">
             <button
               onClick={() => setActiveTab('fragmented')}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-[2px] transition-all duration-200 ${
                 activeTab === 'fragmented'
-                  ? 'bg-white text-red-600 border border-red-500/25 shadow-sm'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  ? 'bg-[#FFC857]/15 text-[#FFC857] border border-[#FFC857]/40 shadow-[0_0_20px_rgba(255,200,87,0.2)]'
+                  : 'text-white/50 hover:text-white'
               }`}
               id="tab-fragmented-industry"
             >
-              <Split className="w-4 h-4" />
-              <span>The Fragmented Reality</span>
+              <Split className="w-3.5 h-3.5" />
+              <span>The fragmented reality</span>
             </button>
             <button
               onClick={() => setActiveTab('connected')}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-[2px] transition-all duration-200 ${
                 activeTab === 'connected'
-                  ? 'bg-[#111111] text-white shadow-sm'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  ? 'bg-white text-[#070A12] shadow-[0_0_25px_rgba(255,255,255,0.3)] font-bold'
+                  : 'text-white/50 hover:text-white'
               }`}
               id="tab-digisynq-connected"
             >
-              <Network className="w-4 h-4" />
-              <span>DigiSynq Connects the Dots</span>
+              <Network className="w-3.5 h-3.5" />
+              <span>DigiSynq connected</span>
             </button>
           </div>
         </motion.div>
 
-        {/* Bento Grid of 8 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Bento Grid of 8 cards (CRED Style) */}
+        <div className="relative">
+          {/* 3D Glassmorphic Floating Depth Spheres */}
+          <div className="glass-sphere sphere-navy w-52 h-52 -top-14 -right-10 animate-float-slow opacity-85" />
+          <div className="glass-sphere sphere-violet w-44 h-44 -bottom-14 -left-8 animate-float-reverse opacity-80" />
+          <div className="glass-sphere sphere-aurora w-32 h-32 top-1/2 left-1/2 -translate-x-1/2 opacity-70" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
           {problemPoints.map((item, index) => (
             <motion.div
               key={item.title}
@@ -117,26 +124,25 @@ export const ProblemSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className={`relative rounded-2xl p-6 border transition-all duration-300 ${
+              className={`relative rounded-xl p-6 cred-card transition-all duration-300 ${
                 activeTab === 'connected'
-                  ? 'ds-card hover:border-[var(--accent-gold)]/40'
-                  : 'ds-card hover:border-red-400/30'
+                  ? 'hover:border-[#5CE1E6]/40'
+                  : 'hover:border-[#FFC857]/30'
               }`}
             >
               {/* Index + Status dot */}
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase tracking-wider font-semibold">
-                  0{index + 1}
+                <span className="text-[11px] font-mono text-white/40 tracking-[2px] font-bold">
+                  0{index + 1}.
                 </span>
                 {activeTab === 'fragmented' ? (
-                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-[#FFC857] shadow-[0_0_6px_#FFC857]" />
                 ) : (
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)]" />
+                  <span className="w-2 h-2 rounded-full bg-[#5EF2B0] shadow-[0_0_6px_#5EF2B0]" />
                 )}
               </div>
 
-              <h3 className="text-base font-bold text-[var(--text-primary)] mb-2.5 tracking-tight">
+              <h3 className="text-base font-bold text-white mb-3 tracking-tight font-display">
                 {item.title}
               </h3>
 
@@ -149,7 +155,7 @@ export const ProblemSection: React.FC = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.18 }}
-                      className="text-[var(--text-secondary)]"
+                      className="text-white/85 font-normal"
                     >
                       {item.symptom}
                     </motion.p>
@@ -160,7 +166,7 @@ export const ProblemSection: React.FC = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.18 }}
-                      className="text-[var(--text-primary)] font-medium"
+                      className="text-white/90 font-medium"
                     >
                       {item.connected}
                     </motion.p>
@@ -168,41 +174,23 @@ export const ProblemSection: React.FC = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="mt-4 pt-3.5 border-t border-[var(--border-hairline)] flex items-center gap-1.5 text-[10px] font-mono font-semibold">
+              <div className="mt-4 pt-3.5 border-t border-white/[0.08] flex items-center gap-2 text-[10px] font-mono font-bold tracking-[1.5px]">
                 {activeTab === 'fragmented' ? (
                   <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                    <span className="text-red-600">Friction & Waste</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFC857]" />
+                    <span className="text-[#FFC857]">Friction &amp; waste</span>
                   </>
                 ) : (
                   <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]" />
-                    <span className="text-[var(--accent-gold)]">Synchronized & Liquid</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5EF2B0]" />
+                    <span className="text-[#5EF2B0]">Synchronized &amp; liquid</span>
                   </>
                 )}
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom callout */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 text-center"
-        >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 ds-card rounded-2xl px-8 py-5 max-w-2xl mx-auto">
-            <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] tracking-tight">
-              DigiSynq connects the dots.
-            </span>
-            <span className="text-[var(--text-tertiary)] hidden sm:inline">|</span>
-            <span className="text-xs sm:text-sm text-[var(--text-secondary)]">
-              Transforming isolated physical assets into an agile, intelligent operating network.
-            </span>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

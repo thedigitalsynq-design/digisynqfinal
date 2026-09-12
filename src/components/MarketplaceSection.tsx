@@ -62,99 +62,103 @@ export const MarketplaceSection: React.FC = () => {
   return (
     <section
       id="marketplace"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
+      {/* Ambient background glow */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[#4D8DFF]/[0.04] blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            <Layers className="w-3.5 h-3.5" />
-            Underutilized Capacity Engine
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+            Capacity engine.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            Unlock what already exists.
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            Unlock what exists.<br />
+            <span className="text-white/75">Liquidity for dormant assets.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
             DigiSynq creates liquid markets around underutilized cinema capacity without ever purchasing a single camera or building a single soundstage.
           </p>
 
-          <p className="mt-2 text-xs sm:text-sm font-mono uppercase text-[#E5A919] font-medium">
+          <p className="mt-2 text-xs sm:text-sm font-mono text-[#5CE1E6] font-medium">
             The asset owner keeps ownership. DigiSynq creates the connection and transaction layer.
           </p>
         </div>
 
-        {/* The 3-Tier Core Visual: OWNER -> DIGISYNQ -> DEMAND (Apple System Flow) */}
-        <div className="mb-14 rounded-3xl apple-card p-6 sm:p-10 shadow-lg">
+        {/* The 3-Tier Core Visual: OWNER -> DIGISYNQ -> DEMAND */}
+        <div className="mb-14 rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 shadow-2xl relative backdrop-blur-2xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {/* Step 1: Asset Owner */}
-            <div className="p-6 rounded-2xl apple-glass relative">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2 font-semibold">
+            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#4D8DFF]/25 relative shadow-lg text-white backdrop-blur-xl">
+              <span className="text-xs font-mono tracking-wider text-[#4D8DFF] block mb-2 font-semibold">
                 Supply Side
               </span>
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
+              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
                 Asset Owner
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                 Retains 100% legal ownership, physical custody, and operational maintenance of equipment, stages, and screens.
               </p>
-              <div className="mt-4 pt-3 border-t border-black/[0.04] text-[11px] font-mono text-[#E5A919] font-medium">
+              <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] font-mono text-[#4D8DFF] font-medium">
                 Zero Loss of Custody
               </div>
             </div>
 
             {/* Step 2: DigiSynq Protocol */}
-            <div className="p-6 rounded-2xl bg-white border border-[#E5A919]/40 relative shadow-md">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2 font-semibold">
+            <div className="p-6 rounded-2xl bg-[#0D1220]/90 border border-[#5CE1E6]/50 relative shadow-[0_0_30px_rgba(92,225,230,0.12)] text-white backdrop-blur-xl">
+              <span className="text-xs font-mono tracking-wider text-[#5CE1E6] block mb-2 font-semibold">
                 The Network Layer
               </span>
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
+              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
                 DigiSynq
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                 Provides discovery, trust verification, dynamic matching, insurance endorsements, contracts, and milestone escrow.
               </p>
-              <div className="mt-4 pt-3 border-t border-[#E5A919]/25 text-[11px] font-mono text-[#E5A919] font-bold">
+              <div className="mt-4 pt-3 border-t border-[#5CE1E6]/30 text-[11px] font-mono text-[#5CE1E6] font-bold">
                 Pure Software & Protocol Margin
               </div>
             </div>
 
             {/* Step 3: Demand */}
-            <div className="p-6 rounded-2xl bg-white border border-black/[0.06] relative shadow-xs">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2 font-semibold">
+            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#5EF2B0]/25 relative shadow-lg text-white backdrop-blur-xl">
+              <span className="text-xs font-mono tracking-wider text-[#5EF2B0] block mb-2 font-semibold">
                 Demand Side
               </span>
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight">
+              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
                 Productions & Events
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                 Accesses world-class physical resources at competitive rates with instant booking, insured custody, and verified specs.
               </p>
-              <div className="mt-4 pt-3 border-t border-black/[0.04] text-[11px] font-mono text-emerald-600 font-medium">
+              <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] font-mono text-[#5EF2B0] font-medium">
                 Frictionless Utilization
               </div>
             </div>
           </div>
         </div>
 
-        {/* Interactive Capacity Categories - Apple Pills */}
+        {/* Interactive Capacity Categories */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-8">
           {capacityCategories.map((cat, idx) => (
             <button
               key={cat.title}
               onClick={() => setActiveMarketType(idx)}
-              className={`p-3.5 rounded-2xl border text-left transition-all duration-200 ${
+              className={`p-3.5 rounded-2xl border text-left transition-all duration-200 backdrop-blur-xl ${
                 activeMarketType === idx
-                  ? 'bg-[#111111] text-white border-[#111111] font-bold shadow-sm'
-                  : 'bg-white border-black/[0.06] text-[var(--text-secondary)] hover:text-[var(--text-primary)] shadow-xs'
+                  ? 'bg-[#5CE1E6]/15 text-[#5CE1E6] border-[#5CE1E6]/60 font-bold shadow-[0_0_15px_rgba(92,225,230,0.15)]'
+                  : 'bg-[#0D1220]/60 border-white/[0.08] text-white/70 hover:text-white hover:border-white/20'
               }`}
             >
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[10px] font-mono uppercase tracking-wider opacity-60">
+                <span className="text-[10px] font-mono tracking-wider opacity-60">
                   0{idx + 1}
                 </span>
-                <span className={`w-1.5 h-1.5 rounded-full ${activeMarketType === idx ? 'bg-[#E5A919]' : 'bg-transparent'}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${activeMarketType === idx ? 'bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]' : 'bg-transparent'}`} />
               </div>
               <span className="text-xs font-semibold block tracking-tight">
                 {cat.title}
@@ -164,7 +168,7 @@ export const MarketplaceSection: React.FC = () => {
         </div>
 
         {/* Interactive Showcase Panel */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 shadow-lg">
+        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentCategory.title}
@@ -174,43 +178,43 @@ export const MarketplaceSection: React.FC = () => {
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/25 flex items-center justify-center text-[#E5A919]">
+                <div className="w-11 h-11 rounded-2xl bg-[#5CE1E6]/10 border border-[#5CE1E6]/30 flex items-center justify-center text-[#5CE1E6]">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] font-semibold">
+                  <span className="text-xs font-mono tracking-wider text-white/50 font-semibold">
                     Marketplace Domain
                   </span>
-                  <h4 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
+                  <h4 className="text-xl font-bold text-white tracking-tight">
                     Underutilized {currentCategory.title}
                   </h4>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-black/[0.06]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-white/[0.08]">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-1.5 font-semibold">
+                  <span className="text-xs font-mono tracking-wider text-white/50 block mb-1.5 font-semibold">
                     Typical Idle Capacity:
                   </span>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                     {currentCategory.idleExample}
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-1.5 font-semibold">
+                  <span className="text-xs font-mono tracking-wider text-[#4D8DFF] block mb-1.5 font-semibold">
                     Value to Asset Owner:
                   </span>
-                  <p className="text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                     {currentCategory.ownerAdvantage}
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-600 block mb-1.5 font-semibold">
+                  <span className="text-xs font-mono tracking-wider text-[#5EF2B0] block mb-1.5 font-semibold">
                     Value to Production:
                   </span>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                     {currentCategory.demandAdvantage}
                   </p>
                 </div>

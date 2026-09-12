@@ -63,49 +63,52 @@ export const DigiSynqOS: React.FC = () => {
   return (
     <section
       id="digisynq-os"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas)] border-t border-[var(--border-hairline)]"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
+      {/* Ambient background glow */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.05] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            <Cpu className="w-3.5 h-3.5" />
-            Our Long-Term Vision
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#8B7CFF]/30 text-[#8B7CFF] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(139,124,255,0.12)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8B7CFF] shadow-[0_0_8px_#8B7CFF]" />
+            System blueprint.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            The operating system for a more <br />
-            <span className="text-[#E5A919]">connected cinema ecosystem.</span>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            The operating system.<br />
+            <span className="text-white/75">For connected cinema.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Introducing <strong className="text-[var(--text-primary)]">DigiSynq OS</strong>: our architectural blueprint for unifying the entire lifecycle of cinema into one seamless, interoperable digital protocol.
+          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
+            Introducing <strong className="text-white">DigiSynq OS</strong>: our architectural blueprint for unifying the entire lifecycle of cinema into one seamless, interoperable digital protocol.
           </p>
         </div>
 
-        {/* Unified 10-Layer Stack Diagram - Apple System Framework */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12 shadow-lg">
-          <div className="flex items-center justify-between pb-6 mb-8 border-b border-black/[0.06]">
+        {/* Unified 10-Layer Stack Diagram */}
+        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 lg:p-12 shadow-2xl relative backdrop-blur-2xl">
+          <div className="flex items-center justify-between pb-6 mb-8 border-b border-white/[0.08]">
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center text-[#E5A919]">
+              <div className="w-10 h-10 rounded-2xl bg-[#8B7CFF]/10 border border-[#8B7CFF]/30 flex items-center justify-center text-[#8B7CFF]">
                 <Layers className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-mono tracking-tight">
-                  DIGISYNQ-OS // CORE ARCHITECTURE
+                <h3 className="text-base sm:text-lg font-bold text-white font-mono tracking-tight">
+                  DigiSynq-OS // Core architecture
                 </h3>
-                <span className="text-xs text-[var(--text-tertiary)] font-mono">
+                <span className="text-xs text-white/50 font-mono">
                   Protocol Version 1.0 (Roadmap Architecture)
                 </span>
               </div>
             </div>
-            <span className="px-3.5 py-1 rounded-full text-xs font-mono bg-black/[0.04] text-[var(--text-secondary)] hidden sm:inline font-medium">
+            <span className="px-3.5 py-1 rounded-full text-xs font-mono bg-white/[0.05] text-white/70 hidden sm:inline font-medium">
               10 Integrated Layers
             </span>
           </div>
 
           {/* Active Layer Dynamic Inspection with Smooth Crossfade */}
-          <div className="mb-6 rounded-2xl p-5 sm:p-6 bg-black/[0.02] border border-black/[0.06] overflow-hidden">
+          <div className="mb-6 rounded-2xl p-5 sm:p-6 bg-[#070A12]/80 border border-white/[0.08] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayer.label}
@@ -117,19 +120,19 @@ export const DigiSynqOS: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-mono text-[#E5A919] font-bold">
+                    <span className="text-xs font-mono text-[#8B7CFF] font-bold">
                       LAYER 0{selectedLayerIndex + 1}
                     </span>
-                    <span className="text-xs text-[var(--text-tertiary)]">•</span>
-                    <h4 className="text-base font-bold text-[var(--text-primary)]">
+                    <span className="text-xs text-white/40">•</span>
+                    <h4 className="text-base font-bold text-white">
                       {activeLayer.label} Layer Protocol
                     </h4>
                   </div>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/70 max-w-3xl leading-relaxed">
                     {activeLayer.detail}
                   </p>
                 </div>
-                <div className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-xl bg-[#E5A919]/10 text-[#E5A919] font-semibold border border-[#E5A919]/25">
+                <div className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-xl bg-[#8B7CFF]/15 text-[#8B7CFF] font-semibold border border-[#8B7CFF]/30">
                   Active Stack Node
                 </div>
               </motion.div>
@@ -144,30 +147,30 @@ export const DigiSynqOS: React.FC = () => {
                 <button
                   key={layer.label}
                   onClick={() => setSelectedLayerIndex(idx)}
-                  className={`p-5 rounded-2xl text-left transition-all duration-200 border cursor-pointer ${
+                  className={`p-5 rounded-2xl text-left transition-all duration-200 border cursor-pointer backdrop-blur-xl ${
                     isSelected
-                      ? 'bg-white border-2 border-[#E5A919] shadow-lg ring-2 ring-[#E5A919]/15'
-                      : 'ds-card hover:border-[var(--accent-gold)]/30'
+                      ? 'bg-[#070A12] border-2 border-[#8B7CFF] shadow-[0_0_20px_rgba(139,124,255,0.25)] ring-2 ring-[#8B7CFF]/30 text-white'
+                      : 'bg-[#070A12]/60 border-white/[0.08] text-white/70 hover:text-white hover:border-white/20'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-xs font-mono font-bold ${
-                        isSelected ? 'text-[#E5A919]' : 'text-[var(--text-tertiary)]'
+                        isSelected ? 'text-[#8B7CFF]' : 'text-white/40'
                       }`}
                     >
                       L{idx + 1}
                     </span>
                     <span
                       className={`w-1.5 h-1.5 rounded-full ${
-                        isSelected ? 'bg-[#E5A919]' : 'bg-transparent'
+                        isSelected ? 'bg-[#8B7CFF] shadow-[0_0_6px_#8B7CFF]' : 'bg-transparent'
                       }`}
                     />
                   </div>
-                  <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">
+                  <h4 className="text-sm font-bold text-white mb-1 tracking-tight">
                     {layer.label}
                   </h4>
-                  <p className="text-xs text-[var(--text-secondary)] leading-snug">
+                  <p className="text-xs text-white/60 leading-snug">
                     {layer.desc}
                   </p>
                 </button>
@@ -175,7 +178,7 @@ export const DigiSynqOS: React.FC = () => {
             })}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-black/[0.06] text-center text-xs font-mono text-[var(--text-tertiary)] max-w-2xl mx-auto leading-relaxed">
+          <div className="mt-8 pt-6 border-t border-white/[0.08] text-center text-xs font-mono text-white/50 max-w-2xl mx-auto leading-relaxed">
             DigiSynq OS bridges legacy film infrastructure with next-generation autonomous workflows, creating a unified digital layer across the global motion picture supply chain.
           </div>
         </div>

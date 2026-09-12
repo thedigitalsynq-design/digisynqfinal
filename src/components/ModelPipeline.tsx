@@ -7,7 +7,7 @@ export const ModelPipeline: React.FC = () => {
 
   const pipelineSteps = [
     {
-      name: 'DISCOVER',
+      name: 'Discover',
       headline: 'Find relevant people, assets, content and opportunities.',
       icon: Search,
       input: 'Requirement query: "4K anamorphic camera package and certified DP in Berlin for 3-week shoot in November"',
@@ -16,7 +16,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqFind', 'SynqTalent', 'SynqMarket', 'SynqContent']
     },
     {
-      name: 'VERIFY',
+      name: 'Verify',
       headline: 'Establish identity, credibility and availability.',
       icon: ShieldCheck,
       input: 'Candidate identities, guild affiliations, equipment serials, and COI certificates.',
@@ -25,7 +25,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqTrust', 'SynqSkills', 'SynqReview', 'SynqRepute']
     },
     {
-      name: 'MATCH',
+      name: 'Match',
       headline: 'Connect supply with demand intelligently.',
       icon: GitFork,
       input: 'Multi-variable constraints: budget envelope, artistic tone, insurance requirements, and calendar.',
@@ -34,7 +34,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqMatch', 'SynqScore', 'SynqOpportunity', 'SynqBook']
     },
     {
-      name: 'COORDINATE',
+      name: 'Coordinate',
       headline: 'Move projects and workflows forward.',
       icon: SlidersHorizontal,
       input: 'Digital scripts, call sheets, vendor purchase orders, and multi-department timelines.',
@@ -43,7 +43,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqProduce', 'SynqCrewOps', 'SynqFlow', 'SynqTask']
     },
     {
-      name: 'TRANSACT',
+      name: 'Transact',
       headline: 'Enable commercial exchange.',
       icon: CreditCard,
       input: 'Agreed day rates, sub-rental fees, minimum guarantees, and territorial delivery milestones.',
@@ -52,7 +52,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqDeal', 'SynqLicense', 'SynqRevenue', 'SynqFinance']
     },
     {
-      name: 'MEASURE',
+      name: 'Measure',
       headline: 'Understand results.',
       icon: BarChart3,
       input: 'Ticket sales, auditorium occupancy, social chatter, exit poll feedback, and budget burn rate.',
@@ -61,7 +61,7 @@ export const ModelPipeline: React.FC = () => {
       products: ['SynqAnalytics', 'SynqSignals', 'SynqVoice', 'SynqScreen']
     },
     {
-      name: 'LEARN',
+      name: 'Learn',
       headline: 'Use intelligence to improve the next decision.',
       icon: Brain,
       input: 'Historical project outcomes, vendor performance scores, and audience reception vectors.',
@@ -76,141 +76,131 @@ export const ModelPipeline: React.FC = () => {
   return (
     <section
       id="platform-model"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-28 sm:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden"
     >
+      <div className="cred-hairline absolute top-0 left-0" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-16"
         >
-          <div className="ds-section-label mb-5">
-            Operating Architecture
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-sm bg-[#070A12] border border-white/25 text-white/90 font-mono text-[11px] font-bold tracking-[3px] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFF]" />
+            Operating architecture.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            The DigiSynq Model
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            The DigiSynq pipeline.<br />
+            <span className="text-white/75">Seven phases to scale.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
             A seven-phase operating pipeline that turns scattered cinema resources into a coordinated, measurable, and self-reinforcing engine.
           </p>
         </motion.div>
 
-        {/* 7-Step Navigation Bar - Apple Style Segmented Track */}
-        <div className="flex items-center justify-between gap-1.5 sm:gap-2.5 overflow-x-auto pb-4 mb-8 scrollbar-thin">
-          {pipelineSteps.map((step, index) => {
-            const Icon = step.icon;
-            const isActive = activeStepIndex === index;
+        {/* CRED Horizontal Step Selector */}
+        <div className="flex items-center justify-start lg:justify-center overflow-x-auto pb-4 mb-10 gap-2 no-scrollbar">
+          {pipelineSteps.map((step, idx) => {
+            const isSelected = activeStepIndex === idx;
             return (
               <button
                 key={step.name}
-                onClick={() => setActiveStepIndex(index)}
-                className={`flex-1 min-w-[130px] p-3.5 sm:p-4 rounded-2xl border text-left transition-all duration-200 relative ${
-                  isActive
-                    ? 'bg-white border-2 border-[#E5A919] shadow-md'
-                    : 'bg-transparent border-[var(--border-hairline)] hover:border-[var(--border-subtle)] hover:bg-[var(--bg-secondary)]'
+                onClick={() => setActiveStepIndex(idx)}
+                className={`px-5 py-2.5 rounded-sm font-mono text-xs font-bold tracking-[2px] transition-all duration-200 whitespace-nowrap border ${
+                  isSelected
+                    ? 'bg-white text-[#070A12] border-white shadow-[0_0_25px_rgba(255,255,255,0.25)] font-extrabold'
+                    : 'bg-[#0D1220]/60 text-white/50 border-white/10 hover:border-white/30 hover:text-white'
                 }`}
-                id={`model-step-btn-${step.name.toLowerCase()}`}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className={`text-[11px] font-mono font-semibold ${isActive ? 'text-[var(--accent-gold)]' : 'text-[var(--text-tertiary)]'}`}>
-                    0{index + 1}
-                  </span>
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[var(--accent-gold)]' : 'text-[var(--text-tertiary)]'}`} />
-                </div>
-                <div className={`text-xs sm:text-sm font-semibold tracking-wider uppercase ${isActive ? 'text-[var(--text-primary)] font-bold' : 'text-[var(--text-primary)]'}`}>
-                  {step.name}
-                </div>
-                {isActive && (
-                  <motion.span
-                    layoutId="activePipelineBar"
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#E5A919] rounded-full"
-                  />
-                )}
+                0{idx + 1}. {step.name}
               </button>
             );
           })}
         </div>
 
-        {/* Active Stage Interactive Showcase Card */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12 shadow-lg">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep.name}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-            >
-              {/* Left: Stage Title & Description */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
-                  <span>STAGE 0{activeStepIndex + 1} OF 07</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
-                  {currentStep.name} Stage
-                </h3>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-                  {currentStep.headline}
+        {/* Active Step Feature Slab (CRED Card) */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep.name}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-xl cred-card p-8 sm:p-12 relative"
+          >
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/90 border border-[#8B7CFF]/30 text-[#8B7CFF] font-mono text-[11px] font-bold tracking-[2px] backdrop-blur-xl shadow-[0_0_15px_rgba(139,124,255,0.12)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8B7CFF] shadow-[0_0_8px_#8B7CFF]" />
+                Phase 0{activeStepIndex + 1} — {currentStep.name}
+              </div>
+            </div>
+
+            <div className="pt-1 max-w-3xl mb-8">
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display mb-3">
+                {currentStep.headline}
+              </h3>
+            </div>
+
+            {/* Input -> Action -> Output Ledger */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/10">
+              <div className="p-5 rounded-xl bg-[#070A12]/60 border border-white/10">
+                <span className="text-[11px] font-mono tracking-[2px] text-white/50 font-bold block mb-2">
+                  Input telemetry
+                </span>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  {currentStep.input}
                 </p>
-                
-                <div className="pt-4 border-t border-black/[0.06]">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-2.5 font-semibold">
-                    Integrated DigiSynq Capabilities
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {currentStep.products.map((prod) => (
-                      <span
-                        key={prod}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-black/[0.03] border border-black/[0.06] text-[var(--text-primary)] font-mono"
-                      >
-                        {prod}
-                      </span>
-                    ))}
-                  </div>
+              </div>
+
+              <div className="p-5 rounded-xl bg-[#070A12]/60 border border-[#8B7CFF]/30">
+                <span className="text-[11px] font-mono tracking-[2px] text-[#8B7CFF] font-bold block mb-2">
+                  Graph action (AI Core)
+                </span>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  {currentStep.action}
+                </p>
+              </div>
+
+              <div className="p-5 rounded-xl bg-[#070A12]/60 border border-[#5EF2B0]/30">
+                <span className="text-[11px] font-mono tracking-[2px] text-[#5EF2B0] font-bold block mb-2">
+                  Settled output (Verified)
+                </span>
+                <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
+                  {currentStep.output}
+                </p>
+              </div>
+            </div>
+
+            {/* Associated Products */}
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono tracking-[2px] text-white/50 font-bold">
+                  Synq modules:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {currentStep.products.map((p) => (
+                    <span key={p} className="px-3 py-1 rounded bg-white/[0.06] border border-white/10 text-white/90 text-xs font-mono font-bold tracking-wider hover:border-[#5CE1E6]/50 hover:text-[#5CE1E6] transition-colors">
+                      {p}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Right: Operational Anatomy (Input -> Action -> Output) */}
-              <div className="lg:col-span-7 bg-black/[0.02] border border-black/[0.06] rounded-2xl p-5 sm:p-7 space-y-4">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--text-tertiary)] mb-1.5 font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                    <span>Input Signal / Parameter</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] bg-white p-3.5 rounded-xl border border-black/[0.06] font-mono leading-relaxed">
-                    {currentStep.input}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E5A919] mb-1.5 font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
-                    <span>DigiSynq Network Action</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-[var(--text-primary)] bg-white p-3.5 rounded-xl border border-black/[0.06] leading-relaxed">
-                    {currentStep.action}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-600 mb-1.5 font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    <span>Output & Operational Velocity</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-emerald-800 bg-emerald-500/10 p-3.5 rounded-xl border border-emerald-500/20 leading-relaxed">
-                    {currentStep.output}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              <button
+                onClick={() => setActiveStepIndex((activeStepIndex + 1) % pipelineSteps.length)}
+                className="inline-flex items-center gap-2 text-xs font-mono tracking-[2px] text-[#5CE1E6] font-bold hover:text-white transition-colors"
+              >
+                <span>Next phase</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

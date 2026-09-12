@@ -99,15 +99,15 @@ export const IntelligenceSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header: Section 32 Intelligence Layer */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            <Activity className="w-3.5 h-3.5" />
-            Telemetry &amp; Predictive Engine
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-sm bg-black border border-white/25 text-white/90 font-mono text-[11px] font-bold tracking-[3px] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFF]" />
+            TELEMETRY &amp; Predictive engine.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            From fragmented signals to <br />
-            <span className="text-[#E5A919]">intelligent decisions.</span>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            From scattered signals.<br />
+            <span className="text-white/75 italic font-denton-extrabold-italic">To predictive foresight.</span>
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -117,20 +117,20 @@ export const IntelligenceSection: React.FC = () => {
 
         {/* 6-Stage Journey Visual - Apple Step Cards */}
         <div className="mb-16">
-          <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] text-center mb-6 font-semibold">
+          <div className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] text-center mb-6 font-semibold">
             The DigiSynq Intelligence Trajectory
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
             {signalJourney.map((item, idx) => (
               <div
                 key={item.label}
-                className="p-5 rounded-2xl ds-card text-left relative group"
+                className="p-5 rounded-xl cred-card text-left relative group"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-[#E5A919] font-bold">
+                  <span className="text-xs font-mono text-[#8B7CFF] font-bold">
                     0{idx + 1}
                   </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5A919]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8B7CFF]" />
                 </div>
                 <h4 className="text-sm font-bold text-[var(--text-primary)] mb-1 tracking-tight">
                   {item.label}
@@ -143,18 +143,23 @@ export const IntelligenceSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Real-Time VisionOS Predictive Telemetry Card (Image 4 & 3 Reference) */}
+        {/* Real-Time VisionOS Predictive Telemetry Card (Mockup Style Smoked Glass) */}
         <div className="mb-20 max-w-2xl mx-auto relative">
+          <div className="obsidian-sphere sphere-obsidian-hero w-60 h-60 -top-14 -left-10 opacity-90 animate-float-slow" />
+          <div className="obsidian-sphere sphere-obsidian w-64 h-64 -bottom-16 -right-12 opacity-85 animate-float-reverse" />
+          <div className="glass-micro-bubble w-8 h-8 top-1/3 -right-6 opacity-85" />
+          <div className="glass-micro-bubble w-6 h-6 bottom-1/3 -left-4 opacity-80" />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="vision-dark-panel rounded-[32px] p-6 sm:p-9 text-[var(--text-primary)] relative z-10 shadow-xl overflow-hidden bg-white border border-[var(--border-hairline)]"
+            className="vision-dark-panel rounded-[24px] p-6 sm:p-9 text-[var(--text-primary)] relative z-10 shadow-[0_35px_85px_-15px_rgba(0,0,0,0.95),inset_0_1px_1px_0_rgba(255,255,255,0.30)] overflow-hidden bg-gradient-to-br from-white/[0.065] via-white/[0.015] to-[#0A0E18]/65 border border-white/[0.20] backdrop-blur-2xl"
           >
-            {/* Ambient inner soft pastel wash (inspired by reference card) */}
-            <div className="absolute -top-10 -right-10 w-72 h-64 bg-gradient-to-br from-pink-200/30 via-purple-200/20 to-sky-200/30 blur-[50px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-64 h-56 bg-gradient-to-tr from-amber-200/30 via-orange-200/20 to-transparent blur-[50px] rounded-full pointer-events-none" />
+            {/* Ambient inner luminous wash */}
+            <div className="absolute -top-10 -right-10 w-72 h-64 bg-gradient-to-br from-[#8B7CFF]/15 via-[#5CE1E6]/10 to-transparent blur-[50px] rounded-full pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-64 h-56 bg-gradient-to-tr from-[#4D8DFF]/15 via-transparent to-transparent blur-[50px] rounded-full pointer-events-none" />
 
             {/* Header: Title and Timeframe Selector */}
             <div className="flex items-center justify-between mb-8 relative z-10">
@@ -172,7 +177,7 @@ export const IntelligenceSection: React.FC = () => {
                       prev === 'Weekly' ? 'Monthly' : prev === 'Monthly' ? 'Quarterly' : 'Weekly'
                     )
                   }
-                  className="bg-black/[0.04] border border-black/[0.08] rounded-full px-3.5 py-1.5 flex items-center gap-1.5 text-xs text-[var(--text-primary)] font-medium cursor-pointer hover:bg-black/[0.08] transition-colors"
+                  className="bg-white/[0.05] border border-black/[0.08] rounded-full px-3.5 py-1.5 flex items-center gap-1.5 text-xs text-[var(--text-primary)] font-medium cursor-pointer hover:bg-black/[0.08] transition-colors"
                 >
                   <span>{telemetryTimeframe}</span>
                   <ChevronDown className="w-3.5 h-3.5 text-neutral-500" />
@@ -257,7 +262,7 @@ export const IntelligenceSection: React.FC = () => {
             </div>
 
             {/* Bottom Action Pill Capsule (Matching reference "Add More" / "Pay Now" style) */}
-            <div className="bg-black/[0.03] border border-black/[0.06] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs relative z-10 mt-4">
+            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs relative z-10 mt-4">
               <span className="text-[var(--text-secondary)] text-center sm:text-left font-medium">
                 {currentTelemetry.caption}
               </span>
@@ -285,13 +290,27 @@ export const IntelligenceSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* SECTION 33: DIGISYNQ AI (Apple Intelligence Aesthetic) */}
-        <div className="rounded-3xl apple-card p-6 sm:p-10 lg:p-12 shadow-lg relative overflow-hidden">
+        {/* SECTION 33: DigiSynq AI (Apple Intelligence Aesthetic) */}
+        <div className="rounded-xl cred-card p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden viewfinder-box">
+          <div className="viewfinder-corner-tl" />
+          <div className="viewfinder-corner-tr" />
+          <div className="viewfinder-corner-bl" />
+          <div className="viewfinder-corner-br" />
+
+          {/* Telemetry Slate Key Visual Backdrop */}
+          <div className="absolute inset-0 pointer-events-none opacity-15 overflow-hidden mix-blend-screen">
+            <img
+              src="/cinema-telemetry-slate.jpg"
+              alt="Cinema Telemetry Slate"
+              className="w-full h-full object-cover object-right-bottom filter grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+          </div>
           {/* Volumetric ambient backlighting */}
           <div className="glow-orb glow-orb-gold w-80 h-80 -top-20 -right-20 pointer-events-none" />
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-black/[0.06]">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E5A919] mb-1 font-semibold">
+              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#E5A919] mb-1 font-semibold">
                 <Brain className="w-4 h-4" />
                 <span>DigiSynq AI Console</span>
               </div>
@@ -299,7 +318,7 @@ export const IntelligenceSection: React.FC = () => {
                 Intelligence that understands the cinema ecosystem.
               </h3>
             </div>
-            <div className="text-xs font-mono text-[var(--text-secondary)] bg-black/[0.03] border border-black/[0.06] px-3.5 py-1.5 rounded-full font-medium">
+            <div className="text-xs font-mono text-[var(--text-secondary)] bg-white/[0.04] border border-white/[0.08] px-3.5 py-1.5 rounded-full font-medium">
               Conceptual Product Experience
             </div>
           </div>
@@ -319,7 +338,7 @@ export const IntelligenceSection: React.FC = () => {
             ].map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-full text-xs font-mono bg-white border border-black/[0.06] shadow-xs text-[var(--text-secondary)]"
+                className="px-3 py-1 rounded-full text-xs font-mono ds-card border border-white/[0.08] shadow-xs text-white/70"
               >
                 {tag}
               </span>
@@ -328,7 +347,7 @@ export const IntelligenceSection: React.FC = () => {
 
           {/* Interactive Query Switcher */}
           <div className="space-y-4">
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block font-semibold">
+            <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] block font-semibold">
               Sample Cinema Natural Language Inquiries:
             </span>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -336,10 +355,10 @@ export const IntelligenceSection: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setSelectedPromptIndex(idx)}
-                  className={`p-4 rounded-2xl text-left border text-xs transition-all duration-200 ${
+                  className={`p-4 rounded-2xl text-left border text-xs transition-all duration-200 backdrop-blur-xl ${
                     selectedPromptIndex === idx
-                      ? 'bg-[#111111] text-white border-[#111111] font-semibold shadow-md'
-                      : 'bg-white border-black/[0.06] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-black/[0.12] shadow-xs'
+                      ? 'bg-[#5CE1E6]/10 text-white border-[#5CE1E6]/50 font-semibold shadow-[0_0_20px_rgba(92,225,230,0.12)]'
+                      : 'bg-[#0D1220]/60 border-white/[0.08] text-white/70 hover:text-white hover:border-white/20'
                   }`}
                 >
                   "{p.query}"
@@ -347,32 +366,32 @@ export const IntelligenceSection: React.FC = () => {
               ))}
             </div>
 
-            {/* AI Console Studio View - Clean White Studio Aesthetic matching Reference Image 1 & 2 */}
-            <div className="mt-6 rounded-3xl bg-white border border-black/[0.08] p-5 sm:p-8 font-mono text-xs shadow-xl text-[#0F172A] relative overflow-hidden">
+            {/* AI Console Studio View - Frosted Deep Navy Glass Aesthetic */}
+            <div className="mt-6 rounded-3xl bg-[#0D1220]/80 border border-white/[0.12] p-5 sm:p-8 font-mono text-xs shadow-2xl text-white/90 relative overflow-hidden backdrop-blur-2xl">
               {/* Studio Window Header */}
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-black/[0.06]">
+              <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-[#FF5F56]/80" />
-                    <span className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
-                    <span className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
+                    <span className="w-3 h-3 rounded-full bg-[#FFC857]/40 border border-[#FFC857]/60" />
+                    <span className="w-3 h-3 rounded-full bg-[#8B7CFF]/40 border border-[#8B7CFF]/60" />
+                    <span className="w-3 h-3 rounded-full bg-[#5EF2B0]/40 border border-[#5EF2B0]/60" />
                   </div>
-                  <div className="flex items-center gap-1.5 pl-2 text-xs font-mono font-medium text-[var(--text-secondary)]">
-                    <Terminal className="w-3.5 h-3.5 text-[#E5A919]" />
+                  <div className="flex items-center gap-1.5 pl-2 text-xs font-mono font-medium text-white/60">
+                    <Terminal className="w-3.5 h-3.5 text-[#5CE1E6]" />
                     <span>digisynq-ai-agent</span>
-                    <span className="text-black/30">•</span>
-                    <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full text-[10px] font-semibold border border-emerald-200/60">ONLINE</span>
+                    <span className="text-white/20">•</span>
+                    <span className="text-[#5EF2B0] bg-[#5EF2B0]/10 px-2.5 py-0.5 rounded-full text-[10px] font-semibold border border-[#5EF2B0]/30">ONLINE</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1 bg-black/[0.03] p-1 rounded-lg border border-black/[0.04]">
+                <div className="flex items-center gap-1 bg-[#070A12]/80 p-1 rounded-lg border border-white/[0.08]">
                   {['Synthesis', 'Graph', 'Context'].map((tab, tIdx) => (
                     <span
                       key={tab}
                       className={`px-2.5 py-1 rounded-md text-[10px] font-medium transition-colors ${
                         tIdx === 0
-                          ? 'bg-white text-black font-bold shadow-xs'
-                          : 'text-[var(--text-tertiary)]'
+                          ? 'bg-white text-[#070A12] font-bold shadow-xs'
+                          : 'text-white/50'
                       }`}
                     >
                       {tab}
@@ -390,45 +409,45 @@ export const IntelligenceSection: React.FC = () => {
                   transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-4 font-sans"
                 >
-                  <div className="p-3.5 rounded-2xl bg-black/[0.02] border border-black/[0.05] flex items-center gap-2.5">
-                    <span className="text-[11px] font-mono font-bold text-[#E5A919] uppercase tracking-wider">Inquiry:</span>
-                    <span className="text-sm font-medium text-[var(--text-primary)] italic">"{activePrompt.query}"</span>
+                  <div className="p-3.5 rounded-2xl bg-[#070A12]/80 border border-white/[0.08] flex items-center gap-2.5">
+                    <span className="text-[11px] font-mono font-bold text-[#5CE1E6] tracking-wider">Inquiry:</span>
+                    <span className="text-sm font-medium text-white/95 italic">"{activePrompt.query}"</span>
                   </div>
 
                   <div className="space-y-3 pt-1">
-                    <div className="text-sm font-bold flex items-center gap-2 text-[#B45309]">
-                      <Sparkles className="w-4 h-4 text-[#E5A919]" />
-                      <span>DIGISYNQ AI SYNTHESIS</span>
+                    <div className="text-sm font-bold flex items-center gap-2 text-[#8B7CFF]">
+                      <Sparkles className="w-4 h-4 text-[#8B7CFF]" />
+                      <span>DigiSynq AI synthesis</span>
                     </div>
 
-                    <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/50 border border-amber-200/60 text-amber-950 text-xs sm:text-sm leading-relaxed font-normal">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-[#070A12]/70 border border-[#8B7CFF]/30 text-white/90 text-xs sm:text-sm leading-relaxed font-normal shadow-inner">
                       {activePrompt.response.summary}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                      <div className="p-4 rounded-2xl bg-purple-50/50 border border-purple-100 text-purple-950 shadow-xs">
-                        <span className="text-purple-800 font-bold block mb-1 text-[11px] font-mono uppercase tracking-wider">
+                      <div className="p-4 rounded-2xl bg-[#0D1220]/70 border border-[#8B7CFF]/25 text-white shadow-xs backdrop-blur-xl">
+                        <span className="text-[#8B7CFF] font-bold block mb-1 text-[11px] font-mono tracking-wider">
                           ✦ People & Crew
                         </span>
-                        <p className="leading-relaxed text-[var(--text-secondary)]">{activePrompt.response.people}</p>
+                        <p className="leading-relaxed text-white/70">{activePrompt.response.people}</p>
                       </div>
-                      <div className="p-4 rounded-2xl bg-sky-50/50 border border-sky-100 text-sky-950 shadow-xs">
-                        <span className="text-sky-800 font-bold block mb-1 text-[11px] font-mono uppercase tracking-wider">
+                      <div className="p-4 rounded-2xl bg-[#0D1220]/70 border border-[#4D8DFF]/25 text-white shadow-xs backdrop-blur-xl">
+                        <span className="text-[#4D8DFF] font-bold block mb-1 text-[11px] font-mono tracking-wider">
                           ✦ Equipment & Assets
                         </span>
-                        <p className="leading-relaxed text-[var(--text-secondary)]">{activePrompt.response.equipment}</p>
+                        <p className="leading-relaxed text-white/70">{activePrompt.response.equipment}</p>
                       </div>
-                      <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 text-emerald-950 shadow-xs">
-                        <span className="text-emerald-800 font-bold block mb-1 text-[11px] font-mono uppercase tracking-wider">
+                      <div className="p-4 rounded-2xl bg-[#0D1220]/70 border border-[#5CE1E6]/25 text-white shadow-xs backdrop-blur-xl">
+                        <span className="text-[#5CE1E6] font-bold block mb-1 text-[11px] font-mono tracking-wider">
                           ✦ Locations & Venues
                         </span>
-                        <p className="leading-relaxed text-[var(--text-secondary)]">{activePrompt.response.locations}</p>
+                        <p className="leading-relaxed text-white/70">{activePrompt.response.locations}</p>
                       </div>
-                      <div className="p-4 rounded-2xl bg-orange-50/50 border border-orange-100 text-orange-950 shadow-xs">
-                        <span className="text-orange-800 font-bold block mb-1 text-[11px] font-mono uppercase tracking-wider">
+                      <div className="p-4 rounded-2xl bg-[#0D1220]/70 border border-[#5EF2B0]/25 text-white shadow-xs backdrop-blur-xl">
+                        <span className="text-[#5EF2B0] font-bold block mb-1 text-[11px] font-mono tracking-wider">
                           ✦ Opportunities & Capital
                         </span>
-                        <p className="leading-relaxed text-[var(--text-secondary)]">{activePrompt.response.opportunities}</p>
+                        <p className="leading-relaxed text-white/70">{activePrompt.response.opportunities}</p>
                       </div>
                     </div>
                   </div>

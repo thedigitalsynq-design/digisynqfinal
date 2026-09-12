@@ -27,21 +27,21 @@ import { GooeyActionMenu } from './components/GooeyActionMenu';
 import { PlatformItem } from './types';
 
 export default function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [modalRole, setModalRole] = useState('Producer');
   const [selectedDirectoryCategory, setSelectedDirectoryCategory] = useState<string>('All');
 
   useEffect(() => {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('digisynq-theme', 'light');
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('digisynq-theme', 'dark');
   }, [theme]);
 
   const toggleTheme = () => {
-    // Keep light theme active as requested by user
-    setTheme('light');
-    document.documentElement.classList.remove('dark');
+    // Keep complete dark noir theme active as inspired by user references
+    setTheme('dark');
+    document.documentElement.classList.add('dark');
   };
 
   const handleOpenJoinModal = (role?: string) => {
@@ -60,7 +60,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans selection:bg-[#E5A919] selection:text-black antialiased transition-colors duration-300">
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-[#5CE1E6] selection:text-[#070A12] antialiased transition-colors duration-300">
       {/* 1. Global Navigation */}
       <Navbar
         onOpenJoinModal={handleOpenJoinModal}

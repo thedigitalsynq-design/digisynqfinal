@@ -45,10 +45,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-4xl rounded-3xl bg-white border border-black/[0.08] shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-[var(--text-primary)]"
+        className="relative w-full max-w-4xl rounded-3xl bg-[#0E0E14] border border-white/[0.12] shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col text-white"
       >
         {/* Modal Header / Hero */}
-        <div className="p-6 sm:p-9 bg-white border-b border-black/[0.06] relative">
+        <div className="p-6 sm:p-9 bg-[#0D1220] border-b border-white/[0.08] relative">
           <button
             onClick={onClose}
             className="absolute top-6 right-6 p-2 rounded-full apple-glass text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
@@ -59,10 +59,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </button>
 
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#E5A919]/10 text-[#E5A919] border border-[#E5A919]/30">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider bg-[#5CE1E6]/10 text-[#5CE1E6] border border-[#5CE1E6]/30">
               {product.category}
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider apple-glass text-[var(--text-secondary)]">
+            <span className="px-3 py-1 rounded-full text-xs font-mono tracking-wider apple-glass text-[var(--text-secondary)]">
               Model: {product.businessModel}
             </span>
           </div>
@@ -102,8 +102,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="p-6 sm:p-9 space-y-8 overflow-y-auto">
           {/* Problem & Solution */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 sm:p-6 rounded-2xl bg-red-50 border border-red-200">
-              <span className="text-xs font-mono uppercase tracking-wider text-red-600 block mb-2 font-semibold">
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#0D1220]/80 border border-[#FFC857]/30 text-white/90">
+              <span className="text-xs font-mono tracking-wider text-[#FFC857] block mb-2 font-semibold">
                 The Friction Solved
               </span>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -112,7 +112,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
 
             <div className="p-5 sm:p-6 rounded-2xl apple-glass">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] block mb-2 font-semibold">
+              <span className="text-xs font-mono tracking-wider text-[#5CE1E6] block mb-2 font-semibold">
                 Operational Overview
               </span>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -123,7 +123,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Who It's For */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
+            <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Target Cinema Ecosystem Stakeholders
             </span>
             <div className="flex flex-wrap gap-2">
@@ -140,7 +140,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Capabilities Grid */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
+            <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Core Technical Capabilities
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -149,7 +149,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   key={cap}
                   className="flex items-start gap-3 p-4 rounded-2xl apple-glass"
                 >
-                  <Check className="w-4 h-4 text-[#E5A919] shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-[#5EF2B0] shrink-0 mt-0.5" />
                   <span className="text-xs sm:text-sm text-[var(--text-primary)] font-medium leading-normal">
                     {cap}
                   </span>
@@ -160,7 +160,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Visual Workflow Steps */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
+            <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Automated Lifecycle Workflow
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -169,7 +169,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   key={step}
                   className="p-4 rounded-2xl apple-glass text-left"
                 >
-                  <span className="text-[10px] font-mono text-[#E5A919] block mb-1 font-semibold">
+                  <span className="text-[10px] font-mono text-[#5CE1E6] block mb-1 font-semibold">
                     Step 0{idx + 1}
                   </span>
                   <p className="text-xs text-[var(--text-secondary)] leading-snug">
@@ -182,7 +182,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Network Connections */}
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
+            <span className="text-xs font-mono tracking-wider text-[var(--text-tertiary)] block mb-3 font-semibold">
               Interconnected Graph Modules
             </span>
             <p className="text-xs text-[var(--text-secondary)] mb-2.5 leading-relaxed">
@@ -192,7 +192,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {product.networkConnections.map((conn) => (
                 <span
                   key={conn}
-                  className="px-3.5 py-1 rounded-full text-xs font-mono bg-[#E5A919]/10 border border-[#E5A919]/25 text-[#E5A919]"
+                  className="px-3.5 py-1 rounded-full text-xs font-mono bg-[#4D8DFF]/10 border border-[#4D8DFF]/25 text-[#4D8DFF]"
                 >
                   ⇄ {conn}
                 </span>
@@ -201,7 +201,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Business Model Summary */}
-          <div className="pt-4 border-t border-black/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
+          <div className="pt-4 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
             <div>
               Commercial Framework:{' '}
               <span className="text-[var(--text-primary)] font-bold">{product.businessModel}</span>

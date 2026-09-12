@@ -16,7 +16,6 @@ import {
   Sliders,
   Network,
   ArrowRight,
-  ExternalLink,
   ChevronRight
 } from 'lucide-react';
 
@@ -52,29 +51,61 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
   return (
     <section
       id="product-ecosystem"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-28 sm:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="ds-section-label mb-5">
-            Portfolio Architecture
+      <div className="cred-hairline absolute top-0 left-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-sm bg-[#070A12] border border-white/25 text-white/90 font-mono text-[11px] font-bold tracking-[3px] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFF]" />
+            Portfolio architecture.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            One network. Twelve product platforms.
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            One network.<br />
+            <span className="text-white/75 italic font-denton-extrabold-italic">Twelve platforms.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            DigiSynq brings specialized products together through a shared network, intelligence, trust and transaction infrastructure.
+          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+            DigiSynq unites specialized products through shared network intelligence, trust graphs, and transaction liquidity.
           </p>
 
-          <p className="mt-2 text-xs font-mono uppercase text-[var(--text-tertiary)] font-medium">
-            Total Product Universe: 12 Platforms • 82 Interconnected Capabilities
+          <p className="mt-3 text-xs sm:text-sm font-mono tracking-[3px] text-white/75">
+            Total universe: 12 platforms • 82 interconnected capabilities.
           </p>
         </div>
 
-        {/* Central Interconnected Hub Visual - Apple Feature Banner */}
-        <div className="mb-14 p-6 sm:p-9 rounded-3xl ds-card overflow-hidden">
+        {/* Central Interconnected Hub Visual - CRED Feature Slab */}
+        <div className="relative mb-14">
+          <div className="obsidian-sphere sphere-obsidian-hero w-64 h-64 -top-14 -left-10 opacity-90 animate-float-slow" />
+          <div className="obsidian-sphere sphere-obsidian w-60 h-60 -bottom-16 -right-12 opacity-90 animate-float-reverse" />
+          <div className="glass-micro-bubble w-8 h-8 top-1/3 -right-6 opacity-85" />
+          <div className="glass-micro-bubble w-6 h-6 bottom-1/4 -left-4 opacity-80" />
+
+          <div className="p-6 sm:p-10 rounded-[20px] cred-card overflow-hidden relative viewfinder-box z-10">
+            <div className="viewfinder-corner-tl" />
+            <div className="viewfinder-corner-tr" />
+            <div className="viewfinder-corner-bl" />
+            <div className="viewfinder-corner-br" />
+
+          {/* Virtual Stage Volume Ambient Cinema Visual */}
+          <div className="absolute inset-0 pointer-events-none opacity-15 overflow-hidden mix-blend-screen">
+            <img
+              src="/cinema-stage-volume.jpg"
+              alt="Cinema Production Stage Volume"
+              className="w-full h-full object-cover object-center filter grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
+          </div>
+
+          <div className="relative z-10 mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1220]/90 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[10px] font-bold tracking-[2px] backdrop-blur-xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+              Active platform focus.
+            </div>
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activePlatform.id}
@@ -82,29 +113,30 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10"
             >
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06]">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-2xl bg-[#E5A919]/10 border border-[#E5A919]/30 flex items-center justify-center">
-                    <ActiveIcon className="w-5 h-5 text-[#E5A919]" />
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+                    <ActiveIcon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#E5A919] font-semibold">
-                      Platform Focus
+                    <span className="text-[11px] font-mono tracking-[2.5px] text-white/50 font-bold">
+                      Capability architecture
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
                       {activePlatform.name}
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5">
-                  <span className="text-xs font-mono text-[var(--text-tertiary)] hidden sm:inline font-medium">
+                <div className="flex items-center gap-4">
+                  <span className="text-xs font-mono tracking-[1.5px] text-white/50 hidden sm:inline font-medium">
                     {activePlatform.highlightMetric} {activePlatform.metricsLabel}
                   </span>
                   <button
                     onClick={() => onFilterCategoryInDirectory(activePlatform.category)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#E5A919] hover:bg-[#f5b82e] text-black px-4 py-2 rounded-full transition-all duration-200 shadow-sm"
+                    className="cred-btn-primary py-3 px-6 text-xs"
                     id="btn-explore-category-directory"
                   >
                     <span>{activePlatform.ctaText}</span>
@@ -113,31 +145,31 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                 </div>
               </div>
 
-              <div className="my-6 grid grid-cols-1 md:grid-cols-12 gap-6">
-                <div className="md:col-span-4 space-y-2">
-                  <div className="text-sm font-semibold text-[var(--text-primary)]">
+              <div className="my-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div className="md:col-span-4 space-y-3">
+                  <div className="text-sm font-bold text-white font-mono tracking-wide">
                     {activePlatform.tagline}
                   </div>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                     {activePlatform.description}
                   </p>
                 </div>
 
                 <div className="md:col-span-8">
-                  <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-3 font-semibold">
-                    Included Products & Capabilities ({activePlatform.products.length})
+                  <div className="text-[11px] font-mono tracking-[2px] text-white/40 mb-4 font-bold">
+                    Included capabilities ({activePlatform.products.length})
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {activePlatform.products.map((prodName) => (
                       <div
                         key={prodName}
-                        className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.05] hover:border-[#E5A919]/40 transition-colors"
+                        className="p-3.5 rounded-lg bg-[#070A12]/60 border border-white/10 hover:border-[#5CE1E6]/50 transition-colors group/mod"
                       >
-                        <span className="text-xs font-bold text-[var(--text-primary)] font-mono block">
+                        <span className="text-xs font-bold text-white font-mono block group-hover/mod:text-[#5CE1E6] transition-colors">
                           {prodName}
                         </span>
-                        <span className="text-[10px] text-[var(--text-tertiary)]">
-                          Synchronized Module
+                        <span className="text-[10px] text-white/60 font-mono mt-0.5 block">
+                          Synq module
                         </span>
                       </div>
                     ))}
@@ -147,9 +179,10 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
             </motion.div>
           </AnimatePresence>
         </div>
+        </div>
 
-        {/* 12 Platforms Grid - Apple Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* 12 Platforms Grid - CRED Tall Card Showcase */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PLATFORMS.map((platform, idx) => {
             const Icon = ICON_MAP[platform.iconName] || Network;
             const isSelected = activePlatformId === platform.id;
@@ -157,48 +190,48 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
             return (
               <motion.div
                 key={platform.id}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 onClick={() => setActivePlatformId(platform.id)}
-                className={`group cursor-pointer rounded-2xl p-6 transition-all duration-200 border text-left ${
+                className={`group cursor-pointer rounded-xl p-6 transition-all duration-300 border text-left cred-card ${
                   isSelected
-                    ? 'bg-white border-2 border-[#E5A919] shadow-xl ring-2 ring-[#E5A919]/15'
-                    : 'ds-card hover:border-[var(--border-subtle)]'
+                    ? 'border-[#4D8DFF]/60 shadow-[0_0_35px_rgba(77,141,255,0.2)] ring-1 ring-[#4D8DFF]/40'
+                    : 'border-white/10 hover:border-white/30'
                 }`}
                 id={`platform-card-${platform.id}`}
               >
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-5">
                   <div
-                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
                       isSelected
-                        ? 'bg-[var(--accent-gold)]/20 text-[var(--accent-gold)]'
-                        : 'bg-[var(--bg-secondary)] text-[var(--accent-gold)] group-hover:bg-[var(--accent-gold)]/10'
+                        ? 'bg-[#4D8DFF] text-[#070A12]'
+                        : 'bg-white/10 text-white group-hover:bg-[#4D8DFF] group-hover:text-[#070A12]'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-xs font-mono text-[var(--text-tertiary)] font-semibold">
-                    0{idx + 1}
+                  <span className="text-xs font-mono text-white/40 font-bold tracking-[2px]">
+                    0{idx + 1}.
                   </span>
                 </div>
 
-                <h4 className={`text-base sm:text-lg font-bold tracking-tight mb-1 ${isSelected ? 'text-[var(--text-primary)]' : 'text-[var(--text-primary)] group-hover:text-[var(--accent-gold)]'} transition-colors`}>
+                <h4 className="text-lg font-bold tracking-tight text-white mb-1.5 font-display">
                   {platform.name}
                 </h4>
 
-                <p className="text-xs text-[#E5A919] font-medium mb-2">
+                <p className="text-xs text-white/85 font-mono tracking-wide mb-3">
                   {platform.tagline}
                 </p>
 
-                <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed mb-4">
+                <p className="text-xs text-white/50 line-clamp-2 leading-relaxed mb-5">
                   {platform.description}
                 </p>
 
-                <div className="pt-3 border-t border-black/[0.05] flex items-center justify-between text-xs">
-                  <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
+                <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono">
+                  <span className="text-[11px] text-white/40 tracking-wide">
                     {platform.products.length} Products
                   </span>
-                  <span className="text-[#E5A919] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Inspect <ChevronRight className="w-3.5 h-3.5" />
+                  <span className="text-white font-bold tracking-[1.5px] flex items-center gap-1 group-hover:text-[#4D8DFF] group-hover:translate-x-1 transition-all">
+                    EXPLORE <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </motion.div>

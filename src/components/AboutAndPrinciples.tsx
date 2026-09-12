@@ -7,25 +7,30 @@ export const AboutAndPrinciples: React.FC = () => {
   return (
     <section
       id="about-vision"
-      className="py-24 sm:py-32 bg-[var(--bg-canvas-subtle)] border-t border-[var(--border-hairline)]"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* About DigiSynq Narrative */}
         <div className="max-w-4xl mx-auto text-center mb-20">
-          <div className="ds-section-label mb-5">
-            <Compass className="w-3.5 h-3.5" />
-            Foundational Mission
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
+            Foundational mission.
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-sans">
-            Building the connective layer for cinema.
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
+            Building the connective layer.<br />
+            <span className="text-white/75">For cinema.</span>
           </h2>
 
-          <div className="mt-8 space-y-6 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed text-left sm:text-center">
+          <div className="mt-8 space-y-6 text-base sm:text-lg text-white/70 leading-relaxed text-left sm:text-center">
             <p>
               DigiSynq was created around a simple observation: cinema already contains enormous amounts of talent, infrastructure, content, knowledge and opportunity. Much of its value is lost because those resources remain fragmented.
             </p>
-            <p className="text-[#E5A919] font-semibold text-lg sm:text-xl">
+            <p className="text-[#5CE1E6] font-semibold text-lg sm:text-xl">
               DigiSynq is building the network between those points.
             </p>
             <p>
@@ -34,31 +39,28 @@ export const AboutAndPrinciples: React.FC = () => {
           </div>
         </div>
 
-        {/* SECTION 40: 8 COMPANY PRINCIPLES - Inspired by Reference Style */}
-        <div className="rounded-3xl ds-card p-6 sm:p-10 lg:p-12 shadow-md">
+        {/* 8 Company principles */}
+        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 lg:p-12 shadow-2xl relative backdrop-blur-2xl">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#E5A919] block mb-1 font-semibold">
+            <span className="text-xs font-mono tracking-widest text-[#5CE1E6] block mb-1 font-semibold">
               Guiding Directives
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-denton-extrabold">
               Where innovation meets aesthetics.
             </h3>
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">
+            <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed">
               The foundational convictions that guide our architecture, partnerships, and product design.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {PRINCIPLES.map((principle, idx) => {
+              // Restrained 4-accent palette: Cyan, Violet, Aurora, Mint
               const tints = [
-                { bg: 'bg-purple-50/70', border: 'border-purple-200/70', tag: 'text-purple-700', dot: 'bg-purple-500' },
-                { bg: 'bg-rose-50/70', border: 'border-rose-200/70', tag: 'text-rose-700', dot: 'bg-rose-500' },
-                { bg: 'bg-sky-50/70', border: 'border-sky-200/70', tag: 'text-sky-700', dot: 'bg-sky-500' },
-                { bg: 'bg-amber-50/70', border: 'border-amber-200/70', tag: 'text-amber-700', dot: 'bg-amber-500' },
-                { bg: 'bg-emerald-50/70', border: 'border-emerald-200/70', tag: 'text-emerald-700', dot: 'bg-emerald-500' },
-                { bg: 'bg-indigo-50/70', border: 'border-indigo-200/70', tag: 'text-indigo-700', dot: 'bg-indigo-500' },
-                { bg: 'bg-orange-50/70', border: 'border-orange-200/70', tag: 'text-orange-700', dot: 'bg-orange-500' },
-                { bg: 'bg-teal-50/70', border: 'border-teal-200/70', tag: 'text-teal-700', dot: 'bg-teal-500' },
+                { border: 'border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60', tag: 'text-[#5CE1E6]', dot: 'bg-[#5CE1E6]' },
+                { border: 'border-[#8B7CFF]/30 hover:border-[#8B7CFF]/60', tag: 'text-[#8B7CFF]', dot: 'bg-[#8B7CFF]' },
+                { border: 'border-[#4D8DFF]/30 hover:border-[#4D8DFF]/60', tag: 'text-[#4D8DFF]', dot: 'bg-[#4D8DFF]' },
+                { border: 'border-[#5EF2B0]/30 hover:border-[#5EF2B0]/60', tag: 'text-[#5EF2B0]', dot: 'bg-[#5EF2B0]' },
               ];
               const tint = tints[idx % tints.length];
 
@@ -66,17 +68,18 @@ export const AboutAndPrinciples: React.FC = () => {
                 <motion.div
                   key={principle.name}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className={`p-5 sm:p-6 rounded-2xl ${tint.bg} border ${tint.border} transition-all duration-200 flex flex-col justify-between shadow-xs`}
+                  className={`p-5 sm:p-6 rounded-2xl backdrop-blur-xl bg-[#070A12]/80 border ${tint.border} transition-all duration-200 flex flex-col justify-between shadow-lg`}
+                  style={{ boxShadow: 'inset 0 1px 1px 0 rgba(255,255,255,0.12), 0 8px 32px rgba(0,0,0,0.6)' }}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3.5">
                       <span className={`text-xs font-mono font-bold ${tint.tag}`}>
                         0{idx + 1}
                       </span>
-                      <span className={`w-2 h-2 rounded-full ${tint.dot}`} />
+                      <span className={`w-2 h-2 rounded-full ${tint.dot} shadow-[0_0_8px_currentColor]`} />
                     </div>
 
-                    <h4 className="text-base font-bold text-[var(--text-primary)] mb-1 tracking-tight">
+                    <h4 className="text-base font-bold text-white mb-1 tracking-tight">
                       {principle.name}
                     </h4>
 
@@ -84,7 +87,7 @@ export const AboutAndPrinciples: React.FC = () => {
                       {principle.summary}
                     </p>
 
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    <p className="text-xs text-white/70 leading-relaxed">
                       {principle.detail}
                     </p>
                   </div>

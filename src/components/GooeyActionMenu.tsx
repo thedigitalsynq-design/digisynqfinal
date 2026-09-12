@@ -33,11 +33,9 @@ export const GooeyActionMenu: React.FC<GooeyActionMenuProps> = ({
     setOpen(false);
   };
 
-  const liquidFill = theme === 'dark' ? '#E5A919' : '#D49B14';
+  const liquidFill = '#5CE1E6';
   const liquidShadow =
-    theme === 'dark'
-      ? '0 10px 30px rgba(229, 169, 25, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4)'
-      : '0 8px 24px rgba(212, 155, 20, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4)';
+    '0 10px 30px rgba(92, 225, 230, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.6)';
 
   return (
     <div

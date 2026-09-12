@@ -1,92 +1,345 @@
-@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display:wght@400;700;800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* ==========================================================================
+   OFFICIAL CRED DENTON TYPEFACE — SOURCED DIRECTLY FROM CRED.CLUB
+   Families: "denton", "Denton", "Denton-ExtraBold", "Denton-ExtraBoldItalic", "Denton-Bold", "Denton-BoldItalic"
+   Formats: woff2, woff
+   ========================================================================== */
+
+/* ── Denton Light (300) ────────────────────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/Denton-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/Denton-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'denton';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/Denton-LightItalic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/Denton-LightItalic.woff2') format('woff2');
+}
+
+/* ── Denton Regular (400) ──────────────────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Denton-Regular.woff2') format('woff2'),
+       url('/fonts/Denton-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Denton-Regular.woff2') format('woff2'),
+       url('/fonts/Denton-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'denton';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Denton-RegularItalic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Denton-RegularItalic.woff2') format('woff2');
+}
+
+/* ── Denton Medium (500) ───────────────────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Denton-Medium.woff2') format('woff2'),
+       url('/fonts/Denton-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Denton-Medium.woff2') format('woff2'),
+       url('/fonts/Denton-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'denton';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Denton-MediumItalic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Denton-MediumItalic.woff2') format('woff2');
+}
+
+/* ── Denton Bold (700) ─────────────────────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-Bold.woff2') format('woff2'),
+       url('/fonts/Denton-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-Bold.woff2') format('woff2'),
+       url('/fonts/Denton-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton-Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-Bold.woff2') format('woff2'),
+       url('/fonts/Denton-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'denton';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-BoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-BoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton-BoldItalic';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Denton-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-BoldItalic.woff') format('woff');
+}
+
+/* ── Denton Extra Bold (800) ───────────────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton-ExtraBold';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton Extra Bold';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBold.woff') format('woff');
+}
+
+/* ── Denton Extra Bold Italic (800i) ───────────────────────────── */
+@font-face {
+  font-family: 'denton';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton-ExtraBoldItalic';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Denton Extra Bold Italic';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Denton-ExtraBoldItalic.woff2') format('woff2'),
+       url('/fonts/Denton-ExtraBoldItalic.woff') format('woff');
+}
+
+/* ==========================================================================
+   MOMO TRUST DISPLAY — MASTER TYPEFACE EMBED
+   ========================================================================== */
+@font-face {
+  font-family: 'Momo Trust Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/momo-trust-display-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/momo-trust-display-latin-400-normal.woff') format('woff'),
+       url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Momo Trust Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/momo-trust-display-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/momo-trust-display-latin-400-normal.woff') format('woff'),
+       url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Momo Trust Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/momo-trust-display-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/momo-trust-display-latin-400-normal.woff') format('woff'),
+       url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Momo Trust Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/momo-trust-display-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/momo-trust-display-latin-400-normal.woff') format('woff'),
+       url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Momo Trust Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/momo-trust-display-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/momo-trust-display-latin-400-normal.woff') format('woff'),
+       url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
+}
+
 @import "tailwindcss";
 
 /* ── Font Theme ─────────────────────────────────────────────────── */
 @theme {
-  --font-sans: 'Momo Trust Display', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-weight-semibold: 700;
+  --font-sans: 'denton', 'Denton', 'Denton-ExtraBold', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'denton', 'Denton', 'Denton-ExtraBold', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 
-/* ── Design Tokens ──────────────────────────────────────────────── */
-:root {
-  /* Canvas */
-  --bg-canvas:        #FFFFFF;
-  --bg-canvas-subtle: #F7F7F9;
-  --bg-section-alt:   #F2F2F5;
+/* ── Premium Cinematic Glassmorphism Theme (Midnight Void & Deep Navy) ── */
+:root, .dark {
+  /* Foundation - Midnight Void (#070A12) & Deep Navy (#0D1220) */
+  --bg-void:          #070A12;
+  --bg-navy:          #0D1220;
+  --bg-canvas:        #070A12;
+  --bg-canvas-subtle: #0D1220;
+  --bg-section-alt:   #0D1220;
 
-  /* Cards */
-  --bg-card:          #FFFFFF;
-  --bg-card-hover:    #FAFAFA;
-  --bg-card-solid:    #FFFFFF;
-  --bg-secondary:     #F5F5F7;
-  --bg-tertiary:      #EBEBF0;
-  --bg-invert:        #111111;
+  /* Cards & Surfaces - Frosted Translucent Glass */
+  --bg-card:          rgba(13, 18, 32, 0.65);
+  --bg-card-hover:    rgba(20, 28, 48, 0.80);
+  --bg-card-solid:    #0D1220;
+  --bg-secondary:     rgba(255, 255, 255, 0.05);
+  --bg-tertiary:      rgba(255, 255, 255, 0.03);
+  --bg-invert:        #FFFFFF;
 
-  /* Text */
-  --text-primary:     #111111;
-  --text-secondary:   #555558;
-  --text-tertiary:    #999999;
-  --text-invert:      #FFFFFF;
+  /* Premium Glassmorphism */
+  --glass-bg:         rgba(13, 18, 32, 0.65);
+  --glass-bg-hover:   rgba(20, 28, 48, 0.80);
+  --glass-border:     rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.28);
+  --glass-shadow:     0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+  --glass-shadow-hover: 0 28px 70px rgba(0, 0, 0, 0.95), 0 0 35px rgba(92, 225, 230, 0.12), inset 0 1px 2px 0 rgba(255, 255, 255, 0.35);
+  --glass-blur:       blur(28px) saturate(180%);
+  --glass-text:       #FFFFFF;
+  --glass-text-secondary: rgba(255, 255, 255, 0.88);
+  --glass-text-tertiary: rgba(255, 255, 255, 0.72);
 
-  /* Borders */
-  --border-hairline:  rgba(0, 0, 0, 0.07);
-  --border-subtle:    rgba(0, 0, 0, 0.10);
-  --border-medium:    rgba(0, 0, 0, 0.16);
+  /* High-Contrast WCAG Typography */
+  --text-primary:     #FFFFFF;
+  --text-secondary:   rgba(255, 255, 255, 0.88);
+  --text-tertiary:    rgba(255, 255, 255, 0.72);
+  --text-invert:      #070A12;
 
-  /* Accent */
-  --accent-gold:      #C98E08;
-  --accent-gold-bg:   rgba(201, 142, 8, 0.09);
-  --accent-gold-hover:#DF9F0E;
-  --accent-gold-light:#FEF3C7;
+  /* Soft White Glass Borders & Luminous Highlights */
+  --border-hairline:  rgba(255, 255, 255, 0.09);
+  --border-subtle:    rgba(255, 255, 255, 0.14);
+  --border-medium:    rgba(255, 255, 255, 0.26);
 
-  /* Shadows */
-  --shadow-xs:        0 1px 4px rgba(0, 0, 0, 0.05);
-  --shadow-sm:        0 2px 10px rgba(0, 0, 0, 0.06);
-  --shadow-md:        0 4px 24px rgba(0, 0, 0, 0.07);
-  --shadow-lg:        0 8px 40px rgba(0, 0, 0, 0.09);
-  --shadow-xl:        0 16px 60px rgba(0, 0, 0, 0.10);
+  /* Restrained Ecosystem Signal Accents */
+  --accent-cyan:      #5CE1E6; /* Connectivity, data flow, synchronization */
+  --accent-violet:    #8B7CFF; /* Intelligence, network depth, proprietary architecture */
+  --accent-aurora:    #4D8DFF; /* Data streams, platform links, structure */
+  --accent-mint:      #5EF2B0; /* Live / active states, telemetry latency, verified */
+  --accent-amber:     #FFC857; /* Warnings, attention states, friction */
 
-  /* For backwards compat with existing components */
-  --shadow-apple-sm:    var(--shadow-xs);
-  --shadow-apple-card:  var(--shadow-md);
-  --shadow-apple-hover: var(--shadow-lg);
-  --shadow-apple-float: var(--shadow-xl);
-}
+  /* Legacy mapping aliases */
+  --accent-gold:      #5CE1E6;
+  --accent-gold-bg:   rgba(92, 225, 230, 0.12);
+  --accent-gold-hover:#7EF5FA;
+  --accent-gold-light:#E0FAFA;
 
-/* Locked to pure white theme per user requirement: "i dont want black background need website like white background" */
-.dark {
-  --bg-canvas:        #FFFFFF;
-  --bg-canvas-subtle: #F8F8FA;
-  --bg-section-alt:   #F3F3F6;
-  --bg-card:          #FFFFFF;
-  --bg-card-hover:    #FAFAFA;
-  --bg-card-solid:    #FFFFFF;
-  --bg-secondary:     #F4F4F6;
-  --bg-tertiary:      #EAEAEF;
-  --bg-invert:        #111111;
+  /* Atmospheric Shadows */
+  --shadow-xs:        0 1px 4px rgba(0, 0, 0, 0.6);
+  --shadow-sm:        0 4px 16px rgba(0, 0, 0, 0.7);
+  --shadow-md:        0 8px 32px rgba(0, 0, 0, 0.8);
+  --shadow-lg:        0 16px 50px rgba(0, 0, 0, 0.85);
+  --shadow-xl:        0 24px 70px rgba(0, 0, 0, 0.95);
 
-  --text-primary:     #111111;
-  --text-secondary:   #555558;
-  --text-tertiary:    #8E8E93;
-  --text-invert:      #FFFFFF;
-
-  --border-hairline:  rgba(0, 0, 0, 0.07);
-  --border-subtle:    rgba(0, 0, 0, 0.10);
-  --border-medium:    rgba(0, 0, 0, 0.16);
-
-  --accent-gold:      #C98E08;
-  --accent-gold-bg:   rgba(201, 142, 8, 0.09);
-  --accent-gold-hover:#DF9F0E;
-  --accent-gold-light:#FEF3C7;
-
-  --shadow-xs:        0 1px 4px rgba(0, 0, 0, 0.04);
-  --shadow-sm:        0 2px 10px rgba(0, 0, 0, 0.05);
-  --shadow-md:        0 4px 24px rgba(0, 0, 0, 0.06);
-  --shadow-lg:        0 12px 40px rgba(0, 0, 0, 0.08);
-  --shadow-xl:        0 20px 60px rgba(0, 0, 0, 0.10);
   --shadow-apple-sm:    var(--shadow-xs);
   --shadow-apple-card:  var(--shadow-md);
   --shadow-apple-hover: var(--shadow-lg);
@@ -100,7 +353,7 @@ html {
 
 @layer base {
   body {
-    font-family: 'Momo Trust Display', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'denton', 'Denton', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 700;
     letter-spacing: -0.012em;
     -webkit-font-smoothing: antialiased;
@@ -115,111 +368,228 @@ html {
     font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     letter-spacing: -0.02em;
   }
+
+  /* ==========================================================================
+     MOMO TRUST DISPLAY — MASTER HEADLINE & DISPLAY SYSTEM
+     ========================================================================== */
+  h1, h2, h3, h4, h5, h6,
+  .font-display,
+  .ds-display-title,
+  .hero-headline,
+  .section-title {
+    font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
+    letter-spacing: -0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-weight: 800 !important;
+  }
+
+  h2 {
+    font-weight: 800 !important;
+  }
+
+  h3, h4, h5, h6 {
+    font-weight: 700 !important;
+  }
+
+  .font-bold {
+    font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
+    font-weight: 700 !important;
+  }
+
+  .font-extrabold {
+    font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
+    font-weight: 800 !important;
+  }
 }
 
 /* ── Cards ──────────────────────────────────────────────────────── */
-/* Main reusable card — white, thin border, soft shadow */
-.ds-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-hairline);
+/* Main reusable card — dark glass with backdrop blur */
+.ds-card,
+.apple-card,
+.ds-card-invert,
+.ds-card-muted {
+  --text-primary:     #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --text-tertiary: rgba(255, 255, 255, 0.72);
+  --border-hairline:  rgba(255, 255, 255, 0.06);
+  --border-subtle:    rgba(255, 255, 255, 0.10);
+  --border-medium:    rgba(255, 255, 255, 0.16);
+  --bg-secondary:     rgba(255, 255, 255, 0.06);
+  --bg-tertiary:      rgba(255, 255, 255, 0.04);
+  --bg-card:          rgba(255, 255, 255, 0.04);
+  --bg-card-hover:    rgba(255, 255, 255, 0.06);
+  --accent-gold-bg:   rgba(201, 142, 8, 0.15);
+}
+
+/* Override bg-white inside dark glass cards */
+.ds-card .bg-white,
+.apple-card .bg-white {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Override black-based backgrounds inside dark glass cards */
+.ds-card .bg-black\/\[0\.02\],
+.ds-card .bg-black\/\[0\.03\],
+.ds-card .bg-black\/\[0\.04\],
+.ds-card .bg-black\/\[0\.05\],
+.apple-card .bg-black\/\[0\.02\],
+.apple-card .bg-black\/\[0\.03\],
+.apple-card .bg-black\/\[0\.04\],
+.apple-card .bg-black\/\[0\.05\] {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ds-card,
+.apple-card,
+.ds-card-invert,
+.ds-card-muted {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow);
+  color: var(--glass-text);
   transition: box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.22s;
+              border-color 0.22s,
+              background 0.22s;
 }
 
 .ds-card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--glass-shadow-hover);
   transform: translateY(-2px);
-  border-color: var(--border-subtle);
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
 }
 
-/* Inverted / highlighted card — prestigious white card with gold accent border, not black */
+/* Inverted / highlighted card — dark glass with gold accent border */
 .ds-card-invert {
-  background: #FFFFFF;
-  border: 1.5px solid var(--accent-gold);
+  --text-primary:     #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --text-tertiary: rgba(255, 255, 255, 0.72);
+  --border-hairline:  rgba(255, 255, 255, 0.06);
+  --border-subtle:    rgba(255, 255, 255, 0.10);
+  --border-medium:    rgba(255, 255, 255, 0.16);
+  --bg-secondary:     rgba(255, 255, 255, 0.06);
+  --bg-tertiary:      rgba(255, 255, 255, 0.04);
+  background: rgba(18, 18, 22, 0.70);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(201, 142, 8, 0.40);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(201, 142, 8, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
-  color: var(--text-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(201, 142, 8, 0.10);
+  color: #FFFFFF;
   transition: box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s;
 }
 
 .ds-card-invert:hover {
-  box-shadow: 0 16px 40px rgba(201, 142, 8, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32), 0 4px 12px rgba(201, 142, 8, 0.15);
   transform: translateY(-2px);
 }
 
-/* Subtle gray-fill card */
+/* Subtle dark glass card — muted variant */
 .ds-card-muted {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-hairline);
+  --text-primary:     #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --text-tertiary: rgba(255, 255, 255, 0.72);
+  --border-hairline:  rgba(255, 255, 255, 0.06);
+  --border-subtle:    rgba(255, 255, 255, 0.10);
+  --border-medium:    rgba(255, 255, 255, 0.16);
+  --bg-secondary:     rgba(255, 255, 255, 0.06);
+  --bg-tertiary:      rgba(255, 255, 255, 0.04);
+  background: rgba(18, 18, 22, 0.45);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
+  color: #FFFFFF;
   transition: box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ds-card-muted:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-shadow);
   transform: translateY(-2px);
 }
 
-/* Apple-glass backward compat (now light frosted) */
+/* Apple-glass backward compat — dark glass */
 .apple-glass {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(18, 18, 22, 0.55);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border-hairline);
-  box-shadow: var(--shadow-xs);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--glass-text);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-glass-subtle {
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-hairline);
+  background: rgba(18, 18, 22, 0.45);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  color: var(--glass-text);
 }
 
-/* Backward compat: apple-card = ds-card */
+/* Backward compat: apple-card = dark glass */
 .apple-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-hairline);
+  --text-primary:     #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.88);
+  --text-tertiary: rgba(255, 255, 255, 0.72);
+  --border-hairline:  rgba(255, 255, 255, 0.06);
+  --border-subtle:    rgba(255, 255, 255, 0.10);
+  --border-medium:    rgba(255, 255, 255, 0.16);
+  --bg-secondary:     rgba(255, 255, 255, 0.06);
+  --bg-tertiary:      rgba(255, 255, 255, 0.04);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow);
+  color: var(--glass-text);
   transition: box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.22s;
+              border-color 0.22s,
+              background 0.22s;
 }
 
 .apple-card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--glass-shadow-hover);
   transform: translateY(-2px);
-  border-color: var(--border-subtle);
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
 }
 
 /* ── Section Label / Eyebrow Pill ───────────────────────────────── */
-/* Small uppercase pill above section titles (like "TESTIMONIALS" in Luxura) */
+/* Small uppercase pill above section titles — dark glass */
 .ds-section-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 5px 14px;
   border-radius: 9999px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-hairline);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
+  /* text-transform: sentence-case; */
+  color: var(--glass-text-secondary);
   font-family: 'JetBrains Mono', monospace;
 }
 
 /* Gold variant */
 .ds-section-label-gold {
-  background: var(--accent-gold-bg);
-  border-color: rgba(201,142,8,0.25);
+  background: rgba(201, 142, 8, 0.15);
+  border-color: rgba(201,142,8,0.35);
   color: var(--accent-gold);
 }
 
@@ -229,69 +599,79 @@ html {
   align-items: center;
   padding: 4px 12px;
   border-radius: 9999px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-hairline);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   font-size: 11px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--glass-text-secondary);
   white-space: nowrap;
 }
 
-/* ── Buttons ─────────────────────────────────────────────────────── */
-/* Primary: black pill (Reference: Scribblit/Vistare "Download/Start" style) */
-.ds-btn-primary {
+/* ── Buttons (Inspired by Reference Images 2 & 3: Stark High-Contrast Noir) ── */
+/* Primary: Crisp White Pill on Pitch Black (like "Book a call today" / "GET STARTED") */
+.ds-btn-primary,
+.apple-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 12px 28px;
   border-radius: 9999px;
-  background: #111111;
-  color: #FFFFFF;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-family: 'Momo Trust Display', 'Plus Jakarta Sans', sans-serif !important;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 800 !important;
   letter-spacing: -0.01em;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.22), 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ds-btn-primary:hover {
-  background: #222222;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
-  transform: translateY(-1px);
+.ds-btn-primary:hover,
+.apple-btn-primary:hover {
+  background: #F0F0F4 !important;
+  box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px) scale(1.02);
 }
 
-.ds-btn-primary:active {
+.ds-btn-primary:active,
+.apple-btn-primary:active {
   transform: scale(0.98);
 }
 
-/* Secondary: outlined/ghost pill */
-.ds-btn-secondary {
+/* Secondary: Frosted Noir Pill with fine white border */
+.ds-btn-secondary,
+.apple-btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 11px 26px;
   border-radius: 9999px;
-  background: transparent;
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  font-family: 'Momo Trust Display', 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  border: 1px solid var(--border-medium);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.18s cubic-bezier(0.16,1,0.3,1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ds-btn-secondary:hover {
-  background: var(--bg-secondary);
-  border-color: var(--border-subtle);
+.ds-btn-secondary:hover,
+.apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.38);
   transform: translateY(-1px);
 }
 
-.ds-btn-secondary:active {
+.ds-btn-secondary:active,
+.apple-btn-secondary:active {
   transform: scale(0.98);
 }
 
@@ -305,17 +685,19 @@ html {
   border-radius: 9999px;
   background: var(--accent-gold);
   color: #000000;
+  font-family: 'Momo Trust Display', 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 16px rgba(201,142,8,0.28);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 4px 20px rgba(229, 169, 25, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ds-btn-gold:hover {
   background: var(--accent-gold-hover);
-  box-shadow: 0 4px 24px rgba(201,142,8,0.40);
+  box-shadow: 0 6px 30px rgba(229, 169, 25, 0.50);
   transform: translateY(-1px);
 }
 
@@ -323,57 +705,6 @@ html {
   transform: scale(0.98);
 }
 
-/* Backward compat apple buttons */
-.apple-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 9999px;
-  background: #111111;
-  color: #FFFFFF;
-  font-weight: 600;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
-}
-
-.apple-btn-primary:hover {
-  background: #222222;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
-}
-
-.apple-btn-primary:active {
-  transform: scale(0.98);
-}
-
-.apple-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 26px;
-  border-radius: 9999px;
-  background: transparent;
-  color: var(--text-primary);
-  font-weight: 500;
-  font-size: 14px;
-  border: 1px solid var(--border-medium);
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.18s;
-}
-
-.apple-btn-secondary:hover {
-  background: var(--bg-secondary);
-  border-color: var(--border-subtle);
-  transform: translateY(-1px);
-}
-
-.apple-btn-secondary:active {
-  transform: scale(0.98);
-}
 
 /* ── Section Divider / Ticker ────────────────────────────────────── */
 .ds-ticker-track {
@@ -416,13 +747,14 @@ html {
   }
 }
 
-/* ── Glassmorphism remnants — kept for backward compat but lightened */
+/* ── Glassmorphism — dark glass */
 .glass-bubble {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  background: rgba(18, 18, 22, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20);
+  color: var(--glass-text);
 }
 
 /* Removed dark glow-orbs on light theme; kept for dark mode only */
@@ -445,20 +777,25 @@ html {
   background: radial-gradient(circle, rgba(147,51,234,0.40) 0%, transparent 70%);
 }
 
-/* glass-capsule: lightened */
+/* glass-capsule — dark glass */
 .glass-capsule {
-  background: rgba(0,0,0,0.04);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(18, 18, 22, 0.50);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--glass-border);
   border-radius: 9999px;
+  color: var(--glass-text);
 }
 
-/* vision-dark-panel — transformed into pristine white telemetry card with subtle pastel wash */
+/* vision-dark-panel — dark glass */
 .vision-dark-panel {
-  background: #FFFFFF;
-  border: 1px solid var(--border-hairline);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 32px;
-  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--glass-shadow);
+  color: var(--glass-text);
 }
 
 /* Reference-inspired soft pastel gradient mesh blobs */
@@ -484,36 +821,76 @@ html {
   filter: none;
 }
 
-/* layered sheets */
+/* layered sheets — inspired by stacked black glass reference images */
 .layered-sheet-base {
   position: relative;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(145deg, #1a1a22 0%, #0a0a10 100%);
   border-radius: 28px;
-  box-shadow: 0 20px 40px -10px rgba(37,99,235,0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .layered-sheet-glass {
   position: absolute;
   top: 18px; left: 18px; right: -18px; bottom: -18px;
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(255,255,255,0.9);
+  background: rgba(18, 18, 22, 0.50);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: inset 0 1.5px 2px rgba(255,255,255,0.9), 0 12px 28px rgba(0,0,0,0.08);
+  box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.08), 0 12px 28px rgba(0, 0, 0, 0.65);
 }
 
-/* frost-rim-card — now clean white card */
+/* ── Stacked Glass Layers (Reference Image 1 & 3 — Isometric Dark Cards) ── */
+/* A reusable utility for creating the 3-layer stacked glass effect */
+.ds-glass-stack {
+  position: relative;
+  display: inline-block;
+}
+
+.ds-glass-stack::before,
+.ds-glass-stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.ds-glass-stack::before {
+  background: rgba(18, 18, 24, 0.50);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateY(10px) scale(0.96);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.70);
+  z-index: -1;
+}
+
+.ds-glass-stack::after {
+  background: rgba(14, 14, 18, 0.35);
+  transform: translateY(20px) scale(0.92);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.80);
+  z-index: -2;
+}
+
+/* frost-rim-card — dark glass */
 .frost-rim-card {
   position: relative;
   border-radius: 28px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-hairline);
-  box-shadow: var(--shadow-md);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--glass-text);
   transition: box-shadow 0.28s cubic-bezier(0.16,1,0.3,1), transform 0.28s;
 }
 
 .frost-rim-card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--glass-shadow-hover);
   transform: translateY(-2px);
+  border-color: var(--glass-border-hover);
 }
 
 .frost-skyline-silhouette {
@@ -521,8 +898,8 @@ html {
   bottom: 0; left: 0; right: 0;
   height: 45%;
   pointer-events: none;
-  opacity: 0.07;
-  mix-blend-mode: multiply;
+  opacity: 0.06;
+  mix-blend-mode: screen;
 }
 
 /* brushed-titanium-plate — repurposed to subtle section bg */
@@ -533,11 +910,11 @@ html {
 
 /* ── Custom Scrollbar ────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 7px; height: 7px; }
-::-webkit-scrollbar-track { background: var(--bg-canvas); }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-medium);
+  background: rgba(255, 255, 255, 0.20);
   border-radius: 9999px;
-  border: 2px solid var(--bg-canvas);
+  border: 2px solid transparent;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
@@ -549,4 +926,466 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ==========================================================================
+   COMPLETE BLACK NOIR LUXURY THEME OVERRIDES (INSPIRED BY REFERENCE IMAGES)
+   ========================================================================== */
+html, body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+/* All cards adopt luxurious frosted dark glassmorphism (Image 1 & 3) */
+.ds-card,
+.apple-card,
+.frost-rim-card,
+.vision-dark-panel {
+  background: rgba(18, 18, 24, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+.ds-card:hover,
+.apple-card:hover,
+.frost-rim-card:hover {
+  background: rgba(28, 28, 38, 0.80) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.90), 0 0 35px rgba(229, 169, 25, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+}
+
+/* Any remaining .bg-white containers (except primary white buttons) become dark glass */
+div.bg-white,
+section.bg-white,
+header.bg-white,
+article.bg-white,
+aside.bg-white,
+ul.bg-white {
+  background-color: rgba(18, 18, 24, 0.65) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+/* Inputs, selects, and textareas */
+input, select, textarea {
+  background-color: rgba(14, 14, 18, 0.85) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Modal windows */
+#join-network-modal > div,
+#product-detail-modal > div {
+  background: rgba(14, 14, 18, 0.95) !important;
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.90) !important;
+}
+
+/* Border overrides */
+.border-black\/\[0\.08\],
+.border-black\/\[0\.07\],
+.border-black\/\[0\.06\],
+.border-black\/\[0\.05\],
+.border-black\/\[0\.04\] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sub-panel backgrounds */
+.bg-black\/\[0\.02\],
+.bg-black\/\[0\.03\],
+.bg-black\/\[0\.04\],
+.bg-black\/\[0\.05\] {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* ==========================================================================
+   CRED DESIGN SYSTEM — SIGNATURE STYLES & UTILITIES (cred.club)
+   ========================================================================== */
+
+/* ── CRED Buttons ─────────────────────────────────────────────── */
+/* 1. CRED Stark White Luxury Button */
+.cred-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-family: 'denton', 'Denton', sans-serif !important;
+  font-size: 12px;
+  font-weight: 800 !important;
+  letter-spacing: 3px;
+  /* text-transform: sentence-case; */
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.20), 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.cred-btn-primary:hover {
+  background: #EAEAEA !important;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.40);
+  transform: translateY(-2px);
+}
+
+.cred-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 2. CRED Signature Glass / Border Button (.cAlVWf) */
+.cred-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 34px;
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: #FFFFFF !important;
+  font-family: 'denton', 'Denton', sans-serif !important;
+  font-size: 12px;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  /* text-transform: sentence-case; */
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.cred-btn-glass:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.cred-btn-glass:active {
+  transform: translateY(0);
+}
+
+/* ── Master Smoked Glassmorphism Card (Obsidian Mockup Foundation) ─────── */
+.cred-card,
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 35%, rgba(10, 14, 22, 0.65) 100%) !important;
+  backdrop-filter: blur(28px) saturate(130%) brightness(1.05) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(130%) brightness(1.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.48) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 35px 85px -15px rgba(0, 0, 0, 0.95), inset 0 1px 1px 0 rgba(255, 255, 255, 0.32), inset 0 0 24px 0 rgba(255, 255, 255, 0.02) !important;
+  border-radius: 20px !important;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cred-card:hover,
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  border-top-color: rgba(255, 255, 255, 0.75) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 35%, rgba(14, 20, 32, 0.70) 100%) !important;
+  box-shadow: 0 40px 95px -15px rgba(0, 0, 0, 0.98), inset 0 1px 2px 0 rgba(255, 255, 255, 0.45) !important;
+  transform: translateY(-4px);
+}
+
+/* ── CRED Inset Top Badge ─────────────────────────────────────── */
+.cred-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  background: rgba(13, 18, 32, 0.90) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #5CE1E6 !important;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  margin-bottom: 16px;
+  z-index: 10;
+}
+
+/* ── CRED Hairline Divider ────────────────────────────────────── */
+.cred-hairline {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+  border: none;
+  margin: 0;
+}
+
+/* ── CRED Micro-label ─────────────────────────────────────────── */
+.cred-sublabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  /* text-transform: sentence-case; */
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── CRED Headline Scale ──────────────────────────────────────── */
+.cred-headline {
+  font-family: 'denton', 'Denton', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   CREATIVE DIRECTOR MASTER SUITE — CINEMATIC LUXURY TOKENS
+   ========================================================================== */
+
+.font-syne {
+  font-family: 'denton', 'Denton', 'Denton-ExtraBold', sans-serif !important;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+/* ── Viewfinder Camera Framing ────────────────────────────────── */
+.viewfinder-box {
+  position: relative;
+}
+
+.viewfinder-corner-tl {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.viewfinder-corner-tr {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.viewfinder-corner-bl {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.viewfinder-corner-br {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+/* ── Anamorphic Optical Flare ─────────────────────────────────── */
+.anamorphic-flare {
+  position: absolute;
+  width: 120%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(100, 180, 255, 0.6) 40%, rgba(255, 255, 255, 0.9) 50%, rgba(229, 169, 25, 0.6) 60%, transparent 100%);
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+/* ── Film Sprocket Strip Accent ───────────────────────────────── */
+.film-sprocket-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  opacity: 0.15;
+  padding: 8px 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.film-sprocket-hole {
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+/* ── Denton Master Typography Utility Classes ──────────────────── */
+.font-denton {
+  font-family: 'denton', 'Denton', 'Denton-ExtraBold', sans-serif !important;
+}
+
+.font-denton-extrabold {
+  font-family: 'Denton-ExtraBold', 'denton', 'Denton', sans-serif !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+}
+
+.font-denton-extrabold-italic {
+  font-family: 'Denton-ExtraBoldItalic', 'denton', 'Denton', sans-serif !important;
+  font-weight: 800 !important;
+  font-style: italic !important;
+}
+
+.font-denton-bold {
+  font-family: 'Denton-Bold', 'denton', 'Denton', sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+
+.font-denton-bold-italic {
+  font-family: 'Denton-BoldItalic', 'denton', 'Denton', sans-serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+
+/* ── 3D Obsidian Charcoal Spheres & Smoked Glass Orbs (Mockup Reference Aesthetic) ── */
+.obsidian-sphere,
+.glass-sphere {
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  /* 3D realistic matte metallic obsidian lighting with silver specular catch */
+  background: radial-gradient(circle at 35% 25%, 
+    rgba(255, 255, 255, 0.45) 0%, 
+    rgba(255, 255, 255, 0.12) 16%, 
+    rgba(38, 46, 64, 0.95) 36%, 
+    #121622 60%, 
+    #090c14 80%, 
+    #040508 100%);
+  box-shadow: 
+    0 30px 60px -10px rgba(0, 0, 0, 0.95),
+    inset 0 -12px 24px rgba(0, 0, 0, 0.85),
+    inset 0 2px 4px rgba(255, 255, 255, 0.40);
+}
+
+/* Glass Micro-Bubble / Specular Bead (as in mockup's floating small orbs) */
+.glass-micro-bubble {
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 35% 30%, 
+    rgba(255, 255, 255, 0.85) 0%, 
+    rgba(255, 255, 255, 0.25) 24%, 
+    rgba(22, 30, 46, 0.55) 55%, 
+    rgba(6, 9, 16, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.9), 
+    inset 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Hero Obsidian Sphere (Deep volume & silver highlight) */
+.sphere-obsidian-hero {
+  background: radial-gradient(circle at 32% 24%, 
+    rgba(255, 255, 255, 0.50) 0%, 
+    rgba(255, 255, 255, 0.14) 15%, 
+    rgba(42, 50, 68, 0.95) 35%, 
+    #131824 60%, 
+    #0a0d15 82%, 
+    #040508 100%);
+  box-shadow: 0 35px 70px -10px rgba(0, 0, 0, 0.98), inset 0 -14px 28px rgba(0, 0, 0, 0.9), inset 0 2px 5px rgba(255, 255, 255, 0.45);
+}
+
+/* Secondary Obsidian Sphere */
+.sphere-obsidian-subtle,
+.sphere-obsidian {
+  background: radial-gradient(circle at 35% 25%, 
+    rgba(255, 255, 255, 0.35) 0%, 
+    rgba(255, 255, 255, 0.08) 18%, 
+    rgba(32, 38, 52, 0.9) 38%, 
+    #0f131d 62%, 
+    #070910 85%, 
+    #030406 100%);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.95), inset 0 -10px 20px rgba(0, 0, 0, 0.85), inset 0 2px 4px rgba(255, 255, 255, 0.30);
+}
+
+/* Navy Obsidian Tint */
+.sphere-navy {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 16%, rgba(30, 42, 65, 0.9) 38%, #0d1424 62%, #070a12 85%, #030408 100%);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.95), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+/* Restrained Deep Tint Spheres */
+.sphere-violet {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.38) 0%, rgba(180, 170, 240, 0.12) 18%, rgba(38, 34, 60, 0.95) 38%, #141022 62%, #080612 85%, #030206 100%);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.95), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.sphere-cyan {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.40) 0%, rgba(160, 230, 240, 0.12) 18%, rgba(24, 46, 56, 0.95) 38%, #0c1c22 62%, #050e12 85%, #020508 100%);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.95), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.sphere-amber {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 230, 170, 0.12) 18%, rgba(55, 42, 22, 0.95) 38%, #20170a 62%, #0f0b04 85%, #060401 100%);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.95), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.sphere-aurora {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.38) 0%, rgba(170, 200, 250, 0.12) 18%, rgba(24, 40, 68, 0.95) 38%, #0d172a 62%, #060b16 85%, #020408 100%);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.95), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+/* Backward-compatibility aliases */
+.sphere-mahogany {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.08) 16%, #182035 38%, #0d1220 62%, #070a12 85%, #030508 100%);
+}
+
+.sphere-chocolate {
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.08) 16%, #201c38 38%, #141129 62%, #0a0817 85%, #04030a 100%);
+}
+
+/* Gentle floating animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-2deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 10s ease-in-out infinite;
 }
