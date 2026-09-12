@@ -17,9 +17,6 @@ export const AboutAndPrinciples: React.FC<AboutAndPrinciplesProps> = ({
       id="about-vision"
       className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* About DigiSynq Narrative */}
@@ -102,11 +99,6 @@ export const AboutAndPrinciples: React.FC<AboutAndPrinciplesProps> = ({
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className={`p-6 rounded-[22px] cred-card border ${founder.border} transition-all duration-300 relative overflow-hidden group`}
               >
-                {/* Ambient specular corner glow */}
-                <div
-                  className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none transition-opacity group-hover:opacity-40"
-                  style={{ background: founder.accent }}
-                />
 
                 <div className="flex items-center justify-between mb-6">
                   <div

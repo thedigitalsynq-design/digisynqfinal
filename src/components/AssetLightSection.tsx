@@ -37,10 +37,7 @@ export const AssetLightSection: React.FC<AssetLightSectionProps> = ({ onOpenRunb
 
         {/* Two-Sided Visual Comparison Cards - CRED Ledger */}
         <div className="relative mb-16">
-          {/* 3D Glassmorphic Depth Spheres */}
-          <div className="glass-sphere sphere-navy w-60 h-60 -top-16 -left-14 animate-float-slow opacity-85" />
-          <div className="glass-sphere sphere-violet w-52 h-52 -bottom-16 right-1/4 animate-float-reverse opacity-80" />
-          <div className="glass-sphere sphere-aurora w-36 h-36 top-1/4 -right-10 opacity-75" />
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 relative z-10">
           {/* Traditional Heavy Model */}
@@ -79,9 +76,7 @@ export const AssetLightSection: React.FC<AssetLightSectionProps> = ({ onOpenRunb
           </div>
 
           <div className="relative">
-            <div className="obsidian-sphere sphere-obsidian-hero w-56 h-56 -top-12 -right-8 opacity-90 animate-float-slow" />
-            <div className="obsidian-sphere sphere-obsidian w-44 h-44 -bottom-10 -left-6 opacity-85 animate-float-reverse" />
-            <div className="glass-micro-bubble w-7 h-7 top-1/2 -right-4 opacity-80" />
+
 
             <div className="rounded-[20px] cred-card border-white/20 p-6 sm:p-9 shadow-2xl relative z-10">
               <div className="mb-4">

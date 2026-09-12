@@ -485,9 +485,7 @@ export const RunbookModal: FC<RunbookModalProps> = ({
 
         {/* Main Content Viewer */}
         <main className="flex-1 p-6 sm:p-10 md:p-12 overflow-y-auto relative text-left">
-          {/* Subtle Ambient Refraction Spheres */}
-          <div className="obsidian-sphere sphere-obsidian-hero w-72 h-72 -top-16 -right-16 opacity-30 pointer-events-none" />
-          <div className="glass-sphere sphere-cyan w-48 h-48 bottom-10 right-10 opacity-15 pointer-events-none" />
+
 
           <div className="max-w-3xl relative z-10">
             {/* Chapter Header */}
@@ -537,11 +535,7 @@ export const RunbookModal: FC<RunbookModalProps> = ({
                         key={f.name}
                         className="p-5 rounded-2xl bg-[#0D1220]/85 border border-white/15 hover:border-white/30 transition-all duration-300 relative overflow-hidden group shadow-lg"
                       >
-                        {/* Ambient corner aura */}
-                        <div
-                          className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity"
-                          style={{ background: f.accent }}
-                        />
+
 
                         <div className="flex items-center justify-between mb-3 relative z-10">
                           <div>

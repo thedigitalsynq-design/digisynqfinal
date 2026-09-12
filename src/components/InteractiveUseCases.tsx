@@ -52,9 +52,7 @@ export const InteractiveUseCases: FC = () => {
       id="use-cases"
       className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-1/3 -left-40 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-40 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -137,7 +135,7 @@ export const InteractiveUseCases: FC = () => {
                 <span className="text-[11px] font-mono text-white/50 tracking-widest block mb-1 font-semibold">
                   Natural Language Prompt Ingested
                 </span>
-                <p className="text-sm sm:text-base text-white/95 font-mono italic">
+                <p className="text-sm sm:text-base text-white/95 font-mono">
                   "{activeCase.query}"
                 </p>
               </div>

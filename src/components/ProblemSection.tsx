@@ -92,7 +92,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenRunbook })
 
           <h2 className="text-[clamp(1.4rem,6.9vw,4.4rem)] font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
             <span className="block whitespace-nowrap">Relationships connect cinema.</span>
-            <span className="block whitespace-nowrap text-white/75 italic font-denton-extrabold-italic">Systems break it.</span>
+            <span className="block whitespace-nowrap text-white/75 font-denton-extrabold">Systems break it.</span>
           </h2>
 
           <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
@@ -131,10 +131,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenRunbook })
 
         {/* Bento Grid of 8 cards (CRED Style) */}
         <div className="relative">
-          {/* 3D Glassmorphic Floating Depth Spheres */}
-          <div className="glass-sphere sphere-navy w-52 h-52 -top-14 -right-10 animate-float-slow opacity-85" />
-          <div className="glass-sphere sphere-violet w-44 h-44 -bottom-14 -left-8 animate-float-reverse opacity-80" />
-          <div className="glass-sphere sphere-aurora w-32 h-32 top-1/2 left-1/2 -translate-x-1/2 opacity-70" />
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
           {problemPoints.map((item, index) => (

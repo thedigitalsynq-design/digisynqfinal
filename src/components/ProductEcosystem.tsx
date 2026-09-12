@@ -67,7 +67,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
             One network.<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">Twelve platforms.</span>
+            <span className="text-white/75 font-denton-extrabold">Twelve platforms.</span>
           </h2>
 
           <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
@@ -81,10 +81,7 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
 
         {/* Central Interconnected Hub Visual - CRED Feature Slab */}
         <div className="relative mb-14">
-          <div className="obsidian-sphere sphere-obsidian-hero w-64 h-64 -top-14 -left-10 opacity-90 animate-float-slow" />
-          <div className="obsidian-sphere sphere-obsidian w-60 h-60 -bottom-16 -right-12 opacity-90 animate-float-reverse" />
-          <div className="glass-micro-bubble w-8 h-8 top-1/3 -right-6 opacity-85" />
-          <div className="glass-micro-bubble w-6 h-6 bottom-1/4 -left-4 opacity-80" />
+
 
           <div className="p-6 sm:p-10 rounded-[20px] cred-card overflow-hidden relative viewfinder-box z-10">
             <div className="viewfinder-corner-tl" />

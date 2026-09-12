@@ -32,8 +32,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbo
     >
       {/* Deep Midnight Void & Luminous Ambient Horizon Glow */}
       <div className="pointer-events-none absolute top-12 left-1/2 -translate-x-1/2 w-[800px] sm:w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(92,225,230,0.07)_0%,rgba(139,124,255,0.05)_40%,transparent_70%)] blur-[110px] opacity-80" />
-      <div className="pointer-events-none absolute top-36 -left-20 w-[450px] sm:w-[600px] h-[450px] sm:h-[600px] rounded-full bg-[radial-gradient(circle,rgba(77,141,255,0.04)_0%,transparent_65%)] blur-[100px] opacity-60" />
-      <div className="pointer-events-none absolute top-28 -right-20 w-[500px] sm:w-[650px] h-[500px] sm:h-[650px] rounded-full bg-[radial-gradient(circle,rgba(139,124,255,0.05)_0%,transparent_65%)] blur-[110px] opacity-70" />
+
 
       {/* Subtle curved glowing horizon line */}
       <div className="pointer-events-none absolute top-64 left-1/2 -translate-x-1/2 w-[1200px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[0.5px]" />
@@ -50,7 +49,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbo
             className="text-6xl sm:text-8xl lg:text-9xl font-extrabold text-white tracking-tight leading-[0.93] cred-headline font-denton-extrabold"
           >
             The network<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">between the dots.</span>
+            <span className="text-white/75 font-denton-extrabold">between the dots.</span>
           </motion.h1>
 
           <motion.p
@@ -178,14 +177,8 @@ export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbo
           ))}
         </motion.div>
 
-        {/* ── Dynamic Interactive Network Visualizer with Viewfinder Framing & 3D Glassmorphic Spheres ── */}
+        {/* ── Dynamic Interactive Network Visualizer ── */}
         <div id="hero-network-flow" className="relative my-20">
-          {/* Floating 3D Ambient Depth Spheres */}
-          <div className="glass-sphere sphere-navy w-44 h-44 -top-14 -left-10 animate-float-slow opacity-90" />
-          <div className="glass-sphere sphere-violet w-52 h-52 -bottom-20 -right-14 animate-float-reverse opacity-85" />
-          <div className="glass-sphere sphere-aurora w-32 h-32 top-1/4 -right-8 animate-float-slow opacity-80" />
-          <div className="glass-sphere sphere-cyan w-32 h-32 -bottom-10 left-1/4 animate-float-reverse opacity-75" />
-          <div className="glass-sphere sphere-navy w-24 h-24 top-6 right-1/4 opacity-70" />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
@@ -201,18 +194,10 @@ export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbo
         </motion.div>
       </div>
 
-        {/* ── Hero Value Statement (Obsidian Smoked Glassmorphism Mockup Composition) ── */}
+        {/* ── Hero Value Statement ── */}
         <div className="relative my-14">
-          {/* 3D Realistic Obsidian Charcoal Spheres (Mockup Composition) */}
-          <div className="obsidian-sphere sphere-obsidian-hero w-60 h-60 -top-16 -left-12 opacity-95 animate-float-slow" />
-          <div className="obsidian-sphere sphere-obsidian w-48 h-48 -top-12 right-12 opacity-90 animate-float-reverse" />
-          <div className="obsidian-sphere sphere-obsidian-hero w-72 h-72 -bottom-20 -right-16 opacity-95 animate-float-slow" />
-          <div className="obsidian-sphere sphere-obsidian w-52 h-52 -bottom-16 left-1/4 opacity-85 animate-float-reverse" />
 
-          {/* Floating Specular Glass Micro-Bubbles (Mockup Detail) */}
-          <div className="glass-micro-bubble w-9 h-9 top-1/4 -left-8 animate-float-slow opacity-90" />
-          <div className="glass-micro-bubble w-6 h-6 top-1/2 -right-5 animate-float-reverse opacity-85" />
-          <div className="glass-micro-bubble w-7 h-7 -bottom-6 right-1/3 opacity-80" />
+
 
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -246,7 +231,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbo
 
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight font-denton-extrabold mb-6">
               Rather than owning the assets,<br />
-              <span className="text-white/75 italic font-denton-extrabold-italic">DigiSynq synchronizes them.</span>
+              <span className="text-white/75 font-denton-extrabold">DigiSynq synchronizes them.</span>
             </h2>
 
             {/* Progressive Flow Chain */}

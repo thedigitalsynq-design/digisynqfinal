@@ -15,8 +15,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRun
         id="cta-section"
         className="py-24 sm:py-32 border-t border-white/[0.08] relative overflow-hidden bg-[#070A12]"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#5CE1E6]/[0.05] blur-[160px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-10 right-1/4 w-[500px] h-[250px] bg-[#8B7CFF]/[0.04] blur-[140px] rounded-full pointer-events-none" />
+
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
@@ -26,7 +25,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRun
 
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[0.93] font-denton-extrabold mb-8">
             Find your place.<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">In the network.</span>
+            <span className="text-white/75 font-denton-extrabold">In the network.</span>
           </h2>
 
           <p className="mt-6 text-base sm:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
@@ -67,10 +66,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRun
 
       {/* SECTION 55: FINAL BRAND MANIFESTO */}
       <section className="py-28 sm:py-36 border-t border-b border-white/[0.08] bg-[#070A12] text-center relative overflow-hidden viewfinder-box">
-        {/* 3D Floating Glassmorphic Spheres */}
-        <div className="glass-sphere sphere-navy w-72 h-72 -top-24 -left-20 animate-float-slow opacity-80" />
-        <div className="glass-sphere sphere-violet w-80 h-80 -bottom-28 -right-20 animate-float-reverse opacity-75" />
-        <div className="glass-sphere sphere-cyan w-40 h-40 top-1/3 right-12 opacity-60" />
+
         <div className="viewfinder-corner-tl" />
         <div className="viewfinder-corner-tr" />
         <div className="viewfinder-corner-bl" />
@@ -90,7 +86,7 @@ export const CtaFooter: React.FC<CtaFooterProps> = ({ onOpenJoinModal, onOpenRun
 
           <h3 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.95] font-denton-extrabold mb-6">
             Not everyone gets it.<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">But the visionary do.</span>
+            <span className="text-white/75 font-denton-extrabold">But the visionary do.</span>
           </h3>
 
           <p className="text-lg sm:text-2xl text-white/90 font-normal mb-4 tracking-wide max-w-3xl mx-auto leading-relaxed font-sans [word-spacing:0.06em]">

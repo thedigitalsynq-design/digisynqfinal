@@ -47,9 +47,7 @@ export const BusinessModelSection: React.FC<BusinessModelSectionProps> = ({ onOp
       id="business-model"
       className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden text-left"
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.04] blur-3xl pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -78,11 +76,7 @@ export const BusinessModelSection: React.FC<BusinessModelSectionProps> = ({ onOp
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="p-6 rounded-2xl bg-[#0D1220]/90 border border-white/[0.14] hover:border-[#5CE1E6]/50 flex flex-col justify-between backdrop-blur-2xl shadow-xl transition-all duration-300 relative overflow-hidden group"
               >
-                {/* Subtle corner aura */}
-                <div
-                  className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-2xl opacity-15 pointer-events-none group-hover:opacity-40 transition-opacity"
-                  style={{ background: v.accent }}
-                />
+
 
                 <div>
                   <div className="flex items-center justify-between mb-4">
