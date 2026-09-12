@@ -17,12 +17,14 @@ import {
   Sliders,
   Network,
   ArrowRight,
-  ChevronRight
+  ChevronRight,
+  BookOpen
 } from 'lucide-react';
 
 interface ProductEcosystemProps {
   onSelectPlatform: (platform: PlatformItem) => void;
   onFilterCategoryInDirectory: (categoryName: string) => void;
+  onOpenRunbook?: (chapterIndex?: number) => void;
 }
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -41,8 +43,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
-  onSelectPlatform,
   onFilterCategoryInDirectory,
+  onOpenRunbook,
 }) => {
   const [activePlatformId, setActivePlatformId] = useState<string>(PLATFORMS[0].id);
 
@@ -231,14 +233,34 @@ export const ProductEcosystem: React.FC<ProductEcosystemProps> = ({
                   <span className="text-[11px] text-white/40 tracking-wide">
                     {platform.products.length} Products
                   </span>
-                  <span className="text-white font-bold tracking-[1.5px] flex items-center gap-1 group-hover:text-[#4D8DFF] group-hover:translate-x-1 transition-all">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onFilterCategoryInDirectory(platform.category);
+                    }}
+                    className="text-white font-bold tracking-[1.5px] flex items-center gap-1 group-hover:text-[#4D8DFF] group-hover:translate-x-1 transition-all cursor-pointer"
+                  >
                     EXPLORE <ChevronRight className="w-3.5 h-3.5" />
-                  </span>
+                  </button>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Bottom Runbook Callout */}
+        {onOpenRunbook && (
+          <div className="mt-14 text-center">
+            <button
+              onClick={() => onOpenRunbook(2)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4D8DFF]/10 hover:bg-[#4D8DFF]/20 border border-[#4D8DFF]/35 text-[#4D8DFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm active:scale-95"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Inspect 12-Platform Architecture in Executive Runbook (Chapter 03)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

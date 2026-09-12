@@ -1,65 +1,47 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, UserCheck, Award, FileText, Star, ThumbsUp, Clock, History, CalendarCheck, Sparkles } from 'lucide-react';
+import { ShieldCheck, UserCheck, Lock, Award, ArrowRight } from 'lucide-react';
 
-export const TrustLayer: React.FC = () => {
-  const trustPillars = [
+interface TrustLayerProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+}
+
+export const TrustLayer: React.FC<TrustLayerProps> = ({ onOpenRunbook }) => {
+  const masterTrustPillars = [
     {
-      title: 'Identity Verification',
+      title: 'Biometric & Guild Verification',
+      badge: 'Identity Node',
       icon: UserCheck,
-      description: 'Multi-factor and biometric identity attestation eliminating industry impersonation scams and fake casting solicitations.'
+      accent: '#5CE1E6',
+      description: 'Automated biometric identity attestation cross-checked against SAG-AFTRA, IATSE, and DGA registries to eliminate impersonation scams and credit fraud.'
     },
     {
-      title: 'Credit Verification',
+      title: 'Dual-Key Milestone Escrow',
+      badge: 'Treasury Node',
+      icon: Lock,
+      accent: '#8B7CFF',
+      description: 'Production capital is locked in segregated FDIC-insured vaults and disbursed only upon cryptographic milestone sign-offs, protecting both buyers and vendors.'
+    },
+    {
+      title: 'Forensic DRM & Watermarking',
+      badge: 'Content Node',
       icon: Award,
-      description: 'Cross-checks listed screen credits against guild registries (SAG-AFTRA, DGA, IATSE, BSC, ASC) and verified trade databases.'
+      accent: '#4D8DFF',
+      description: 'Imperceptible, frame-level steganographic watermarks embedded in scripts and screeners encode viewer identity, instantly tracing leaks to the source.'
     },
     {
-      title: 'Professional Profiles',
-      icon: FileText,
-      description: 'Standardized portfolio dossiers hosting validated showreels, equipment serial inventories, and certified trade licenses.'
-    },
-    {
-      title: 'Project History Audit',
-      icon: History,
-      description: 'Verifiable production track records documenting completed slates, delivered deliverables, and box office performances.'
-    },
-    {
-      title: 'Bilateral Ratings',
-      icon: Star,
-      description: 'Mutual post-wrap feedback between department heads, producers, and crew with safeguards against retaliatory reviews.'
-    },
-    {
-      title: 'Contextual Reviews',
-      icon: ThumbsUp,
-      description: 'Structured review summaries capturing prompt payment reliability, on-set safety compliance, and respectful set culture.'
-    },
-    {
-      title: 'Reliability Index',
+      title: '24-Hour Dispute Resolution SLAs',
+      badge: 'Governance Node',
       icon: ShieldCheck,
-      description: 'Objective statistical metric tracking call-sheet punctuality, milestone adherence, and equipment condition at return.'
-    },
-    {
-      title: 'Live Availability Sync',
-      icon: CalendarCheck,
-      description: 'Calendar state engine reflecting locked shoot dates and pending option holds to eliminate double-booking disputes.'
-    },
-    {
-      title: 'Insurance Validation',
-      icon: Clock,
-      description: 'Automated Certificate of Insurance (COI) verification with named additional insured status for gear sub-rentals.'
-    },
-    {
-      title: 'Reputation Scoring',
-      icon: Sparkles,
-      description: 'Holistic 0–100 trust score evaluating counterparty solvency, escrow fulfillment, and community reputation across the network.'
+      accent: '#5EF2B0',
+      description: 'Industry-veteran arbitration boards enforce binding 24-hour resolutions for gear condition, cancellations, and delivery disputes with predefined indemnities.'
     }
   ];
 
   return (
     <section
       id="trust-layer"
-      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden text-left"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
@@ -69,66 +51,85 @@ export const TrustLayer: React.FC = () => {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D1220]/80 border border-[#5CE1E6]/30 text-[#5CE1E6] font-mono text-[11px] font-bold tracking-[2px] mb-6 backdrop-blur-xl shadow-[0_0_15px_rgba(92,225,230,0.12)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
-            Verifiable credentials.
+            SynqTrust protocol.
           </div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[0.98] font-denton-extrabold">
-            Security first. And second.<br />
-            <span className="text-white/75 italic font-denton-extrabold-italic">Trust architecture for cinema.</span>
+            Trust architecture.<br />
+            <span className="text-white/75 italic font-denton-extrabold-italic">For connected cinema.</span>
           </h2>
 
-          <p className="mt-2 text-lg sm:text-xl font-semibold text-[#5CE1E6]">
-            A connected ecosystem needs trust.
-          </p>
-
-          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">
-            Cinema has traditionally operated on word-of-mouth rolodexes and opaque reputations. SynqTrust establishes objective, verifiable credibility for every person, asset, and counterparty.
+          <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto font-sans">
+            Cinema has traditionally operated on opaque word-of-mouth. SynqTrust turns trust into an automated, mathematically verifiable guarantee between nodes.
           </p>
         </div>
 
-        {/* 10 Trust Capabilities Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {trustPillars.map((pillar, idx) => {
+        {/* 4 Crisp Master Pillars Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          {masterTrustPillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <motion.div
                 key={pillar.title}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="p-5 sm:p-6 rounded-2xl bg-[#0D1220]/70 border border-white/[0.08] hover:border-[#5CE1E6]/40 flex flex-col justify-between backdrop-blur-xl shadow-lg transition-all"
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="p-6 rounded-2xl bg-[#0D1220]/90 border border-white/[0.14] hover:border-[#5CE1E6]/50 flex flex-col justify-between backdrop-blur-2xl shadow-xl transition-all duration-300 relative overflow-hidden group"
               >
+                {/* Specular corner highlight */}
+                <div
+                  className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-2xl opacity-15 pointer-events-none group-hover:opacity-40 transition-opacity"
+                  style={{ background: pillar.accent }}
+                />
+
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-9 h-9 rounded-xl bg-[#5CE1E6]/10 border border-[#5CE1E6]/25 flex items-center justify-center text-[#5CE1E6]">
-                      <Icon className="w-4 h-4" />
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/20 bg-white/[0.05]"
+                      style={{ color: pillar.accent }}
+                    >
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono text-white/40 font-semibold">
+                    <span className="text-[10px] font-mono text-white/50 tracking-[1.5px] font-extrabold">
                       0{idx + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-2 tracking-tight">
+                  <span
+                    className="text-[10px] font-mono font-extrabold tracking-[1.5px] uppercase block mb-1.5"
+                    style={{ color: pillar.accent }}
+                  >
+                    {pillar.badge}
+                  </span>
+
+                  <h3 className="text-lg font-denton-extrabold font-extrabold text-white mb-2 tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs text-white/70 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans font-medium [word-spacing:0.04em]">
                     {pillar.description}
                   </p>
                 </div>
 
-                <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center gap-1.5 text-[10px] font-mono text-[#5EF2B0] font-medium">
+                <div className="mt-6 pt-4 border-t border-white/[0.10] flex items-center gap-2 text-[10px] font-mono font-bold text-white/70">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5EF2B0] shadow-[0_0_6px_#5EF2B0]" />
-                  <span>Verified Standard</span>
+                  <span>Verified Node Guarantee</span>
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-xs font-mono text-white/40 max-w-xl mx-auto leading-relaxed">
-            * SynqTrust provides structured identity attestation and guild record cross-verification. Digital badges are issued based on verified credentials, guild registrations, and completed escrow settlements.
-          </p>
-        </div>
+        {/* Minimal Runbook Callout */}
+        {onOpenRunbook && (
+          <div className="text-center">
+            <button
+              onClick={() => onOpenRunbook(6)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm"
+            >
+              <span>Inspect Zero-Trust Cryptographic Protocol (Chapter 07)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

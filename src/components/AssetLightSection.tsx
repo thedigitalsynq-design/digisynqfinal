@@ -1,13 +1,17 @@
 import React from 'react';
-import { TRADITIONAL_VS_DIGISYNQ } from '../data/platformsData';
-import { Check, X } from 'lucide-react';
+import { Check, X, ArrowRight } from 'lucide-react';
 
-export const AssetLightSection: React.FC = () => {
+interface AssetLightSectionProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+}
+
+export const AssetLightSection: React.FC<AssetLightSectionProps> = ({ onOpenRunbook }) => {
   return (
     <section
       id="asset-light"
       className="py-28 sm:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden"
     >
+      <span id="thesis" className="absolute -top-28 pointer-events-none" />
       <div className="cred-hairline absolute top-0 left-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -22,11 +26,11 @@ export const AssetLightSection: React.FC = () => {
             <span className="text-white/75">We synq them.</span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-6 text-base sm:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto font-sans [word-spacing:0.06em]">
             Rather than owning the assets that power entertainment, DigiSynq synchronizes them — reducing friction, leakage and risk while improving the utilization of existing ecosystem capacity.
           </p>
 
-          <p className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] font-semibold">
+          <p className="mt-4 text-xs sm:text-sm font-sans tracking-wide text-[#5CE1E6] font-semibold">
             Own less. Connect more. Make the ecosystem work better together.
           </p>
         </div>
@@ -106,10 +110,23 @@ export const AssetLightSection: React.FC = () => {
                 Core mandate: <span className="text-white font-bold">Connect</span>
               </div>
               <ul className="space-y-3 text-xs sm:text-sm text-white/80">
-                {['People (Verified cast, DPs, crew & department heads)', 'Assets (Idle cameras, stages & facilities peer-to-peer)', 'Projects (Packaging, script breakdowns & live stripboards)', 'Content (Territorial licensing, clean IP & screeners)', 'Audiences (Direct fan communities & crowdfunded screenings)', 'Opportunities (Partner-led financing & screen matching)'].map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]" />
-                    <span className="font-medium text-white">{item}</span>
+                {[
+                  { text: 'People (Verified cast, DPs, crew & department heads)', href: '#audience-solutions' },
+                  { text: 'Assets (Idle cameras, stages & facilities peer-to-peer)', href: '#marketplace' },
+                  { text: 'Projects (Packaging, script breakdowns & live stripboards)', href: '#platform-model' },
+                  { text: 'Content (Territorial licensing, clean IP & screeners)', href: '#product-directory' },
+                  { text: 'Audiences (Direct fan communities & crowdfunded screenings)', href: '#audience-solutions' },
+                  { text: 'Opportunities (Partner-led financing & screen matching)', href: '#business-model' },
+                ].map((item) => (
+                  <li key={item.text}>
+                    <a
+                      href={item.href}
+                      className="flex items-center gap-3 p-1.5 -mx-1.5 rounded-lg hover:bg-white/[0.04] transition-colors group cursor-pointer"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6] shrink-0" />
+                      <span className="font-medium text-white/90 group-hover:text-white transition-colors">{item.text}</span>
+                      <ArrowRight className="w-3 h-3 text-[#5CE1E6] opacity-0 group-hover:opacity-100 transition-opacity ml-auto shrink-0" />
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -123,42 +140,29 @@ export const AssetLightSection: React.FC = () => {
         </div>
         </div>
 
-        {/* Detailed 6-Dimensional Comparison Grid */}
-        <div className="rounded-xl cred-card overflow-hidden">
-          <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between">
-            <h3 className="text-base font-bold text-white tracking-tight font-display">
-              Dimensional Architectural Comparison
-            </h3>
-            <span className="text-[11px] font-mono tracking-[2px] text-white/50">
-              6 core vectors
+        {/* Executive Comparison Preview & Runbook Callout */}
+        <div className="rounded-2xl cred-card p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-white/15 backdrop-blur-xl relative overflow-hidden group">
+          <div className="max-w-xl text-left">
+            <span className="text-[11px] font-mono tracking-[2px] text-[#5CE1E6] font-bold block mb-1">
+              10-Year Run Rate Simulation
             </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-denton-bold">
+              Software Leverage vs Hardware Depreciation
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+              Traditional studios carry $180M+ in physical equipment and debt. DigiSynq operates at 76%+ gross margin with zero hardware CapEx and compounding capital turnover.
+            </p>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-white/[0.04] text-white/75 font-mono text-[11px] tracking-[1.5px] border-b border-white/10">
-                <tr>
-                  <th className="py-4 px-6 font-semibold">Dimension</th>
-                  <th className="py-4 px-6 font-semibold text-white/75">Traditional Model</th>
-                  <th className="py-4 px-6 font-semibold text-white">DigiSynq Network</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/[0.06] text-white/70">
-                {TRADITIONAL_VS_DIGISYNQ.map((row) => (
-                  <tr key={row.attribute} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-4 px-6 font-bold text-white font-mono text-xs tracking-wide">
-                      {row.attribute}
-                    </td>
-                    <td className="py-4 px-6 text-white/75">
-                      {row.traditional}
-                    </td>
-                    <td className="py-4 px-6 text-white font-medium">
-                      {row.digisynq}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+
+          {onOpenRunbook && (
+            <button
+              onClick={() => onOpenRunbook(4)}
+              className="px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white font-mono text-xs font-bold tracking-[1.5px] transition-all flex items-center gap-2 whitespace-nowrap shadow-sm cursor-pointer flex-shrink-0 active:scale-95"
+            >
+              <span>Inspect 10-Year Pro-Forma (Chapter 05)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       </div>
     </section>

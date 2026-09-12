@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Search, ShieldCheck, GitFork, SlidersHorizontal, CreditCard, BarChart3, Brain, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export const ModelPipeline: React.FC = () => {
+interface ModelPipelineProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+}
+
+export const ModelPipeline: React.FC<ModelPipelineProps> = ({ onOpenRunbook }) => {
   const [activeStepIndex, setActiveStepIndex] = useState(2); // default on MATCH
 
   const pipelineSteps = [
@@ -184,16 +188,22 @@ export const ModelPipeline: React.FC = () => {
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {currentStep.products.map((p) => (
-                    <span key={p} className="px-3 py-1 rounded bg-white/[0.06] border border-white/10 text-white/90 text-xs font-mono font-bold tracking-wider hover:border-[#5CE1E6]/50 hover:text-[#5CE1E6] transition-colors">
-                      {p}
-                    </span>
+                    <a
+                      key={p}
+                      href="#product-directory"
+                      className="px-3 py-1 rounded bg-white/[0.06] border border-white/10 text-white/90 text-xs font-mono font-bold tracking-wider hover:border-[#5CE1E6]/50 hover:text-[#5CE1E6] hover:bg-[#5CE1E6]/10 transition-all inline-flex items-center gap-1 group"
+                      title={`Inspect ${p} in directory`}
+                    >
+                      <span>{p}</span>
+                      <ArrowRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#5CE1E6]" />
+                    </a>
                   ))}
                 </div>
               </div>
 
               <button
                 onClick={() => setActiveStepIndex((activeStepIndex + 1) % pipelineSteps.length)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-[2px] text-[#5CE1E6] font-bold hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-mono tracking-[2px] text-[#5CE1E6] font-bold hover:text-white transition-colors cursor-pointer"
               >
                 <span>Next phase</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -201,6 +211,19 @@ export const ModelPipeline: React.FC = () => {
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Runbook Callout */}
+        {onOpenRunbook && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => onOpenRunbook(3)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B7CFF]/10 hover:bg-[#8B7CFF]/20 border border-[#8B7CFF]/35 text-[#8B7CFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm"
+            >
+              <span>Inspect Deterministic Execution State Machine (Chapter 04)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

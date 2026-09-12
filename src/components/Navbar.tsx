@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight, BookOpen } from 'lucide-react';
 import digisynqLogo from '../assets/digisynq-logo.png';
@@ -11,7 +12,7 @@ interface NavbarProps {
   onToggleTheme?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
+export const Navbar: FC<NavbarProps> = ({
   onOpenJoinModal,
   onOpenRunbook,
 }) => {
@@ -42,7 +43,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <img
             src={digisynqLogo}
-            alt="DigiSynq"
+            alt="DigiSynq — asset-light cinema network logo"
+            width={132}
+            height={32}
             className="h-7 sm:h-8 w-auto object-contain transition-opacity group-hover:opacity-90"
           />
         </a>
@@ -110,8 +113,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-white/85 hover:text-white focus:outline-none rounded-xl bg-white/[0.06] border border-white/[0.10] transition-colors"
+            className="p-1.5 text-white/85 hover:text-white focus-visible:outline-2 focus-visible:outline-[#5CE1E6] rounded-xl bg-white/[0.06] border border-white/[0.10] transition-colors"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
             id="mobile-menu-toggle-btn"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -134,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="pb-4 mb-2 border-b border-white/[0.08]">
               <img
                 src={digisynqLogo}
-                alt="DigiSynq"
+                alt="DigiSynq — asset-light cinema network logo"
                 className="h-8 w-auto object-contain"
               />
             </div>

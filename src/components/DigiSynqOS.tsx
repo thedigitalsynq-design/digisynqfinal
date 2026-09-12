@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Cpu, Terminal, Layers, ArrowRight, ShieldCheck, Sparkles, Network, CheckCircle2 } from 'lucide-react';
+import { Layers, ArrowRight, BookOpen, ArrowUpRight } from 'lucide-react';
 
-export const DigiSynqOS: React.FC = () => {
+interface DigiSynqOSProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+  onOpenJoinModal?: (role?: string) => void;
+}
+
+export const DigiSynqOS: React.FC<DigiSynqOSProps> = ({
+  onOpenRunbook,
+  onOpenJoinModal,
+}) => {
   const [selectedLayerIndex, setSelectedLayerIndex] = useState<number>(0);
 
   const osLayers = [
@@ -65,6 +73,7 @@ export const DigiSynqOS: React.FC = () => {
       id="digisynq-os"
       className="py-24 sm:py-32 bg-[#070A12] border-t border-white/[0.08] relative overflow-hidden"
     >
+      <span id="future-vision" className="absolute -top-28 pointer-events-none" />
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#8B7CFF]/[0.05] blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[#5CE1E6]/[0.04] blur-3xl pointer-events-none" />
@@ -180,6 +189,30 @@ export const DigiSynqOS: React.FC = () => {
 
           <div className="mt-8 pt-6 border-t border-white/[0.08] text-center text-xs font-mono text-white/50 max-w-2xl mx-auto leading-relaxed">
             DigiSynq OS bridges legacy film infrastructure with next-generation autonomous workflows, creating a unified digital layer across the global motion picture supply chain.
+          </div>
+
+          {/* Bottom Cross-Section Navigation Actions */}
+          <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-center gap-4">
+            {onOpenJoinModal && (
+              <button
+                onClick={() => onOpenJoinModal('Protocol Partner')}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#070A12] hover:bg-white/90 text-xs font-mono font-bold tracking-[1.5px] transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer active:scale-95"
+              >
+                <span>Join Protocol Working Group</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+
+            {onOpenRunbook && (
+              <button
+                onClick={() => onOpenRunbook(3)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B7CFF]/10 hover:bg-[#8B7CFF]/20 border border-[#8B7CFF]/35 text-[#8B7CFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm active:scale-95"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Inspect Deterministic Execution State Machine (Chapter 04)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </div>

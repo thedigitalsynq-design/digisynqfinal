@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import type { FC, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { USE_CASES } from '../data/platformsData';
-import { UseCaseItem } from '../types';
-import { Play, Sparkles, CheckCircle2, ArrowRight, CornerDownRight, Terminal } from 'lucide-react';
+import { Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 
-export const InteractiveUseCases: React.FC = () => {
+export const InteractiveUseCases: FC = () => {
   const [selectedCaseId, setSelectedCaseId] = useState<string>(USE_CASES[0].id);
   const [customInput, setCustomInput] = useState<string>('');
   const [customResult, setCustomResult] = useState<{
@@ -12,15 +12,28 @@ export const InteractiveUseCases: React.FC = () => {
     flow: string[];
     summary: string;
   }>({ status: 'idle', flow: [], summary: '' });
+  const simulateTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (simulateTimer.current !== null) {
+        window.clearTimeout(simulateTimer.current);
+      }
+    };
+  }, []);
 
   const activeCase = USE_CASES.find((c) => c.id === selectedCaseId) || USE_CASES[0];
 
-  const handleSimulateCustom = (e: React.FormEvent) => {
+  const handleSimulateCustom = (e: FormEvent) => {
     e.preventDefault();
     if (!customInput.trim()) return;
 
     setCustomResult({ status: 'simulating', flow: [], summary: '' });
-    setTimeout(() => {
+    if (simulateTimer.current !== null) {
+      window.clearTimeout(simulateTimer.current);
+    }
+    const query = customInput;
+    simulateTimer.current = window.setTimeout(() => {
       setCustomResult({
         status: 'resolved',
         flow: [
@@ -29,7 +42,7 @@ export const InteractiveUseCases: React.FC = () => {
           'Bipartite Matching (SynqMatch): Recommended optimal package structure with zero asset ownership overhead.',
           'Workflow & Settlement (SynqDeal / SynqFlow): Generated standard digital agreement and automated milestone escrow.'
         ],
-        summary: `Successfully coordinated requirements for "${customInput}" across 4 ecosystem nodes without balance-sheet asset ownership.`
+        summary: `Successfully coordinated requirements for "${query}" across 4 ecosystem nodes without balance-sheet asset ownership.`
       });
     }, 600);
   };
@@ -107,12 +120,14 @@ export const InteractiveUseCases: React.FC = () => {
                   <span className="text-xs font-mono text-white/50">Interlinked Nodes:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {activeCase.connectedNodes.map((node) => (
-                      <span
+                      <a
                         key={node}
-                        className="px-2.5 py-1 rounded-full bg-[#070A12]/80 text-xs font-mono text-white/80 border border-white/[0.10]"
+                        href="#audience-solutions"
+                        className="px-2.5 py-1 rounded-full bg-[#070A12]/80 text-xs font-mono text-white/80 border border-white/[0.10] hover:border-[#5CE1E6]/50 hover:text-[#5CE1E6] transition-colors"
+                        title={`Explore ${node} Solutions`}
                       >
                         {node}
-                      </span>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -235,6 +250,25 @@ export const InteractiveUseCases: React.FC = () => {
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* Bottom Cross-Section Navigation Actions */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#marketplace"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4D8DFF]/10 hover:bg-[#4D8DFF]/20 border border-[#4D8DFF]/35 text-[#4D8DFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all shadow-sm active:scale-95"
+          >
+            <span>Explore Dormant Capacity Marketplace</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+
+          <a
+            href="#intelligence"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all shadow-sm active:scale-95"
+          >
+            <span>Inspect Predictive Telemetry Engine</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </section>

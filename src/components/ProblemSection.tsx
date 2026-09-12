@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { AlertCircle, Split, Network } from 'lucide-react';
+import { Split, Network, ArrowUpRight, ArrowRight, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export const ProblemSection: React.FC = () => {
+interface ProblemSectionProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+}
+
+export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenRunbook }) => {
   const [activeTab, setActiveTab] = useState<'fragmented' | 'connected'>('fragmented');
 
   const problemPoints = [
@@ -10,41 +14,57 @@ export const ProblemSection: React.FC = () => {
       title: 'Enormous Talent',
       symptom: 'Siloed behind agency gatekeepers, unverified credits, and regional rolodexes.',
       connected: 'Verified global talent graph with instant credit verification and direct casting dispatch.',
+      href: '#audience-solutions',
+      targetSection: 'Talent & Crew',
     },
     {
       title: 'Underutilized Resources',
       symptom: 'Millions in cameras, lenses, soundstages, and mobile trailers sit dormant between shoots.',
       connected: 'Peer-to-peer liquidity marketplace unlocking idle hardware without owners losing custody.',
+      href: '#marketplace',
+      targetSection: 'Marketplace',
     },
     {
       title: 'Fragmented Audiences',
       symptom: 'Filmmakers lose direct touch with ticket-buyers once theatrical windows close.',
       connected: 'First-party fan CRM, direct community circles, and closed-loop ticketing attribution.',
+      href: '#audience-solutions',
+      targetSection: 'Audiences & Fans',
     },
     {
       title: 'Disconnected Businesses',
       symptom: 'Studios, exhibitors, rental houses, and vendors operate on mismatched systems.',
       connected: 'Cross-entity workflow pipeline synchronizing purchase orders, releases, and milestones.',
+      href: '#platform-model',
+      targetSection: '7-Phase Pipeline',
     },
     {
       title: 'Scattered Information',
       symptom: 'Decisions rely on lagging trade gossip, slow box office calls, and anecdotal guesses.',
       connected: 'Real-time telemetry capturing 14.2M+ box office, social sentiment, and screening signals.',
+      href: '#intelligence',
+      targetSection: 'Telemetry Engine',
     },
     {
       title: 'Inefficient Workflows',
       symptom: 'Weeks spent chasing call sheets, paper deal memos, and disputed distribution settlements.',
       connected: 'Automated script breakdowns, digital call sheets with GPS receipts, and CAM escrow waterfalls.',
+      href: '#platform-model',
+      targetSection: 'State Machine',
     },
     {
       title: 'Difficult Discovery',
       symptom: 'Independent films, specialized crew, and vacant screens struggle to find reciprocal demand.',
       connected: 'Bipartite semantic matching engine pairing buyers, spaces, and talent in seconds.',
+      href: '#product-directory',
+      targetSection: 'Directory',
     },
     {
       title: 'Inconsistent Trust',
       symptom: 'Unverified resumes, damaged rented gear, and counterparty payment defaults plague sets.',
       connected: 'SynqTrust verifiable credentials, union verification, and secure milestone escrow.',
+      href: '#trust-layer',
+      targetSection: 'SynqTrust',
     },
   ];
 
@@ -174,22 +194,54 @@ export const ProblemSection: React.FC = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="mt-4 pt-3.5 border-t border-white/[0.08] flex items-center gap-2 text-[10px] font-mono font-bold tracking-[1.5px]">
-                {activeTab === 'fragmented' ? (
-                  <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFC857]" />
-                    <span className="text-[#FFC857]">Friction &amp; waste</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5EF2B0]" />
-                    <span className="text-[#5EF2B0]">Synchronized &amp; liquid</span>
-                  </>
-                )}
-              </div>
+              <a
+                href={item.href}
+                className="mt-4 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono font-bold tracking-[1.5px] group cursor-pointer"
+                title={`Explore ${item.targetSection}`}
+              >
+                <div className="flex items-center gap-2">
+                  {activeTab === 'fragmented' ? (
+                    <>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFC857]" />
+                      <span className="text-[#FFC857]">Friction &amp; waste</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#5EF2B0]" />
+                      <span className="text-[#5EF2B0]">Synchronized</span>
+                    </>
+                  )}
+                </div>
+                <span className="text-white/40 group-hover:text-[#5CE1E6] transition-colors flex items-center gap-1">
+                  <span>{item.targetSection}</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </span>
+              </a>
             </motion.div>
           ))}
         </div>
+        </div>
+
+        {/* Bottom Dual Cross-Links */}
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          {onOpenRunbook && (
+            <button
+              onClick={() => onOpenRunbook(0)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/20 text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm active:scale-95"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-[#FFC857]" />
+              <span>Read Friction &amp; Problem Manifesto (Chapter 01)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
+
+          <a
+            href="#network-flow"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all shadow-sm active:scale-95"
+          >
+            <span>Explore 8-Node Synchronization Solution</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </section>

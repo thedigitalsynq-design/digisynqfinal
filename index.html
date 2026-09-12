@@ -8,7 +8,16 @@
     <meta property="og:title" content="DigiSynq | The Asset-Light Operating Network for Cinema" />
     <meta property="og:description" content="DigiSynq connects people, projects, assets, content, audiences and opportunities across the cinema ecosystem through intelligence, marketplaces and workflows." />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DigiSynq" />
+    <meta property="og:image" content="./digisynq-logo.png" />
+    <meta property="og:image:alt" content="DigiSynq — asset-light cinema network logo" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DigiSynq | The Asset-Light Operating Network for Cinema" />
+    <meta name="twitter:description" content="DigiSynq connects people, projects, assets, content, audiences and opportunities across the cinema ecosystem through intelligence, marketplaces and workflows." />
+    <meta name="twitter:image" content="./digisynq-logo.png" />
+    <meta name="theme-color" content="#070A12" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="./digisynq-logo.png" />
         <link rel="preload" href="/fonts/Denton-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Denton-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Denton-ExtraBoldItalic.woff2" as="font" type="font/woff2" crossorigin>
@@ -18,8 +27,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script>
       (function() {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('digisynq-theme', 'dark');
+        try {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('digisynq-theme', 'dark');
+        } catch (e) {}
       })();
     </script>
   </head>

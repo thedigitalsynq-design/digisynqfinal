@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FLYWHEEL_STEPS } from '../data/platformsData';
-import { Network, RefreshCw, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 
-export const NetworkEffectFlywheel: React.FC = () => {
+interface NetworkEffectFlywheelProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+}
+
+export const NetworkEffectFlywheel: React.FC<NetworkEffectFlywheelProps> = ({ onOpenRunbook }) => {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [isAutoCycling, setIsAutoCycling] = useState(true);
 
@@ -119,6 +123,19 @@ export const NetworkEffectFlywheel: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Runbook Callout */}
+        {onOpenRunbook && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => onOpenRunbook(7)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B7CFF]/10 hover:bg-[#8B7CFF]/20 border border-[#8B7CFF]/35 text-[#8B7CFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm"
+            >
+              <span>Inspect 10-Stage Compounding Flywheel & Moat (Chapter 08)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

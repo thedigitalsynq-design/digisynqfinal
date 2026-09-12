@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { X, Check, ShieldCheck, ArrowRight, Network } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import type { FC, FormEvent } from 'react';
+import { X, Check, Network } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface JoinModalProps {
@@ -8,7 +9,7 @@ interface JoinModalProps {
   defaultRole?: string;
 }
 
-export const JoinModal: React.FC<JoinModalProps> = ({
+export const JoinModal: FC<JoinModalProps> = ({
   isOpen,
   onClose,
   defaultRole = 'Producer',
@@ -28,13 +29,19 @@ export const JoinModal: React.FC<JoinModalProps> = ({
     };
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown);
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = prevOverflow;
+      };
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };
@@ -55,6 +62,9 @@ export const JoinModal: React.FC<JoinModalProps> = ({
       transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#070A12]/80 backdrop-blur-2xl"
       id="join-network-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="join-network-title"
       onClick={(e) => {
         if (e.target === e.currentTarget) handleResetAndClose();
       }}
@@ -81,7 +91,7 @@ export const JoinModal: React.FC<JoinModalProps> = ({
               <span>Network Onboarding</span>
             </div>
 
-            <h3 className="text-2xl font-bold tracking-tight mb-2 text-white">
+            <h3 id="join-network-title" className="text-2xl font-bold tracking-tight mb-2 text-white">
               Connect to DigiSynq
             </h3>
 
@@ -181,8 +191,8 @@ export const JoinModal: React.FC<JoinModalProps> = ({
                 </button>
               </div>
 
-              <p className="text-[11px] text-white/40 text-center font-mono">
-                Encrypted via SynqTrust protocol • Zero upfront hardware or CapEx commitment
+              <p className="text-[11px] text-white/60 text-center font-mono">
+                Reviewed under SynqTrust verification • Zero upfront hardware or CapEx commitment
               </p>
             </form>
           </div>

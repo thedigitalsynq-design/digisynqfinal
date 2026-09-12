@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AUDIENCE_SEGMENTS } from '../data/platformsData';
-import { AudienceSegment } from '../types';
-import { Users, CheckCircle2, ArrowRight, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen } from 'lucide-react';
 
 interface AudienceSolutionsProps {
   onOpenJoinModal: (role: string) => void;
+  onFilterCategoryInDirectory?: (categoryName: string) => void;
+  onOpenRunbook?: (chapterIndex?: number) => void;
 }
 
-export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoinModal }) => {
+export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({
+  onOpenJoinModal,
+  onOpenRunbook,
+}) => {
   const [activeSegmentId, setActiveSegmentId] = useState<string>(AUDIENCE_SEGMENTS[0].id);
 
   const activeSegment =
@@ -118,26 +122,38 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
 
               {/* Right Product Pairing Matrix */}
               <div className="lg:col-span-5 bg-[#070A12]/80 border border-white/[0.08] rounded-2xl p-6 sm:p-7 space-y-4">
-                <span className="text-xs font-mono tracking-wider text-white/50 block font-semibold">
-                  Primary Network Hubs for {activeSegment.title}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono tracking-wider text-white/50 block font-semibold">
+                    Primary Network Hubs for {activeSegment.title}
+                  </span>
+                  <a
+                    href="#product-directory"
+                    className="text-[11px] font-mono text-[#5CE1E6] hover:underline flex items-center gap-1"
+                  >
+                    <span>View All</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                </div>
 
                 <div className="space-y-2.5">
                   {activeSegment.keyProducts.map((prod) => (
-                    <div
+                    <a
                       key={prod}
-                      className="p-3.5 rounded-xl bg-[#0D1220]/70 border border-white/[0.08] flex items-center justify-between shadow-xs text-white"
+                      href="#product-directory"
+                      className="p-3.5 rounded-xl bg-[#0D1220]/70 border border-white/[0.08] hover:border-[#5CE1E6]/50 hover:bg-[#5CE1E6]/10 transition-all flex items-center justify-between shadow-xs text-white group cursor-pointer"
+                      title={`Inspect ${prod} in Product Directory`}
                     >
                       <div>
-                        <div className="text-sm font-bold text-white font-mono">
-                          {prod}
+                        <div className="text-sm font-bold text-white font-mono group-hover:text-[#5CE1E6] transition-colors flex items-center gap-1.5">
+                          <span>{prod}</span>
+                          <ArrowRight className="w-3 h-3 text-[#5CE1E6] opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <div className="text-[11px] text-white/50">
                           Synchronized Module
                         </div>
                       </div>
                       <span className="w-2 h-2 rounded-full bg-[#5CE1E6] shadow-[0_0_6px_#5CE1E6]" />
-                    </div>
+                    </a>
                   ))}
                 </div>
 
@@ -148,6 +164,20 @@ export const AudienceSolutions: React.FC<AudienceSolutionsProps> = ({ onOpenJoin
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Bottom Runbook Callout */}
+        {onOpenRunbook && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => onOpenRunbook(1)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm active:scale-95"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Inspect 8 Stakeholder Nodes &amp; Bilateral Mesh (Chapter 02)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

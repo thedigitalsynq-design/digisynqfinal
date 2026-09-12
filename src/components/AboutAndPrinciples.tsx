@@ -1,9 +1,17 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PRINCIPLES } from '../data/platformsData';
-import { Sparkles, Compass, Shield, CheckCircle } from 'lucide-react';
+import { ArrowRight, BookOpen, ArrowUpRight, Users } from 'lucide-react';
 
-export const AboutAndPrinciples: React.FC = () => {
+interface AboutAndPrinciplesProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+  onOpenJoinModal?: (role?: string) => void;
+}
+
+export const AboutAndPrinciples: React.FC<AboutAndPrinciplesProps> = ({
+  onOpenRunbook,
+  onOpenJoinModal,
+}) => {
   return (
     <section
       id="about-vision"
@@ -113,34 +121,58 @@ export const AboutAndPrinciples: React.FC = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-bold text-white tracking-tight font-denton-bold mb-1">
+                  <h4 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-denton-extrabold mb-1">
                     {founder.name}
                   </h4>
                   <div
-                    className="text-[11px] font-mono font-bold tracking-[2px] mb-2 uppercase"
+                    className="text-[11px] font-mono font-extrabold tracking-[2px] mb-2 uppercase"
                     style={{ color: founder.accent }}
                   >
                     {founder.role}
                   </div>
-                  <p className="text-xs text-white/70 leading-relaxed font-sans">
+                  <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans font-medium [word-spacing:0.04em]">
                     {founder.focus}
                   </p>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Founders Action Bar */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {onOpenJoinModal && (
+              <button
+                onClick={() => onOpenJoinModal('Leadership Contact')}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer active:scale-95 shadow-sm"
+              >
+                <Users className="w-3.5 h-3.5 text-[#5CE1E6]" />
+                <span>Contact Leadership Team</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+            {onOpenRunbook && (
+              <button
+                onClick={() => onOpenRunbook(7)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#8B7CFF]/10 hover:bg-[#8B7CFF]/20 border border-[#8B7CFF]/35 text-[#8B7CFF] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer active:scale-95 shadow-sm"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Read Governance & Execution Roadmap (Chapter 08)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* 8 Company principles */}
-        <div className="rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 lg:p-12 shadow-2xl relative backdrop-blur-2xl">
+        <div className="rounded-3xl bg-[#0D1220]/80 border border-white/[0.14] p-6 sm:p-10 lg:p-12 shadow-2xl relative backdrop-blur-2xl">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono tracking-widest text-[#5CE1E6] block mb-1 font-semibold">
+            <span className="text-xs font-mono tracking-widest text-[#5CE1E6] block mb-1 font-bold">
               Guiding Directives
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-denton-extrabold">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-denton-extrabold">
               Where innovation meets aesthetics.
             </h3>
-            <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-white/80 mt-2 leading-relaxed font-sans font-medium">
               The foundational convictions that guide our architecture, partnerships, and product design.
             </p>
           </div>
@@ -149,10 +181,10 @@ export const AboutAndPrinciples: React.FC = () => {
             {PRINCIPLES.map((principle, idx) => {
               // Restrained 4-accent palette: Cyan, Violet, Aurora, Mint
               const tints = [
-                { border: 'border-[#5CE1E6]/30 hover:border-[#5CE1E6]/60', tag: 'text-[#5CE1E6]', dot: 'bg-[#5CE1E6]' },
-                { border: 'border-[#8B7CFF]/30 hover:border-[#8B7CFF]/60', tag: 'text-[#8B7CFF]', dot: 'bg-[#8B7CFF]' },
-                { border: 'border-[#4D8DFF]/30 hover:border-[#4D8DFF]/60', tag: 'text-[#4D8DFF]', dot: 'bg-[#4D8DFF]' },
-                { border: 'border-[#5EF2B0]/30 hover:border-[#5EF2B0]/60', tag: 'text-[#5EF2B0]', dot: 'bg-[#5EF2B0]' },
+                { border: 'border-[#5CE1E6]/35 hover:border-[#5CE1E6]/70', tag: 'text-[#5CE1E6]', dot: 'bg-[#5CE1E6]' },
+                { border: 'border-[#8B7CFF]/35 hover:border-[#8B7CFF]/70', tag: 'text-[#8B7CFF]', dot: 'bg-[#8B7CFF]' },
+                { border: 'border-[#4D8DFF]/35 hover:border-[#4D8DFF]/70', tag: 'text-[#4D8DFF]', dot: 'bg-[#4D8DFF]' },
+                { border: 'border-[#5EF2B0]/35 hover:border-[#5EF2B0]/70', tag: 'text-[#5EF2B0]', dot: 'bg-[#5EF2B0]' },
               ];
               const tint = tints[idx % tints.length];
 
@@ -160,32 +192,62 @@ export const AboutAndPrinciples: React.FC = () => {
                 <motion.div
                   key={principle.name}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className={`p-5 sm:p-6 rounded-2xl backdrop-blur-xl bg-[#070A12]/80 border ${tint.border} transition-all duration-200 flex flex-col justify-between shadow-lg`}
+                  className={`p-5 sm:p-6 rounded-2xl backdrop-blur-2xl bg-[#070A12]/90 border ${tint.border} transition-all duration-200 flex flex-col justify-between shadow-xl`}
                   style={{ boxShadow: 'inset 0 1px 1px 0 rgba(255,255,255,0.12), 0 8px 32px rgba(0,0,0,0.6)' }}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3.5">
-                      <span className={`text-xs font-mono font-bold ${tint.tag}`}>
+                      <span className={`text-xs font-mono font-extrabold ${tint.tag}`}>
                         0{idx + 1}
                       </span>
                       <span className={`w-2 h-2 rounded-full ${tint.dot} shadow-[0_0_8px_currentColor]`} />
                     </div>
 
-                    <h4 className="text-base font-bold text-white mb-1 tracking-tight">
+                    <h4 className="text-base sm:text-lg font-denton-extrabold font-extrabold text-white mb-1 tracking-tight">
                       {principle.name}
                     </h4>
 
-                    <p className={`text-xs font-semibold mb-2.5 font-mono ${tint.tag}`}>
+                    <p className={`text-xs font-bold mb-2.5 font-mono ${tint.tag}`}>
                       {principle.summary}
                     </p>
 
-                    <p className="text-xs text-white/70 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans font-medium [word-spacing:0.04em]">
                       {principle.detail}
                     </p>
                   </div>
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* Bottom Cross-Section Navigation Actions */}
+          <div className="mt-10 pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#flywheel"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 text-white/90 hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer active:scale-95"
+            >
+              <span>Explore 10-Stage Flywheel</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#5CE1E6]" />
+            </a>
+
+            <a
+              href="#trust-layer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 text-white/90 hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer active:scale-95"
+            >
+              <span>View Zero-Trust Cryptographic Layer</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#8B7CFF]" />
+            </a>
+
+            {onOpenRunbook && (
+              <button
+                onClick={() => onOpenRunbook(0)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer active:scale-95 shadow-sm"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Return to Chapter 01 (Manifesto)</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </div>

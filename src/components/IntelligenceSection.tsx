@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Brain, Sparkles, Activity, CheckCircle, ArrowRight, MessageSquare, Shield, Terminal, ChevronDown } from 'lucide-react';
+import { Brain, Sparkles, Terminal, ChevronDown } from 'lucide-react';
 import cinemaTelemetrySlate from '../assets/cinema-telemetry-slate.jpg';
 
 export const IntelligenceSection: React.FC = () => {

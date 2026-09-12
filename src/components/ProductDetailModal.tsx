@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
-import { ProductItem } from '../types';
-import { X, Check, ArrowRight, Layers, ShieldCheck, Network, Cpu, ArrowUpRight } from 'lucide-react';
+import { useEffect } from 'react';
+import type { FC } from 'react';
+import type { ProductItem } from '../types';
+import { X, Check, ArrowUpRight, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ProductDetailModalProps {
   product: ProductItem | null;
   onClose: () => void;
   onOpenJoinModal: (role?: string) => void;
+  onOpenRunbook?: (chapterIndex?: number) => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
+export const ProductDetailModal: FC<ProductDetailModalProps> = ({
   product,
   onClose,
   onOpenJoinModal,
+  onOpenRunbook,
 }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -22,6 +25,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     };
     if (product) {
       window.addEventListener('keydown', handleKeyDown);
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = prevOverflow;
+      };
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [product, onClose]);
@@ -36,6 +45,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/40 backdrop-blur-xl overflow-y-auto"
       id="product-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-detail-title"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -67,7 +79,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
+          <h2 id="product-detail-title" className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
             {product.name}
           </h2>
           <p className="mt-2 text-base sm:text-lg text-[var(--text-secondary)]">
@@ -80,7 +92,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 onClose();
                 onOpenJoinModal(product.name);
               }}
-              className="apple-btn-primary inline-flex items-center gap-2 text-xs sm:text-sm px-6 py-2.5 font-semibold"
+              className="apple-btn-primary inline-flex items-center gap-2 text-xs sm:text-sm px-6 py-2.5 font-semibold cursor-pointer"
               id="modal-cta-get-started"
             >
               <span>Access {product.name}</span>
@@ -91,10 +103,22 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 onClose();
                 onOpenJoinModal('Partner');
               }}
-              className="apple-btn-secondary inline-flex items-center gap-2 text-xs sm:text-sm px-5 py-2.5 font-medium"
+              className="apple-btn-secondary inline-flex items-center gap-2 text-xs sm:text-sm px-5 py-2.5 font-medium cursor-pointer"
             >
               Partner Integration
             </button>
+            {onOpenRunbook && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenRunbook(2);
+                }}
+                className="inline-flex items-center gap-2 text-xs sm:text-sm px-5 py-2.5 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white font-mono font-bold transition-all cursor-pointer"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>Inspect in Runbook (Chapter 03)</span>
+              </button>
+            )}
           </div>
         </div>
 

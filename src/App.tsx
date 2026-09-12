@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -24,25 +24,28 @@ import { AboutAndPrinciples } from './components/AboutAndPrinciples';
 import { CtaFooter } from './components/CtaFooter';
 import { JoinModal } from './components/JoinModal';
 import { RunbookModal } from './components/RunbookModal';
-import { GooeyActionMenu } from './components/GooeyActionMenu';
-import { PlatformItem } from './types';
 
 export default function App() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme] = useState<'dark' | 'light'>('dark');
 
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [runbookOpen, setRunbookOpen] = useState(false);
+  const [runbookChapter, setRunbookChapter] = useState(0);
   const [modalRole, setModalRole] = useState('Producer');
   const [selectedDirectoryCategory, setSelectedDirectoryCategory] = useState<string>('All');
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    localStorage.setItem('digisynq-theme', 'dark');
-  }, [theme]);
+    try {
+      localStorage.setItem('digisynq-theme', 'dark');
+    } catch {
+      // Private-mode storage may throw; theme class above is the source of truth.
+    }
+  }, []);
 
   const toggleTheme = () => {
-    // Keep complete dark noir theme active as inspired by user references
-    setTheme('dark');
+    // DigiSynq ships a locked dark noir theme; keep the toggle as a no-op
+    // that re-asserts dark so callers (Navbar) don't need branching.
     document.documentElement.classList.add('dark');
   };
 
@@ -51,6 +54,11 @@ export default function App() {
       setModalRole(role);
     }
     setJoinModalOpen(true);
+  };
+
+  const handleOpenRunbook = (chapterIndex = 0) => {
+    setRunbookChapter(chapterIndex);
+    setRunbookOpen(true);
   };
 
   const handleFilterCategoryInDirectory = (categoryName: string) => {
@@ -66,68 +74,86 @@ export default function App() {
       {/* 1. Global Navigation */}
       <Navbar
         onOpenJoinModal={handleOpenJoinModal}
-        onOpenRunbook={() => setRunbookOpen(true)}
+        onOpenRunbook={() => handleOpenRunbook(0)}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
 
       <main>
         {/* 2 & 3. Hero & Hero Value Statement */}
-        <HeroSection onOpenJoinModal={() => handleOpenJoinModal('Producer')} />
+        <HeroSection
+          onOpenJoinModal={() => handleOpenJoinModal('Producer')}
+          onOpenRunbook={handleOpenRunbook}
+        />
 
         {/* 4. The Problem */}
-        <ProblemSection />
+        <ProblemSection onOpenRunbook={handleOpenRunbook} />
 
         {/* 5. The DigiSynq Model Pipeline */}
-        <ModelPipeline />
+        <ModelPipeline onOpenRunbook={handleOpenRunbook} />
 
         {/* 6. Asset-Light Model Comparison */}
-        <AssetLightSection />
+        <AssetLightSection onOpenRunbook={handleOpenRunbook} />
 
         {/* 7. Product Ecosystem (12 Platforms, 82 Capabilities) */}
         <ProductEcosystem
           onSelectPlatform={() => {}}
           onFilterCategoryInDirectory={handleFilterCategoryInDirectory}
+          onOpenRunbook={handleOpenRunbook}
         />
 
         {/* 8. Searchable Product Directory */}
         <ProductDirectory
           initialCategory={selectedDirectoryCategory}
           onOpenJoinModal={handleOpenJoinModal}
+          onOpenRunbook={handleOpenRunbook}
         />
 
         {/* 9. Audience / Customer Segments */}
-        <AudienceSolutions onOpenJoinModal={handleOpenJoinModal} />
+        <AudienceSolutions
+          onOpenJoinModal={handleOpenJoinModal}
+          onFilterCategoryInDirectory={handleFilterCategoryInDirectory}
+          onOpenRunbook={handleOpenRunbook}
+        />
 
         {/* 10. Interactive Use Cases & Simulation Sandbox */}
         <InteractiveUseCases />
 
         {/* 11. Capacity Marketplace */}
-        <MarketplaceSection />
+        <MarketplaceSection
+          onOpenJoinModal={handleOpenJoinModal}
+          onOpenRunbook={handleOpenRunbook}
+        />
 
         {/* 12 & 13. Intelligence Layer & DigiSynq AI */}
         <IntelligenceSection />
 
         {/* 14. Network Effect & 10-Stage Business Flywheel */}
-        <NetworkEffectFlywheel />
+        <NetworkEffectFlywheel onOpenRunbook={handleOpenRunbook} />
 
         {/* 15. Trust Layer: SynqTrust */}
-        <TrustLayer />
+        <TrustLayer onOpenRunbook={handleOpenRunbook} />
 
         {/* 16. Business Model & Why DigiSynq Comparison */}
-        <BusinessModelSection />
+        <BusinessModelSection onOpenRunbook={handleOpenRunbook} />
 
         {/* 17. Future Vision: DigiSynq OS */}
-        <DigiSynqOS />
+        <DigiSynqOS
+          onOpenJoinModal={handleOpenJoinModal}
+          onOpenRunbook={handleOpenRunbook}
+        />
 
         {/* 18. About DigiSynq & 8 Company Principles */}
-        <AboutAndPrinciples />
+        <AboutAndPrinciples
+          onOpenJoinModal={handleOpenJoinModal}
+          onOpenRunbook={handleOpenRunbook}
+        />
       </main>
 
       {/* 19 & 20. CTA, Final Brand Statement & Footer */}
       <CtaFooter
         onOpenJoinModal={handleOpenJoinModal}
-        onOpenRunbook={() => setRunbookOpen(true)}
+        onOpenRunbook={handleOpenRunbook}
       />
 
       {/* Interactive Modal for Joining Network or Partner Inquiries */}
@@ -147,16 +173,11 @@ export default function App() {
           <RunbookModal
             isOpen={runbookOpen}
             onClose={() => setRunbookOpen(false)}
+            defaultChapter={runbookChapter}
           />
         )}
       </AnimatePresence>
 
-      {/* Floating Liquid Gooey Quick Actions Menu */}
-      <GooeyActionMenu
-        onOpenJoinModal={handleOpenJoinModal}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
     </div>
   );
 }

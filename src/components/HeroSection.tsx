@@ -1,14 +1,16 @@
-import React from 'react';
-import { ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
+import { Fragment } from 'react';
+import type { FC } from 'react';
+import { ArrowRight, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NetworkVisualizer } from './NetworkVisualizer';
 import cinemaLensPrism from '../assets/cinema-lens-prism.jpg';
 
 interface HeroSectionProps {
   onOpenJoinModal: () => void;
+  onOpenRunbook?: (chapterIndex?: number) => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => {
+export const HeroSection: FC<HeroSectionProps> = ({ onOpenJoinModal, onOpenRunbook }) => {
   const flowSteps = [
     { label: 'People', role: 'Talent & Crew' },
     { label: 'Projects', role: 'Slates & Packages' },
@@ -26,7 +28,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
   return (
     <section
       id="hero"
-      className="relative pt-32 sm:pt-40 pb-0 overflow-hidden bg-[#070A12]"
+      className="relative pt-28 sm:pt-36 pb-0 overflow-hidden bg-[#070A12]"
     >
       {/* Deep Midnight Void & Luminous Ambient Horizon Glow */}
       <div className="pointer-events-none absolute top-12 left-1/2 -translate-x-1/2 w-[800px] sm:w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(92,225,230,0.07)_0%,rgba(139,124,255,0.05)_40%,transparent_70%)] blur-[110px] opacity-80" />
@@ -38,38 +40,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* ── Cinematic Telemetry Status Strip ── */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center justify-between py-2 px-5 rounded-sm border border-white/15 bg-[#070A12]/80 backdrop-blur-xl font-mono text-[10px] text-white/60 mb-8 max-w-4xl mx-auto tracking-[2.5px] shadow-[0_4px_20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.12)]"
-        >
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#5EF2B0] animate-pulse shadow-[0_0_8px_#5EF2B0]" />
-            <span className="text-white font-bold tracking-[3px]">Rec 24.00 FPS</span>
-            <span className="text-white/20">|</span>
-            <span className="hidden sm:inline">Anamorphic 2.39:1</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-white/70">Mesh: 28 links active</span>
-            <span className="text-white/20">|</span>
-            <span className="text-[#5EF2B0] font-bold">Latency 2ms</span>
-          </div>
-        </motion.div>
-
-        {/* ── Eyebrow Badge (CRED Style) ── */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center mb-8"
-        >
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-sm bg-black border border-white/25 text-white/80 font-mono text-[11px] font-bold tracking-[3.5px] shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFF]" />
-            The asset-light operating network for cinema.
-          </div>
-        </motion.div>
 
         {/* ── Hero Headline (Syne + Momo Trust Display) ── */}
         <div className="text-center max-w-5xl mx-auto mb-10">
@@ -87,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.20, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 text-lg sm:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto"
+            className="mt-8 text-lg sm:text-2xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto font-sans tracking-[0.01em] [word-spacing:0.06em]"
           >
             DigiSynq is an asset-light coordination mechanism for the entertainment ecosystem. It operates in the space between the ecosystem's nodes — connecting producers, talent, investors, brands, distributors, exhibitors, platforms and audiences.
           </motion.p>
@@ -96,7 +66,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] max-w-2xl mx-auto font-semibold"
+            className="mt-4 text-xs sm:text-sm font-sans tracking-wide text-[#5CE1E6] max-w-2xl mx-auto font-semibold"
           >
             Own less. Connect more. Make the ecosystem work better together.
           </motion.p>
@@ -128,45 +98,68 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
           </motion.div>
         </div>
 
-        {/* Monolithic Metrics Ledger */}
+        {/* Monolithic Metrics Ledger — Interactive Ecosystem Portals */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.42 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto my-16 py-10 border-y border-white/10 text-center font-syne"
+          className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/15 max-w-6xl mx-auto my-16 py-4 border-y border-white/15 bg-white/[0.02] rounded-2xl backdrop-blur-xl text-center"
         >
-          <div className="flex flex-col items-center">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none">
+          <a
+            href="#product-ecosystem"
+            className="group flex flex-col items-center py-4 md:py-3 px-4 hover:bg-white/[0.04] transition-all rounded-xl cursor-pointer"
+            title="Inspect 12 Ecosystem Platforms"
+          >
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none font-denton-extrabold group-hover:scale-105 transition-transform">
               12
             </div>
-            <div className="mt-3 text-xs font-mono font-bold tracking-[3px] text-white/50">
-              Ecosystem Platforms
+            <div className="mt-3 text-xs sm:text-sm font-sans font-bold tracking-wide text-white/80 group-hover:text-white uppercase flex items-center gap-1">
+              <span>Ecosystem Platforms</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#5CE1E6]" />
             </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none">
+          </a>
+
+          <a
+            href="#network-flow"
+            className="group flex flex-col items-center py-4 md:py-3 px-4 hover:bg-white/[0.04] transition-all rounded-xl cursor-pointer"
+            title="Inspect 28 Full-Mesh Coordination Links"
+          >
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none font-denton-extrabold group-hover:scale-105 transition-transform">
               28
             </div>
-            <div className="mt-3 text-xs font-mono font-bold tracking-[3px] text-white/50">
-              Full-Mesh Links
+            <div className="mt-3 text-xs sm:text-sm font-sans font-bold tracking-wide text-white/80 group-hover:text-white uppercase flex items-center gap-1">
+              <span>Full-Mesh Links</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#5CE1E6]" />
             </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none">
+          </a>
+
+          <a
+            href="#digisynq-os"
+            className="group flex flex-col items-center py-4 md:py-3 px-4 hover:bg-white/[0.04] transition-all rounded-xl cursor-pointer"
+            title="Inspect 10 DigiSynq OS Stack Layers"
+          >
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none font-denton-extrabold group-hover:scale-105 transition-transform">
               10
             </div>
-            <div className="mt-3 text-xs font-mono font-bold tracking-[3px] text-white/50">
-              OS Stack Layers
+            <div className="mt-3 text-xs sm:text-sm font-sans font-bold tracking-wide text-white/80 group-hover:text-white uppercase flex items-center gap-1">
+              <span>OS Stack Layers</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#5CE1E6]" />
             </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none">
+          </a>
+
+          <a
+            href="#asset-light"
+            className="group flex flex-col items-center py-4 md:py-3 px-4 hover:bg-white/[0.04] transition-all rounded-xl cursor-pointer"
+            title="Inspect Asset-Light Architecture"
+          >
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-[#5CE1E6] tracking-tight leading-none font-denton-extrabold group-hover:scale-105 transition-transform">
               100%
             </div>
-            <div className="mt-3 text-xs font-mono font-bold tracking-[3px] text-white/50">
-              Asset-Light Network
+            <div className="mt-3 text-xs sm:text-sm font-sans font-bold tracking-wide text-[#5CE1E6] uppercase flex items-center gap-1">
+              <span>Asset-Light Network</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#5CE1E6]" />
             </div>
-          </div>
+          </a>
         </motion.div>
 
         {/* ── Trust Ticker Strip ── */}
@@ -178,15 +171,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
         >
           <span className="text-white/70">Crafted for:</span>
           {trustItems.map((item, i) => (
-            <React.Fragment key={item}>
+            <Fragment key={item}>
               <span className="text-white/70 font-semibold">{item}</span>
               {i < trustItems.length - 1 && <span className="text-white/20">·</span>}
-            </React.Fragment>
+            </Fragment>
           ))}
         </motion.div>
 
         {/* ── Dynamic Interactive Network Visualizer with Viewfinder Framing & 3D Glassmorphic Spheres ── */}
-        <div className="relative my-20">
+        <div id="hero-network-flow" className="relative my-20">
           {/* Floating 3D Ambient Depth Spheres */}
           <div className="glass-sphere sphere-navy w-44 h-44 -top-14 -left-10 animate-float-slow opacity-90" />
           <div className="glass-sphere sphere-violet w-52 h-52 -bottom-20 -right-14 animate-float-reverse opacity-85" />
@@ -204,7 +197,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
           <div className="viewfinder-corner-tr" />
           <div className="viewfinder-corner-bl" />
           <div className="viewfinder-corner-br" />
-          <NetworkVisualizer />
+          <NetworkVisualizer onOpenRunbook={onOpenRunbook} />
         </motion.div>
       </div>
 
@@ -237,7 +230,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
           <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden mix-blend-screen">
             <img
               src={cinemaLensPrism}
-              alt="Anamorphic Cinema Optics"
+              alt="Anamorphic cinema lens flare over a production set"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-center filter grayscale contrast-125"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
@@ -257,7 +252,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
             {/* Progressive Flow Chain */}
             <div className="my-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               {flowSteps.map((step, idx) => (
-                <React.Fragment key={step.label}>
+                <Fragment key={step.label}>
                   <div className="flex flex-col items-center px-5 py-3 rounded-lg bg-black/70 border border-white/15 hover:border-white/40 transition-all duration-200 shadow-md">
                     <span className="text-xs sm:text-sm font-mono font-bold tracking-[2px] text-white">
                       {step.label}
@@ -269,15 +264,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenJoinModal }) => 
                   {idx < flowSteps.length - 1 && (
                     <span className="text-white/30 font-bold text-xs select-none">→</span>
                   )}
-                </React.Fragment>
+                </Fragment>
               ))}
             </div>
 
-            <p className="text-base sm:text-xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-white/90 font-normal leading-relaxed max-w-3xl mx-auto font-sans tracking-[0.01em] [word-spacing:0.06em]">
               It connects fragmented information, resources, opportunities and participants; coordinates activity across the value chain; and monitors outcomes to reduce friction, leakage and risk while improving the utilization of existing ecosystem capacity.
             </p>
 
-            <p className="mt-5 text-xs sm:text-sm font-mono tracking-[3px] text-[#5CE1E6] font-semibold">
+            <p className="mt-5 text-xs sm:text-sm font-sans tracking-wide text-[#5CE1E6] font-semibold">
               The principle is simple: own less, connect more, and make the ecosystem work better together.
             </p>
           </div>

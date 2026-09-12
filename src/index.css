@@ -1,7 +1,11 @@
+@import "tailwindcss";
+
 /* ==========================================================================
    OFFICIAL CRED DENTON TYPEFACE — SOURCED DIRECTLY FROM CRED.CLUB
    Families: "denton", "Denton", "Denton-ExtraBold", "Denton-ExtraBoldItalic", "Denton-Bold", "Denton-BoldItalic"
    Formats: woff2, woff
+   NOTE: @import "tailwindcss" must stay first (CSS spec) so Tailwind
+   layers resolve before custom @font-face / theme rules.
    ========================================================================== */
 
 /* ── Denton Light (300) ────────────────────────────────────────── */
@@ -269,13 +273,11 @@
        url('/fonts/MomoTrustDisplay-Regular.ttf') format('truetype');
 }
 
-@import "tailwindcss";
-
 /* ── Font Theme ─────────────────────────────────────────────────── */
 @theme {
-  --font-sans: 'denton', 'Denton', 'Denton-ExtraBold', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'denton', 'Denton', 'Denton-ExtraBold', sans-serif;
-  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -353,9 +355,11 @@ html {
 
 @layer base {
   body {
-    font-family: 'denton', 'Denton', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.012em;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    word-spacing: 0.045em;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--bg-canvas);
@@ -364,13 +368,36 @@ html {
                 color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  p {
+    letter-spacing: 0.008em;
+    word-spacing: 0.055em;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+
+  strong, b {
+    font-weight: 800;
+  }
+
+  li, dd, dt, blockquote {
+    letter-spacing: 0.005em;
+    word-spacing: 0.045em;
+    line-height: 1.62;
+  }
+
+  a, button, input, textarea, select {
+    word-spacing: 0.035em;
+  }
+
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    word-spacing: 0.03em;
   }
 
   /* ==========================================================================
-     MOMO TRUST DISPLAY — MASTER HEADLINE & DISPLAY SYSTEM
+     MOMO TRUST DISPLAY / CRED DENTON — MASTER HEADLINE & DISPLAY SYSTEM
+     Generous word-spacing prevents letter cramming in large editorial titles.
      ========================================================================== */
   h1, h2, h3, h4, h5, h6,
   .font-display,
@@ -378,30 +405,32 @@ html {
   .hero-headline,
   .section-title {
     font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    word-spacing: 0.065em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1 {
     font-weight: 800 !important;
+    word-spacing: 0.07em;
   }
 
   h2 {
     font-weight: 800 !important;
+    word-spacing: 0.065em;
   }
 
   h3, h4, h5, h6 {
     font-weight: 700 !important;
+    word-spacing: 0.055em;
   }
 
   .font-bold {
-    font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
     font-weight: 700 !important;
   }
 
   .font-extrabold {
-    font-family: 'denton', 'Denton', 'Denton-ExtraBold', -apple-system, sans-serif !important;
     font-weight: 800 !important;
   }
 }
@@ -977,7 +1006,7 @@ input, select, textarea {
 }
 
 input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.35) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Modal windows */
@@ -1145,8 +1174,9 @@ input::placeholder, textarea::placeholder {
 .cred-headline {
   font-family: 'denton', 'Denton', sans-serif !important;
   font-weight: 800 !important;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  letter-spacing: -0.015em;
+  word-spacing: 0.075em;
+  line-height: 0.96;
   color: #FFFFFF;
 }
 
@@ -1244,31 +1274,42 @@ input::placeholder, textarea::placeholder {
 /* ── Denton Master Typography Utility Classes ──────────────────── */
 .font-denton {
   font-family: 'denton', 'Denton', 'Denton-ExtraBold', sans-serif !important;
+  word-spacing: 0.06em;
 }
 
 .font-denton-extrabold {
   font-family: 'Denton-ExtraBold', 'denton', 'Denton', sans-serif !important;
   font-weight: 800 !important;
   font-style: normal !important;
+  word-spacing: 0.065em;
 }
 
 .font-denton-extrabold-italic {
   font-family: 'Denton-ExtraBoldItalic', 'denton', 'Denton', sans-serif !important;
   font-weight: 800 !important;
   font-style: italic !important;
+  word-spacing: 0.065em;
 }
 
 .font-denton-bold {
   font-family: 'Denton-Bold', 'denton', 'Denton', sans-serif !important;
   font-weight: 700 !important;
   font-style: normal !important;
+  word-spacing: 0.06em;
 }
 
 .font-denton-bold-italic {
   font-family: 'Denton-BoldItalic', 'denton', 'Denton', sans-serif !important;
   font-weight: 700 !important;
   font-style: italic !important;
+  word-spacing: 0.06em;
 }
+
+/* ── Word Spacing Utilities for Maximum Understanding ──────────── */
+.word-spacing-normal { word-spacing: 0.03em; }
+.word-spacing-relaxed { word-spacing: 0.06em; }
+.word-spacing-wide { word-spacing: 0.09em; }
+.word-spacing-wider { word-spacing: 0.14em; }
 
 
 /* ── 3D Obsidian Charcoal Spheres & Smoked Glass Orbs (Mockup Reference Aesthetic) ── */

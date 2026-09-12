@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from 'react';
+import type { FC } from 'react';
+import { motion } from 'motion/react';
 import {
   X,
   BookOpen,
-  CheckCircle,
   Network,
   Cpu,
   Layers,
   Shield,
   Coins,
   TrendingUp,
-  FileText,
   Users,
   Search,
-  ExternalLink,
   ChevronRight,
-  Printer,
-  Sparkles,
-  ArrowRight,
-  Database,
-  Lock,
-  BarChart3,
-  DollarSign
+  Printer
 } from 'lucide-react';
 
 interface RunbookModalProps {
@@ -30,7 +22,7 @@ interface RunbookModalProps {
   defaultChapter?: number;
 }
 
-export const RunbookModal: React.FC<RunbookModalProps> = ({
+export const RunbookModal: FC<RunbookModalProps> = ({
   isOpen,
   onClose,
   defaultChapter = 0,
@@ -38,9 +30,29 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
   const [activeChapter, setActiveChapter] = useState(defaultChapter);
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    if (isOpen) {
+      setActiveChapter(defaultChapter);
+    }
+  }, [defaultChapter, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
-  const chapters = [
+  const chapters: Array<{ id: string; title: string; badge: string; icon: any; content: any }> = [
     {
       id: 'thesis',
       title: 'Executive Thesis & Market Opportunity',
@@ -357,6 +369,9 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-3xl overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="DigiSynq executive runbook"
       onClick={onClose}
     >
       <motion.div
@@ -494,7 +509,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             </div>
 
             {/* General Content Sections */}
-            {current.content.sections && current.content.sections.map((sec, idx) => (
+            {current.content.sections && current.content.sections.map((sec: any, idx: number) => (
               <div key={idx} className="mb-8">
                 <h4 className="text-base sm:text-lg font-bold text-white tracking-tight font-denton-bold mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5CE1E6] shadow-[0_0_8px_#5CE1E6]" />
@@ -507,7 +522,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
                 )}
                 {sec.bullets && (
                   <ul className="space-y-2.5 bg-[#0D1220]/70 border border-white/10 rounded-xl p-5 text-xs text-white/85 font-mono leading-relaxed">
-                    {sec.bullets.map((b, i) => (
+                    {sec.bullets.map((b: string, i: number) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <span className="text-[#5CE1E6] font-bold mt-0.5">›</span>
                         <span>{b}</span>
@@ -517,7 +532,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
                 )}
                 {sec.founders && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                    {sec.founders.map((f) => (
+                    {sec.founders.map((f: { name: string; role: string; bio: string; focus: string[]; accent: string }) => (
                       <div
                         key={f.name}
                         className="p-5 rounded-2xl bg-[#0D1220]/85 border border-white/15 hover:border-white/30 transition-all duration-300 relative overflow-hidden group shadow-lg"
@@ -557,7 +572,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
                         </p>
 
                         <div className="flex flex-wrap gap-1.5 relative z-10">
-                          {f.focus.map((tag, ti) => (
+                          {f.focus.map((tag: string, ti: number) => (
                             <span
                               key={ti}
                               className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/70 border border-white/10"
@@ -576,7 +591,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             {/* Platforms List */}
             {current.content.platformsList && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
-                {current.content.platformsList.map((p) => (
+                {current.content.platformsList.map((p: any) => (
                   <div
                     key={p.name}
                     className="p-4 rounded-xl bg-[#0D1220]/75 border border-white/10 hover:border-[#5CE1E6]/40 transition-all shadow-sm"
@@ -603,7 +618,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             {/* Phases */}
             {current.content.phases && (
               <div className="space-y-4 mb-8">
-                {current.content.phases.map((ph) => (
+                {current.content.phases.map((ph: any) => (
                   <div
                     key={ph.phase}
                     className="p-5 rounded-xl bg-[#0D1220]/75 border border-white/15 shadow-sm"
@@ -637,7 +652,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             {/* Revenue Vectors */}
             {current.content.vectors && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                {current.content.vectors.map((vec) => (
+                {current.content.vectors.map((vec: any) => (
                   <div
                     key={vec.name}
                     className="p-5 rounded-xl bg-[#0D1220]/75 border border-white/15 shadow-sm"
@@ -668,7 +683,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/10 text-white/80 font-sans">
-                    {current.content.tableRows.map((r, ri) => (
+                    {current.content.tableRows.map((r: any, ri: number) => (
                       <tr key={ri} className="hover:bg-white/[0.02] transition-colors">
                         <td className="p-3.5 font-bold font-mono text-white text-xs">{r.vector}</td>
                         <td className="p-3.5 text-white/70">{r.legacy}</td>
@@ -683,7 +698,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             {/* Protocols */}
             {current.content.protocols && (
               <div className="space-y-4 mb-8">
-                {current.content.protocols.map((pr, pi) => (
+                {current.content.protocols.map((pr: any, pi: number) => (
                   <div key={pi} className="p-5 rounded-xl bg-[#0D1220]/75 border border-white/15 shadow-sm">
                     <h5 className="text-base font-bold text-white mb-2 font-denton-bold flex items-center gap-2">
                       <Shield className="w-4 h-4 text-[#5CE1E6]" />
@@ -700,7 +715,7 @@ export const RunbookModal: React.FC<RunbookModalProps> = ({
             {/* Flywheel */}
             {current.content.flywheelSteps && (
               <div className="space-y-2 mb-8">
-                {current.content.flywheelSteps.map((step, si) => (
+                {current.content.flywheelSteps.map((step: string, si: number) => (
                   <div
                     key={si}
                     className="p-3.5 rounded-lg bg-[#0D1220]/75 border border-white/10 flex items-start gap-3 text-xs text-white/85 shadow-sm"

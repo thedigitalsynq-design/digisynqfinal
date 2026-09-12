@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Liquid } from 'liquid-gooey';
-import { Sparkles, X, Network, Users, Sun, Moon, ArrowUp } from 'lucide-react';
+import { Sparkles, X, Network, Users, Sun, Moon } from 'lucide-react';
 
 interface GooeyActionMenuProps {
   onOpenJoinModal: (role?: string) => void;
@@ -14,11 +14,6 @@ export const GooeyActionMenu: React.FC<GooeyActionMenuProps> = ({
   onToggleTheme,
 }) => {
   const [open, setOpen] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setOpen(false);
-  };
 
   const scrollToGraph = () => {
     const el = document.getElementById('hero-network-visualizer');

@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Layers, ArrowRight, CheckCircle2, Shield, RefreshCw, KeyRound, Building, Camera, Film, Users, Wrench } from 'lucide-react';
+import { ArrowRight, RefreshCw, KeyRound, Building, Camera, Film, Wrench, ArrowUpRight, BookOpen } from 'lucide-react';
 
-export const MarketplaceSection: React.FC = () => {
+interface MarketplaceSectionProps {
+  onOpenRunbook?: (chapterIndex?: number) => void;
+  onOpenJoinModal?: (role?: string) => void;
+}
+
+export const MarketplaceSection: React.FC<MarketplaceSectionProps> = ({
+  onOpenRunbook,
+  onOpenJoinModal,
+}) => {
   const [activeMarketType, setActiveMarketType] = useState<number>(0);
 
   const capacityCategories = [
@@ -93,50 +101,85 @@ export const MarketplaceSection: React.FC = () => {
         <div className="mb-14 rounded-3xl bg-[#0D1220]/75 border border-white/[0.12] p-6 sm:p-10 shadow-2xl relative backdrop-blur-2xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {/* Step 1: Asset Owner */}
-            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#4D8DFF]/25 relative shadow-lg text-white backdrop-blur-xl">
-              <span className="text-xs font-mono tracking-wider text-[#4D8DFF] block mb-2 font-semibold">
-                Supply Side
-              </span>
-              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
-                Asset Owner
-              </h3>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                Retains 100% legal ownership, physical custody, and operational maintenance of equipment, stages, and screens.
-              </p>
-              <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] font-mono text-[#4D8DFF] font-medium">
-                Zero Loss of Custody
+            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#4D8DFF]/25 relative shadow-lg text-white backdrop-blur-xl flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono tracking-wider text-[#4D8DFF] block mb-2 font-semibold">
+                  Supply Side
+                </span>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                  Asset Owner
+                </h3>
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                  Retains 100% legal ownership, physical custody, and operational maintenance of equipment, stages, and screens.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-white/[0.08] flex items-center justify-between">
+                <span className="text-[11px] font-mono text-[#4D8DFF] font-medium">
+                  Zero Loss of Custody
+                </span>
+                {onOpenJoinModal && (
+                  <button
+                    onClick={() => onOpenJoinModal('Equipment Owner')}
+                    className="text-xs font-mono font-bold text-white hover:text-[#4D8DFF] flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <span>List Gear</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </button>
+                )}
               </div>
             </div>
 
             {/* Step 2: DigiSynq Protocol */}
-            <div className="p-6 rounded-2xl bg-[#0D1220]/90 border border-[#5CE1E6]/50 relative shadow-[0_0_30px_rgba(92,225,230,0.12)] text-white backdrop-blur-xl">
-              <span className="text-xs font-mono tracking-wider text-[#5CE1E6] block mb-2 font-semibold">
-                The Network Layer
-              </span>
-              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
-                DigiSynq
-              </h3>
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
-                Provides discovery, trust verification, dynamic matching, insurance endorsements, contracts, and milestone escrow.
-              </p>
-              <div className="mt-4 pt-3 border-t border-[#5CE1E6]/30 text-[11px] font-mono text-[#5CE1E6] font-bold">
-                Pure Software & Protocol Margin
+            <div className="p-6 rounded-2xl bg-[#0D1220]/90 border border-[#5CE1E6]/50 relative shadow-[0_0_30px_rgba(92,225,230,0.12)] text-white backdrop-blur-xl flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono tracking-wider text-[#5CE1E6] block mb-2 font-semibold">
+                  The Network Layer
+                </span>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                  DigiSynq
+                </h3>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  Provides discovery, trust verification, dynamic matching, insurance endorsements, contracts, and milestone escrow.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-[#5CE1E6]/30 flex items-center justify-between">
+                <span className="text-[11px] font-mono text-[#5CE1E6] font-bold">
+                  Pure Software Margin
+                </span>
+                <a
+                  href="#platform-model"
+                  className="text-xs font-mono font-bold text-white hover:text-[#5CE1E6] flex items-center gap-1 transition-colors"
+                >
+                  <span>Protocol</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
               </div>
             </div>
 
             {/* Step 3: Demand */}
-            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#5EF2B0]/25 relative shadow-lg text-white backdrop-blur-xl">
-              <span className="text-xs font-mono tracking-wider text-[#5EF2B0] block mb-2 font-semibold">
-                Demand Side
-              </span>
-              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
-                Productions & Events
-              </h3>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                Accesses world-class physical resources at competitive rates with instant booking, insured custody, and verified specs.
-              </p>
-              <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] font-mono text-[#5EF2B0] font-medium">
-                Frictionless Utilization
+            <div className="p-6 rounded-2xl bg-[#070A12]/70 border border-[#5EF2B0]/25 relative shadow-lg text-white backdrop-blur-xl flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono tracking-wider text-[#5EF2B0] block mb-2 font-semibold">
+                  Demand Side
+                </span>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                  Productions & Events
+                </h3>
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                  Accesses world-class physical resources at competitive rates with instant booking, insured custody, and verified specs.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-white/[0.08] flex items-center justify-between">
+                <span className="text-[11px] font-mono text-[#5EF2B0] font-medium">
+                  Frictionless Utilization
+                </span>
+                <a
+                  href="#product-directory"
+                  className="text-xs font-mono font-bold text-white hover:text-[#5EF2B0] flex items-center gap-1 transition-colors"
+                >
+                  <span>Directory</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>
@@ -221,6 +264,28 @@ export const MarketplaceSection: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+
+        {/* Bottom Cross-Section Navigation Actions */}
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#product-directory"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/20 text-white text-xs font-mono font-bold tracking-[1.5px] transition-all shadow-sm active:scale-95"
+          >
+            <span>Browse All 82 Capabilities in Directory</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+
+          {onOpenRunbook && (
+            <button
+              onClick={() => onOpenRunbook(4)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5CE1E6]/10 hover:bg-[#5CE1E6]/20 border border-[#5CE1E6]/35 text-[#5CE1E6] hover:text-white text-xs font-mono font-bold tracking-[1.5px] transition-all cursor-pointer shadow-sm active:scale-95"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Inspect Monetization Architecture (Chapter 05)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       </div>
     </section>
